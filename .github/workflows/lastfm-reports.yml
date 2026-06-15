@@ -20,6 +20,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: lastfm-reports
@@ -38,6 +40,7 @@ jobs:
       - name: Generate weekly report
         env:
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node work/lastfm-report-generator.mjs weekly
       - name: Validate report scripts
         run: node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report-client.js
@@ -61,6 +64,7 @@ jobs:
       - name: Generate monthly report
         env:
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node work/lastfm-report-generator.mjs monthly
       - name: Validate report scripts
         run: node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report-client.js
@@ -84,6 +88,7 @@ jobs:
       - name: Generate yearly report
         env:
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node work/lastfm-report-generator.mjs yearly
       - name: Validate report scripts
         run: node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report-client.js
@@ -94,3 +99,25 @@ jobs:
           git add outputs/lastfm-reports
           git diff --cached --quiet || git commit -m "Add Last.fm yearly report"
           git push
+
+  deploy-pages:
+    name: Deploy GitHub Pages
+    if: always() && !cancelled()
+    needs:
+      - weekly
+      - monthly
+      - yearly
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pull generated reports
+        run: git pull --ff-only
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: outputs/lastfm-reports
+      - id: deployment
+        uses: actions/deploy-pages@v4

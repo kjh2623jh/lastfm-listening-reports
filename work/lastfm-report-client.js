@@ -5,7 +5,6 @@ const state = {
 };
 const expandedCharts = { track: false, artist: false, album: false };
 const fallbackImage = "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><rect width="300" height="300" fill="#d8cab9"/><circle cx="150" cy="150" r="92" fill="#201b18"/><circle cx="150" cy="150" r="20" fill="#d51007"/></svg>');
-const periods = ["weekly", "monthly", "yearly"];
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
@@ -16,9 +15,7 @@ function currentFilename() {
 }
 
 function reportsFor(period) {
-  return state.registry
-    .filter((report) => report.period === period)
-    .sort((a, b) => a.start.localeCompare(b.start));
+  return state.registry.filter((report) => report.period === period).sort((a, b) => a.start.localeCompare(b.start));
 }
 
 function currentRegistryEntry() {
@@ -36,7 +33,6 @@ function selectedReport() {
 function renderReportControls() {
   const entry = currentRegistryEntry();
   const activePeriod = state.period || state.report.kind;
-
   $$(".pill[data-period]").forEach((button) => {
     const count = reportsFor(button.dataset.period).length;
     button.disabled = count === 0;
@@ -48,7 +44,6 @@ function renderReportControls() {
   const previousValue = picker.value;
   const options = reportsFor(activePeriod);
   picker.innerHTML = options.map((report) => `<option value="${esc(report.file)}">${esc(report.label)}</option>`).join("");
-
   const selected = options.find((report) => report.file === previousValue)
     || options.find((report) => entry && report.file === entry.file)
     || options.at(-1);
@@ -165,8 +160,7 @@ function shift(delta) {
   const current = selectedReport();
   const index = options.findIndex((report) => current && report.file === current.file);
   const target = options[index + delta];
-  if (!target) return;
-  openLocalEntry(target);
+  if (target) openLocalEntry(target);
 }
 
 function drawCanvas() {
