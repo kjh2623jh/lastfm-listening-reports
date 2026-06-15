@@ -44,58 +44,6 @@ function selectedReport() {
   return state.registry.find((report) => report.file === picker.value) || null;
 }
 
-function renderReportControls() {
-  const entry = currentRegistryEntry();
-  const activePeriod = state.period || state.report.kind;
-  $$(".pill[data-period]").forEach((button) => {
-    const count = reportsFor(button.dataset.period).length;
-    button.disabled = count === 0;
-    button.classList.toggle("active", button.dataset.period === activePeriod);
-    button.title = count ? `${count} saved report${count > 1 ? "s" : ""}` : "저장된 리포트가 없습니다.";
-  });
-
-  const picker = $("#reportPicker");
-  const previousValue = picker.value;
-  const options = reportsFor(activePeriod);
-  picker.innerHTML = options.map((report) => `<option value="${esc(report.file)}">${esc(report.label)}</option>`).join("");
-  const selected = options.find((report) => report.file === previousValue)
-    || options.find((report) => entry && report.file === entry.file)
-    || options.at(-1);
-  if (selected) picker.value = selected.file;
-  picker.disabled = options.length === 0;
-
-  const index = options.findIndex((report) => report.file === picker.value);
-  $("#prevPeriod").disabled = index <= 0;
-  $("#nextPeriod").disabled = index < 0 || index >= options.length - 1;
-  $("#openLocal").disabled = !selected;
-}
-
-function render() {
-  const r = state.report;
-  state.period = r.kind;
-  $("#rangeText").textContent = `${r.user} · ${r.rangeLabel} · KST`;
-  $("#headline").textContent = r.headline;
-  $("#summaryText").textContent = r.summary;
-  $("#storyText").textContent = r.story;
-  $("#recommendationTitle").textContent = r.recommendation.title;
-  $("#recommendationAbout").textContent = r.recommendation.about;
-  $("#recommendationWhy").textContent = r.recommendation.why;
-  $("#mScrobbles").textContent = r.total.toLocaleString();
-  $("#mTracks").textContent = r.tracks.toLocaleString();
-  $("#mArtists").textContent = r.artists.toLocaleString();
-  $("#mPeak").textContent = r.peakDay;
-  $("#hero").style.setProperty("--hero-art", `url("${img(r.topAlbums[0]?.image)}")`);
-  renderReportControls();
-  renderCovers();
-  renderInsights();
-  renderComparison();
-  renderPeriodFocus();
-  renderCharts();
-  renderDays();
-  renderHours();
-  renderAlbumFocus();
-}
-
 function payload(item, type) {
   return esc(JSON.stringify({ type, ...item }));
 }
@@ -116,26 +64,10 @@ function renderComparison() {
   $("#comparisonGrid").innerHTML = `<article class="compare-card"><strong>${c.delta >= 0 ? "+" : ""}${c.delta.toLocaleString()}</strong><span>Scrobble delta</span></article><article class="compare-card"><strong>${c.percentText}</strong><span>Volume change</span></article><article class="compare-card"><strong>${c.previousTotal.toLocaleString()}</strong><span>Previous scrobbles</span></article><div class="compare-bars"><div class="compare-bar-row"><span>Current</span><div class="compare-track"><i style="width:${Math.round(c.currentTotal / max * 100)}%"></i></div><b>${c.currentTotal.toLocaleString()}</b></div><div class="compare-bar-row previous"><span>Previous</span><div class="compare-track"><i style="width:${Math.round(c.previousTotal / max * 100)}%"></i></div><b>${c.previousTotal.toLocaleString()}</b></div></div><div class="tag-list">${(c.tagShift || []).map((tag) => `<span class="tag">${esc(tag.name)} ${tag.delta >= 0 ? "+" : ""}${tag.delta}</span>`).join("")}</div>`;
 }
 
-function renderPeriodFocus() {
-  const focus = state.report.periodFocus || { title: "Period Focus", cards: [] };
-  $("#periodFocusTitle").textContent = focus.title;
-  $("#periodFocus").innerHTML = (focus.cards || []).map((card) => `<article class="insight-card"><b>${esc(card.label)} · ${esc(card.value)}</b><p>${esc(card.note)}</p></article>`).join("");
-}
-
 function renderCharts() {
   $("#tracks").innerHTML = list(state.report.topTracks, "track");
   $("#artists").innerHTML = list(state.report.topArtists, "artist");
   $("#albums").innerHTML = list(state.report.topAlbums, "album");
-}
-
-function list(rows, type) {
-  const visible = expandedCharts[type] ? rows : rows.slice(0, 5);
-  const more = rows.length > 5 ? `<button class="more-btn" type="button" data-more="${type}">${expandedCharts[type] ? "Show less" : `More ${rows.length - 5}`}</button>` : "";
-  return `<ol class="rank-list">${visible.map((item, index) => {
-    const title = type === "artist" ? item.artist : type === "album" ? item.album : item.title;
-    const sub = type === "artist" ? "Artist" : item.artist + (item.album && type === "track" ? ` · ${item.album}` : "");
-    return `<li><button class="rank-item" type="button" data-detail='${payload(item, type)}'><img class="thumb" src="${img(item.image)}" alt="" loading="lazy"><span class="rank-title"><strong>${index + 1}. ${esc(title)}</strong><span>${esc(sub)}</span></span><span class="count">${item.count}</span></button></li>`;
-  }).join("")}</ol>${more}`;
 }
 
 function renderDays() {
@@ -162,18 +94,6 @@ function openDetail(item) {
   $("#detailBody").textContent = item.album && item.type !== "album" ? `Album: ${item.album}` : "";
   $("#detailBody").style.display = $("#detailBody").textContent ? "block" : "none";
   $("#detail").classList.add("open");
-}
-
-function openLocalEntry(entry) {
-  if (!entry) {
-    toast("선택할 수 있는 리포트가 없습니다.");
-    return;
-  }
-  if (currentFilename() === entry.file) {
-    toast("현재 열려 있는 리포트입니다.");
-    return;
-  }
-  location.href = entry.file;
 }
 
 function shift(delta) {
@@ -292,6 +212,132 @@ function wrap(ctx, text, x, y, max, line) {
   if (current) ctx.fillText(current, x, y);
 }
 
+function download(blob) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `lastfm-${state.report.kind}-${state.report.startDate}.png`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function toast(msg) {
+  $("#toast").textContent = msg;
+  $("#toast").classList.add("show");
+  setTimeout(() => $("#toast").classList.remove("show"), 2400);
+}
+
+function renderReportControls() {
+  const entry = currentRegistryEntry();
+  const activePeriod = state.period || state.report.kind;
+  $$(".pill[data-period]").forEach((button) => {
+    const count = reportsFor(button.dataset.period).length;
+    button.disabled = count === 0;
+    button.classList.toggle("active", button.dataset.period === activePeriod);
+    button.title = count ? `${count} saved report${count > 1 ? "s" : ""}` : "저장된 리포트가 없습니다.";
+  });
+
+  const picker = $("#reportPicker");
+  const previousValue = picker.value;
+  const options = reportsFor(activePeriod);
+  picker.innerHTML = options.map((report) => `<option value="${esc(report.file)}">${esc(report.label)}</option>`).join("");
+  const selected = options.find((report) => report.file === previousValue)
+    || options.find((report) => entry && report.file === entry.file)
+    || options.at(-1);
+  if (selected) picker.value = selected.file;
+  picker.disabled = options.length === 0;
+
+  const index = options.findIndex((report) => report.file === picker.value);
+  $("#prevPeriod").disabled = index <= 0;
+  $("#nextPeriod").disabled = index < 0 || index >= options.length - 1;
+  $("#openLocal").disabled = !selected;
+}
+
+function render() {
+  const r = state.report;
+  state.period = r.kind;
+  $("#rangeText").textContent = `${r.user} · ${r.rangeLabel} · KST`;
+  $("#headline").textContent = r.headline;
+  $("#summaryText").textContent = r.summary;
+  $("#storyText").textContent = r.story;
+  $("#recommendationTitle").textContent = r.recommendation.title;
+  $("#recommendationAbout").textContent = r.recommendation.about;
+  $("#recommendationWhy").textContent = r.recommendation.why;
+  $("#mScrobbles").textContent = r.total.toLocaleString();
+  $("#mTracks").textContent = r.tracks.toLocaleString();
+  $("#mArtists").textContent = r.artists.toLocaleString();
+  $("#mPeak").textContent = r.peakDay;
+  $("#hero").style.setProperty("--hero-art", `url("${img(r.topAlbums[0]?.image)}")`);
+  renderReportControls();
+  renderCovers();
+  renderInsights();
+  renderComparison();
+  renderPeriodFocus();
+  renderDeepDive();
+  renderCharts();
+  renderDays();
+  renderHours();
+  renderAlbumFocus();
+}
+
+function renderPeriodFocus() {
+  const focus = state.report.periodFocus || { title: "Period Focus", cards: [] };
+  $("#periodFocusTitle").textContent = focus.title;
+  $("#periodFocus").innerHTML = (focus.cards || []).map((card) => `<article class="insight-card"><b>${esc(card.label)} · ${esc(card.value)}</b><p>${esc(card.note)}</p></article>`).join("");
+}
+
+function renderDeepDive() {
+  const dive = state.report.deepDive || { title: "", sections: [] };
+  const panel = $("#deepDivePanel");
+  if (!dive.sections || dive.sections.length === 0) {
+    panel.hidden = true;
+    return;
+  }
+  panel.hidden = false;
+  $("#deepDiveTitle").textContent = dive.title || "Deep Dive";
+  $("#deepDive").innerHTML = dive.sections.map((section) => `
+    <article class="deep-section">
+      <div class="deep-section-head">
+        <h4>${esc(section.title)}</h4>
+        <p>${esc(section.note || "")}</p>
+      </div>
+      <div class="deep-items">
+        ${(section.items || []).map((item) => `
+          <div class="deep-item">
+            <span>${esc(item.label)}</span>
+            <strong>${esc(item.value)}</strong>
+            <p>${esc(item.note || "")}</p>
+          </div>
+        `).join("")}
+      </div>
+    </article>
+  `).join("");
+}
+
+function list(rows, type) {
+  const visible = expandedCharts[type] ? rows : rows.slice(0, 5);
+  const more = rows.length > 5 ? `<button class="more-btn" type="button" data-more="${type}">${expandedCharts[type] ? "Show less" : `More ${rows.length - 5}`}</button>` : "";
+  return `<ol class="rank-list">${visible.map((item, index) => {
+    const title = type === "artist" ? item.artist : type === "album" ? item.album : item.title;
+    const sub = type === "artist" ? "Artist" : item.artist + (item.album && type === "track" ? ` · ${item.album}` : "");
+    return `<li><button class="rank-item" type="button" data-detail='${payload(item, type)}'><img class="thumb" src="${img(item.image)}" alt="" loading="lazy"><span class="rank-title"><strong>${index + 1}. ${esc(title)}</strong><span>${esc(sub)}</span></span><span class="count">${item.count}</span></button></li>`;
+  }).join("")}</ol>${more}`;
+}
+
+function openLocalEntry(entry) {
+  if (!entry) {
+    toast("선택 가능한 리포트가 없습니다.");
+    return;
+  }
+  if (currentFilename() === entry.file) {
+    toast("현재 열려 있는 리포트입니다.");
+    return;
+  }
+  location.href = entry.file;
+}
+
 function trunc(text, length) {
   text = String(text || "");
   return text.length > length ? text.slice(0, length - 1) + "…" : text;
@@ -314,23 +360,6 @@ function downloadImage() {
     download(blob);
     toast("PNG를 다운로드했습니다.");
   }, "image/png");
-}
-
-function download(blob) {
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `lastfm-${state.report.kind}-${state.report.startDate}.png`;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-}
-
-function toast(msg) {
-  $("#toast").textContent = msg;
-  $("#toast").classList.add("show");
-  setTimeout(() => $("#toast").classList.remove("show"), 2400);
 }
 
 document.addEventListener("click", (event) => {

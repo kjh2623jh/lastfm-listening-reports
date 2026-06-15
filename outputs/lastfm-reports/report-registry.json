@@ -1,5 +1,12 @@
 [
   {
+    "period": "monthly",
+    "start": "2026-05-01",
+    "end": "2026-05-31",
+    "label": "2026-05",
+    "file": "lastfm-monthly-2026-05.html"
+  },
+  {
     "period": "weekly",
     "start": "2026-06-01",
     "end": "2026-06-07",
