@@ -8,6 +8,7 @@
 :root{--bg:#100f0e;--paper:#fbf7ef;--paper-2:#f2e9da;--ink:#1f1b18;--muted:#756b60;--line:rgba(31,27,24,.14);--red:#d51007;--gold:#d99a26;--teal:#0e7c7b;--blue:#2f5f98;--shadow:0 24px 70px rgba(0,0,0,.28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 10%,rgba(213,16,7,.36),transparent 28rem),radial-gradient(circle at 88% 4%,rgba(14,124,123,.34),transparent 26rem),linear-gradient(135deg,#15110f 0%,#201916 48%,#0e1818 100%);min-height:100vh}button,input{font:inherit}button{cursor:pointer}.page{width:min(1220px,calc(100vw - 28px));margin:0 auto;padding:28px 0 52px}.shell{background:rgba(251,247,239,.94);border:1px solid rgba(255,255,255,.28);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.hero{position:relative;min-height:520px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:26px;padding:30px;color:white;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.28)),var(--hero-art);background-size:cover;background-position:center;isolation:isolate}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(16,15,14,.42));z-index:-1}.topline{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:30px}.brand{display:flex;gap:12px;align-items:center;min-width:0}.mark{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;background:var(--red);color:white;font-weight:900;box-shadow:0 10px 22px rgba(213,16,7,.28)}.brand h1{margin:0;font-size:18px}.brand p{margin:3px 0 0;color:rgba(255,255,255,.72);font-size:13px}.report-controls{display:grid;gap:8px;justify-items:end}.control-group{display:flex;align-items:center;gap:6px;padding:5px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(0,0,0,.18);backdrop-filter:blur(10px)}.control-label{padding:0 7px;color:rgba(255,255,255,.62);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.control,.pill,.icon-btn{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);color:white;border-radius:999px;min-height:32px;padding:0 12px;backdrop-filter:blur(10px)}.pill.active{background:white;color:#241d19}.icon-btn{width:34px;padding:0;font-weight:900}.control{color-scheme:dark;width:146px}.hero-copy{align-self:end;max-width:660px}.eyebrow{margin:0 0 14px;color:#ffb1a9;font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.hero h2{margin:0;max-width:690px;font-size:clamp(42px,7vw,82px);line-height:.9}.summary{margin:20px 0 0;color:rgba(255,255,255,.82);line-height:1.7;font-size:16px}.hero-side{display:grid;align-content:end;gap:16px}.cover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.cover-tile{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);transform:translateY(8px);opacity:0;animation:tileIn .55s ease forwards}.cover-tile:nth-child(2){animation-delay:.06s}.cover-tile:nth-child(3){animation-delay:.12s}.cover-tile:nth-child(4){animation-delay:.18s}.cover-tile:nth-child(5){animation-delay:.24s}.cover-tile:nth-child(6){animation-delay:.30s}.cover-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease,filter .35s ease}.cover-tile:hover img{transform:scale(1.08);filter:saturate(1.12)}.cover-tile span{position:absolute;left:8px;right:8px;bottom:8px;color:white;font-size:11px;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.85);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@keyframes tileIn{to{transform:translateY(0);opacity:1}}.metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--paper);border-bottom:1px solid var(--line)}.metric{padding:22px 24px;border-right:1px solid var(--line)}.metric:last-child{border-right:0}.metric strong{display:block;font-size:clamp(34px,5vw,54px);line-height:.95}.metric span{display:block;margin-top:7px;color:var(--muted);font-size:13px;font-weight:700}.body{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:22px;padding:24px;background:linear-gradient(180deg,var(--paper) 0%,#f5efe5 100%)}.main,.side{display:grid;gap:18px;align-content:start}.panel{background:rgba(255,255,255,.68);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.7) inset}.panel-head{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:18px 18px 0}.panel h3{margin:0;font-size:21px}.hint{color:var(--muted);font-size:13px}.panel-body{padding:18px}.insight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.insight-card{padding:16px;border-radius:12px;background:var(--paper-2);min-height:132px}.insight-card b{display:block;margin-bottom:10px}.insight-card p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.compare-card{padding:14px;border-radius:12px;background:white;border:1px solid var(--line)}.compare-card strong{display:block;font-size:26px}.compare-card span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.tag-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.tag{border-radius:999px;background:#211c18;color:white;padding:5px 8px;font-size:12px}.tabs{display:flex;gap:8px;padding:0 18px 18px;overflow-x:auto}.tab{border:1px solid var(--line);background:white;color:var(--muted);height:36px;padding:0 13px;border-radius:999px;white-space:nowrap}.tab.active{background:#211c18;color:white;border-color:#211c18}.chart-section{display:none}.chart-section.active{display:block}.rank-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.rank-item{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.7);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;text-align:left}.rank-item:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(31,27,24,.10);border-color:rgba(213,16,7,.28)}.thumb{width:52px;height:52px;border-radius:9px;object-fit:cover;background:#ded2c2}.rank-title{min-width:0}.rank-title strong,.rank-title span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rank-title span{margin-top:3px;color:var(--muted);font-size:13px}.count{min-width:56px;text-align:right;color:var(--red);font-weight:900}.day-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px}.day-card{min-height:132px;border-radius:12px;padding:12px;background:linear-gradient(180deg,#fff,#f4ecdf);border:1px solid var(--line);display:grid;align-content:space-between}.day-card strong{font-size:26px}.day-card span{color:var(--muted);font-size:12px}.bar{height:8px;border-radius:999px;background:#dfd4c5;overflow:hidden;margin-top:10px}.fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--red),var(--gold))}.heat{display:grid;grid-template-columns:repeat(24,minmax(6px,1fr));gap:4px;align-items:end;height:170px}.hour{border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,var(--teal),var(--blue));min-height:4px;position:relative}.hour:hover:after{content:attr(data-label);position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);white-space:nowrap;background:#211c18;color:white;font-size:12px;padding:5px 7px;border-radius:6px;z-index:5}.story{margin:0;color:var(--muted);line-height:1.7}.story+ .story{margin-top:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.button{min-height:40px;border:1px solid var(--line);border-radius:10px;padding:0 14px;background:white;color:var(--ink)}.button.primary{background:var(--red);border-color:var(--red);color:white}.mini-list{display:grid;gap:10px}.mini{display:grid;grid-template-columns:46px minmax(0,1fr);gap:10px;align-items:center;text-align:left;border:0;background:transparent;padding:0}.mini img{width:46px;height:46px;object-fit:cover;border-radius:8px;background:#ded2c2}.mini strong,.mini span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mini span{color:var(--muted);font-size:12px}.detail{position:fixed;inset:0;display:none;place-items:center;padding:20px;background:rgba(0,0,0,.58);z-index:20}.detail.open{display:grid}.detail-card{width:min(720px,100%);display:grid;grid-template-columns:210px minmax(0,1fr);gap:20px;background:var(--paper);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.detail-card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;background:#ded2c2}.detail-card h3{margin:0 0 8px;font-size:30px;line-height:1.05}.detail-card p{margin:0 0 10px;color:var(--muted);line-height:1.6}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(16px);opacity:0;pointer-events:none;background:#211c18;color:white;padding:10px 14px;border-radius:10px;z-index:30;transition:opacity .18s ease,transform .18s ease}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}@media(max-width:980px){.hero,.body{grid-template-columns:1fr}.hero{min-height:auto}.topline{display:grid}.report-controls{justify-items:start}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.insight-grid,.compare-grid{grid-template-columns:1fr}}@media(max-width:620px){.page{width:calc(100vw - 16px);padding-top:8px}.hero,.body{padding:16px}.control-group{width:100%;border-radius:14px;flex-wrap:wrap}.cover-grid{grid-template-columns:repeat(2,1fr)}.metrics{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)}.metric:last-child{border-bottom:0}.detail-card{grid-template-columns:1fr}.hero h2{font-size:42px}}
 .compare-bars{grid-column:1/-1;display:grid;gap:10px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#fff,#f3eadb);border:1px solid var(--line)}.compare-bar-row{display:grid;grid-template-columns:74px minmax(0,1fr) 58px;gap:10px;align-items:center;font-size:13px}.compare-bar-row span{color:var(--muted);font-weight:800}.compare-bar-row b{text-align:right}.compare-track{height:14px;border-radius:999px;background:#dfd4c5;overflow:hidden}.compare-track i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--red),var(--gold));box-shadow:0 0 18px rgba(213,16,7,.26)}.compare-bar-row.previous .compare-track i{background:linear-gradient(90deg,#7c756b,#b8ad9b);box-shadow:none}.more-btn{width:100%;margin-top:12px;min-height:42px;border:1px solid var(--line);border-radius:12px;background:#211c18;color:white;font-weight:800}.more-btn:hover{background:#3a302a}.heat{height:190px;align-items:stretch}.hour-wrap{display:grid;grid-template-rows:1fr 18px;align-items:end;gap:6px;min-width:0}.hour-wrap span{color:var(--muted);font-size:10px;text-align:center}.hour{width:100%;align-self:end}.tag-list{grid-column:1/-1}.comparison-lift{animation:tileIn .35s ease both}select{font:inherit}.report-select{width:210px;max-width:42vw}.pill:disabled,.icon-btn:disabled,.control:disabled{opacity:.42;cursor:not-allowed;filter:saturate(.55)}.pill:disabled:hover,.icon-btn:disabled:hover{transform:none}@media(max-width:620px){.report-select{width:100%;max-width:none}}
 .deep-dive-panel[hidden]{display:none}.deep-dive{display:grid;gap:16px}.deep-section{border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#fffdf8,#f0e5d4);overflow:hidden}.deep-section-head{display:grid;gap:6px;padding:18px 18px 0}.deep-section-head h4{margin:0;font-size:18px}.deep-section-head p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}.deep-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:18px}.deep-item{min-height:126px;display:grid;align-content:start;gap:7px;padding:14px;border-radius:12px;background:rgba(255,255,255,.72);border:1px solid rgba(31,27,24,.10)}.deep-item span{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}.deep-item strong{font-size:24px;line-height:1.05;word-break:keep-all}.deep-item p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}@media(max-width:980px){.deep-items{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.deep-items{grid-template-columns:1fr}.deep-item{min-height:auto}}
+.ai-status{display:grid;gap:12px}.status-badge{display:inline-flex;width:max-content;align-items:center;min-height:30px;border-radius:999px;padding:0 11px;font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}.status-badge.ok{background:#dff5eb;color:#0f6041}.status-badge.fallback{background:#fff1d6;color:#8a4d00}.status-list{display:grid;gap:9px;margin:0}.status-list div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px solid var(--line)}.status-list dt{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}.status-list dd{margin:0;color:var(--ink);font-size:13px;line-height:1.45;word-break:break-word}
 </style>
 </head>
 <body>
@@ -55,18 +56,20 @@
           <section class="panel"><div class="panel-head"><h3>Report Note</h3></div><div class="panel-body"><p class="story" id="storyText"></p><div class="actions"><button class="button primary" id="copyImage" type="button">Copy image</button><button class="button" id="downloadImage" type="button">Download PNG</button></div></div></section>
           <section class="panel"><div class="panel-head"><h3>Album Focus</h3></div><div class="panel-body"><div class="mini-list" id="albumFocus"></div></div></section>
           <section class="panel"><div class="panel-head"><h3>Recommendation</h3></div><div class="panel-body"><p class="story"><strong id="recommendationTitle"></strong></p><p class="story" id="recommendationAbout"></p><p class="story" id="recommendationWhy"></p></div></section>
+          <section class="panel"><div class="panel-head"><h3>AI Status</h3><span class="hint">Copy source</span></div><div class="panel-body"><div class="ai-status" id="aiStatus"></div></div></section>
         </aside>
       </section>
     </section>
   </main>
   <div class="detail" id="detail"><div class="detail-card"><img id="detailImage" alt=""><div><h3 id="detailTitle"></h3><p id="detailMeta"></p><p id="detailBody"></p><button class="button primary" id="closeDetail" type="button">Close</button></div></div></div>
   <div class="toast" id="toast"></div>
-  <script>window.REPORT_DATA={"kind":"monthly","user":"ueii","filename":"lastfm-monthly-2026-05.html","rangeLabel":"2026-05-01 ~ 2026-05-31","startDate":"2026-05-01","endDate":"2026-05-31","total":173,"tracks":99,"artists":40,"peakDay":"Thu","headline":"Justice month, Justice gravity.","summary":"Justice가 39 scrobbles로 중심을 잡았고, Justice이 album focus를 만들었습니다. 전체 173 scrobbles 중 top artist 비중은 23%입니다.","story":"지난달에는 173 scrobbles 안에서 99 tracks, 40 artists가 움직였습니다. Thu, 05/28에 listening pace가 가장 높았고, 전체적으로는 Justice와 Justice 쪽으로 집중된 흐름입니다.","insights":[["Main Character","Justice가 리포트의 중심입니다. 39 scrobbles, 전체의 23%를 차지했습니다."],["Album Gravity","Justice은 36 scrobbles로 이번 기간의 album 단위 집중을 만들었습니다."],["Listening Shape","173 scrobbles / 99 tracks. 넓게 탐색하기보다 좋아하는 축을 깊게 반복한 패턴입니다."],["Compared","직전 같은 기간 데이터가 부족해서 비교 해석은 제한적입니다."]],"comparison":{"previousRange":"2026-04-01 ~ 2026-04-30","currentTotal":173,"previousTotal":0,"delta":173,"percent":null,"percentText":"n/a","currentTags":[{"name":"electronic","score":44},{"name":"french","score":39},{"name":"electro","score":39},{"name":"dance","score":39},{"name":"electronica","score":39},{"name":"hip-hop","score":30}],"previousTags":[],"tagShift":[{"name":"electronic","delta":44,"score":44},{"name":"french","delta":39,"score":39},{"name":"electro","delta":39,"score":39},{"name":"dance","delta":39,"score":39},{"name":"electronica","delta":39,"score":39}],"summary":"직전 같은 기간 데이터가 부족해서 정량 비교는 생략했습니다."},"topTracks":[{"key":"Magdalena Bay -- Star Eyes","count":7,"artist":"Magdalena Bay","title":"Star Eyes","album":"Second Sleep / Star Eyes - Single","image":"https://lastfm.freetls.fastly.net/i/u/300x300/aa102dc74aeabc6df579c2d3b0e9c56f.jpg"},{"key":"Sleigh Bells -- Rill Rill","count":5,"artist":"Sleigh Bells","title":"Rill Rill","album":"Treats","image":"https://lastfm.freetls.fastly.net/i/u/300x300/ce20760300aa191a41b71d5e33e9d014.png"},{"key":"clipping. -- Blood of the Fang","count":4,"artist":"clipping.","title":"Blood of the Fang","album":"There Existed An Addiction To Blood","image":"https://lastfm.freetls.fastly.net/i/u/300x300/be0bff290ca9a6f213d20bccdf5033b4.jpg"},{"key":"David Bowie -- Lazarus","count":4,"artist":"David Bowie","title":"Lazarus","album":"Blackstar","image":"https://lastfm.freetls.fastly.net/i/u/300x300/a63919a5f152e8242b735b022ded451d.png"},{"key":"George Clanton -- I Been Young","count":4,"artist":"George Clanton","title":"I Been Young","album":"Ooh Rap I Ya","image":"https://lastfm.freetls.fastly.net/i/u/300x300/e78ec66203caca44d4549799a5b868ab.jpg"},{"key":"Magdalena Bay -- Second Sleep","count":4,"artist":"Magdalena Bay","title":"Second Sleep","album":"Second Sleep / Star Eyes","image":"https://lastfm.freetls.fastly.net/i/u/300x300/6165020a40ac3faa6e305c974bac16fc.jpg"},{"key":"Tyler, The Creator -- Sorry Not Sorry","count":4,"artist":"Tyler, The Creator","title":"Sorry Not Sorry","album":"CALL ME IF YOU GET LOST: The Estate Sale","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d6f4ffac0e14d1d78712f1fe21e0ef83.jpg"},{"key":"CherryFilter -- 달빛 소년 Moonlight Boy","count":3,"artist":"CherryFilter","title":"달빛 소년 Moonlight Boy","album":"ThIRD EYE","image":"https://lastfm.freetls.fastly.net/i/u/300x300/27b3ae31591c4ae1c81928c8f688418e.jpg"},{"key":"Childish Gambino -- Me and Your Mama","count":3,"artist":"Childish Gambino","title":"Me and Your Mama","album":"\"Awaken, My Love!\"","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4f6f6f537a28b6b15f793515b95452b.png"},{"key":"Fiona Apple -- On the Bound","count":3,"artist":"Fiona Apple","title":"On the Bound","album":"When the Pawn...","image":"https://lastfm.freetls.fastly.net/i/u/300x300/524044b81c3453396b2a319c1b8f26ca.jpg"},{"key":"Justice -- D.A.N.C.E","count":3,"artist":"Justice","title":"D.A.N.C.E","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- DVNO","count":3,"artist":"Justice","title":"DVNO","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Genesis","count":3,"artist":"Justice","title":"Genesis","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Let There Be Light","count":3,"artist":"Justice","title":"Let There Be Light","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Newjack","count":3,"artist":"Justice","title":"Newjack","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- One Minute to Midnight","count":3,"artist":"Justice","title":"One Minute to Midnight","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Phantom","count":3,"artist":"Justice","title":"Phantom","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Phantom, Pt. II","count":3,"artist":"Justice","title":"Phantom, Pt. II","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Stress","count":3,"artist":"Justice","title":"Stress","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- The Party","count":3,"artist":"Justice","title":"The Party","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"}],"topArtists":[{"key":"Justice","count":39,"artist":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fa8fc252c067d11e250d5e4c969fb223.gif"},{"key":"Tyler, The Creator","count":26,"artist":"Tyler, The Creator","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d6f4ffac0e14d1d78712f1fe21e0ef83.jpg"},{"key":"Magdalena Bay","count":18,"artist":"Magdalena Bay","image":"https://lastfm.freetls.fastly.net/i/u/300x300/0787b4f6e2086c763482254d375b17f0.png"},{"key":"Pink Floyd","count":18,"artist":"Pink Floyd","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4bdd038cacbec705e269edb0fd38419.png"},{"key":"Sleigh Bells","count":5,"artist":"Sleigh Bells","image":"https://lastfm.freetls.fastly.net/i/u/300x300/ce20760300aa191a41b71d5e33e9d014.png"},{"key":"Childish Gambino","count":4,"artist":"Childish Gambino","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4f6f6f537a28b6b15f793515b95452b.png"},{"key":"clipping.","count":4,"artist":"clipping.","image":"https://lastfm.freetls.fastly.net/i/u/300x300/be0bff290ca9a6f213d20bccdf5033b4.jpg"},{"key":"David Bowie","count":4,"artist":"David Bowie","image":"https://lastfm.freetls.fastly.net/i/u/300x300/a63919a5f152e8242b735b022ded451d.png"},{"key":"Fiona Apple","count":4,"artist":"Fiona Apple","image":"https://lastfm.freetls.fastly.net/i/u/300x300/524044b81c3453396b2a319c1b8f26ca.jpg"},{"key":"George Clanton","count":4,"artist":"George Clanton","image":"https://lastfm.freetls.fastly.net/i/u/300x300/e78ec66203caca44d4549799a5b868ab.jpg"},{"key":"Radiohead","count":4,"artist":"Radiohead","image":"https://lastfm.freetls.fastly.net/i/u/300x300/51214507c81379cd2ae8a0d77f1e0f29.jpg"},{"key":"CherryFilter","count":3,"artist":"CherryFilter","image":"https://lastfm.freetls.fastly.net/i/u/300x300/27b3ae31591c4ae1c81928c8f688418e.jpg"},{"key":"Huckleberry P","count":3,"artist":"Huckleberry P","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Kendrick Lamar","count":3,"artist":"Kendrick Lamar","image":"https://lastfm.freetls.fastly.net/i/u/300x300/a79564a9768d05272682b252deb02079.png"},{"key":"ryojinnjane","count":3,"artist":"ryojinnjane","image":"https://lastfm.freetls.fastly.net/i/u/300x300/44e2b1fab278e8f4f959502052748c03.jpg"},{"key":"Black Country, New Road","count":2,"artist":"Black Country, New Road","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d144b390ae242a2b81a27ac8b8443881.jpg"},{"key":"ESPRIT 空想 & George Clanton","count":2,"artist":"ESPRIT 空想 & George Clanton","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b8b08d10223d99857e9a94a9c1365029.jpg"},{"key":"Justice & Connan Mockasin","count":2,"artist":"Justice & Connan Mockasin","image":"https://lastfm.freetls.fastly.net/i/u/300x300/e9095a4ed8747c274c476e15d7df596c.jpg"},{"key":"Justice & Miguel","count":2,"artist":"Justice & Miguel","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fd2b943a29b0680d201ecb3e95c09757.png"},{"key":"Justice & Thundercat","count":2,"artist":"Justice & Thundercat","image":"https://lastfm.freetls.fastly.net/i/u/300x300/819416de857ac96dc97d5f43436c963e.jpg"}],"topAlbums":[{"key":"Justice -- Justice","count":36,"artist":"Justice","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Pink Floyd -- The Dark Side of the Moon","count":18,"artist":"Pink Floyd","album":"The Dark Side of the Moon","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4bdd038cacbec705e269edb0fd38419.png"},{"key":"Tyler, The Creator -- CHROMAKOPIA +","count":15,"artist":"Tyler, The Creator","album":"CHROMAKOPIA +","image":"https://lastfm.freetls.fastly.net/i/u/300x300/71fb53fe351cd848a71213277306e1f6.jpg"},{"key":"Magdalena Bay -- Imaginal Disk","count":6,"artist":"Magdalena Bay","album":"Imaginal Disk","image":"https://lastfm.freetls.fastly.net/i/u/300x300/0787b4f6e2086c763482254d375b17f0.png"},{"key":"Magdalena Bay -- Second Sleep / Star Eyes - Single","count":6,"artist":"Magdalena Bay","album":"Second Sleep / Star Eyes - Single","image":"https://lastfm.freetls.fastly.net/i/u/300x300/aa102dc74aeabc6df579c2d3b0e9c56f.jpg"},{"key":"Magdalena Bay -- Second Sleep / Star Eyes","count":5,"artist":"Magdalena Bay","album":"Second Sleep / Star Eyes","image":"https://lastfm.freetls.fastly.net/i/u/300x300/6165020a40ac3faa6e305c974bac16fc.jpg"},{"key":"Sleigh Bells -- Treats","count":5,"artist":"Sleigh Bells","album":"Treats","image":"https://lastfm.freetls.fastly.net/i/u/300x300/ce20760300aa191a41b71d5e33e9d014.png"},{"key":"Tyler, The Creator -- CALL ME IF YOU GET LOST: The Estate Sale","count":5,"artist":"Tyler, The Creator","album":"CALL ME IF YOU GET LOST: The Estate Sale","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d6f4ffac0e14d1d78712f1fe21e0ef83.jpg"},{"key":"Tyler, The Creator -- IGOR","count":5,"artist":"Tyler, The Creator","album":"IGOR","image":"https://lastfm.freetls.fastly.net/i/u/300x300/e150fa362c89b8f1d92d883ae828b7ef.jpg"},{"key":"Childish Gambino -- \"Awaken, My Love!\"","count":4,"artist":"Childish Gambino","album":"\"Awaken, My Love!\"","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4f6f6f537a28b6b15f793515b95452b.png"},{"key":"clipping. -- There Existed An Addiction To Blood","count":4,"artist":"clipping.","album":"There Existed An Addiction To Blood","image":"https://lastfm.freetls.fastly.net/i/u/300x300/be0bff290ca9a6f213d20bccdf5033b4.jpg"},{"key":"David Bowie -- Blackstar","count":4,"artist":"David Bowie","album":"Blackstar","image":"https://lastfm.freetls.fastly.net/i/u/300x300/a63919a5f152e8242b735b022ded451d.png"},{"key":"Fiona Apple -- When the Pawn...","count":4,"artist":"Fiona Apple","album":"When the Pawn...","image":"https://lastfm.freetls.fastly.net/i/u/300x300/524044b81c3453396b2a319c1b8f26ca.jpg"},{"key":"George Clanton -- Ooh Rap I Ya","count":4,"artist":"George Clanton","album":"Ooh Rap I Ya","image":"https://lastfm.freetls.fastly.net/i/u/300x300/e78ec66203caca44d4549799a5b868ab.jpg"},{"key":"CherryFilter -- ThIRD EYE","count":3,"artist":"CherryFilter","album":"ThIRD EYE","image":"https://lastfm.freetls.fastly.net/i/u/300x300/27b3ae31591c4ae1c81928c8f688418e.jpg"},{"key":"Huckleberry P -- 그란도시즌 - Single","count":3,"artist":"Huckleberry P","album":"그란도시즌 - Single","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Justice -- Hyperdrama","count":3,"artist":"Justice","album":"Hyperdrama","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fa8fc252c067d11e250d5e4c969fb223.gif"},{"key":"Radiohead -- In Rainbows","count":3,"artist":"Radiohead","album":"In Rainbows","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9dbcd9399ac3e622b4f508323155b644.jpg"},{"key":"ryojinnjane -- hidden plant","count":3,"artist":"ryojinnjane","album":"hidden plant","image":"https://lastfm.freetls.fastly.net/i/u/300x300/44e2b1fab278e8f4f959502052748c03.jpg"},{"key":"ESPRIT 空想 & George Clanton -- 200% Electronica","count":2,"artist":"ESPRIT 空想 & George Clanton","album":"200% Electronica","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b8b08d10223d99857e9a94a9c1365029.jpg"}],"days":[{"label":"Sat, 05/23","short":"Sat","count":2,"order":"2026-05-23"},{"label":"Mon, 05/25","short":"Mon","count":9,"order":"2026-05-25"},{"label":"Tue, 05/26","short":"Tue","count":43,"order":"2026-05-26"},{"label":"Wed, 05/27","short":"Wed","count":10,"order":"2026-05-27"},{"label":"Thu, 05/28","short":"Thu","count":55,"order":"2026-05-28"},{"label":"Fri, 05/29","short":"Fri","count":20,"order":"2026-05-29"},{"label":"Sat, 05/30","short":"Sat","count":28,"order":"2026-05-30"},{"label":"Sun, 05/31","short":"Sun","count":6,"order":"2026-05-31"}],"hours":[21,14,16,20,1,0,0,0,0,0,0,0,4,0,2,14,31,14,6,0,3,0,5,22],"periodFocus":{"title":"Monthly Arc","cards":[{"label":"Busiest week","value":"Week 4","note":"119 scrobbles로 가장 강한 주간입니다."},{"label":"Active weeks","value":"2/5","note":"한 달 안에서 실제로 scrobble이 발생한 주 수입니다."},{"label":"Album anchor","value":"Justice","note":"월간 흐름을 잡아준 중심 album입니다."}]},"deepDive":{"title":"Monthly Deep Dive","sections":[{"title":"Month Structure","note":"한 달 안에서 청취량이 어느 주차에 몰렸는지 보는 구간입니다.","items":[{"label":"Week 1","value":"0 scrobbles","note":"월간 흐름을 구성한 주차입니다."},{"label":"Week 2","value":"0 scrobbles","note":"월간 흐름을 구성한 주차입니다."},{"label":"Week 3","value":"0 scrobbles","note":"월간 흐름을 구성한 주차입니다."},{"label":"Week 4","value":"119 scrobbles","note":"이번 달의 peak week입니다."},{"label":"Week 5","value":"54 scrobbles","note":"월간 흐름을 구성한 주차입니다."}]},{"title":"Momentum","note":"월초와 월말의 청취 무게가 어떻게 달라졌는지 봅니다.","items":[{"label":"First half","value":"0 scrobbles","note":"1일부터 15일까지의 청취량입니다."},{"label":"Second half","value":"173 scrobbles","note":"16일부터 월말까지의 청취량입니다."},{"label":"Quietest active week","value":"Week 5","note":"54 scrobbles로 가장 낮은 active week입니다."},{"label":"Month-over-month","value":"n/a","note":"직전 같은 기간 데이터가 부족해서 정량 비교는 생략했습니다."}]},{"title":"Depth vs Breadth","note":"반복해서 판 음악과 넓게 훑은 음악의 균형입니다.","items":[{"label":"Unique tracks","value":"99","note":"서로 다른 track 수입니다."},{"label":"Unique artists","value":"40","note":"서로 다른 artist 수입니다."},{"label":"Top artist share","value":"23%","note":"1위 artist가 전체 scrobbles에서 차지한 비중입니다."},{"label":"Top 5 artists","value":"61%","note":"상위 5 artists의 집중도입니다."},{"label":"Top 5 albums","value":"47%","note":"상위 5 albums의 집중도입니다."},{"label":"One-play tracks","value":"59","note":"한 번만 들은 tracks입니다."}]},{"title":"Rotation Signals","note":"이번 달 반복 청취의 중심축입니다.","items":[{"label":"Repeat tracks","value":"20","note":"3회 이상 반복된 tracks 수입니다."},{"label":"Main track","value":"Star Eyes","note":"Magdalena Bay, 7 scrobbles"},{"label":"Main artist","value":"Justice","note":"39 scrobbles"},{"label":"Main album","value":"Justice","note":"Justice, 36 scrobbles"},{"label":"Late-night weight","value":"42%","note":"00:00-04:59 KST 청취 비중입니다."}]}]},"recommendation":{"title":"Jane Remover - Census Designated","about":"Shoegaze, glitchy indie rock, noisy pop이 겹치는 2023 album입니다.","why":"Magdalena Bay의 선명한 pop 구조를 좋아한다면, 더 흐릿하고 거친 texture 쪽으로 확장하기 좋은 추천입니다."},"ai":{"enabled":false,"model":"fallback"}};window.REPORT_REGISTRY=[{"period":"monthly","start":"2026-05-01","end":"2026-05-31","label":"2026-05","file":"lastfm-monthly-2026-05.html"},{"period":"weekly","start":"2026-06-01","end":"2026-06-07","label":"2026-06-01 ~ 2026-06-07","file":"lastfm-weekly-2026-06-01-to-2026-06-07.html"},{"period":"weekly","start":"2026-06-08","end":"2026-06-14","label":"2026-06-08 ~ 2026-06-14","file":"lastfm-weekly-2026-06-08-to-2026-06-14.html"}];
+  <script>window.REPORT_DATA={"kind":"monthly","user":"ueii","filename":"lastfm-monthly-2026-05.html","rangeLabel":"2026-05-01 ~ 2026-05-31","startDate":"2026-05-01","endDate":"2026-05-31","total":173,"tracks":99,"artists":40,"peakDay":"Thu","headline":"Justice month, Justice gravity.","summary":"Justice가 39 scrobbles로 중심을 잡았고, Justice이 album focus를 만들었습니다. 전체 173 scrobbles 중 top artist 비중은 23%입니다.","story":"지난달에는 173 scrobbles 안에서 99 tracks, 40 artists가 움직였습니다. Thu, 05/28에 listening pace가 가장 높았고, 전체적으로는 Justice와 Justice 쪽으로 집중된 흐름입니다.","insights":[["Main Character","Justice가 리포트의 중심입니다. 39 scrobbles, 전체의 23%를 차지했습니다."],["Album Gravity","Justice은 36 scrobbles로 이번 기간의 album 단위 집중을 만들었습니다."],["Listening Shape","173 scrobbles / 99 tracks. 넓게 탐색하기보다 좋아하는 축을 깊게 반복한 패턴입니다."],["Compared","직전 같은 기간 데이터가 부족해서 비교 해석은 제한적입니다."]],"comparison":{"previousRange":"2026-04-01 ~ 2026-04-30","currentTotal":173,"previousTotal":0,"delta":173,"percent":null,"percentText":"n/a","currentTags":[{"name":"electronic","score":44},{"name":"french","score":39},{"name":"electro","score":39},{"name":"dance","score":39},{"name":"electronica","score":39},{"name":"hip-hop","score":30}],"previousTags":[],"tagShift":[{"name":"electronic","delta":44,"score":44},{"name":"french","delta":39,"score":39},{"name":"electro","delta":39,"score":39},{"name":"dance","delta":39,"score":39},{"name":"electronica","delta":39,"score":39}],"summary":"직전 같은 기간 데이터가 부족해서 정량 비교는 생략했습니다."},"topTracks":[{"key":"Magdalena Bay -- Star Eyes","count":7,"artist":"Magdalena Bay","title":"Star Eyes","album":"Second Sleep / Star Eyes - Single","image":"https://lastfm.freetls.fastly.net/i/u/300x300/aa102dc74aeabc6df579c2d3b0e9c56f.jpg"},{"key":"Sleigh Bells -- Rill Rill","count":5,"artist":"Sleigh Bells","title":"Rill Rill","album":"Treats","image":"https://lastfm.freetls.fastly.net/i/u/300x300/ce20760300aa191a41b71d5e33e9d014.png"},{"key":"clipping. -- Blood of the Fang","count":4,"artist":"clipping.","title":"Blood of the Fang","album":"There Existed An Addiction To Blood","image":"https://lastfm.freetls.fastly.net/i/u/300x300/be0bff290ca9a6f213d20bccdf5033b4.jpg"},{"key":"David Bowie -- Lazarus","count":4,"artist":"David Bowie","title":"Lazarus","album":"Blackstar","image":"https://lastfm.freetls.fastly.net/i/u/300x300/a63919a5f152e8242b735b022ded451d.png"},{"key":"George Clanton -- I Been Young","count":4,"artist":"George Clanton","title":"I Been Young","album":"Ooh Rap I Ya","image":"https://lastfm.freetls.fastly.net/i/u/300x300/e78ec66203caca44d4549799a5b868ab.jpg"},{"key":"Magdalena Bay -- Second Sleep","count":4,"artist":"Magdalena Bay","title":"Second Sleep","album":"Second Sleep / Star Eyes","image":"https://lastfm.freetls.fastly.net/i/u/300x300/6165020a40ac3faa6e305c974bac16fc.jpg"},{"key":"Tyler, The Creator -- Sorry Not Sorry","count":4,"artist":"Tyler, The Creator","title":"Sorry Not Sorry","album":"CALL ME IF YOU GET LOST: The Estate Sale","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d6f4ffac0e14d1d78712f1fe21e0ef83.jpg"},{"key":"CherryFilter -- 달빛 소년 Moonlight Boy","count":3,"artist":"CherryFilter","title":"달빛 소년 Moonlight Boy","album":"ThIRD EYE","image":"https://lastfm.freetls.fastly.net/i/u/300x300/27b3ae31591c4ae1c81928c8f688418e.jpg"},{"key":"Childish Gambino -- Me and Your Mama","count":3,"artist":"Childish Gambino","title":"Me and Your Mama","album":"\"Awaken, My Love!\"","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4f6f6f537a28b6b15f793515b95452b.png"},{"key":"Fiona Apple -- On the Bound","count":3,"artist":"Fiona Apple","title":"On the Bound","album":"When the Pawn...","image":"https://lastfm.freetls.fastly.net/i/u/300x300/524044b81c3453396b2a319c1b8f26ca.jpg"},{"key":"Justice -- D.A.N.C.E","count":3,"artist":"Justice","title":"D.A.N.C.E","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- DVNO","count":3,"artist":"Justice","title":"DVNO","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Genesis","count":3,"artist":"Justice","title":"Genesis","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Let There Be Light","count":3,"artist":"Justice","title":"Let There Be Light","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Newjack","count":3,"artist":"Justice","title":"Newjack","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- One Minute to Midnight","count":3,"artist":"Justice","title":"One Minute to Midnight","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Phantom","count":3,"artist":"Justice","title":"Phantom","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Phantom, Pt. II","count":3,"artist":"Justice","title":"Phantom, Pt. II","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- Stress","count":3,"artist":"Justice","title":"Stress","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Justice -- The Party","count":3,"artist":"Justice","title":"The Party","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"}],"topArtists":[{"key":"Justice","count":39,"artist":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fa8fc252c067d11e250d5e4c969fb223.gif"},{"key":"Tyler, The Creator","count":26,"artist":"Tyler, The Creator","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d6f4ffac0e14d1d78712f1fe21e0ef83.jpg"},{"key":"Magdalena Bay","count":18,"artist":"Magdalena Bay","image":"https://lastfm.freetls.fastly.net/i/u/300x300/0787b4f6e2086c763482254d375b17f0.png"},{"key":"Pink Floyd","count":18,"artist":"Pink Floyd","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4bdd038cacbec705e269edb0fd38419.png"},{"key":"Sleigh Bells","count":5,"artist":"Sleigh Bells","image":"https://lastfm.freetls.fastly.net/i/u/300x300/ce20760300aa191a41b71d5e33e9d014.png"},{"key":"Childish Gambino","count":4,"artist":"Childish Gambino","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4f6f6f537a28b6b15f793515b95452b.png"},{"key":"clipping.","count":4,"artist":"clipping.","image":"https://lastfm.freetls.fastly.net/i/u/300x300/be0bff290ca9a6f213d20bccdf5033b4.jpg"},{"key":"David Bowie","count":4,"artist":"David Bowie","image":"https://lastfm.freetls.fastly.net/i/u/300x300/a63919a5f152e8242b735b022ded451d.png"},{"key":"Fiona Apple","count":4,"artist":"Fiona Apple","image":"https://lastfm.freetls.fastly.net/i/u/300x300/524044b81c3453396b2a319c1b8f26ca.jpg"},{"key":"George Clanton","count":4,"artist":"George Clanton","image":"https://lastfm.freetls.fastly.net/i/u/300x300/e78ec66203caca44d4549799a5b868ab.jpg"},{"key":"Radiohead","count":4,"artist":"Radiohead","image":"https://lastfm.freetls.fastly.net/i/u/300x300/51214507c81379cd2ae8a0d77f1e0f29.jpg"},{"key":"CherryFilter","count":3,"artist":"CherryFilter","image":"https://lastfm.freetls.fastly.net/i/u/300x300/27b3ae31591c4ae1c81928c8f688418e.jpg"},{"key":"Huckleberry P","count":3,"artist":"Huckleberry P","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Kendrick Lamar","count":3,"artist":"Kendrick Lamar","image":"https://lastfm.freetls.fastly.net/i/u/300x300/a79564a9768d05272682b252deb02079.png"},{"key":"ryojinnjane","count":3,"artist":"ryojinnjane","image":"https://lastfm.freetls.fastly.net/i/u/300x300/44e2b1fab278e8f4f959502052748c03.jpg"},{"key":"Black Country, New Road","count":2,"artist":"Black Country, New Road","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d144b390ae242a2b81a27ac8b8443881.jpg"},{"key":"ESPRIT 空想 & George Clanton","count":2,"artist":"ESPRIT 空想 & George Clanton","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b8b08d10223d99857e9a94a9c1365029.jpg"},{"key":"Justice & Connan Mockasin","count":2,"artist":"Justice & Connan Mockasin","image":"https://lastfm.freetls.fastly.net/i/u/300x300/e9095a4ed8747c274c476e15d7df596c.jpg"},{"key":"Justice & Miguel","count":2,"artist":"Justice & Miguel","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fd2b943a29b0680d201ecb3e95c09757.png"},{"key":"Justice & Thundercat","count":2,"artist":"Justice & Thundercat","image":"https://lastfm.freetls.fastly.net/i/u/300x300/819416de857ac96dc97d5f43436c963e.jpg"}],"topAlbums":[{"key":"Justice -- Justice","count":36,"artist":"Justice","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Pink Floyd -- The Dark Side of the Moon","count":18,"artist":"Pink Floyd","album":"The Dark Side of the Moon","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4bdd038cacbec705e269edb0fd38419.png"},{"key":"Tyler, The Creator -- CHROMAKOPIA +","count":15,"artist":"Tyler, The Creator","album":"CHROMAKOPIA +","image":"https://lastfm.freetls.fastly.net/i/u/300x300/71fb53fe351cd848a71213277306e1f6.jpg"},{"key":"Magdalena Bay -- Imaginal Disk","count":6,"artist":"Magdalena Bay","album":"Imaginal Disk","image":"https://lastfm.freetls.fastly.net/i/u/300x300/0787b4f6e2086c763482254d375b17f0.png"},{"key":"Magdalena Bay -- Second Sleep / Star Eyes - Single","count":6,"artist":"Magdalena Bay","album":"Second Sleep / Star Eyes - Single","image":"https://lastfm.freetls.fastly.net/i/u/300x300/aa102dc74aeabc6df579c2d3b0e9c56f.jpg"},{"key":"Magdalena Bay -- Second Sleep / Star Eyes","count":5,"artist":"Magdalena Bay","album":"Second Sleep / Star Eyes","image":"https://lastfm.freetls.fastly.net/i/u/300x300/6165020a40ac3faa6e305c974bac16fc.jpg"},{"key":"Sleigh Bells -- Treats","count":5,"artist":"Sleigh Bells","album":"Treats","image":"https://lastfm.freetls.fastly.net/i/u/300x300/ce20760300aa191a41b71d5e33e9d014.png"},{"key":"Tyler, The Creator -- CALL ME IF YOU GET LOST: The Estate Sale","count":5,"artist":"Tyler, The Creator","album":"CALL ME IF YOU GET LOST: The Estate Sale","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d6f4ffac0e14d1d78712f1fe21e0ef83.jpg"},{"key":"Tyler, The Creator -- IGOR","count":5,"artist":"Tyler, The Creator","album":"IGOR","image":"https://lastfm.freetls.fastly.net/i/u/300x300/e150fa362c89b8f1d92d883ae828b7ef.jpg"},{"key":"Childish Gambino -- \"Awaken, My Love!\"","count":4,"artist":"Childish Gambino","album":"\"Awaken, My Love!\"","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4f6f6f537a28b6b15f793515b95452b.png"},{"key":"clipping. -- There Existed An Addiction To Blood","count":4,"artist":"clipping.","album":"There Existed An Addiction To Blood","image":"https://lastfm.freetls.fastly.net/i/u/300x300/be0bff290ca9a6f213d20bccdf5033b4.jpg"},{"key":"David Bowie -- Blackstar","count":4,"artist":"David Bowie","album":"Blackstar","image":"https://lastfm.freetls.fastly.net/i/u/300x300/a63919a5f152e8242b735b022ded451d.png"},{"key":"Fiona Apple -- When the Pawn...","count":4,"artist":"Fiona Apple","album":"When the Pawn...","image":"https://lastfm.freetls.fastly.net/i/u/300x300/524044b81c3453396b2a319c1b8f26ca.jpg"},{"key":"George Clanton -- Ooh Rap I Ya","count":4,"artist":"George Clanton","album":"Ooh Rap I Ya","image":"https://lastfm.freetls.fastly.net/i/u/300x300/e78ec66203caca44d4549799a5b868ab.jpg"},{"key":"CherryFilter -- ThIRD EYE","count":3,"artist":"CherryFilter","album":"ThIRD EYE","image":"https://lastfm.freetls.fastly.net/i/u/300x300/27b3ae31591c4ae1c81928c8f688418e.jpg"},{"key":"Huckleberry P -- 그란도시즌 - Single","count":3,"artist":"Huckleberry P","album":"그란도시즌 - Single","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Justice -- Hyperdrama","count":3,"artist":"Justice","album":"Hyperdrama","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fa8fc252c067d11e250d5e4c969fb223.gif"},{"key":"Radiohead -- In Rainbows","count":3,"artist":"Radiohead","album":"In Rainbows","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9dbcd9399ac3e622b4f508323155b644.jpg"},{"key":"ryojinnjane -- hidden plant","count":3,"artist":"ryojinnjane","album":"hidden plant","image":"https://lastfm.freetls.fastly.net/i/u/300x300/44e2b1fab278e8f4f959502052748c03.jpg"},{"key":"ESPRIT 空想 & George Clanton -- 200% Electronica","count":2,"artist":"ESPRIT 空想 & George Clanton","album":"200% Electronica","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b8b08d10223d99857e9a94a9c1365029.jpg"}],"days":[{"label":"Sat, 05/23","short":"Sat","count":2,"order":"2026-05-23"},{"label":"Mon, 05/25","short":"Mon","count":9,"order":"2026-05-25"},{"label":"Tue, 05/26","short":"Tue","count":43,"order":"2026-05-26"},{"label":"Wed, 05/27","short":"Wed","count":10,"order":"2026-05-27"},{"label":"Thu, 05/28","short":"Thu","count":55,"order":"2026-05-28"},{"label":"Fri, 05/29","short":"Fri","count":20,"order":"2026-05-29"},{"label":"Sat, 05/30","short":"Sat","count":28,"order":"2026-05-30"},{"label":"Sun, 05/31","short":"Sun","count":6,"order":"2026-05-31"}],"hours":[21,14,16,20,1,0,0,0,0,0,0,0,4,0,2,14,31,14,6,0,3,0,5,22],"periodFocus":{"title":"Monthly Arc","cards":[{"label":"Busiest week","value":"Week 4","note":"119 scrobbles로 가장 강한 주간입니다."},{"label":"Active weeks","value":"2/5","note":"한 달 안에서 실제로 scrobble이 발생한 주 수입니다."},{"label":"Album anchor","value":"Justice","note":"월간 흐름을 잡아준 중심 album입니다."}]},"deepDive":{"title":"Monthly Deep Dive","sections":[{"title":"Month Structure","note":"한 달 안에서 청취량이 어느 주차에 몰렸는지 보는 구간입니다.","items":[{"label":"Week 1","value":"0 scrobbles","note":"월간 흐름을 구성한 주차입니다."},{"label":"Week 2","value":"0 scrobbles","note":"월간 흐름을 구성한 주차입니다."},{"label":"Week 3","value":"0 scrobbles","note":"월간 흐름을 구성한 주차입니다."},{"label":"Week 4","value":"119 scrobbles","note":"이번 달의 peak week입니다."},{"label":"Week 5","value":"54 scrobbles","note":"월간 흐름을 구성한 주차입니다."}]},{"title":"Momentum","note":"월초와 월말의 청취 무게가 어떻게 달라졌는지 봅니다.","items":[{"label":"First half","value":"0 scrobbles","note":"1일부터 15일까지의 청취량입니다."},{"label":"Second half","value":"173 scrobbles","note":"16일부터 월말까지의 청취량입니다."},{"label":"Quietest active week","value":"Week 5","note":"54 scrobbles로 가장 낮은 active week입니다."},{"label":"Month-over-month","value":"n/a","note":"직전 같은 기간 데이터가 부족해서 정량 비교는 생략했습니다."}]},{"title":"Depth vs Breadth","note":"반복해서 판 음악과 넓게 훑은 음악의 균형입니다.","items":[{"label":"Unique tracks","value":"99","note":"서로 다른 track 수입니다."},{"label":"Unique artists","value":"40","note":"서로 다른 artist 수입니다."},{"label":"Top artist share","value":"23%","note":"1위 artist가 전체 scrobbles에서 차지한 비중입니다."},{"label":"Top 5 artists","value":"61%","note":"상위 5 artists의 집중도입니다."},{"label":"Top 5 albums","value":"47%","note":"상위 5 albums의 집중도입니다."},{"label":"One-play tracks","value":"59","note":"한 번만 들은 tracks입니다."}]},{"title":"Rotation Signals","note":"이번 달 반복 청취의 중심축입니다.","items":[{"label":"Repeat tracks","value":"20","note":"3회 이상 반복된 tracks 수입니다."},{"label":"Main track","value":"Star Eyes","note":"Magdalena Bay, 7 scrobbles"},{"label":"Main artist","value":"Justice","note":"39 scrobbles"},{"label":"Main album","value":"Justice","note":"Justice, 36 scrobbles"},{"label":"Late-night weight","value":"42%","note":"00:00-04:59 KST 청취 비중입니다."}]}]},"recommendation":{"title":"Jane Remover - Census Designated","about":"Shoegaze, glitchy indie rock, noisy pop이 겹치는 2023 album입니다.","why":"Magdalena Bay의 선명한 pop 구조를 좋아한다면, 더 흐릿하고 거친 texture 쪽으로 확장하기 좋은 추천입니다."},"ai":{"enabled":false,"source":"fallback","status":"AI API not configured","model":"fallback","error":"OPENAI_API_KEY is missing"}};window.REPORT_REGISTRY=[{"period":"monthly","start":"2026-05-01","end":"2026-05-31","label":"2026-05","file":"lastfm-monthly-2026-05.html"},{"period":"weekly","start":"2026-06-01","end":"2026-06-07","label":"2026-06-01 ~ 2026-06-07","file":"lastfm-weekly-2026-06-01-to-2026-06-07.html"},{"period":"weekly","start":"2026-06-08","end":"2026-06-14","label":"2026-06-08 ~ 2026-06-14","file":"lastfm-weekly-2026-06-08-to-2026-06-14.html"}];
 const state = {
   report: window.REPORT_DATA,
   registry: window.REPORT_REGISTRY || [],
   period: window.REPORT_DATA.kind
 };
+
 const expandedCharts = { track: false, artist: false, album: false };
 const fallbackImage = "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><rect width="300" height="300" fill="#d8cab9"/><circle cx="150" cy="150" r="92" fill="#201b18"/><circle cx="150" cy="150" r="20" fill="#d51007"/></svg>');
 const $ = (selector) => document.querySelector(selector);
@@ -108,6 +111,60 @@ function selectedReport() {
   return state.registry.find((report) => report.file === picker.value) || null;
 }
 
+function renderReportControls() {
+  const entry = currentRegistryEntry();
+  const activePeriod = state.period || state.report.kind;
+  $$(".pill[data-period]").forEach((button) => {
+    const count = reportsFor(button.dataset.period).length;
+    button.disabled = count === 0;
+    button.classList.toggle("active", button.dataset.period === activePeriod);
+    button.title = count ? `${count} saved report${count > 1 ? "s" : ""}` : "저장된 리포트가 없습니다.";
+  });
+
+  const picker = $("#reportPicker");
+  const previousValue = picker.value;
+  const options = reportsFor(activePeriod);
+  picker.innerHTML = options.map((report) => `<option value="${esc(report.file)}">${esc(report.label)}</option>`).join("");
+  const selected = options.find((report) => report.file === previousValue)
+    || options.find((report) => entry && report.file === entry.file)
+    || options.at(-1);
+  if (selected) picker.value = selected.file;
+  picker.disabled = options.length === 0;
+
+  const index = options.findIndex((report) => report.file === picker.value);
+  $("#prevPeriod").disabled = index <= 0;
+  $("#nextPeriod").disabled = index < 0 || index >= options.length - 1;
+  $("#openLocal").disabled = !selected;
+}
+
+function render() {
+  const r = state.report;
+  state.period = r.kind;
+  $("#rangeText").textContent = `${r.user} · ${r.rangeLabel} · KST`;
+  $("#headline").textContent = r.headline;
+  $("#summaryText").textContent = r.summary;
+  $("#storyText").textContent = r.story;
+  $("#recommendationTitle").textContent = r.recommendation.title;
+  $("#recommendationAbout").textContent = r.recommendation.about;
+  $("#recommendationWhy").textContent = r.recommendation.why;
+  $("#mScrobbles").textContent = r.total.toLocaleString();
+  $("#mTracks").textContent = r.tracks.toLocaleString();
+  $("#mArtists").textContent = r.artists.toLocaleString();
+  $("#mPeak").textContent = r.peakDay;
+  $("#hero").style.setProperty("--hero-art", `url("${img(r.topAlbums[0]?.image)}")`);
+  renderReportControls();
+  renderCovers();
+  renderInsights();
+  renderComparison();
+  renderPeriodFocus();
+  renderDeepDive();
+  renderCharts();
+  renderDays();
+  renderHours();
+  renderAlbumFocus();
+  renderAiStatus();
+}
+
 function payload(item, type) {
   return esc(JSON.stringify({ type, ...item }));
 }
@@ -128,10 +185,54 @@ function renderComparison() {
   $("#comparisonGrid").innerHTML = `<article class="compare-card"><strong>${c.delta >= 0 ? "+" : ""}${c.delta.toLocaleString()}</strong><span>Scrobble delta</span></article><article class="compare-card"><strong>${c.percentText}</strong><span>Volume change</span></article><article class="compare-card"><strong>${c.previousTotal.toLocaleString()}</strong><span>Previous scrobbles</span></article><div class="compare-bars"><div class="compare-bar-row"><span>Current</span><div class="compare-track"><i style="width:${Math.round(c.currentTotal / max * 100)}%"></i></div><b>${c.currentTotal.toLocaleString()}</b></div><div class="compare-bar-row previous"><span>Previous</span><div class="compare-track"><i style="width:${Math.round(c.previousTotal / max * 100)}%"></i></div><b>${c.previousTotal.toLocaleString()}</b></div></div><div class="tag-list">${(c.tagShift || []).map((tag) => `<span class="tag">${esc(tag.name)} ${tag.delta >= 0 ? "+" : ""}${tag.delta}</span>`).join("")}</div>`;
 }
 
+function renderPeriodFocus() {
+  const focus = state.report.periodFocus || { title: "Period Focus", cards: [] };
+  $("#periodFocusTitle").textContent = focus.title;
+  $("#periodFocus").innerHTML = (focus.cards || []).map((card) => `<article class="insight-card"><b>${esc(card.label)} · ${esc(card.value)}</b><p>${esc(card.note)}</p></article>`).join("");
+}
+
+function renderDeepDive() {
+  const dive = state.report.deepDive || { title: "", sections: [] };
+  const panel = $("#deepDivePanel");
+  if (!dive.sections || dive.sections.length === 0) {
+    panel.hidden = true;
+    return;
+  }
+  panel.hidden = false;
+  $("#deepDiveTitle").textContent = dive.title || "Deep Dive";
+  $("#deepDive").innerHTML = dive.sections.map((section) => `
+    <article class="deep-section">
+      <div class="deep-section-head">
+        <h4>${esc(section.title)}</h4>
+        <p>${esc(section.note || "")}</p>
+      </div>
+      <div class="deep-items">
+        ${(section.items || []).map((item) => `
+          <div class="deep-item">
+            <span>${esc(item.label)}</span>
+            <strong>${esc(item.value)}</strong>
+            <p>${esc(item.note || "")}</p>
+          </div>
+        `).join("")}
+      </div>
+    </article>
+  `).join("");
+}
+
 function renderCharts() {
   $("#tracks").innerHTML = list(state.report.topTracks, "track");
   $("#artists").innerHTML = list(state.report.topArtists, "artist");
   $("#albums").innerHTML = list(state.report.topAlbums, "album");
+}
+
+function list(rows, type) {
+  const visible = expandedCharts[type] ? rows : rows.slice(0, 5);
+  const more = rows.length > 5 ? `<button class="more-btn" type="button" data-more="${type}">${expandedCharts[type] ? "Show less" : `More ${rows.length - 5}`}</button>` : "";
+  return `<ol class="rank-list">${visible.map((item, index) => {
+    const title = type === "artist" ? item.artist : type === "album" ? item.album : item.title;
+    const sub = type === "artist" ? "Artist" : item.artist + (item.album && type === "track" ? ` · ${item.album}` : "");
+    return `<li><button class="rank-item" type="button" data-detail='${payload(item, type)}'><img class="thumb" src="${img(item.image)}" alt="" loading="lazy"><span class="rank-title"><strong>${index + 1}. ${esc(title)}</strong><span>${esc(sub)}</span></span><span class="count">${item.count}</span></button></li>`;
+  }).join("")}</ol>${more}`;
 }
 
 function renderDays() {
@@ -148,6 +249,20 @@ function renderAlbumFocus() {
   $("#albumFocus").innerHTML = state.report.topAlbums.slice(0, 6).map((album) => `<button class="mini" type="button" data-detail='${payload(album, "album")}'><img src="${img(album.image)}" alt="" loading="lazy"><span><strong>${esc(album.album)}</strong><span>${esc(album.artist)} · ${album.count} scrobbles</span></span></button>`).join("");
 }
 
+function renderAiStatus() {
+  const ai = state.report.ai || {};
+  const ok = Boolean(ai.enabled);
+  $("#aiStatus").innerHTML = `
+    <div class="status-badge ${ok ? "ok" : "fallback"}">${ok ? "AI API Success" : "Fallback Used"}</div>
+    <dl class="status-list">
+      <div><dt>Source</dt><dd>${esc(ai.source || (ok ? "openai" : "fallback"))}</dd></div>
+      <div><dt>Model</dt><dd>${esc(ai.model || "-")}</dd></div>
+      <div><dt>Status</dt><dd>${esc(ai.status || (ok ? "AI API success" : "Fallback summary"))}</dd></div>
+      ${ok ? "" : `<div><dt>Reason</dt><dd>${esc(ai.error || "AI copy was not generated.")}</dd></div>`}
+    </dl>
+  `;
+}
+
 function openDetail(item) {
   const title = item.type === "artist" ? item.artist : item.type === "album" ? item.album : item.title;
   const meta = item.type === "artist" ? `${item.count} scrobbles` : `${item.artist} · ${item.count} scrobbles`;
@@ -158,6 +273,18 @@ function openDetail(item) {
   $("#detailBody").textContent = item.album && item.type !== "album" ? `Album: ${item.album}` : "";
   $("#detailBody").style.display = $("#detailBody").textContent ? "block" : "none";
   $("#detail").classList.add("open");
+}
+
+function openLocalEntry(entry) {
+  if (!entry) {
+    toast("선택 가능한 리포트가 없습니다.");
+    return;
+  }
+  if (currentFilename() === entry.file) {
+    toast("현재 열려 있는 리포트입니다.");
+    return;
+  }
+  location.href = entry.file;
 }
 
 function shift(delta) {
@@ -276,132 +403,6 @@ function wrap(ctx, text, x, y, max, line) {
   if (current) ctx.fillText(current, x, y);
 }
 
-function download(blob) {
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `lastfm-${state.report.kind}-${state.report.startDate}.png`;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-}
-
-function toast(msg) {
-  $("#toast").textContent = msg;
-  $("#toast").classList.add("show");
-  setTimeout(() => $("#toast").classList.remove("show"), 2400);
-}
-
-function renderReportControls() {
-  const entry = currentRegistryEntry();
-  const activePeriod = state.period || state.report.kind;
-  $$(".pill[data-period]").forEach((button) => {
-    const count = reportsFor(button.dataset.period).length;
-    button.disabled = count === 0;
-    button.classList.toggle("active", button.dataset.period === activePeriod);
-    button.title = count ? `${count} saved report${count > 1 ? "s" : ""}` : "저장된 리포트가 없습니다.";
-  });
-
-  const picker = $("#reportPicker");
-  const previousValue = picker.value;
-  const options = reportsFor(activePeriod);
-  picker.innerHTML = options.map((report) => `<option value="${esc(report.file)}">${esc(report.label)}</option>`).join("");
-  const selected = options.find((report) => report.file === previousValue)
-    || options.find((report) => entry && report.file === entry.file)
-    || options.at(-1);
-  if (selected) picker.value = selected.file;
-  picker.disabled = options.length === 0;
-
-  const index = options.findIndex((report) => report.file === picker.value);
-  $("#prevPeriod").disabled = index <= 0;
-  $("#nextPeriod").disabled = index < 0 || index >= options.length - 1;
-  $("#openLocal").disabled = !selected;
-}
-
-function render() {
-  const r = state.report;
-  state.period = r.kind;
-  $("#rangeText").textContent = `${r.user} · ${r.rangeLabel} · KST`;
-  $("#headline").textContent = r.headline;
-  $("#summaryText").textContent = r.summary;
-  $("#storyText").textContent = r.story;
-  $("#recommendationTitle").textContent = r.recommendation.title;
-  $("#recommendationAbout").textContent = r.recommendation.about;
-  $("#recommendationWhy").textContent = r.recommendation.why;
-  $("#mScrobbles").textContent = r.total.toLocaleString();
-  $("#mTracks").textContent = r.tracks.toLocaleString();
-  $("#mArtists").textContent = r.artists.toLocaleString();
-  $("#mPeak").textContent = r.peakDay;
-  $("#hero").style.setProperty("--hero-art", `url("${img(r.topAlbums[0]?.image)}")`);
-  renderReportControls();
-  renderCovers();
-  renderInsights();
-  renderComparison();
-  renderPeriodFocus();
-  renderDeepDive();
-  renderCharts();
-  renderDays();
-  renderHours();
-  renderAlbumFocus();
-}
-
-function renderPeriodFocus() {
-  const focus = state.report.periodFocus || { title: "Period Focus", cards: [] };
-  $("#periodFocusTitle").textContent = focus.title;
-  $("#periodFocus").innerHTML = (focus.cards || []).map((card) => `<article class="insight-card"><b>${esc(card.label)} · ${esc(card.value)}</b><p>${esc(card.note)}</p></article>`).join("");
-}
-
-function renderDeepDive() {
-  const dive = state.report.deepDive || { title: "", sections: [] };
-  const panel = $("#deepDivePanel");
-  if (!dive.sections || dive.sections.length === 0) {
-    panel.hidden = true;
-    return;
-  }
-  panel.hidden = false;
-  $("#deepDiveTitle").textContent = dive.title || "Deep Dive";
-  $("#deepDive").innerHTML = dive.sections.map((section) => `
-    <article class="deep-section">
-      <div class="deep-section-head">
-        <h4>${esc(section.title)}</h4>
-        <p>${esc(section.note || "")}</p>
-      </div>
-      <div class="deep-items">
-        ${(section.items || []).map((item) => `
-          <div class="deep-item">
-            <span>${esc(item.label)}</span>
-            <strong>${esc(item.value)}</strong>
-            <p>${esc(item.note || "")}</p>
-          </div>
-        `).join("")}
-      </div>
-    </article>
-  `).join("");
-}
-
-function list(rows, type) {
-  const visible = expandedCharts[type] ? rows : rows.slice(0, 5);
-  const more = rows.length > 5 ? `<button class="more-btn" type="button" data-more="${type}">${expandedCharts[type] ? "Show less" : `More ${rows.length - 5}`}</button>` : "";
-  return `<ol class="rank-list">${visible.map((item, index) => {
-    const title = type === "artist" ? item.artist : type === "album" ? item.album : item.title;
-    const sub = type === "artist" ? "Artist" : item.artist + (item.album && type === "track" ? ` · ${item.album}` : "");
-    return `<li><button class="rank-item" type="button" data-detail='${payload(item, type)}'><img class="thumb" src="${img(item.image)}" alt="" loading="lazy"><span class="rank-title"><strong>${index + 1}. ${esc(title)}</strong><span>${esc(sub)}</span></span><span class="count">${item.count}</span></button></li>`;
-  }).join("")}</ol>${more}`;
-}
-
-function openLocalEntry(entry) {
-  if (!entry) {
-    toast("선택 가능한 리포트가 없습니다.");
-    return;
-  }
-  if (currentFilename() === entry.file) {
-    toast("현재 열려 있는 리포트입니다.");
-    return;
-  }
-  location.href = entry.file;
-}
-
 function trunc(text, length) {
   text = String(text || "");
   return text.length > length ? text.slice(0, length - 1) + "…" : text;
@@ -424,6 +425,23 @@ function downloadImage() {
     download(blob);
     toast("PNG를 다운로드했습니다.");
   }, "image/png");
+}
+
+function download(blob) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `lastfm-${state.report.kind}-${state.report.startDate}.png`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function toast(msg) {
+  $("#toast").textContent = msg;
+  $("#toast").classList.add("show");
+  setTimeout(() => $("#toast").classList.remove("show"), 2400);
 }
 
 document.addEventListener("click", (event) => {

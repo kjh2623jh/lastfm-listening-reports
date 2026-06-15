@@ -178,7 +178,9 @@ async function buildReport(kind, range, tracks, previousRange, previousTracks) {
   const periodFocus = buildPeriodFocus(kind, { days, hours, tracks, topArtists, topAlbums, range });
   const deepDive = buildDeepDive(kind, { days, hours, tracks, topTracks, topArtists, topAlbums, uniqueTracks, uniqueArtists, concentration, comparison });
   const fallback = fallbackCopy({ kind, topArtist, topAlbum, peak, total: tracks.length, uniqueTracks, uniqueArtists, concentration, comparison, topArtists, topAlbums });
+  let aiError = null;
   const aiCopy = await generateAiCopy({ kind, range, total: tracks.length, uniqueTracks, uniqueArtists, concentration, peak, topTracks, topArtists, topAlbums, comparison, periodFocus, deepDive }).catch((error) => {
+    aiError = error;
     console.warn(`AI copy generation failed: ${error.message}`);
     return null;
   });
@@ -208,7 +210,13 @@ async function buildReport(kind, range, tracks, previousRange, previousTracks) {
     periodFocus,
     deepDive,
     recommendation: copy.recommendation,
-    ai: { enabled: Boolean(aiCopy), model: aiCopy ? openaiModel : "fallback" }
+    ai: {
+      enabled: Boolean(aiCopy),
+      source: aiCopy ? "openai" : "fallback",
+      status: aiCopy ? "AI API success" : openaiApiKey ? "AI API failed" : "AI API not configured",
+      model: aiCopy ? openaiModel : "fallback",
+      error: aiCopy ? "" : aiError?.message || (openaiApiKey ? "Unknown AI failure" : "OPENAI_API_KEY is missing")
+    }
   };
 }
 
@@ -759,6 +767,7 @@ async function renderHtml(report, registry) {
           <section class="panel"><div class="panel-head"><h3>Report Note</h3></div><div class="panel-body"><p class="story" id="storyText"></p><div class="actions"><button class="button primary" id="copyImage" type="button">Copy image</button><button class="button" id="downloadImage" type="button">Download PNG</button></div></div></section>
           <section class="panel"><div class="panel-head"><h3>Album Focus</h3></div><div class="panel-body"><div class="mini-list" id="albumFocus"></div></div></section>
           <section class="panel"><div class="panel-head"><h3>Recommendation</h3></div><div class="panel-body"><p class="story"><strong id="recommendationTitle"></strong></p><p class="story" id="recommendationAbout"></p><p class="story" id="recommendationWhy"></p></div></section>
+          <section class="panel"><div class="panel-head"><h3>AI Status</h3><span class="hint">Copy source</span></div><div class="panel-body"><div class="ai-status" id="aiStatus"></div></div></section>
         </aside>
       </section>
     </section>
