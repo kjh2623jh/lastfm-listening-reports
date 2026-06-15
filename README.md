@@ -52,9 +52,27 @@ In GitHub, open **Actions > Last.fm Listening Reports > Run workflow** and choos
 
 ## Local run
 
+Create a local secret file first. This file is ignored by Git.
+
 ```powershell
-$env:LASTFM_API_KEY="your_lastfm_api_key"
+Copy-Item .env.example .env.local
+notepad .env.local
+```
+
+Fill in:
+
+```text
+LASTFM_API_KEY=...
+OPENAI_API_KEY=...
+OPENAI_MODEL=gpt-4.1-mini
+```
+
+Then run:
+
+```powershell
 node work/lastfm-report-generator.mjs weekly
 node work/lastfm-report-generator.mjs monthly
 node work/lastfm-report-generator.mjs yearly
 ```
+
+Each generated report shows an **AI Status** panel. If the OpenAI call succeeds, it shows `AI API Success`; otherwise it shows `Fallback Used` with the failure reason.

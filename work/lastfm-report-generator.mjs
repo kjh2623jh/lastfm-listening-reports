@@ -4,7 +4,11 @@ import { fileURLToPath } from "node:url";
 
 const USER = "ueii";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = process.env.LASTFM_REPORT_ROOT || path.resolve(__dirname, "..");
+const DEFAULT_ROOT = path.resolve(__dirname, "..");
+
+await loadLocalEnv(DEFAULT_ROOT);
+
+const ROOT = process.env.LASTFM_REPORT_ROOT || DEFAULT_ROOT;
 const OUT_DIR = path.join(ROOT, "outputs", "lastfm-reports");
 const CACHE_DIR = path.join(ROOT, "data", "lastfm-cache");
 const LASTFM_API = "https://ws.audioscrobbler.com/2.0/";
@@ -48,6 +52,38 @@ console.log(JSON.stringify({
   range: report.rangeLabel,
   ai: report.ai
 }, null, 2));
+
+async function loadLocalEnv(root) {
+  const values = {};
+  for (const file of [".env", ".env.local"]) {
+    const content = await readFile(path.join(root, file), "utf8").catch(() => "");
+    Object.assign(values, parseEnvFile(content));
+  }
+  for (const [key, value] of Object.entries(values)) {
+    if (process.env[key] === undefined) process.env[key] = value;
+  }
+}
+
+function parseEnvFile(content) {
+  const values = {};
+  for (const rawLine of content.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+    const index = line.indexOf("=");
+    if (index <= 0) continue;
+    const key = line.slice(0, index).trim();
+    if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(key)) continue;
+    values[key] = unquoteEnvValue(line.slice(index + 1).trim());
+  }
+  return values;
+}
+
+function unquoteEnvValue(value) {
+  if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+    return value.slice(1, -1);
+  }
+  return value;
+}
 
 function getRange(kind, startInput) {
   const now = new Date();

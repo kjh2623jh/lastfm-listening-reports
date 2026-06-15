@@ -1,5 +1,7 @@
 node_modules/
 .env
+.env.*
+!.env.example
 *.log
 tmp-lastfm-inline-check*.js
 work/openai-docs-cache/
