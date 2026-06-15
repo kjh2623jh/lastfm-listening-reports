@@ -14,6 +14,20 @@ function currentFilename() {
   return decodeURIComponent(location.pathname.split(/[\\/]/).pop() || "");
 }
 
+async function refreshRegistry() {
+  try {
+    const res = await fetch("./report-registry.json", { cache: "no-store" });
+    if (!res.ok) return;
+    const registry = await res.json();
+    if (Array.isArray(registry) && registry.length) {
+      state.registry = registry;
+      renderReportControls();
+    }
+  } catch {
+    // Standalone local HTML can still use its embedded registry.
+  }
+}
+
 function reportsFor(period) {
   return state.registry.filter((report) => report.period === period).sort((a, b) => a.start.localeCompare(b.start));
 }
@@ -37,7 +51,7 @@ function renderReportControls() {
     const count = reportsFor(button.dataset.period).length;
     button.disabled = count === 0;
     button.classList.toggle("active", button.dataset.period === activePeriod);
-    button.title = count ? `${count} saved report${count > 1 ? "s" : ""}` : "저장된 로컬 리포트가 없습니다.";
+    button.title = count ? `${count} saved report${count > 1 ? "s" : ""}` : "저장된 리포트가 없습니다.";
   });
 
   const picker = $("#reportPicker");
@@ -75,6 +89,7 @@ function render() {
   renderCovers();
   renderInsights();
   renderComparison();
+  renderPeriodFocus();
   renderCharts();
   renderDays();
   renderHours();
@@ -99,6 +114,12 @@ function renderComparison() {
   $("#comparisonRange").textContent = c.previousRange ? `vs ${c.previousRange}` : "";
   $("#comparisonSummary").textContent = c.summary;
   $("#comparisonGrid").innerHTML = `<article class="compare-card"><strong>${c.delta >= 0 ? "+" : ""}${c.delta.toLocaleString()}</strong><span>Scrobble delta</span></article><article class="compare-card"><strong>${c.percentText}</strong><span>Volume change</span></article><article class="compare-card"><strong>${c.previousTotal.toLocaleString()}</strong><span>Previous scrobbles</span></article><div class="compare-bars"><div class="compare-bar-row"><span>Current</span><div class="compare-track"><i style="width:${Math.round(c.currentTotal / max * 100)}%"></i></div><b>${c.currentTotal.toLocaleString()}</b></div><div class="compare-bar-row previous"><span>Previous</span><div class="compare-track"><i style="width:${Math.round(c.previousTotal / max * 100)}%"></i></div><b>${c.previousTotal.toLocaleString()}</b></div></div><div class="tag-list">${(c.tagShift || []).map((tag) => `<span class="tag">${esc(tag.name)} ${tag.delta >= 0 ? "+" : ""}${tag.delta}</span>`).join("")}</div>`;
+}
+
+function renderPeriodFocus() {
+  const focus = state.report.periodFocus || { title: "Period Focus", cards: [] };
+  $("#periodFocusTitle").textContent = focus.title;
+  $("#periodFocus").innerHTML = (focus.cards || []).map((card) => `<article class="insight-card"><b>${esc(card.label)} · ${esc(card.value)}</b><p>${esc(card.note)}</p></article>`).join("");
 }
 
 function renderCharts() {
@@ -145,7 +166,7 @@ function openDetail(item) {
 
 function openLocalEntry(entry) {
   if (!entry) {
-    toast("선택할 수 있는 로컬 리포트가 없습니다.");
+    toast("선택할 수 있는 리포트가 없습니다.");
     return;
   }
   if (currentFilename() === entry.file) {
@@ -346,3 +367,4 @@ $("#detail").addEventListener("click", (event) => {
 });
 
 render();
+refreshRegistry();

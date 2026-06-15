@@ -37,6 +37,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - uses: actions/cache@v4
+        with:
+          path: data/lastfm-cache
+          key: lastfm-cache-weekly-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            lastfm-cache-
       - name: Generate weekly report
         env:
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
@@ -61,6 +67,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - uses: actions/cache@v4
+        with:
+          path: data/lastfm-cache
+          key: lastfm-cache-monthly-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            lastfm-cache-
       - name: Generate monthly report
         env:
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
@@ -85,6 +97,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - uses: actions/cache@v4
+        with:
+          path: data/lastfm-cache
+          key: lastfm-cache-yearly-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            lastfm-cache-
       - name: Generate yearly report
         env:
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}

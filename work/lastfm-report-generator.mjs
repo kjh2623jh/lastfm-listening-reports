@@ -6,6 +6,7 @@ const USER = "ueii";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = process.env.LASTFM_REPORT_ROOT || path.resolve(__dirname, "..");
 const OUT_DIR = path.join(ROOT, "outputs", "lastfm-reports");
+const CACHE_DIR = path.join(ROOT, "data", "lastfm-cache");
 const LASTFM_API = "https://ws.audioscrobbler.com/2.0/";
 const OPENAI_API = "https://api.openai.com/v1/responses";
 const TZ = "Asia/Seoul";
@@ -24,21 +25,25 @@ if (!lastfmApiKey) {
 }
 
 await mkdir(OUT_DIR, { recursive: true });
+await mkdir(CACHE_DIR, { recursive: true });
 
 const range = getRange(period, startArg);
 const previousRange = previousRangeFor(period, range);
-const tracks = await fetchRecentTracks(range.fromUnix, range.toUnix);
-const previousTracks = await fetchRecentTracks(previousRange.fromUnix, previousRange.toUnix).catch(() => []);
+const tracks = await fetchRecentTracksCached(range);
+const previousTracks = await fetchRecentTracksCached(previousRange).catch(() => []);
 const report = await buildReport(period, range, tracks, previousRange, previousTracks);
 const registry = await buildRegistry(report);
 const html = await renderHtml(report, registry);
 const outFile = path.join(OUT_DIR, report.filename);
+
 await writeFile(outFile, html, "utf8");
-await writeFile(path.join(OUT_DIR, "index.html"), renderIndex(registry, report), "utf8");
+await writeFile(path.join(OUT_DIR, "report-registry.json"), JSON.stringify(registry, null, 2), "utf8");
+await writeFile(path.join(OUT_DIR, "index.html"), renderIndexRedirect(registry, report), "utf8");
 
 console.log(JSON.stringify({
   file: outFile,
   index: path.join(OUT_DIR, "index.html"),
+  registry: path.join(OUT_DIR, "report-registry.json"),
   scrobbles: report.total,
   range: report.rangeLabel,
   ai: report.ai
@@ -99,11 +104,24 @@ function pad(n) {
   return String(n).padStart(2, "0");
 }
 
+async function fetchRecentTracksCached(range) {
+  return cacheJson(`recenttracks-${range.startDate}-to-${range.endDate}.json`, () => fetchRecentTracks(range.fromUnix, range.toUnix));
+}
+
+async function cacheJson(file, producer) {
+  const target = path.join(CACHE_DIR, file.replace(/[^\w.-]/g, "_"));
+  const cached = await readFile(target, "utf8").then(JSON.parse).catch(() => null);
+  if (cached) return cached;
+  const value = await producer();
+  await writeFile(target, JSON.stringify(value), "utf8");
+  return value;
+}
+
 async function lastfm(method, params = {}) {
   const url = new URL(LASTFM_API);
   Object.entries({ method, user: USER, api_key: lastfmApiKey, format: "json", ...params })
     .forEach(([key, value]) => url.searchParams.set(key, String(value)));
-  const res = await fetch(url, { headers: { "User-Agent": "CodexLastfmReportGenerator/2.0" } });
+  const res = await fetch(url, { headers: { "User-Agent": "CodexLastfmReportGenerator/2.1" } });
   if (!res.ok) throw new Error(`Last.fm API HTTP ${res.status}`);
   const json = await res.json();
   if (json.error) throw new Error(`Last.fm API ${json.error}: ${json.message}`);
@@ -137,8 +155,9 @@ async function buildReport(kind, range, tracks, previousRange, previousTracks) {
   const topAlbum = topAlbums[0] || { album: "Unknown", artist: "Unknown", count: 0 };
   const concentration = tracks.length ? Math.round((topArtist.count / tracks.length) * 100) : 0;
   const comparison = await buildComparison({ currentTracks: tracks, previousTracks, currentTopArtists: topArtists, previousTopArtists, previousRange });
+  const periodFocus = buildPeriodFocus(kind, { days, hours, tracks, topArtists, topAlbums, range });
   const fallback = fallbackCopy({ kind, topArtist, topAlbum, peak, total: tracks.length, uniqueTracks, uniqueArtists, concentration, comparison, topArtists, topAlbums });
-  const aiCopy = await generateAiCopy({ kind, range, total: tracks.length, uniqueTracks, uniqueArtists, concentration, peak, topTracks, topArtists, topAlbums, comparison }).catch((error) => {
+  const aiCopy = await generateAiCopy({ kind, range, total: tracks.length, uniqueTracks, uniqueArtists, concentration, peak, topTracks, topArtists, topAlbums, comparison, periodFocus }).catch((error) => {
     console.warn(`AI copy generation failed: ${error.message}`);
     return null;
   });
@@ -165,6 +184,7 @@ async function buildReport(kind, range, tracks, previousRange, previousTracks) {
     topAlbums,
     days,
     hours,
+    periodFocus,
     recommendation: copy.recommendation,
     ai: { enabled: Boolean(aiCopy), model: aiCopy ? openaiModel : "fallback" }
   };
@@ -225,6 +245,67 @@ function buildHours(tracks) {
     hours[hour] += 1;
   }
   return hours;
+}
+
+function buildPeriodFocus(kind, { days, hours, tracks, topArtists, topAlbums }) {
+  if (kind === "weekly") {
+    const weekdayTotal = days.slice(0, 5).reduce((sum, day) => sum + day.count, 0);
+    const weekendTotal = days.slice(5).reduce((sum, day) => sum + day.count, 0);
+    const lateNight = hours.slice(0, 5).reduce((sum, count) => sum + count, 0);
+    return {
+      title: "Weekly Rhythm",
+      cards: [
+        { label: "Weekday / Weekend", value: `${weekdayTotal} / ${weekendTotal}`, note: "평일과 주말 청취량의 무게 차이입니다." },
+        { label: "Late-night", value: String(lateNight), note: "00:00-04:59 KST scrobbles입니다." },
+        { label: "Most active day", value: days.reduce((a, b) => a.count > b.count ? a : b, { label: "-", count: 0 }).label, note: "이번 주 청취가 가장 몰린 날입니다." }
+      ]
+    };
+  }
+  if (kind === "monthly") {
+    const weeks = bucketByWeek(tracks);
+    const bestWeek = weeks.reduce((a, b) => a.count > b.count ? a : b, { label: "-", count: 0 });
+    return {
+      title: "Monthly Arc",
+      cards: [
+        { label: "Busiest week", value: bestWeek.label, note: `${bestWeek.count} scrobbles로 가장 강한 주간입니다.` },
+        { label: "Active weeks", value: `${weeks.filter((week) => week.count > 0).length}/${weeks.length}`, note: "월 안에서 실제로 청취가 발생한 주 수입니다." },
+        { label: "Album anchor", value: topAlbums[0]?.album || "-", note: "월간 흐름의 중심 album입니다." }
+      ]
+    };
+  }
+  const quarters = bucketByQuarter(tracks);
+  const bestQuarter = quarters.reduce((a, b) => a.count > b.count ? a : b, { label: "-", count: 0 });
+  return {
+    title: "Yearly Seasons",
+    cards: [
+      { label: "Peak quarter", value: bestQuarter.label, note: `${bestQuarter.count} scrobbles로 가장 강한 분기입니다.` },
+      { label: "Artist spread", value: String(topArtists.length), note: "연간 상위권에 남은 artist 폭입니다." },
+      { label: "Album of the year", value: topAlbums[0]?.album || "-", note: "연간 반복의 중심 album입니다." }
+    ]
+  };
+}
+
+function bucketByWeek(tracks) {
+  const buckets = new Map();
+  for (const track of tracks) {
+    const date = new Date(Number(track.date.uts) * 1000);
+    const day = Number(new Intl.DateTimeFormat("en-US", { timeZone: TZ, day: "numeric" }).format(date));
+    const week = Math.ceil(day / 7);
+    const label = `Week ${week}`;
+    buckets.set(label, (buckets.get(label) || 0) + 1);
+  }
+  return [1, 2, 3, 4, 5].map((week) => ({ label: `Week ${week}`, count: buckets.get(`Week ${week}`) || 0 }));
+}
+
+function bucketByQuarter(tracks) {
+  const buckets = new Map([["Q1", 0], ["Q2", 0], ["Q3", 0], ["Q4", 0]]);
+  for (const track of tracks) {
+    const date = new Date(Number(track.date.uts) * 1000);
+    const month = Number(new Intl.DateTimeFormat("en-US", { timeZone: TZ, month: "numeric" }).format(date));
+    const label = `Q${Math.ceil(month / 3)}`;
+    buckets.set(label, (buckets.get(label) || 0) + 1);
+  }
+  return [...buckets.entries()].map(([label, count]) => ({ label, count }));
 }
 
 function headline(topArtist, topAlbum, kind) {
@@ -310,6 +391,7 @@ async function generateAiCopy(payload) {
     uniqueArtists: payload.uniqueArtists,
     topArtistSharePercent: payload.concentration,
     peak: payload.peak,
+    periodFocus: payload.periodFocus,
     topTracks: payload.topTracks.slice(0, 10).map(({ artist, title, album, count }) => ({ artist, title, album, count })),
     topArtists: payload.topArtists.slice(0, 10).map(({ artist, count }) => ({ artist, count })),
     topAlbums: payload.topAlbums.slice(0, 10).map(({ artist, album, count }) => ({ artist, album, count })),
@@ -344,11 +426,7 @@ async function generateAiCopy(payload) {
 
 function extractResponseText(json) {
   if (json.output_text) return json.output_text;
-  return array(json.output)
-    .flatMap((item) => array(item.content))
-    .map((content) => content.text || "")
-    .join("")
-    .trim();
+  return array(json.output).flatMap((item) => array(item.content)).map((content) => content.text || "").join("").trim();
 }
 
 async function buildComparison({ currentTracks, previousTracks, currentTopArtists, previousTopArtists, previousRange }) {
@@ -376,7 +454,10 @@ async function buildComparison({ currentTracks, previousTracks, currentTopArtist
 async function weightedTags(artists) {
   const weights = new Map();
   for (const item of artists) {
-    const tags = await artistTags(item.artist).catch(() => []);
+    const tags = await cacheJson(`artist-tags-${slug(item.artist)}.json`, async () => {
+      const data = await lastfm("artist.getTopTags", { artist: item.artist });
+      return array(data.toptags?.tag);
+    }).catch(() => []);
     for (const tag of tags.slice(0, 5)) {
       const name = normalizeTag(tag.name);
       if (!name) continue;
@@ -386,9 +467,8 @@ async function weightedTags(artists) {
   return [...weights.entries()].map(([name, score]) => ({ name, score })).sort((a, b) => b.score - a.score);
 }
 
-async function artistTags(name) {
-  const data = await lastfm("artist.getTopTags", { artist: name });
-  return array(data.toptags?.tag);
+function slug(value) {
+  return String(value).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "-").replace(/^-|-$/g, "").slice(0, 80) || "unknown";
 }
 
 function normalizeTag(name) {
@@ -467,15 +547,15 @@ async function renderHtml(report, registry) {
                 <button class="pill" data-period="monthly" type="button">Monthly</button>
                 <button class="pill" data-period="yearly" type="button">Yearly</button>
               </div>
-              <div class="control-group report-picker-group" aria-label="Saved local reports">
+              <div class="control-group report-picker-group" aria-label="Saved reports">
                 <span class="control-label">Report</span>
-                <button class="icon-btn" id="prevPeriod" type="button" title="Previous local report">&lt;</button>
-                <select class="control report-select" id="reportPicker" aria-label="Saved local report"></select>
-                <button class="icon-btn" id="nextPeriod" type="button" title="Next local report">&gt;</button>
+                <button class="icon-btn" id="prevPeriod" type="button" title="Previous report">&lt;</button>
+                <select class="control report-select" id="reportPicker" aria-label="Saved report"></select>
+                <button class="icon-btn" id="nextPeriod" type="button" title="Next report">&gt;</button>
               </div>
-              <div class="control-group" aria-label="Open local report">
-                <span class="control-label">Local</span>
-                <button class="pill" id="openLocal" type="button">Open Local</button>
+              <div class="control-group" aria-label="Open report">
+                <span class="control-label">Open</span>
+                <button class="pill" id="openLocal" type="button">Open</button>
               </div>
             </div>
           </div>
@@ -488,6 +568,7 @@ async function renderHtml(report, registry) {
         <div class="main">
           <section class="panel"><div class="panel-head"><h3>Highlights</h3><span class="hint">${report.ai.enabled ? `AI generated with ${escapeHtml(report.ai.model)}` : "Fallback summary"}</span></div><div class="panel-body"><div class="insight-grid" id="insights"></div></div></section>
           <section class="panel"><div class="panel-head"><h3>Comparison</h3><span class="hint" id="comparisonRange"></span></div><div class="panel-body"><p class="story" id="comparisonSummary"></p><div class="compare-grid" id="comparisonGrid"></div></div></section>
+          <section class="panel"><div class="panel-head"><h3 id="periodFocusTitle"></h3><span class="hint">Period-specific view</span></div><div class="panel-body"><div class="insight-grid" id="periodFocus"></div></div></section>
           <section class="panel"><div class="panel-head"><h3>Charts</h3><span class="hint">Click an item for details</span></div><div class="tabs"><button class="tab active" data-chart="tracks" type="button">Top Tracks</button><button class="tab" data-chart="artists" type="button">Artists</button><button class="tab" data-chart="albums" type="button">Albums</button></div><div class="panel-body"><div class="chart-section active" id="tracks"></div><div class="chart-section" id="artists"></div><div class="chart-section" id="albums"></div></div></section>
           <section class="panel"><div class="panel-head"><h3>Daily Pace</h3><span class="hint">KST</span></div><div class="panel-body"><div class="day-grid" id="dayGrid"></div></div></section>
           <section class="panel"><div class="panel-head"><h3>Time of Day</h3><span class="hint">Hourly scrobbles</span></div><div class="panel-body"><div class="heat" id="hourHeat"></div></div></section>
@@ -508,28 +589,21 @@ ${client}</script>
 </html>`;
 }
 
-function renderIndex(registry, currentReport) {
-  const rows = registry.slice().reverse().map((report) => `<a class="item" href="./${escapeHtml(report.file)}"><span>${escapeHtml(report.period)}</span><strong>${escapeHtml(report.label)}</strong></a>`).join("");
+function renderIndexRedirect(registry, currentReport) {
+  const latestWeekly = registry.filter((report) => report.period === "weekly").at(-1);
+  const target = latestWeekly?.file || currentReport.filename;
   return `<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Last.fm Listening Reports</title>
-  <style>
-    :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#211c18;background:#100f0e}
-    body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 0,rgba(213,16,7,.35),transparent 28rem),linear-gradient(135deg,#15110f,#102020);color:#211c18}
-    main{width:min(920px,calc(100vw - 28px));margin:0 auto;padding:42px 0}
-    header{color:white;margin-bottom:22px} h1{font-size:clamp(40px,8vw,76px);line-height:.9;margin:0 0 12px} p{margin:0;color:rgba(255,255,255,.72)}
-    .list{display:grid;gap:10px}.item{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;align-items:center;padding:18px 20px;border-radius:14px;background:#fbf7ef;text-decoration:none;color:#211c18;border:1px solid rgba(255,255,255,.35)}
-    .item span{text-transform:uppercase;font-size:12px;font-weight:900;color:#d51007}.item strong{font-size:18px}
-  </style>
+  <meta http-equiv="refresh" content="0; url=./${escapeHtml(target)}">
+  <link rel="canonical" href="./${escapeHtml(target)}">
+  <title>Redirecting to latest weekly report</title>
+  <script>location.replace("./${escapeJs(target)}");</script>
 </head>
 <body>
-  <main>
-    <header><h1>Listening Reports</h1><p>Latest: ${escapeHtml(currentReport.kind)} · ${escapeHtml(currentReport.rangeLabel)}</p></header>
-    <section class="list">${rows || "<p>No reports yet.</p>"}</section>
-  </main>
+  <p><a href="./${escapeHtml(target)}">Open latest weekly report</a></p>
 </body>
 </html>`;
 }
@@ -540,4 +614,8 @@ function cap(value) {
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+}
+
+function escapeJs(value) {
+  return String(value).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 }

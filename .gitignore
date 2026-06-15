@@ -4,3 +4,4 @@ node_modules/
 tmp-lastfm-inline-check*.js
 work/openai-docs-cache/
 work/lastfm-report-script-check.js
+data/lastfm-cache/
