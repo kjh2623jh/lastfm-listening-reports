@@ -1,0 +1,96 @@
+name: Last.fm Listening Reports
+
+on:
+  workflow_dispatch:
+    inputs:
+      period:
+        description: Report period to generate
+        required: true
+        default: weekly
+        type: choice
+        options:
+          - weekly
+          - monthly
+          - yearly
+          - all
+  schedule:
+    - cron: "0 13 * * 1" # Monday 22:00 KST
+    - cron: "0 13 1 * *" # 1st day of month 22:00 KST
+    - cron: "0 13 1 1 *" # Jan 1 22:00 KST
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lastfm-reports
+  cancel-in-progress: false
+
+jobs:
+  weekly:
+    name: Weekly report
+    if: github.event_name == 'workflow_dispatch' && (inputs.period == 'weekly' || inputs.period == 'all') || github.event.schedule == '0 13 * * 1'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Generate weekly report
+        env:
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+        run: node work/lastfm-report-generator.mjs weekly
+      - name: Validate report scripts
+        run: node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report-client.js
+      - name: Commit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add outputs/lastfm-reports
+          git diff --cached --quiet || git commit -m "Add Last.fm weekly report"
+          git push
+
+  monthly:
+    name: Monthly report
+    if: github.event_name == 'workflow_dispatch' && (inputs.period == 'monthly' || inputs.period == 'all') || github.event.schedule == '0 13 1 * *'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Generate monthly report
+        env:
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+        run: node work/lastfm-report-generator.mjs monthly
+      - name: Validate report scripts
+        run: node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report-client.js
+      - name: Commit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add outputs/lastfm-reports
+          git diff --cached --quiet || git commit -m "Add Last.fm monthly report"
+          git push
+
+  yearly:
+    name: Yearly report
+    if: github.event_name == 'workflow_dispatch' && (inputs.period == 'yearly' || inputs.period == 'all') || github.event.schedule == '0 13 1 1 *'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Generate yearly report
+        env:
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+        run: node work/lastfm-report-generator.mjs yearly
+      - name: Validate report scripts
+        run: node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report-client.js
+      - name: Commit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add outputs/lastfm-reports
+          git diff --cached --quiet || git commit -m "Add Last.fm yearly report"
+          git push

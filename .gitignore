@@ -1,0 +1,6 @@
+node_modules/
+.env
+*.log
+tmp-lastfm-inline-check*.js
+work/openai-docs-cache/
+work/lastfm-report-script-check.js

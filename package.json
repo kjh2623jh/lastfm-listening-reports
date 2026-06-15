@@ -1,0 +1,15 @@
+{
+  "name": "lastfm-listening-reports",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "report:weekly": "node work/lastfm-report-generator.mjs weekly",
+    "report:monthly": "node work/lastfm-report-generator.mjs monthly",
+    "report:yearly": "node work/lastfm-report-generator.mjs yearly",
+    "check:report": "node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report-client.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

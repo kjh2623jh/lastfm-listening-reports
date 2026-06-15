@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Last.fm Weekly Report - 2026-06-08 ~ 2026-06-14</title>
+  <style>
+:root{--bg:#100f0e;--paper:#fbf7ef;--paper-2:#f2e9da;--ink:#1f1b18;--muted:#756b60;--line:rgba(31,27,24,.14);--red:#d51007;--gold:#d99a26;--teal:#0e7c7b;--blue:#2f5f98;--shadow:0 24px 70px rgba(0,0,0,.28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 10%,rgba(213,16,7,.36),transparent 28rem),radial-gradient(circle at 88% 4%,rgba(14,124,123,.34),transparent 26rem),linear-gradient(135deg,#15110f 0%,#201916 48%,#0e1818 100%);min-height:100vh}button,input{font:inherit}button{cursor:pointer}.page{width:min(1220px,calc(100vw - 28px));margin:0 auto;padding:28px 0 52px}.shell{background:rgba(251,247,239,.94);border:1px solid rgba(255,255,255,.28);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.hero{position:relative;min-height:520px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:26px;padding:30px;color:white;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.28)),var(--hero-art);background-size:cover;background-position:center;isolation:isolate}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(16,15,14,.42));z-index:-1}.topline{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:30px}.brand{display:flex;gap:12px;align-items:center;min-width:0}.mark{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;background:var(--red);color:white;font-weight:900;box-shadow:0 10px 22px rgba(213,16,7,.28)}.brand h1{margin:0;font-size:18px}.brand p{margin:3px 0 0;color:rgba(255,255,255,.72);font-size:13px}.report-controls{display:grid;gap:8px;justify-items:end}.control-group{display:flex;align-items:center;gap:6px;padding:5px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(0,0,0,.18);backdrop-filter:blur(10px)}.control-label{padding:0 7px;color:rgba(255,255,255,.62);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.control,.pill,.icon-btn{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);color:white;border-radius:999px;min-height:32px;padding:0 12px;backdrop-filter:blur(10px)}.pill.active{background:white;color:#241d19}.icon-btn{width:34px;padding:0;font-weight:900}.control{color-scheme:dark;width:146px}.hero-copy{align-self:end;max-width:660px}.eyebrow{margin:0 0 14px;color:#ffb1a9;font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.hero h2{margin:0;max-width:690px;font-size:clamp(42px,7vw,82px);line-height:.9}.summary{margin:20px 0 0;color:rgba(255,255,255,.82);line-height:1.7;font-size:16px}.hero-side{display:grid;align-content:end;gap:16px}.cover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.cover-tile{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);transform:translateY(8px);opacity:0;animation:tileIn .55s ease forwards}.cover-tile:nth-child(2){animation-delay:.06s}.cover-tile:nth-child(3){animation-delay:.12s}.cover-tile:nth-child(4){animation-delay:.18s}.cover-tile:nth-child(5){animation-delay:.24s}.cover-tile:nth-child(6){animation-delay:.30s}.cover-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease,filter .35s ease}.cover-tile:hover img{transform:scale(1.08);filter:saturate(1.12)}.cover-tile span{position:absolute;left:8px;right:8px;bottom:8px;color:white;font-size:11px;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.85);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@keyframes tileIn{to{transform:translateY(0);opacity:1}}.metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--paper);border-bottom:1px solid var(--line)}.metric{padding:22px 24px;border-right:1px solid var(--line)}.metric:last-child{border-right:0}.metric strong{display:block;font-size:clamp(34px,5vw,54px);line-height:.95}.metric span{display:block;margin-top:7px;color:var(--muted);font-size:13px;font-weight:700}.body{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:22px;padding:24px;background:linear-gradient(180deg,var(--paper) 0%,#f5efe5 100%)}.main,.side{display:grid;gap:18px;align-content:start}.panel{background:rgba(255,255,255,.68);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.7) inset}.panel-head{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:18px 18px 0}.panel h3{margin:0;font-size:21px}.hint{color:var(--muted);font-size:13px}.panel-body{padding:18px}.insight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.insight-card{padding:16px;border-radius:12px;background:var(--paper-2);min-height:132px}.insight-card b{display:block;margin-bottom:10px}.insight-card p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.compare-card{padding:14px;border-radius:12px;background:white;border:1px solid var(--line)}.compare-card strong{display:block;font-size:26px}.compare-card span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.tag-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.tag{border-radius:999px;background:#211c18;color:white;padding:5px 8px;font-size:12px}.tabs{display:flex;gap:8px;padding:0 18px 18px;overflow-x:auto}.tab{border:1px solid var(--line);background:white;color:var(--muted);height:36px;padding:0 13px;border-radius:999px;white-space:nowrap}.tab.active{background:#211c18;color:white;border-color:#211c18}.chart-section{display:none}.chart-section.active{display:block}.rank-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.rank-item{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.7);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;text-align:left}.rank-item:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(31,27,24,.10);border-color:rgba(213,16,7,.28)}.thumb{width:52px;height:52px;border-radius:9px;object-fit:cover;background:#ded2c2}.rank-title{min-width:0}.rank-title strong,.rank-title span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rank-title span{margin-top:3px;color:var(--muted);font-size:13px}.count{min-width:56px;text-align:right;color:var(--red);font-weight:900}.day-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px}.day-card{min-height:132px;border-radius:12px;padding:12px;background:linear-gradient(180deg,#fff,#f4ecdf);border:1px solid var(--line);display:grid;align-content:space-between}.day-card strong{font-size:26px}.day-card span{color:var(--muted);font-size:12px}.bar{height:8px;border-radius:999px;background:#dfd4c5;overflow:hidden;margin-top:10px}.fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--red),var(--gold))}.heat{display:grid;grid-template-columns:repeat(24,minmax(6px,1fr));gap:4px;align-items:end;height:170px}.hour{border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,var(--teal),var(--blue));min-height:4px;position:relative}.hour:hover:after{content:attr(data-label);position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);white-space:nowrap;background:#211c18;color:white;font-size:12px;padding:5px 7px;border-radius:6px;z-index:5}.story{margin:0;color:var(--muted);line-height:1.7}.story+ .story{margin-top:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.button{min-height:40px;border:1px solid var(--line);border-radius:10px;padding:0 14px;background:white;color:var(--ink)}.button.primary{background:var(--red);border-color:var(--red);color:white}.mini-list{display:grid;gap:10px}.mini{display:grid;grid-template-columns:46px minmax(0,1fr);gap:10px;align-items:center;text-align:left;border:0;background:transparent;padding:0}.mini img{width:46px;height:46px;object-fit:cover;border-radius:8px;background:#ded2c2}.mini strong,.mini span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mini span{color:var(--muted);font-size:12px}.detail{position:fixed;inset:0;display:none;place-items:center;padding:20px;background:rgba(0,0,0,.58);z-index:20}.detail.open{display:grid}.detail-card{width:min(720px,100%);display:grid;grid-template-columns:210px minmax(0,1fr);gap:20px;background:var(--paper);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.detail-card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;background:#ded2c2}.detail-card h3{margin:0 0 8px;font-size:30px;line-height:1.05}.detail-card p{margin:0 0 10px;color:var(--muted);line-height:1.6}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(16px);opacity:0;pointer-events:none;background:#211c18;color:white;padding:10px 14px;border-radius:10px;z-index:30;transition:opacity .18s ease,transform .18s ease}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}@media(max-width:980px){.hero,.body{grid-template-columns:1fr}.hero{min-height:auto}.topline{display:grid}.report-controls{justify-items:start}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.insight-grid,.compare-grid{grid-template-columns:1fr}}@media(max-width:620px){.page{width:calc(100vw - 16px);padding-top:8px}.hero,.body{padding:16px}.control-group{width:100%;border-radius:14px;flex-wrap:wrap}.cover-grid{grid-template-columns:repeat(2,1fr)}.metrics{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)}.metric:last-child{border-bottom:0}.detail-card{grid-template-columns:1fr}.hero h2{font-size:42px}}
+.compare-bars{grid-column:1/-1;display:grid;gap:10px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#fff,#f3eadb);border:1px solid var(--line)}.compare-bar-row{display:grid;grid-template-columns:74px minmax(0,1fr) 58px;gap:10px;align-items:center;font-size:13px}.compare-bar-row span{color:var(--muted);font-weight:800}.compare-bar-row b{text-align:right}.compare-track{height:14px;border-radius:999px;background:#dfd4c5;overflow:hidden}.compare-track i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--red),var(--gold));box-shadow:0 0 18px rgba(213,16,7,.26)}.compare-bar-row.previous .compare-track i{background:linear-gradient(90deg,#7c756b,#b8ad9b);box-shadow:none}.more-btn{width:100%;margin-top:12px;min-height:42px;border:1px solid var(--line);border-radius:12px;background:#211c18;color:white;font-weight:800}.more-btn:hover{background:#3a302a}.heat{height:190px;align-items:stretch}.hour-wrap{display:grid;grid-template-rows:1fr 18px;align-items:end;gap:6px;min-width:0}.hour-wrap span{color:var(--muted);font-size:10px;text-align:center}.hour{width:100%;align-self:end}.tag-list{grid-column:1/-1}.comparison-lift{animation:tileIn .35s ease both}select{font:inherit}.report-select{width:210px;max-width:42vw}.pill:disabled,.icon-btn:disabled,.control:disabled{opacity:.42;cursor:not-allowed;filter:saturate(.55)}.pill:disabled:hover,.icon-btn:disabled:hover{transform:none}@media(max-width:620px){.report-select{width:100%;max-width:none}}
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="shell">
+      <header class="hero" id="hero">
+        <div>
+          <div class="topline">
+            <div class="brand"><div class="mark">fm</div><div><h1>Listening Report</h1><p id="rangeText"></p></div></div>
+            <div class="report-controls">
+              <div class="control-group" aria-label="Report period">
+                <span class="control-label">Period</span>
+                <button class="pill" data-period="weekly" type="button">Weekly</button>
+                <button class="pill" data-period="monthly" type="button">Monthly</button>
+                <button class="pill" data-period="yearly" type="button">Yearly</button>
+              </div>
+              <div class="control-group report-picker-group" aria-label="Saved local reports">
+                <span class="control-label">Report</span>
+                <button class="icon-btn" id="prevPeriod" type="button" title="Previous local report">&lt;</button>
+                <select class="control report-select" id="reportPicker" aria-label="Saved local report"></select>
+                <button class="icon-btn" id="nextPeriod" type="button" title="Next local report">&gt;</button>
+              </div>
+              <div class="control-group" aria-label="Open local report">
+                <span class="control-label">Local</span>
+                <button class="pill" id="openLocal" type="button">Open Local</button>
+              </div>
+            </div>
+          </div>
+          <div class="hero-copy"><p class="eyebrow">Weekly Report</p><h2 id="headline"></h2><p class="summary" id="summaryText"></p></div>
+        </div>
+        <aside class="hero-side"><div class="cover-grid" id="coverGrid"></div></aside>
+      </header>
+      <section class="metrics"><div class="metric"><strong id="mScrobbles"></strong><span>Scrobbles</span></div><div class="metric"><strong id="mTracks"></strong><span>Tracks</span></div><div class="metric"><strong id="mArtists"></strong><span>Artists</span></div><div class="metric"><strong id="mPeak"></strong><span>Peak Day</span></div></section>
+      <section class="body">
+        <div class="main">
+          <section class="panel"><div class="panel-head"><h3>Highlights</h3><span class="hint">AI summary from your listening data</span></div><div class="panel-body"><div class="insight-grid" id="insights"></div></div></section>
+          <section class="panel"><div class="panel-head"><h3>Comparison</h3><span class="hint" id="comparisonRange"></span></div><div class="panel-body"><p class="story" id="comparisonSummary"></p><div class="compare-grid" id="comparisonGrid"></div></div></section>
+          <section class="panel"><div class="panel-head"><h3>Charts</h3><span class="hint">Click an item for details</span></div><div class="tabs"><button class="tab active" data-chart="tracks" type="button">Top Tracks</button><button class="tab" data-chart="artists" type="button">Artists</button><button class="tab" data-chart="albums" type="button">Albums</button></div><div class="panel-body"><div class="chart-section active" id="tracks"></div><div class="chart-section" id="artists"></div><div class="chart-section" id="albums"></div></div></section>
+          <section class="panel"><div class="panel-head"><h3>Daily Pace</h3><span class="hint">KST</span></div><div class="panel-body"><div class="day-grid" id="dayGrid"></div></div></section>
+          <section class="panel"><div class="panel-head"><h3>Time of Day</h3><span class="hint">Hourly scrobbles</span></div><div class="panel-body"><div class="heat" id="hourHeat"></div></div></section>
+        </div>
+        <aside class="side">
+          <section class="panel"><div class="panel-head"><h3>Report Note</h3></div><div class="panel-body"><p class="story" id="storyText"></p><div class="actions"><button class="button primary" id="copyImage" type="button">리포트 이미지 복사</button><button class="button" id="downloadImage" type="button">PNG 다운로드</button></div></div></section>
+          <section class="panel"><div class="panel-head"><h3>Album Focus</h3></div><div class="panel-body"><div class="mini-list" id="albumFocus"></div></div></section>
+          <section class="panel"><div class="panel-head"><h3>Recommendation</h3></div><div class="panel-body"><p class="story"><strong id="recommendationTitle"></strong></p><p class="story" id="recommendationAbout"></p><p class="story" id="recommendationWhy"></p></div></section>
+        </aside>
+      </section>
+    </section>
+  </main>
+  <div class="detail" id="detail"><div class="detail-card"><img id="detailImage" alt=""><div><h3 id="detailTitle"></h3><p id="detailMeta"></p><p id="detailBody"></p><button class="button primary" id="closeDetail" type="button">닫기</button></div></div></div>
+  <div class="toast" id="toast"></div>
+  <script>window.REPORT_DATA={"kind":"weekly","user":"ueii","filename":"lastfm-weekly-2026-06-08-to-2026-06-14.html","rangeLabel":"2026-06-08 ~ 2026-06-14","startDate":"2026-06-08","endDate":"2026-06-14","total":297,"tracks":191,"artists":31,"peakDay":"Wed","headline":"Arcade Fire week, Inferno gravity.","summary":"Arcade Fire가 38 scrobbles로 가장 강했고, Inferno이 앨범 단위의 중심을 만들었습니다. 전체 297 scrobbles 중 top artist 비중은 약 13%입니다.","story":"이번 주는 297 scrobbles 안에서 191 tracks, 31 artists가 움직였습니다. 중심은 Arcade Fire와 Inferno. Wed, 06/10에 청취량이 가장 높았고, 전체적으로는 단일 곡 반복보다 앨범 단위의 흐름이 더 강하게 보입니다.","insights":[["Main Character","Arcade Fire가 38 scrobbles로 리포트의 중심입니다. 전체의 약 13%를 차지해 취향의 축이 분명합니다."],["Album Gravity","Inferno은 38 scrobbles. 한 앨범이 분위기와 커버 비주얼까지 리포트의 중심을 잡았습니다."],["Listening Shape","297 scrobbles / 191 tracks. 넓게 흩어진 탐색보다 좋아하는 축을 두고 깊게 들어간 흐름입니다."],["Compared","직전 같은 기간보다 scrobbles가 -120 (-29%) 변했습니다."]],"comparison":{"previousRange":"2026-06-01 ~ 2026-06-07","currentTotal":297,"previousTotal":417,"delta":-120,"percent":-29,"percentText":"-29%","currentTags":[{"name":"electronic","score":95},{"name":"indie","score":89},{"name":"indie pop","score":85},{"name":"idm","score":72},{"name":"indie rock","score":66},{"name":"alternative","score":66}],"previousTags":[{"name":"pop","score":128},{"name":"synthpop","score":107},{"name":"indie pop","score":107},{"name":"electronic","score":98},{"name":"electropop","score":80},{"name":"dream pop","score":80}],"tagShift":[{"name":"indie","delta":89,"score":89},{"name":"rock","delta":61,"score":61},{"name":"indie rock","delta":38,"score":66},{"name":"canadian","delta":38,"score":38},{"name":"alternative","delta":35,"score":66}],"summary":"청취량은 직전 같은 기간보다 120 scrobbles 감소했습니다 (-29%). tag 기준으로는 indie, rock, indie rock 쪽 비중이 상대적으로 커졌습니다."},"topTracks":[{"key":"Arcade Fire — Crown of Love","count":7,"artist":"Arcade Fire","title":"Crown of Love","album":"Funeral","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"Phoenix — Love Like a Sunset, Pt. I","count":6,"artist":"Phoenix","title":"Love Like a Sunset, Pt. I","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Phoenix — Love Like a Sunset, Pt. II","count":5,"artist":"Phoenix","title":"Love Like a Sunset, Pt. II","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Foster the People — Call It What You Want","count":4,"artist":"Foster the People","title":"Call It What You Want","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Phoenix — 1901","count":4,"artist":"Phoenix","title":"1901","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Boards of Canada — Hydrogen Helium Lithium Leviathan","count":3,"artist":"Boards of Canada","title":"Hydrogen Helium Lithium Leviathan","album":"Inferno","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f1167dc784d712c89e9214adb5a635df.jpg"},{"key":"Foster the People — Don't Stop (Color on the Walls)","count":3,"artist":"Foster the People","title":"Don't Stop (Color on the Walls)","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People — Helena Beat","count":3,"artist":"Foster the People","title":"Helena Beat","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People — I Would Do Anything for You","count":3,"artist":"Foster the People","title":"I Would Do Anything for You","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People — Pumped Up Kicks","count":3,"artist":"Foster the People","title":"Pumped Up Kicks","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People — Waste","count":3,"artist":"Foster the People","title":"Waste","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Sweet Trip — Acting","count":3,"artist":"Sweet Trip","title":"Acting","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip — Air Supply","count":3,"artist":"Sweet Trip","title":"Air Supply","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip — Conservation of Two","count":3,"artist":"Sweet Trip","title":"Conservation of Two","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip — Darkness","count":3,"artist":"Sweet Trip","title":"Darkness","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip — Forever","count":3,"artist":"Sweet Trip","title":"Forever","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip — Milk","count":3,"artist":"Sweet Trip","title":"Milk","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"보아 — Woman","count":2,"artist":"보아","title":"Woman","album":"WOMAN - The 9th Album","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f22a5a9d044716ec38b163d2177b3239.jpg"},{"key":"Arcade Fire — Neighborhood #1 (Tunnels)","count":2,"artist":"Arcade Fire","title":"Neighborhood #1 (Tunnels)","album":"Funeral","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"Arcade Fire — Neighborhood #2 (Laika)","count":2,"artist":"Arcade Fire","title":"Neighborhood #2 (Laika)","album":"Funeral","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"}],"topArtists":[{"key":"Arcade Fire","count":38,"artist":"Arcade Fire","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"Boards of Canada","count":38,"artist":"Boards of Canada","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f1167dc784d712c89e9214adb5a635df.jpg"},{"key":"Sweet Trip","count":34,"artist":"Sweet Trip","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Foster the People","count":28,"artist":"Foster the People","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Denzel Curry","count":24,"artist":"Denzel Curry","image":"https://lastfm.freetls.fastly.net/i/u/300x300/45b2250447f604bcbf7d3417b7d387fb.gif"},{"key":"Phoenix","count":23,"artist":"Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"M83","count":22,"artist":"M83","image":"https://lastfm.freetls.fastly.net/i/u/300x300/16fdad2898a167de51428b9ccbd2317a.jpg"},{"key":"Death Cab for Cutie","count":18,"artist":"Death Cab for Cutie","image":"https://lastfm.freetls.fastly.net/i/u/300x300/1dbfd75d7b8941edbde5e1b58948f9c4.png"},{"key":"Daft Punk","count":14,"artist":"Daft Punk","image":"https://lastfm.freetls.fastly.net/i/u/300x300/1340e9e1082cf0dc748583b7eefce6d5.jpg"},{"key":"윙","count":12,"artist":"윙","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Radiohead","count":10,"artist":"Radiohead","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9dbcd9399ac3e622b4f508323155b644.jpg"},{"key":"Shin Ji Hoon","count":6,"artist":"Shin Ji Hoon","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9645da55593f9f58bf414c40057f981b.jpg"},{"key":"보아","count":4,"artist":"보아","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f22a5a9d044716ec38b163d2177b3239.jpg"},{"key":"sueter7","count":4,"artist":"sueter7","image":"https://lastfm.freetls.fastly.net/i/u/300x300/486a8d3ea6a9b270010d8b5a4c624fb7.jpg"},{"key":"석홍","count":2,"artist":"석홍","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Carpenters","count":2,"artist":"Carpenters","image":"https://lastfm.freetls.fastly.net/i/u/300x300/5680b109166c3e24f5b8fa45089e8ae2.jpg"},{"key":"Denzel Curry & 454","count":2,"artist":"Denzel Curry & 454","image":"https://lastfm.freetls.fastly.net/i/u/300x300/5cb68d8b3dce84fc120c0ca016b804b4.jpg"},{"key":"Denzel Curry & slowthai","count":2,"artist":"Denzel Curry & slowthai","image":"https://lastfm.freetls.fastly.net/i/u/300x300/0bcd0ace9c8983b0d6afa6a9917861ab.jpg"},{"key":"XXX","count":2,"artist":"XXX","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f2f6c104896ba1ce3ac9fc2393fcdbbd.jpg"},{"key":"윙 & 히스","count":1,"artist":"윙 & 히스","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"}],"topAlbums":[{"key":"Boards of Canada — Inferno","count":38,"artist":"Boards of Canada","album":"Inferno","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f1167dc784d712c89e9214adb5a635df.jpg"},{"key":"Sweet Trip — You Will Never Know Why","count":34,"artist":"Sweet Trip","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Foster the People — Torches","count":28,"artist":"Foster the People","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Denzel Curry — Melt My Eyez See Your Future","count":24,"artist":"Denzel Curry","album":"Melt My Eyez See Your Future","image":"https://lastfm.freetls.fastly.net/i/u/300x300/45b2250447f604bcbf7d3417b7d387fb.gif"},{"key":"Phoenix — Wolfgang Amadeus Phoenix","count":23,"artist":"Phoenix","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Arcade Fire — Funeral","count":22,"artist":"Arcade Fire","album":"Funeral","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"M83 — Hurry Up, We're Dreaming","count":22,"artist":"M83","album":"Hurry Up, We're Dreaming","image":"https://lastfm.freetls.fastly.net/i/u/300x300/16fdad2898a167de51428b9ccbd2317a.jpg"},{"key":"Death Cab for Cutie — Transatlanticism","count":18,"artist":"Death Cab for Cutie","album":"Transatlanticism","image":"https://lastfm.freetls.fastly.net/i/u/300x300/1dbfd75d7b8941edbde5e1b58948f9c4.png"},{"key":"Arcade Fire — The Suburbs","count":16,"artist":"Arcade Fire","album":"The Suburbs","image":"https://lastfm.freetls.fastly.net/i/u/300x300/17afeed886cd4df7b0137ef51ced4679.png"},{"key":"Daft Punk — Discovery","count":14,"artist":"Daft Punk","album":"Discovery","image":"https://lastfm.freetls.fastly.net/i/u/300x300/1340e9e1082cf0dc748583b7eefce6d5.jpg"},{"key":"윙 — Dopamine","count":11,"artist":"윙","album":"Dopamine","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Radiohead — In Rainbows","count":10,"artist":"Radiohead","album":"In Rainbows","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9dbcd9399ac3e622b4f508323155b644.jpg"},{"key":"Shin Ji Hoon — Shin Ji Hoon 1st Album 'Stars and Memories and Poetry'","count":6,"artist":"Shin Ji Hoon","album":"Shin Ji Hoon 1st Album 'Stars and Memories and Poetry'","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9645da55593f9f58bf414c40057f981b.jpg"},{"key":"보아 — WOMAN - The 9th Album","count":4,"artist":"보아","album":"WOMAN - The 9th Album","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f22a5a9d044716ec38b163d2177b3239.jpg"},{"key":"sueter7 — todo salió bien en la sencilla villa quién","count":4,"artist":"sueter7","album":"todo salió bien en la sencilla villa quién","image":"https://lastfm.freetls.fastly.net/i/u/300x300/486a8d3ea6a9b270010d8b5a4c624fb7.jpg"},{"key":"석홍 — 사진사와 잠수부 0.6 (with 이선호)","count":2,"artist":"석홍","album":"사진사와 잠수부 0.6 (with 이선호)","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Carpenters — Gold: Greatest Hits","count":2,"artist":"Carpenters","album":"Gold: Greatest Hits","image":"https://lastfm.freetls.fastly.net/i/u/300x300/5680b109166c3e24f5b8fa45089e8ae2.jpg"},{"key":"Denzel Curry & 454 — Melt My Eyez See Your Future","count":2,"artist":"Denzel Curry & 454","album":"Melt My Eyez See Your Future","image":"https://lastfm.freetls.fastly.net/i/u/300x300/5cb68d8b3dce84fc120c0ca016b804b4.jpg"},{"key":"Denzel Curry & slowthai — Melt My Eyez See Your Future","count":2,"artist":"Denzel Curry & slowthai","album":"Melt My Eyez See Your Future","image":"https://lastfm.freetls.fastly.net/i/u/300x300/0bcd0ace9c8983b0d6afa6a9917861ab.jpg"},{"key":"XXX — Kyomi","count":2,"artist":"XXX","album":"Kyomi","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f2f6c104896ba1ce3ac9fc2393fcdbbd.jpg"}],"days":[{"label":"Mon, 06/08","short":"Mon","count":62,"order":"2026-06-08"},{"label":"Tue, 06/09","short":"Tue","count":13,"order":"2026-06-09"},{"label":"Wed, 06/10","short":"Wed","count":97,"order":"2026-06-10"},{"label":"Thu, 06/11","short":"Thu","count":27,"order":"2026-06-11"},{"label":"Fri, 06/12","short":"Fri","count":49,"order":"2026-06-12"},{"label":"Sat, 06/13","short":"Sat","count":33,"order":"2026-06-13"},{"label":"Sun, 06/14","short":"Sun","count":16,"order":"2026-06-14"}],"hours":[23,47,42,6,2,0,0,0,1,2,5,9,5,0,1,10,7,10,19,5,19,33,34,17],"recommendation":{"title":"Broadcast - Tender Buttons","about":"minimal synth-pop과 lo-fi electronic texture가 중심인 앨범입니다.","why":"Boards of Canada의 낡은 전자음악 질감은 유지하면서, 더 노래 중심의 방향으로 확장할 수 있습니다."}};window.REPORT_REGISTRY=[{"period":"weekly","start":"2026-06-01","end":"2026-06-07","label":"2026-06-01 ~ 2026-06-07","file":"lastfm-weekly-2026-06-01-to-2026-06-07.html"},{"period":"weekly","start":"2026-06-08","end":"2026-06-14","label":"2026-06-08 ~ 2026-06-14","file":"lastfm-weekly-2026-06-08-to-2026-06-14.html"}];
+const state = {
+  report: window.REPORT_DATA,
+  registry: window.REPORT_REGISTRY || [],
+  period: window.REPORT_DATA.kind
+};
+const expandedCharts = { track: false, artist: false, album: false };
+const fallbackImage = "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><rect width="300" height="300" fill="#d8cab9"/><circle cx="150" cy="150" r="92" fill="#201b18"/><circle cx="150" cy="150" r="20" fill="#d51007"/></svg>');
+const periods = ["weekly", "monthly", "yearly"];
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => [...document.querySelectorAll(selector)];
+const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+const img = (src) => src || fallbackImage;
+
+function currentFilename() {
+  return decodeURIComponent(location.pathname.split(/[\\/]/).pop() || "");
+}
+
+function reportsFor(period) {
+  return state.registry
+    .filter((report) => report.period === period)
+    .sort((a, b) => a.start.localeCompare(b.start));
+}
+
+function currentRegistryEntry() {
+  const file = currentFilename();
+  return state.registry.find((report) => report.file === file)
+    || state.registry.find((report) => report.period === state.report.kind && report.start === state.report.startDate);
+}
+
+function selectedReport() {
+  const picker = $("#reportPicker");
+  if (!picker || !picker.value) return null;
+  return state.registry.find((report) => report.file === picker.value) || null;
+}
+
+function renderReportControls() {
+  const entry = currentRegistryEntry();
+  const activePeriod = state.period || state.report.kind;
+
+  $$(".pill[data-period]").forEach((button) => {
+    const count = reportsFor(button.dataset.period).length;
+    button.disabled = count === 0;
+    button.classList.toggle("active", button.dataset.period === activePeriod);
+    button.title = count ? `${count} saved report${count > 1 ? "s" : ""}` : "저장된 로컬 리포트가 없습니다.";
+  });
+
+  const picker = $("#reportPicker");
+  const previousValue = picker.value;
+  const options = reportsFor(activePeriod);
+  picker.innerHTML = options.map((report) => `<option value="${esc(report.file)}">${esc(report.label)}</option>`).join("");
+
+  const selected = options.find((report) => report.file === previousValue)
+    || options.find((report) => entry && report.file === entry.file)
+    || options.at(-1);
+  if (selected) picker.value = selected.file;
+  picker.disabled = options.length === 0;
+
+  const index = options.findIndex((report) => report.file === picker.value);
+  $("#prevPeriod").disabled = index <= 0;
+  $("#nextPeriod").disabled = index < 0 || index >= options.length - 1;
+  $("#openLocal").disabled = !selected;
+}
+
+function render() {
+  const r = state.report;
+  state.period = r.kind;
+  $("#rangeText").textContent = `${r.user} · ${r.rangeLabel} · KST`;
+  $("#headline").textContent = r.headline;
+  $("#summaryText").textContent = r.summary;
+  $("#storyText").textContent = r.story;
+  $("#recommendationTitle").textContent = r.recommendation.title;
+  $("#recommendationAbout").textContent = r.recommendation.about;
+  $("#recommendationWhy").textContent = r.recommendation.why;
+  $("#mScrobbles").textContent = r.total.toLocaleString();
+  $("#mTracks").textContent = r.tracks.toLocaleString();
+  $("#mArtists").textContent = r.artists.toLocaleString();
+  $("#mPeak").textContent = r.peakDay;
+  $("#hero").style.setProperty("--hero-art", `url("${img(r.topAlbums[0]?.image)}")`);
+  renderReportControls();
+  renderCovers();
+  renderInsights();
+  renderComparison();
+  renderCharts();
+  renderDays();
+  renderHours();
+  renderAlbumFocus();
+}
+
+function payload(item, type) {
+  return esc(JSON.stringify({ type, ...item }));
+}
+
+function renderCovers() {
+  $("#coverGrid").innerHTML = state.report.topAlbums.slice(0, 6).map((album) => `<button class="cover-tile" type="button" data-detail='${payload(album, "album")}'><img src="${img(album.image)}" alt="${esc(album.album)} album cover" loading="lazy"><span>${esc(album.album)}</span></button>`).join("");
+}
+
+function renderInsights() {
+  $("#insights").innerHTML = state.report.insights.map(([title, body]) => `<article class="insight-card"><b>${esc(title)}</b><p>${esc(body)}</p></article>`).join("");
+}
+
+function renderComparison() {
+  const c = state.report.comparison;
+  const max = Math.max(c.currentTotal, c.previousTotal, 1);
+  $("#comparisonRange").textContent = c.previousRange ? `vs ${c.previousRange}` : "";
+  $("#comparisonSummary").textContent = c.summary;
+  $("#comparisonGrid").innerHTML = `<article class="compare-card"><strong>${c.delta >= 0 ? "+" : ""}${c.delta.toLocaleString()}</strong><span>Scrobble delta</span></article><article class="compare-card"><strong>${c.percentText}</strong><span>Volume change</span></article><article class="compare-card"><strong>${c.previousTotal.toLocaleString()}</strong><span>Previous scrobbles</span></article><div class="compare-bars"><div class="compare-bar-row"><span>Current</span><div class="compare-track"><i style="width:${Math.round(c.currentTotal / max * 100)}%"></i></div><b>${c.currentTotal.toLocaleString()}</b></div><div class="compare-bar-row previous"><span>Previous</span><div class="compare-track"><i style="width:${Math.round(c.previousTotal / max * 100)}%"></i></div><b>${c.previousTotal.toLocaleString()}</b></div></div><div class="tag-list">${(c.tagShift || []).map((tag) => `<span class="tag">${esc(tag.name)} ${tag.delta >= 0 ? "+" : ""}${tag.delta}</span>`).join("")}</div>`;
+}
+
+function renderCharts() {
+  $("#tracks").innerHTML = list(state.report.topTracks, "track");
+  $("#artists").innerHTML = list(state.report.topArtists, "artist");
+  $("#albums").innerHTML = list(state.report.topAlbums, "album");
+}
+
+function list(rows, type) {
+  const visible = expandedCharts[type] ? rows : rows.slice(0, 5);
+  const more = rows.length > 5 ? `<button class="more-btn" type="button" data-more="${type}">${expandedCharts[type] ? "Show less" : `More ${rows.length - 5}`}</button>` : "";
+  return `<ol class="rank-list">${visible.map((item, index) => {
+    const title = type === "artist" ? item.artist : type === "album" ? item.album : item.title;
+    const sub = type === "artist" ? "Artist" : item.artist + (item.album && type === "track" ? ` · ${item.album}` : "");
+    return `<li><button class="rank-item" type="button" data-detail='${payload(item, type)}'><img class="thumb" src="${img(item.image)}" alt="" loading="lazy"><span class="rank-title"><strong>${index + 1}. ${esc(title)}</strong><span>${esc(sub)}</span></span><span class="count">${item.count}</span></button></li>`;
+  }).join("")}</ol>${more}`;
+}
+
+function renderDays() {
+  const max = Math.max(...state.report.days.map((day) => day.count), 1);
+  $("#dayGrid").innerHTML = state.report.days.map((day) => `<article class="day-card"><span>${esc(day.label)}</span><strong>${day.count}</strong><div class="bar"><div class="fill" style="width:${Math.round(day.count / max * 100)}%"></div></div></article>`).join("");
+}
+
+function renderHours() {
+  const max = Math.max(...state.report.hours, 1);
+  $("#hourHeat").innerHTML = state.report.hours.map((count, hour) => `<div class="hour-wrap"><div class="hour" data-label="${String(hour).padStart(2, "0")}:00 · ${count}" style="height:${Math.max(4, Math.round(count / max * 100))}%"></div><span>${hour % 3 === 0 ? String(hour).padStart(2, "0") : ""}</span></div>`).join("");
+}
+
+function renderAlbumFocus() {
+  $("#albumFocus").innerHTML = state.report.topAlbums.slice(0, 6).map((album) => `<button class="mini" type="button" data-detail='${payload(album, "album")}'><img src="${img(album.image)}" alt="" loading="lazy"><span><strong>${esc(album.album)}</strong><span>${esc(album.artist)} · ${album.count} scrobbles</span></span></button>`).join("");
+}
+
+function openDetail(item) {
+  const title = item.type === "artist" ? item.artist : item.type === "album" ? item.album : item.title;
+  const meta = item.type === "artist" ? `${item.count} scrobbles` : `${item.artist} · ${item.count} scrobbles`;
+  $("#detailImage").src = img(item.image);
+  $("#detailImage").alt = title;
+  $("#detailTitle").textContent = title;
+  $("#detailMeta").textContent = meta;
+  $("#detailBody").textContent = item.album && item.type !== "album" ? `Album: ${item.album}` : "";
+  $("#detailBody").style.display = $("#detailBody").textContent ? "block" : "none";
+  $("#detail").classList.add("open");
+}
+
+function openLocalEntry(entry) {
+  if (!entry) {
+    toast("선택할 수 있는 로컬 리포트가 없습니다.");
+    return;
+  }
+  if (currentFilename() === entry.file) {
+    toast("현재 열려 있는 리포트입니다.");
+    return;
+  }
+  location.href = entry.file;
+}
+
+function shift(delta) {
+  const options = reportsFor(state.period);
+  const current = selectedReport();
+  const index = options.findIndex((report) => current && report.file === current.file);
+  const target = options[index + delta];
+  if (!target) return;
+  openLocalEntry(target);
+}
+
+function drawCanvas() {
+  const r = state.report;
+  const canvas = document.createElement("canvas");
+  canvas.width = 1200;
+  canvas.height = 1500;
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#100f0e";
+  ctx.fillRect(0, 0, 1200, 1500);
+  const g = ctx.createLinearGradient(0, 0, 1200, 1500);
+  g.addColorStop(0, "#d51007");
+  g.addColorStop(.55, "#171210");
+  g.addColorStop(1, "#0e7c7b");
+  ctx.globalAlpha = .72;
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, 1200, 1500);
+  ctx.globalAlpha = 1;
+  round(ctx, 82, 82, 1036, 1336, 28);
+  ctx.fillStyle = "#fbf7ef";
+  ctx.fill();
+  ctx.fillStyle = "#d51007";
+  round(ctx, 132, 132, 74, 74, 14);
+  ctx.fill();
+  ctx.fillStyle = "#fff";
+  ctx.font = "900 30px Segoe UI, Arial";
+  ctx.fillText("fm", 153, 180);
+  ctx.fillStyle = "#d51007";
+  ctx.font = "900 25px Segoe UI, Arial";
+  ctx.fillText("LAST.FM LISTENING REPORT", 132, 266);
+  ctx.fillStyle = "#1f1b18";
+  ctx.font = "900 58px Segoe UI, Arial";
+  wrap(ctx, r.headline, 132, 350, 920, 68);
+  ctx.fillStyle = "#756b60";
+  ctx.font = "26px Segoe UI, Arial";
+  wrap(ctx, `${r.user} · ${r.rangeLabel} · ${r.total.toLocaleString()} scrobbles`, 132, 505, 900, 36);
+  [["Scrobbles", r.total], ["Tracks", r.tracks], ["Artists", r.artists], ["Peak Day", r.peakDay]].forEach(([label, value], i) => {
+    const x = 132 + i * 238;
+    ctx.fillStyle = "#f2e9da";
+    round(ctx, x, 610, 210, 132, 16);
+    ctx.fill();
+    ctx.fillStyle = "#1f1b18";
+    ctx.font = "900 46px Segoe UI, Arial";
+    ctx.fillText(String(value), x + 24, 672);
+    ctx.fillStyle = "#756b60";
+    ctx.font = "22px Segoe UI, Arial";
+    ctx.fillText(label, x + 24, 713);
+  });
+  ctx.fillStyle = "#1f1b18";
+  ctx.font = "900 32px Segoe UI, Arial";
+  ctx.fillText("Top Tracks", 132, 830);
+  ctx.fillText("Top Albums", 650, 830);
+  drawRows(ctx, r.topTracks, 132, 870, "track");
+  drawRows(ctx, r.topAlbums, 650, 870, "album");
+  ctx.fillStyle = "#0e7c7b";
+  round(ctx, 132, 1278, 936, 88, 16);
+  ctx.fill();
+  ctx.fillStyle = "#fff";
+  ctx.font = "700 25px Segoe UI, Arial";
+  wrap(ctx, `Recommendation: ${r.recommendation.title}`, 164, 1328, 850, 32);
+  return canvas;
+}
+
+function drawRows(ctx, rows, x, y, type) {
+  rows.slice(0, 5).forEach((item, i) => {
+    const yy = y + i * 78;
+    ctx.fillStyle = "#fffaf1";
+    round(ctx, x, yy, 430, 58, 12);
+    ctx.fill();
+    ctx.fillStyle = "#d51007";
+    ctx.font = "900 22px Segoe UI, Arial";
+    ctx.fillText(String(i + 1), x + 18, yy + 37);
+    ctx.fillStyle = "#1f1b18";
+    ctx.font = "700 21px Segoe UI, Arial";
+    ctx.fillText(trunc(type === "album" ? item.album : item.title, 26), x + 58, yy + 30);
+    ctx.fillStyle = "#756b60";
+    ctx.font = "18px Segoe UI, Arial";
+    ctx.fillText(trunc(item.artist, 28), x + 58, yy + 51);
+    ctx.fillStyle = "#d51007";
+    ctx.font = "900 21px Segoe UI, Arial";
+    ctx.fillText(String(item.count), x + 380, yy + 35);
+  });
+}
+
+function round(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+function wrap(ctx, text, x, y, max, line) {
+  const words = String(text).split(" ");
+  let current = "";
+  for (const word of words) {
+    const test = current ? current + " " + word : word;
+    if (ctx.measureText(test).width > max && current) {
+      ctx.fillText(current, x, y);
+      y += line;
+      current = word;
+    } else {
+      current = test;
+    }
+  }
+  if (current) ctx.fillText(current, x, y);
+}
+
+function trunc(text, length) {
+  text = String(text || "");
+  return text.length > length ? text.slice(0, length - 1) + "…" : text;
+}
+
+function copyImage() {
+  drawCanvas().toBlob(async (blob) => {
+    try {
+      await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+      toast("리포트 이미지를 클립보드에 복사했습니다.");
+    } catch {
+      download(blob);
+      toast("클립보드 복사가 막혀 PNG로 다운로드했습니다.");
+    }
+  }, "image/png");
+}
+
+function downloadImage() {
+  drawCanvas().toBlob((blob) => {
+    download(blob);
+    toast("PNG를 다운로드했습니다.");
+  }, "image/png");
+}
+
+function download(blob) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `lastfm-${state.report.kind}-${state.report.startDate}.png`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function toast(msg) {
+  $("#toast").textContent = msg;
+  $("#toast").classList.add("show");
+  setTimeout(() => $("#toast").classList.remove("show"), 2400);
+}
+
+document.addEventListener("click", (event) => {
+  const more = event.target.closest("[data-more]");
+  if (more) {
+    expandedCharts[more.dataset.more] = !expandedCharts[more.dataset.more];
+    renderCharts();
+    return;
+  }
+  const detail = event.target.closest("[data-detail]");
+  if (detail) openDetail(JSON.parse(detail.dataset.detail));
+});
+
+$$(".tab").forEach((tab) => tab.addEventListener("click", () => {
+  $$(".tab").forEach((item) => item.classList.toggle("active", item === tab));
+  $$(".chart-section").forEach((section) => section.classList.toggle("active", section.id === tab.dataset.chart));
+}));
+
+$$(".pill[data-period]").forEach((button) => button.addEventListener("click", () => {
+  if (button.disabled) return;
+  state.period = button.dataset.period;
+  renderReportControls();
+}));
+
+$("#reportPicker").addEventListener("change", renderReportControls);
+$("#prevPeriod").addEventListener("click", () => shift(-1));
+$("#nextPeriod").addEventListener("click", () => shift(1));
+$("#openLocal").addEventListener("click", () => openLocalEntry(selectedReport()));
+$("#copyImage").addEventListener("click", copyImage);
+$("#downloadImage").addEventListener("click", downloadImage);
+$("#closeDetail").addEventListener("click", () => $("#detail").classList.remove("open"));
+$("#detail").addEventListener("click", (event) => {
+  if (event.target.id === "detail") $("#detail").classList.remove("open");
+});
+
+render();
+</script>
+</body>
+</html>
