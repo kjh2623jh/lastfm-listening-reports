@@ -1,6 +1,9 @@
 name: Last.fm Listening Reports
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       period:
