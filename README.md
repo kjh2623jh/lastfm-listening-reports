@@ -1,6 +1,20 @@
 # Last.fm Listening Reports
 
-Private Last.fm listening report generator for `ueii`.
+Automated Last.fm listening report generator for `ueii`.
+
+Reports are published with GitHub Pages:
+
+https://kjh2623jh.github.io/lastfm-listening-reports/
+
+The root page redirects to the latest weekly report. Older weekly, monthly, and yearly reports are kept as static HTML files under `outputs/lastfm-reports`.
+
+## What it does
+
+- Builds weekly, monthly, and yearly listening reports from Last.fm scrobble data.
+- Uses OpenAI-generated copy for summaries, insights, and recommendations when `OPENAI_API_KEY` is available.
+- Falls back to deterministic report text if the AI call fails, so scheduled reports still build.
+- Stores generated report HTML and a `report-registry.json` index for local navigation between reports.
+- Caches fetched Last.fm data during GitHub Actions runs to reduce repeated API calls.
 
 ## GitHub Actions setup
 
@@ -8,8 +22,6 @@ Add this repository secret:
 
 - `LASTFM_API_KEY`: Last.fm API key
 - `OPENAI_API_KEY`: OpenAI API key for AI-written summaries, insights, and recommendations
-
-If `OPENAI_API_KEY` is missing or the OpenAI call fails, the generator falls back to deterministic copy so the report still builds.
 
 Workflow schedule uses UTC cron for Korea Standard Time:
 
@@ -24,6 +36,10 @@ Generated reports are committed to `outputs/lastfm-reports`.
 The workflow deploys `outputs/lastfm-reports` to GitHub Pages.
 
 In repository settings, set **Pages > Build and deployment > Source** to **GitHub Actions**.
+
+Published site:
+
+https://kjh2623jh.github.io/lastfm-listening-reports/
 
 ## Manual run
 
