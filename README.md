@@ -8,6 +8,17 @@ https://kjh2623jh.github.io/lastfm-listening-reports/
 
 The root page redirects to the latest weekly report. Older weekly, monthly, and yearly reports are kept as static HTML files under `outputs/lastfm-reports`.
 
+## Source structure
+
+- `work/lastfm-report-generator.mjs`: CLI entry, Last.fm access, cache/history orchestration
+- `work/lastfm-report/generator/analytics.mjs`: listening metrics and period analysis
+- `work/lastfm-report/generator/copy.mjs`: deterministic and OpenAI-written report copy
+- `work/lastfm-report/generator/render.mjs`: standalone HTML assembly
+- `work/lastfm-report/client/`: core UI, profile charts, image export, bootstrap
+- `work/lastfm-report/styles/`: base, comparison, deep-dive, status, and profile styles
+
+The generator concatenates the client and style modules into each standalone report HTML file.
+
 ## What it does
 
 - Builds weekly, monthly, and yearly listening reports from Last.fm scrobble data.
@@ -15,6 +26,7 @@ The root page redirects to the latest weekly report. Older weekly, monthly, and 
 - Falls back to deterministic report text if the AI call fails, so scheduled reports still build.
 - Stores generated report HTML and a `report-registry.json` index for local navigation between reports.
 - Caches fetched Last.fm data during GitHub Actions runs to reduce repeated API calls.
+- Persists weekly aggregate tag snapshots in `data/lastfm-history/weekly-tags.json` for the six-week Tag Movement streamgraph.
 
 ## GitHub Actions setup
 
@@ -29,7 +41,7 @@ Workflow schedule uses UTC cron for Korea Standard Time:
 - Monthly: 1st day 22:00 KST
 - Yearly: January 1 22:00 KST
 
-Generated reports are committed to `outputs/lastfm-reports`.
+Generated reports and aggregate listening history are committed to `outputs/lastfm-reports` and `data/lastfm-history`.
 
 ## GitHub Pages
 
@@ -65,6 +77,7 @@ Fill in:
 LASTFM_API_KEY=...
 OPENAI_API_KEY=...
 OPENAI_MODEL=gpt-4.1-mini
+OPENAI_USE_API=false
 ```
 
 Then run:
@@ -76,3 +89,5 @@ node work/lastfm-report-generator.mjs yearly
 ```
 
 Each generated report shows an **AI Status** panel. If the OpenAI call succeeds, it shows `AI API Success`; otherwise it shows `Fallback Used` with the failure reason.
+
+Local generation skips the OpenAI API by default so Codex can write the report copy interactively without consuming API credit. GitHub Actions automatically enables the API through its `GITHUB_ACTIONS=true` environment. To test the API locally for one PowerShell session, run `$env:OPENAI_USE_API="true"` before the generator command.

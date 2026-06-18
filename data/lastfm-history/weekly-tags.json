@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "weekly": [
+    {
+      "startDate": "2026-04-27",
+      "endDate": "2026-05-03",
+      "label": "Apr 27",
+      "scrobbles": 0,
+      "tags": []
+    },
+    {
+      "startDate": "2026-05-04",
+      "endDate": "2026-05-10",
+      "label": "May 4",
+      "scrobbles": 0,
+      "tags": []
+    },
+    {
+      "startDate": "2026-05-11",
+      "endDate": "2026-05-17",
+      "label": "May 11",
+      "scrobbles": 0,
+      "tags": []
+    },
+    {
+      "startDate": "2026-05-18",
+      "endDate": "2026-05-24",
+      "label": "May 18",
+      "scrobbles": 2,
+      "tags": [
+        {
+          "name": "punk rock",
+          "score": 1
+        },
+        {
+          "name": "rock",
+          "score": 1
+        },
+        {
+          "name": "punk",
+          "score": 1
+        },
+        {
+          "name": "pop punk",
+          "score": 1
+        },
+        {
+          "name": "alternative",
+          "score": 1
+        },
+        {
+          "name": "digital fusion",
+          "score": 1
+        },
+        {
+          "name": "electronic",
+          "score": 1
+        },
+        {
+          "name": "bitpop",
+          "score": 1
+        },
+        {
+          "name": "soundtrack",
+          "score": 1
+        },
+        {
+          "name": "chiptune",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "startDate": "2026-05-25",
+      "endDate": "2026-05-31",
+      "label": "May 25",
+      "scrobbles": 171,
+      "tags": [
+        {
+          "name": "electronic",
+          "score": 44
+        },
+        {
+          "name": "french",
+          "score": 39
+        },
+        {
+          "name": "electro",
+          "score": 39
+        },
+        {
+          "name": "dance",
+          "score": 39
+        },
+        {
+          "name": "electronica",
+          "score": 39
+        },
+        {
+          "name": "hip-hop",
+          "score": 30
+        },
+        {
+          "name": "rap",
+          "score": 30
+        },
+        {
+          "name": "underground hip-hop",
+          "score": 30
+        },
+        {
+          "name": "ofwgkta",
+          "score": 26
+        },
+        {
+          "name": "swag",
+          "score": 26
+        }
+      ]
+    },
+    {
+      "startDate": "2026-06-01",
+      "endDate": "2026-06-07",
+      "label": "Jun 1",
+      "scrobbles": 417,
+      "tags": [
+        {
+          "name": "pop",
+          "score": 128
+        },
+        {
+          "name": "synthpop",
+          "score": 107
+        },
+        {
+          "name": "indie pop",
+          "score": 107
+        },
+        {
+          "name": "electronic",
+          "score": 98
+        },
+        {
+          "name": "electropop",
+          "score": 80
+        },
+        {
+          "name": "dream pop",
+          "score": 80
+        }
+      ]
+    },
+    {
+      "startDate": "2026-06-08",
+      "endDate": "2026-06-14",
+      "label": "Jun 8",
+      "scrobbles": 297,
+      "tags": [
+        {
+          "name": "electronic",
+          "score": 95
+        },
+        {
+          "name": "indie",
+          "score": 89
+        },
+        {
+          "name": "indie pop",
+          "score": 85
+        },
+        {
+          "name": "idm",
+          "score": 72
+        },
+        {
+          "name": "indie rock",
+          "score": 66
+        },
+        {
+          "name": "alternative",
+          "score": 66
+        }
+      ]
+    }
+  ]
+}

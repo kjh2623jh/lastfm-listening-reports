@@ -52,12 +52,12 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node work/lastfm-report-generator.mjs weekly
       - name: Validate report scripts
-        run: node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report-client.js
+        run: npm run check:report
       - name: Commit report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add outputs/lastfm-reports
+          git add outputs/lastfm-reports data/lastfm-history
           git diff --cached --quiet || git commit -m "Add Last.fm weekly report"
           git push
 
@@ -82,12 +82,12 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node work/lastfm-report-generator.mjs monthly
       - name: Validate report scripts
-        run: node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report-client.js
+        run: npm run check:report
       - name: Commit report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add outputs/lastfm-reports
+          git add outputs/lastfm-reports data/lastfm-history
           git diff --cached --quiet || git commit -m "Add Last.fm monthly report"
           git push
 
@@ -112,12 +112,12 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node work/lastfm-report-generator.mjs yearly
       - name: Validate report scripts
-        run: node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report-client.js
+        run: npm run check:report
       - name: Commit report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add outputs/lastfm-reports
+          git add outputs/lastfm-reports data/lastfm-history
           git diff --cached --quiet || git commit -m "Add Last.fm yearly report"
           git push
 
