@@ -17,9 +17,9 @@ on:
           - yearly
           - all
   schedule:
-    - cron: "0 13 * * 1" # Monday 22:00 KST
-    - cron: "0 13 1 * *" # 1st day of month 22:00 KST
-    - cron: "0 13 1 1 *" # Jan 1 22:00 KST
+    - cron: "0 0 * * 1" # Monday 09:00 KST
+    - cron: "0 0 1 * *" # 1st day of month 09:00 KST
+    - cron: "0 0 1 1 *" # Jan 1 09:00 KST
 
 permissions:
   contents: write
@@ -33,7 +33,7 @@ concurrency:
 jobs:
   weekly:
     name: Weekly report
-    if: github.event_name == 'workflow_dispatch' && (inputs.period == 'weekly' || inputs.period == 'all') || github.event.schedule == '0 13 * * 1'
+    if: github.event_name == 'workflow_dispatch' && (inputs.period == 'weekly' || inputs.period == 'all') || github.event.schedule == '0 0 * * 1'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -63,7 +63,7 @@ jobs:
 
   monthly:
     name: Monthly report
-    if: github.event_name == 'workflow_dispatch' && (inputs.period == 'monthly' || inputs.period == 'all') || github.event.schedule == '0 13 1 * *'
+    if: github.event_name == 'workflow_dispatch' && (inputs.period == 'monthly' || inputs.period == 'all') || github.event.schedule == '0 0 1 * *'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -93,7 +93,7 @@ jobs:
 
   yearly:
     name: Yearly report
-    if: github.event_name == 'workflow_dispatch' && (inputs.period == 'yearly' || inputs.period == 'all') || github.event.schedule == '0 13 1 1 *'
+    if: github.event_name == 'workflow_dispatch' && (inputs.period == 'yearly' || inputs.period == 'all') || github.event.schedule == '0 0 1 1 *'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
