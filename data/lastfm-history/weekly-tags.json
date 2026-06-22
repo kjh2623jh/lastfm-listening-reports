@@ -181,6 +181,38 @@
           "score": 66
         }
       ]
+    },
+    {
+      "startDate": "2026-06-15",
+      "endDate": "2026-06-21",
+      "label": "Jun 15",
+      "scrobbles": 372,
+      "tags": [
+        {
+          "name": "indie",
+          "score": 68
+        },
+        {
+          "name": "art pop",
+          "score": 50
+        },
+        {
+          "name": "lo-fi",
+          "score": 47
+        },
+        {
+          "name": "indie rock",
+          "score": 47
+        },
+        {
+          "name": "noise pop",
+          "score": 47
+        },
+        {
+          "name": "furry",
+          "score": 47
+        }
+      ]
     }
   ]
 }
