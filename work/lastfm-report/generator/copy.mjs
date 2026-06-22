@@ -112,5 +112,13 @@ export async function generateAiCopy(payload, { apiKey, model, apiUrl }) {
 
 function extractResponseText(json) {
   if (json.output_text) return json.output_text;
-  return array(json.output).flatMap((item) => array(item.content)).map((content) => content.text || "").join("").trim();
+  return asArray(json.output)
+    .flatMap((item) => asArray(item.content))
+    .map((content) => content.text || "")
+    .join("")
+    .trim();
+}
+
+function asArray(value) {
+  return Array.isArray(value) ? value : [];
 }

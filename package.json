@@ -7,7 +7,7 @@
     "report:weekly": "node work/lastfm-report-generator.mjs weekly",
     "report:monthly": "node work/lastfm-report-generator.mjs monthly",
     "report:yearly": "node work/lastfm-report-generator.mjs yearly",
-    "check:report": "node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report/generator/analytics.mjs && node --check work/lastfm-report/generator/copy.mjs && node --check work/lastfm-report/generator/render.mjs && node --check work/lastfm-report/client/core.js && node --check work/lastfm-report/client/profile-charts.js && node --check work/lastfm-report/client/image-export.js && node --check work/lastfm-report/client/bootstrap.js"
+    "check:report": "node --check work/lastfm-report-generator.mjs && node --check work/lastfm-report/generator/analytics.mjs && node --check work/lastfm-report/generator/copy.mjs && node --check work/lastfm-report/generator/render.mjs && node --check work/lastfm-report/client/core.js && node --check work/lastfm-report/client/profile-charts.js && node --check work/lastfm-report/client/image-export.js && node --check work/lastfm-report/client/bootstrap.js && node --test work/lastfm-report/generator/copy.test.mjs"
   },
   "engines": {
     "node": ">=20"
