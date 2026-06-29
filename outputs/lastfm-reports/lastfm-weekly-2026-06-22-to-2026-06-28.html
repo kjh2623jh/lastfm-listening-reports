@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Last.fm Weekly Report - 2026-06-22 ~ 2026-06-28</title>
+  <style>:root{--bg:#100f0e;--paper:#fbf7ef;--paper-2:#f2e9da;--ink:#1f1b18;--muted:#756b60;--line:rgba(31,27,24,.14);--red:#d51007;--gold:#d99a26;--teal:#0e7c7b;--blue:#2f5f98;--shadow:0 24px 70px rgba(0,0,0,.28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 10%,rgba(213,16,7,.36),transparent 28rem),radial-gradient(circle at 88% 4%,rgba(14,124,123,.34),transparent 26rem),linear-gradient(135deg,#15110f 0%,#201916 48%,#0e1818 100%);min-height:100vh}
+button,input{font:inherit}
+button{cursor:pointer}
+.page{width:min(1220px,calc(100vw - 28px));margin:0 auto;padding:28px 0 52px}
+.shell{background:rgba(251,247,239,.94);border:1px solid rgba(255,255,255,.28);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.hero{position:relative;min-height:520px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:26px;padding:30px;color:white;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.28)),var(--hero-art);background-size:cover;background-position:center;isolation:isolate}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(16,15,14,.42));z-index:-1}
+.topline{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:30px}
+.brand{display:flex;gap:12px;align-items:center;min-width:0}
+.mark{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;background:var(--red);color:white;font-weight:900;box-shadow:0 10px 22px rgba(213,16,7,.28)}
+.brand h1{margin:0;font-size:18px}
+.brand p{margin:3px 0 0;color:rgba(255,255,255,.72);font-size:13px}
+.report-controls{display:grid;gap:8px;justify-items:end}
+.control-group{display:flex;align-items:center;gap:6px;padding:5px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(0,0,0,.18);backdrop-filter:blur(10px)}
+.control-label{padding:0 7px;color:rgba(255,255,255,.62);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.control,.pill,.icon-btn{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);color:white;border-radius:999px;min-height:32px;padding:0 12px;backdrop-filter:blur(10px)}
+.pill.active{background:white;color:#241d19}
+.icon-btn{width:34px;padding:0;font-weight:900}
+.control{color-scheme:dark;width:146px}
+.hero-copy{align-self:end;max-width:660px}
+.eyebrow{margin:0 0 14px;color:#ffb1a9;font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.hero h2{margin:0;max-width:690px;font-size:clamp(42px,7vw,82px);line-height:.9}
+.summary{margin:20px 0 0;color:rgba(255,255,255,.82);line-height:1.7;font-size:16px}
+.hero-side{display:grid;align-content:end;gap:16px}
+.cover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.cover-tile{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);transform:translateY(8px);opacity:0;animation:tileIn .55s ease forwards}
+.cover-tile:nth-child(2){animation-delay:.06s}
+.cover-tile:nth-child(3){animation-delay:.12s}
+.cover-tile:nth-child(4){animation-delay:.18s}
+.cover-tile:nth-child(5){animation-delay:.24s}
+.cover-tile:nth-child(6){animation-delay:.30s}
+.cover-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease,filter .35s ease}
+.cover-tile:hover img{transform:scale(1.08);filter:saturate(1.12)}
+.cover-tile span{position:absolute;left:8px;right:8px;bottom:8px;color:white;font-size:11px;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.85);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@keyframes tileIn{to{transform:translateY(0);opacity:1}}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--paper);border-bottom:1px solid var(--line)}
+.metric{padding:22px 24px;border-right:1px solid var(--line)}
+.metric:last-child{border-right:0}
+.metric strong{display:block;font-size:clamp(34px,5vw,54px);line-height:.95}
+.metric span{display:block;margin-top:7px;color:var(--muted);font-size:13px;font-weight:700}
+.body{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:22px;padding:24px;background:linear-gradient(180deg,var(--paper) 0%,#f5efe5 100%)}
+.main,.side{display:grid;gap:18px;align-content:start}
+.panel{background:rgba(255,255,255,.68);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.7) inset}
+.panel-head{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:18px 18px 0}
+.panel h3{margin:0;font-size:21px}
+.hint{color:var(--muted);font-size:13px}
+.panel-body{padding:18px}
+.insight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.insight-card{padding:16px;border-radius:12px;background:var(--paper-2);min-height:132px}
+.insight-card b{display:block;margin-bottom:10px}
+.insight-card p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}
+.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.compare-card{padding:14px;border-radius:12px;background:white;border:1px solid var(--line)}
+.compare-card strong{display:block;font-size:26px}
+.compare-card span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.tag-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tag{border-radius:999px;background:#211c18;color:white;padding:5px 8px;font-size:12px}
+.tabs{display:flex;gap:8px;padding:0 18px 18px;overflow-x:auto}
+.tab{border:1px solid var(--line);background:white;color:var(--muted);height:36px;padding:0 13px;border-radius:999px;white-space:nowrap}
+.tab.active{background:#211c18;color:white;border-color:#211c18}
+.chart-section{display:none}
+.chart-section.active{display:block}
+.rank-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.rank-item{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.7);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;text-align:left}
+.rank-item:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(31,27,24,.10);border-color:rgba(213,16,7,.28)}
+.thumb{width:52px;height:52px;border-radius:9px;object-fit:cover;background:#ded2c2}
+.rank-title{min-width:0}
+.rank-title strong,.rank-title span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rank-title span{margin-top:3px;color:var(--muted);font-size:13px}
+.count{min-width:56px;text-align:right;color:var(--red);font-weight:900}
+.day-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px}
+.day-card{min-height:132px;border-radius:12px;padding:12px;background:linear-gradient(180deg,#fff,#f4ecdf);border:1px solid var(--line);display:grid;align-content:space-between}
+.day-card strong{font-size:26px}
+.day-card span{color:var(--muted);font-size:12px}
+.bar{height:8px;border-radius:999px;background:#dfd4c5;overflow:hidden;margin-top:10px}
+.fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--red),var(--gold))}
+.heat{display:grid;grid-template-columns:repeat(24,minmax(6px,1fr));gap:4px;align-items:end;height:170px}
+.hour{border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,var(--teal),var(--blue));min-height:4px;position:relative}
+.hour:hover:after{content:attr(data-label);position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);white-space:nowrap;background:#211c18;color:white;font-size:12px;padding:5px 7px;border-radius:6px;z-index:5}
+.story{margin:0;color:var(--muted);line-height:1.7}
+.story+ .story{margin-top:10px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.button{min-height:40px;border:1px solid var(--line);border-radius:10px;padding:0 14px;background:white;color:var(--ink)}
+.button.primary{background:var(--red);border-color:var(--red);color:white}
+.mini-list{display:grid;gap:10px}
+.mini{display:grid;grid-template-columns:46px minmax(0,1fr);gap:10px;align-items:center;text-align:left;border:0;background:transparent;padding:0}
+.mini img{width:46px;height:46px;object-fit:cover;border-radius:8px;background:#ded2c2}
+.mini strong,.mini span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini span{color:var(--muted);font-size:12px}
+.detail{position:fixed;inset:0;display:none;place-items:center;padding:20px;background:rgba(0,0,0,.58);z-index:20}
+.detail.open{display:grid}
+.detail-card{width:min(720px,100%);display:grid;grid-template-columns:210px minmax(0,1fr);gap:20px;background:var(--paper);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.detail-card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;background:#ded2c2}
+.detail-card h3{margin:0 0 8px;font-size:30px;line-height:1.05}
+.detail-card p{margin:0 0 10px;color:var(--muted);line-height:1.6}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(16px);opacity:0;pointer-events:none;background:#211c18;color:white;padding:10px 14px;border-radius:10px;z-index:30;transition:opacity .18s ease,transform .18s ease}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:980px){.hero,.body{grid-template-columns:1fr}.hero{min-height:auto}.topline{display:grid}.report-controls{justify-items:start}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.insight-grid,.compare-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.page{width:calc(100vw - 16px);padding-top:8px}.hero,.body{padding:16px}.control-group{width:100%;border-radius:14px;flex-wrap:wrap}.cover-grid{grid-template-columns:repeat(2,1fr)}.metrics{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)}.metric:last-child{border-bottom:0}.detail-card{grid-template-columns:1fr}.hero h2{font-size:42px}}
+
+.compare-bars{grid-column:1/-1;display:grid;gap:10px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#fff,#f3eadb);border:1px solid var(--line)}
+.compare-bar-row{display:grid;grid-template-columns:74px minmax(0,1fr) 58px;gap:10px;align-items:center;font-size:13px}
+.compare-bar-row span{color:var(--muted);font-weight:800}
+.compare-bar-row b{text-align:right}
+.compare-track{height:14px;border-radius:999px;background:#dfd4c5;overflow:hidden}
+.compare-track i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--red),var(--gold));box-shadow:0 0 18px rgba(213,16,7,.26)}
+.compare-bar-row.previous .compare-track i{background:linear-gradient(90deg,#7c756b,#b8ad9b);box-shadow:none}
+.more-btn{width:100%;margin-top:12px;min-height:42px;border:1px solid var(--line);border-radius:12px;background:#211c18;color:white;font-weight:800}
+.more-btn:hover{background:#3a302a}
+.heat{height:190px;align-items:stretch}
+.hour-wrap{display:grid;grid-template-rows:1fr 18px;align-items:end;gap:6px;min-width:0}
+.hour-wrap span{color:var(--muted);font-size:10px;text-align:center}
+.hour{width:100%;align-self:end}
+.tag-list{grid-column:1/-1}
+.comparison-lift{animation:tileIn .35s ease both}
+select{font:inherit}
+.report-select{width:210px;max-width:42vw}
+.pill:disabled,.icon-btn:disabled,.control:disabled{opacity:.42;cursor:not-allowed;filter:saturate(.55)}
+.pill:disabled:hover,.icon-btn:disabled:hover{transform:none}
+@media(max-width:620px){.report-select{width:100%;max-width:none}}
+
+.deep-dive-panel[hidden]{display:none}
+.deep-dive{display:grid;gap:16px}
+.deep-section{border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#fffdf8,#f0e5d4);overflow:hidden}
+.deep-section-head{display:grid;gap:6px;padding:18px 18px 0}
+.deep-section-head h4{margin:0;font-size:18px}
+.deep-section-head p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}
+.deep-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:18px}
+.deep-item{min-height:126px;display:grid;align-content:start;gap:7px;padding:14px;border-radius:12px;background:rgba(255,255,255,.72);border:1px solid rgba(31,27,24,.10)}
+.deep-item span{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+.deep-item strong{font-size:24px;line-height:1.05;word-break:keep-all}
+.deep-item p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+@media(max-width:980px){.deep-items{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.deep-items{grid-template-columns:1fr}.deep-item{min-height:auto}}
+
+.ai-status{display:grid;gap:12px}
+.status-badge{display:inline-flex;width:max-content;align-items:center;min-height:30px;border-radius:999px;padding:0 11px;font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.status-badge.ok{background:#dff5eb;color:#0f6041}
+.status-badge.fallback{background:#fff1d6;color:#8a4d00}
+.status-list{display:grid;gap:9px;margin:0}
+.status-list div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.status-list dt{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+.status-list dd{margin:0;color:var(--ink);font-size:13px;line-height:1.45;word-break:break-word}
+
+.profile-dark .clock-base,.profile-dark .clock-value-segment{pointer-events:none}
+.tag-flow-line{pointer-events:stroke}
+.flow-label{cursor:pointer;outline:none;transition:opacity .18s ease,fill .18s ease}
+.flow-label.is-hovered,.flow-label.is-selected{fill:#211c18;font-weight:900}
+.flow-label.is-dimmed{opacity:.22}
+.flow-label:focus-visible{text-decoration:underline}
+.profile-dark{background:#08090b;color:#fff}
+.profile-dark .profile-chart-head span{color:#878b94}
+.profile-dark+.profile-dark{border-top-color:#25272c}
+.tag-stream{cursor:pointer;outline:none;stroke:#08090b;stroke-width:1;transition:opacity .18s ease,filter .18s ease}
+.tag-stream.is-hovered,.tag-stream.is-selected{opacity:1;filter:brightness(1.14) drop-shadow(0 3px 5px rgba(0,0,0,.5))}
+.tag-stream.is-dimmed{opacity:.12}
+.tag-stream:focus-visible{stroke:#fff;stroke-width:2}
+.stream-point{cursor:pointer;outline:none;stroke:transparent;stroke-width:2}
+.stream-point.is-hovered{fill:#fff;stroke:#08090b}
+.profile-dark .stream-point.is-selected{fill:transparent;stroke:transparent}
+.stream-point.is-dimmed{opacity:.08}
+.stream-point:focus-visible{fill:#fff;stroke:#fff}
+.stream-label{fill:#fff;font-size:10px;font-weight:900;cursor:pointer;outline:none;pointer-events:auto}
+.stream-label.is-dimmed{opacity:.15}
+.stream-label:focus-visible{text-decoration:underline}
+.stream-tick{fill:#8d919b;font-size:10px}
+.clock-base{fill:#202226;stroke:#08090b;stroke-width:1}
+.clock-value-segment{fill:#2580ff;stroke:#08090b;stroke-width:1;transition:opacity .18s ease,filter .18s ease,fill .18s ease}
+.clock-hit{cursor:pointer;outline:none;pointer-events:all}
+.clock-hit.is-hovered~.clock-value-segment,.clock-hit.is-selected~.clock-value-segment{fill:#55a8ff;filter:drop-shadow(0 0 5px rgba(37,128,255,.55))}
+.clock-hit.is-dimmed~.clock-value-segment{opacity:.24}
+.clock-hit:focus-visible~.clock-base{stroke:#fff;stroke-width:2}
+.profile-dark .clock-core{fill:#08090b;stroke:#08090b;stroke-width:1}
+.clock-axis{fill:#a6aab2;font-size:9px}
+.profile-dark .clock-stats strong{color:#fff}
+.profile-dark .clock-stats span{color:#b4b7be}
+.profile-dark .profile-detail{background:#15171b;border-left-color:#2580ff}
+.profile-dark .profile-detail span,.profile-dark .profile-detail p{color:#aeb2ba}
+.profile-dark .profile-detail strong{color:#fff}
+.profile-panel .panel-body{padding:0}
+.profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:18px;border-top:1px solid var(--line)}
+.profile-chart{min-width:0;padding:20px}
+.profile-chart:nth-child(odd){border-right:1px solid var(--line)}
+.profile-wide{grid-column:1/-1;border-top:1px solid var(--line);border-right:0!important}
+.profile-chart-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+.profile-chart-head h4{margin:0;font-size:16px}
+.profile-chart-head span{color:var(--muted);font-size:11px;font-weight:800;text-align:right}
+.ratio-layout{display:grid;grid-template-columns:minmax(180px,220px) minmax(0,1fr);gap:20px;align-items:center}
+.ratio-svg{width:100%;aspect-ratio:1;overflow:visible}
+.ratio-ring{cursor:pointer;outline:none;transition:opacity .18s ease}
+.ratio-track,.ratio-progress{fill:none;stroke-width:12}
+.ratio-track{stroke:#ded5c8;transition:stroke .18s ease}
+.ratio-progress{stroke-linecap:round;transform:rotate(-90deg);transform-origin:100px 100px;animation:profileDraw .8s ease;transition:filter .18s ease,stroke-width .18s ease}
+.ratio-marker{fill:#211c18;stroke:#fff;stroke-width:1.5}
+.ratio-ring.is-hovered .ratio-progress,.ratio-ring.is-selected .ratio-progress{stroke-width:15;filter:drop-shadow(0 3px 4px rgba(31,27,24,.22))}
+.ratio-ring:focus-visible .ratio-track{stroke:#8b5cf6}
+.ratio-center-label{fill:#bcb2a4;font-size:6px;font-weight:900}
+.ratio-center-value{fill:#fff;font-size:12px;font-weight:900}
+.ratio-detail{display:grid;gap:5px}
+.ratio-row{width:100%;display:grid;grid-template-columns:8px minmax(0,1fr) auto;gap:7px 9px;align-items:center;padding:10px 8px;border:1px solid transparent;border-bottom-color:var(--line);border-radius:8px;background:transparent;color:var(--ink);text-align:left;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.ratio-row:hover,.ratio-row.is-selected{background:#fff;border-color:var(--line);transform:translateX(2px)}
+.ratio-row:focus-visible{outline:2px solid #8b5cf6;outline-offset:2px}
+.ratio-row i{width:8px;height:8px;border-radius:50%}
+.ratio-row span{font-size:12px;font-weight:800}
+.ratio-row strong{font-size:22px;line-height:1}
+.ratio-row small{grid-column:2/-1;color:var(--muted);font-size:10px}
+.fingerprint-wrap{display:grid;justify-items:center}
+.fingerprint-svg{width:min(100%,310px);aspect-ratio:1;overflow:visible}
+.radar-grid,.radar-spoke{fill:none;stroke:#cfc5b7;stroke-width:1}
+.radar-grid{stroke-dasharray:3 4}
+.radar-previous{fill:rgba(117,107,96,.10);stroke:#756b60;stroke-width:1.5;stroke-dasharray:5 4}
+.radar-current{fill:rgba(139,92,246,.22);stroke:#8b5cf6;stroke-width:2;transform-origin:140px 140px;animation:radarIn .55s ease;transition:opacity .18s ease}
+.radar-label{fill:#62584f;font-size:10px;font-weight:800}
+.radar-node{fill:#8b5cf6;stroke:#fff;stroke-width:2;cursor:pointer;outline:none;transition:r .18s ease,filter .18s ease}
+.radar-node.is-hovered,.radar-node.is-selected{r:8;filter:drop-shadow(0 2px 4px rgba(31,27,24,.3))}
+.radar-node:focus-visible{stroke:#211c18;stroke-width:3}
+.profile-legend{display:flex;gap:16px;justify-content:center;color:var(--muted);font-size:11px}
+.profile-legend span{display:flex;align-items:center;gap:6px}
+.profile-legend i{width:9px;height:9px;border-radius:50%}
+.legend-current{background:#8b5cf6}
+.legend-previous{background:#756b60}
+.tag-flow-svg{display:block;width:100%;max-height:300px;overflow:visible}
+.tag-flow-line{cursor:pointer;outline:none;transition:opacity .18s ease,filter .18s ease,stroke-width .18s ease}
+.tag-flow-hit{cursor:pointer}
+.tag-flow-line.is-hovered,.tag-flow-line.is-selected{opacity:1!important;filter:drop-shadow(0 3px 3px rgba(31,27,24,.24))}
+.tag-flow-line.is-dimmed{opacity:.12!important}
+.tag-flow-line:focus-visible{filter:drop-shadow(0 0 3px #211c18)}
+.flow-label{fill:#756b60;font-size:11px;font-weight:700}
+.flow-current-label{fill:#211c18;font-weight:900}
+.flow-heading{fill:#9b9083;font-size:9px;font-weight:900;letter-spacing:.08em}
+.clock-layout{display:grid;grid-template-columns:minmax(220px,320px) minmax(0,1fr);gap:28px;align-items:center;max-width:720px;margin:0 auto}
+.clock-svg{width:100%;aspect-ratio:1;overflow:visible}
+.clock-guide{fill:none;stroke:#d8cec0;stroke-width:1;stroke-dasharray:3 5}
+.clock-core{fill:#211c18;stroke:#fff;stroke-width:3}
+.clock-bar{cursor:pointer;outline:none;transform-box:fill-box;transform-origin:center bottom;animation:clockRise .55s ease;transition:opacity .18s ease,filter .18s ease,stroke-width .18s ease}
+.clock-bar.is-hovered,.clock-bar.is-selected{opacity:1!important;filter:drop-shadow(0 2px 4px rgba(31,27,24,.28));stroke:#fff;stroke-width:2}
+.clock-bar.is-dimmed{opacity:.16!important}
+.clock-bar:focus-visible{stroke:#211c18;stroke-width:3}
+.clock-label{fill:#aaa095;font-size:8px;font-weight:900}
+.clock-value{fill:#fff;font-size:20px;font-weight:900}
+.clock-sub{fill:#cfc5b7;font-size:9px}
+.clock-hour{fill:#8d8277;font-size:9px;font-weight:900}
+.clock-stats{display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 12px;align-items:baseline}
+.clock-stats strong{font-size:30px;line-height:1;color:var(--blue)}
+.clock-stats span{color:var(--muted);font-size:12px;line-height:1.4}
+.profile-detail{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;margin-top:16px;padding:12px 14px;border-left:3px solid #8b5cf6;background:#f3eee6;border-radius:0 8px 8px 0;min-height:70px}
+.profile-detail span{color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase}
+.profile-detail strong{font-size:20px}
+.profile-detail p{grid-column:1/-1;margin:0;color:var(--muted);font-size:12px;line-height:1.45}
+.profile-tooltip{position:fixed;z-index:60;display:grid;gap:3px;width:max-content;max-width:min(260px,calc(100vw - 16px));padding:10px 12px;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:#211c18;color:#fff;box-shadow:0 12px 36px rgba(0,0,0,.28);opacity:0;pointer-events:none;transform:translateY(5px);transition:opacity .12s ease,transform .12s ease}
+.profile-tooltip.show{opacity:1;transform:translateY(0)}
+.profile-tooltip b{font-size:11px;color:#cfc5b7;text-transform:uppercase}
+.profile-tooltip strong{font-size:16px}
+.profile-tooltip span{font-size:11px;color:#ddd2c5;line-height:1.4}
+.profile-empty{margin:0;color:var(--muted);font-size:13px}
+@keyframes profileDraw{from{stroke-dasharray:0 999}}
+@keyframes radarIn{from{transform:scale(.35);opacity:0}}
+@keyframes clockRise{from{opacity:0;transform:scaleY(.2)}}
+@media(max-width:760px){.profile-grid{grid-template-columns:1fr}.profile-chart,.profile-chart:nth-child(odd){border-right:0}.profile-chart+.profile-chart{border-top:1px solid var(--line)}.profile-wide{grid-column:auto}.ratio-layout,.clock-layout{grid-template-columns:1fr}.ratio-svg,.clock-svg{width:min(100%,280px);margin:0 auto}.clock-stats{max-width:340px;margin:0 auto}.tag-flow-svg{min-width:560px}.profile-wide:has(.tag-flow-svg){overflow-x:auto}.profile-detail{position:sticky;left:0}}
+
+:root{
+  --bg:#050506;
+  --paper:#0c0c0f;
+  --paper-2:#131318;
+  --ink:#f5f5f6;
+  --muted:#9b9ba5;
+  --line:rgba(255,255,255,.11);
+  --line-strong:rgba(255,255,255,.2);
+  --red:#d9231b;
+  --gold:#f4b942;
+  --teal:#49d3bd;
+  --blue:#3f91ff;
+  --violet:#a970ff;
+  --surface:rgba(17,17,21,.82);
+  --surface-raised:rgba(27,27,33,.88);
+  --shadow:0 24px 80px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+
+html{background:var(--bg);scroll-behavior:smooth}
+body{color:var(--ink);background:radial-gradient(circle at 8% 18%,rgba(213,16,7,.14),transparent 30rem),radial-gradient(circle at 90% 36%,rgba(63,145,255,.08),transparent 32rem),var(--bg);overflow-x:hidden}
+button,select{color:inherit}
+button:focus-visible,select:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+.page{width:100%;margin:0;padding:0}
+.shell{width:100%;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
+.hero{min-height:min(820px,92vh);grid-template-columns:minmax(0,1.15fr) minmax(340px,.85fr);align-items:stretch;gap:clamp(28px,5vw,80px);padding:clamp(24px,4vw,64px) max(24px,calc((100vw - 1500px)/2));background:linear-gradient(90deg,rgba(5,5,6,.96) 0%,rgba(5,5,6,.72) 48%,rgba(5,5,6,.32) 100%),linear-gradient(180deg,rgba(5,5,6,.18),rgba(5,5,6,.12) 65%,#050506 100%),var(--hero-art) center/cover no-repeat;isolation:isolate;overflow:hidden}
+.hero:before{content:none}
+.hero:after{content:none}
+.hero>div{display:flex;min-width:0;flex-direction:column}
+.topline{margin-bottom:clamp(44px,8vh,110px)}
+.brand{gap:13px}
+.mark{width:42px;height:42px;border-radius:6px;background:var(--red);box-shadow:0 10px 30px rgba(213,16,7,.3)}
+.brand h1{font-size:17px;letter-spacing:0}
+.brand p{color:rgba(255,255,255,.62)}
+.report-controls{display:flex;align-items:flex-start;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.control-group{min-height:42px;gap:4px;padding:4px;border-color:rgba(255,255,255,.16);border-radius:7px;background:rgba(8,8,10,.58);box-shadow:0 8px 30px rgba(0,0,0,.16);backdrop-filter:blur(18px)}
+.control-label{padding:0 8px;color:#777780;font-size:10px;letter-spacing:.08em}
+.control,.pill,.icon-btn{min-height:32px;border-color:transparent;border-radius:5px;background:transparent;color:#c8c8ce;backdrop-filter:none;transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease}
+.control:hover,.pill:hover,.icon-btn:hover{background:rgba(255,255,255,.08);color:#fff}
+.pill.active{background:#f5f5f6;color:#09090b}
+.pill:disabled,.icon-btn:disabled,.control:disabled{opacity:.28}
+.control{width:154px;background:rgba(255,255,255,.05)}
+.report-select{width:210px}
+.hero-copy{margin-top:auto;max-width:820px;padding-bottom:clamp(24px,5vh,60px)}
+.eyebrow{margin-bottom:18px;color:#ff6861;font-size:12px;letter-spacing:.12em}
+.hero h2{max-width:820px;font-size:clamp(52px,7.2vw,108px);line-height:.9;letter-spacing:0;text-wrap:balance}
+.summary{max-width:720px;margin-top:24px;color:rgba(255,255,255,.72);font-size:16px;line-height:1.7}
+.hero-side{align-content:end;padding-bottom:clamp(24px,5vh,60px)}
+.cover-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cover-tile{border-color:rgba(255,255,255,.18);border-radius:4px;background:#111;box-shadow:0 18px 45px rgba(0,0,0,.28)}
+.cover-tile span{left:10px;right:10px;bottom:9px;font-size:10px}
+
+.metrics{position:relative;z-index:2;grid-template-columns:repeat(4,1fr);max-width:1500px;margin:-1px auto 0;background:#09090b;border:1px solid var(--line);border-width:1px 0}
+.metric{padding:28px clamp(22px,3vw,42px);border-color:var(--line)}
+.metric strong{color:#fff;font-size:clamp(38px,4vw,64px)}
+.metric span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+
+.body{width:min(1500px,100%);margin:0 auto;grid-template-columns:minmax(0,1fr) minmax(300px,360px);gap:0;padding:0;background:transparent}
+.main,.side{gap:0}
+.main{min-width:0;border-right:1px solid var(--line)}
+.panel{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;overflow:visible}
+.panel-head{padding:clamp(28px,4vw,52px) clamp(22px,4vw,56px) 0}
+.panel h3{font-size:clamp(22px,2.1vw,32px);letter-spacing:0}
+.hint{color:#74747d;font-size:12px}
+.panel-body{padding:24px clamp(22px,4vw,56px) clamp(34px,5vw,64px)}
+.side .panel-head{padding:34px 28px 0}
+.side .panel-body{padding:20px 28px 38px}
+.side{background:rgba(10,10,12,.5)}
+
+.insight-grid{gap:10px}
+.insight-card,.compare-card,.deep-item{background:var(--surface);border:1px solid var(--line);border-radius:6px;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.insight-card:hover,.compare-card:hover,.deep-item:hover{background:var(--surface-raised);border-color:var(--line-strong);transform:translateY(-2px)}
+.insight-card p,.story,.mini span,.rank-title span,.day-card span,.deep-item p{color:var(--muted)}
+.compare-bars{background:var(--surface);border-color:var(--line);border-radius:6px}
+.compare-track,.bar{background:#24242a}
+.compare-bar-row.previous .compare-track i{background:#64646d}
+.tag{border-radius:4px;background:#24242a;color:#d5d5da}
+.tabs{gap:6px;padding:18px clamp(22px,4vw,56px) 0}
+.tab{height:36px;border-color:var(--line);border-radius:5px;background:transparent;color:var(--muted)}
+.tab:hover{border-color:var(--line-strong);color:#fff}
+.tab.active{background:#f5f5f6;color:#09090b;border-color:#f5f5f6}
+.rank-list{gap:6px}
+.rank-item{padding:10px;border-color:transparent;border-bottom-color:var(--line);border-radius:0;background:transparent;color:var(--ink)}
+.rank-item:hover{border-color:var(--line);border-radius:6px;background:var(--surface-raised);box-shadow:none;transform:translateX(3px)}
+.thumb,.mini img{border-radius:4px;background:#1d1d22}
+.count{color:#ff5b54}
+.more-btn{border-color:var(--line);border-radius:5px;background:#1b1b20;color:#fff}
+.more-btn:hover{background:#292930}
+.day-card{border-color:var(--line);border-radius:6px;background:var(--surface)}
+.hour-wrap span{color:#777780}
+.hour{background:linear-gradient(180deg,var(--teal),var(--blue))}
+.button{min-height:40px;border-color:var(--line);border-radius:5px;background:#17171c;color:#eee;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.button:hover{background:#24242a;border-color:var(--line-strong);transform:translateY(-1px)}
+.button.primary{background:var(--red);border-color:var(--red);color:#fff}
+.mini{padding:6px;border-radius:5px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.mini:hover{background:rgba(255,255,255,.06);transform:translateX(3px)}
+.detail{background:rgba(0,0,0,.78);backdrop-filter:blur(12px)}
+.detail-card{background:#111116;border:1px solid var(--line);border-radius:8px}
+.detail-card img{border-radius:5px}
+.toast{border:1px solid var(--line);border-radius:5px;background:#1b1b20}
+
+.deep-section{border-color:var(--line);border-radius:6px;background:transparent}
+.deep-section-head p,.deep-item span{color:var(--muted)}
+.status-badge.ok{background:rgba(73,211,189,.14);color:#74e8d5}
+.status-badge.fallback{background:rgba(244,185,66,.14);color:#f4c96f}
+.status-list div{border-color:var(--line)}
+.status-list dt{color:#777780}
+.status-list dd{color:var(--ink)}
+
+.profile-panel .panel-body{padding:18px 0 0}
+.profile-grid{border-color:var(--line)}
+.profile-chart{padding:clamp(24px,3vw,42px);border-color:var(--line)!important;background:transparent;color:var(--ink)}
+.profile-chart-head span{color:#777780}
+.profile-dark{background:#08080a}
+.ratio-track{stroke:#25252b}
+.ratio-marker{fill:#f5f5f6;stroke:#09090b}
+.ratio-center-label{fill:#777780}
+.ratio-row{border-bottom-color:var(--line);color:var(--ink)}
+.ratio-row:hover,.ratio-row.is-selected{background:#1a1a1f;border-color:var(--line)}
+.ratio-row small,.profile-legend,.profile-detail span,.profile-detail p{color:var(--muted)}
+.radar-grid,.radar-spoke{stroke:#34343c}
+.radar-previous{fill:rgba(255,255,255,.04);stroke:#72727c}
+.radar-label{fill:#b4b4bc}
+.profile-detail{background:#15151a;border-left-color:var(--violet)}
+.profile-detail strong{color:#fff}
+.profile-tooltip{border-color:var(--line);border-radius:5px;background:#1b1b20}
+
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-side{padding-top:0}
+  .cover-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .body{grid-template-columns:1fr}
+  .main{border-right:0}
+  .side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+  .side .panel:nth-child(odd){border-right:1px solid var(--line)}
+}
+
+@media(max-width:760px){
+  .hero{padding:18px;gap:32px}
+  .topline{gap:24px;margin-bottom:52px}
+  .report-controls{justify-content:flex-start}
+  .control-group{width:auto;max-width:100%}
+  .report-picker-group{width:100%}
+  .report-select{width:auto;min-width:0;max-width:none;flex:1}
+  .hero h2{font-size:clamp(48px,15vw,72px)}
+  .cover-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric:nth-child(2){border-right:0}
+  .metric:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .side{grid-template-columns:1fr}
+  .side .panel:nth-child(odd){border-right:0}
+  .insight-grid,.compare-grid{grid-template-columns:1fr}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+
+@media(max-width:460px){
+  .control-group{border-radius:6px}
+  .hero-side{display:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="shell">
+      <header class="hero" id="hero">
+        <div>
+          <div class="topline">
+            <div class="brand"><div class="mark">fm</div><div><h1>Listening Report</h1><p id="rangeText"></p></div></div>
+            <div class="report-controls">
+              <div class="control-group" aria-label="Report period">
+                <span class="control-label">Period</span>
+                <button class="pill" data-period="weekly" type="button">Weekly</button>
+                <button class="pill" data-period="monthly" type="button">Monthly</button>
+                <button class="pill" data-period="yearly" type="button">Yearly</button>
+              </div>
+              <div class="control-group report-picker-group" aria-label="Saved reports">
+                <span class="control-label">Report</span>
+                <button class="icon-btn" id="prevPeriod" type="button" title="Previous report">&lt;</button>
+                <select class="control report-select" id="reportPicker" aria-label="Saved report"></select>
+                <button class="icon-btn" id="nextPeriod" type="button" title="Next report">&gt;</button>
+              </div>
+              <div class="control-group" aria-label="Open report">
+                <span class="control-label">Open</span>
+                <button class="pill" id="openLocal" type="button">Open</button>
+              </div>
+            </div>
+          </div>
+          <div class="hero-copy"><p class="eyebrow">Weekly Report</p><h2 id="headline"></h2><p class="summary" id="summaryText"></p></div>
+        </div>
+        <aside class="hero-side"><div class="cover-grid" id="coverGrid"></div></aside>
+      </header>
+      <section class="metrics"><div class="metric"><strong id="mScrobbles"></strong><span>Scrobbles</span></div><div class="metric"><strong id="mTracks"></strong><span>Tracks</span></div><div class="metric"><strong id="mArtists"></strong><span>Artists</span></div><div class="metric"><strong id="mPeak"></strong><span>Peak Day</span></div></section>
+      <section class="body">
+        <div class="main">
+          <section class="panel"><div class="panel-head"><h3>Highlights</h3><span class="hint">AI generated with gpt-4.1-mini</span></div><div class="panel-body"><div class="insight-grid" id="insights"></div></div></section>
+          <section class="panel"><div class="panel-head"><h3>Comparison</h3><span class="hint" id="comparisonRange"></span></div><div class="panel-body"><p class="story" id="comparisonSummary"></p><div class="compare-grid" id="comparisonGrid"></div></div></section>
+          <section class="panel"><div class="panel-head"><h3 id="periodFocusTitle"></h3><span class="hint">Period-specific view</span></div><div class="panel-body"><div class="insight-grid" id="periodFocus"></div></div></section>
+          <section class="panel deep-dive-panel" id="deepDivePanel"><div class="panel-head"><h3 id="deepDiveTitle"></h3><span class="hint">Extended analysis</span></div><div class="panel-body"><div class="deep-dive" id="deepDive"></div></div></section>
+          <section class="panel profile-panel" id="profilePanel"><div class="panel-head"><h3>Listening Profile</h3><span class="hint">Current vs previous period</span></div><div class="panel-body profile-grid"><section class="profile-chart" aria-labelledby="ratioTitle"><div class="profile-chart-head"><h4 id="ratioTitle">Music Ratio</h4><span>Library breadth</span></div><div id="musicRatio"></div></section><section class="profile-chart" aria-labelledby="fingerprintTitle"><div class="profile-chart-head"><h4 id="fingerprintTitle">Listening Fingerprint</h4><span>Behavior scores</span></div><div id="listeningFingerprint"></div></section><section class="profile-chart profile-wide profile-dark" aria-labelledby="tagsTitle"><div class="profile-chart-head"><h4 id="tagsTitle">Tag Movement</h4><span id="tagMovementRange"></span></div><div id="tagMovement"></div></section><section class="profile-chart profile-wide profile-dark" aria-labelledby="clockTitle"><div class="profile-chart-head"><h4 id="clockTitle">Listening Clock</h4><span>KST · 24 hours</span></div><div id="listeningClock"></div></section></div></section>
+          <section class="panel"><div class="panel-head"><h3>Charts</h3><span class="hint">Click an item for details</span></div><div class="tabs"><button class="tab active" data-chart="tracks" type="button">Top Tracks</button><button class="tab" data-chart="artists" type="button">Artists</button><button class="tab" data-chart="albums" type="button">Albums</button></div><div class="panel-body"><div class="chart-section active" id="tracks"></div><div class="chart-section" id="artists"></div><div class="chart-section" id="albums"></div></div></section>
+          <section class="panel"><div class="panel-head"><h3>Daily Pace</h3><span class="hint">KST</span></div><div class="panel-body"><div class="day-grid" id="dayGrid"></div></div></section>
+          <section class="panel"><div class="panel-head"><h3>Time of Day</h3><span class="hint">Hourly scrobbles</span></div><div class="panel-body"><div class="heat" id="hourHeat"></div></div></section>
+        </div>
+        <aside class="side">
+          <section class="panel"><div class="panel-head"><h3>Report Note</h3></div><div class="panel-body"><p class="story" id="storyText"></p><div class="actions"><button class="button primary" id="copyImage" type="button">Copy image</button><button class="button" id="downloadImage" type="button">Download PNG</button></div></div></section>
+          <section class="panel"><div class="panel-head"><h3>Album Focus</h3></div><div class="panel-body"><div class="mini-list" id="albumFocus"></div></div></section>
+          <section class="panel"><div class="panel-head"><h3>Recommendation</h3></div><div class="panel-body"><p class="story"><strong id="recommendationTitle"></strong></p><p class="story" id="recommendationAbout"></p><p class="story" id="recommendationWhy"></p></div></section>
+          <section class="panel"><div class="panel-head"><h3>AI Status</h3><span class="hint">Copy source</span></div><div class="panel-body"><div class="ai-status" id="aiStatus"></div></div></section>
+        </aside>
+      </section>
+    </section>
+  </main>
+  <div class="detail" id="detail"><div class="detail-card"><img id="detailImage" alt=""><div><h3 id="detailTitle"></h3><p id="detailMeta"></p><p id="detailBody"></p><button class="button primary" id="closeDetail" type="button">Close</button></div></div></div>
+  <div class="profile-tooltip" id="profileTooltip" role="tooltip"></div>
+  <div class="toast" id="toast"></div>
+  <script>window.REPORT_DATA={"kind":"weekly","user":"ueii","filename":"lastfm-weekly-2026-06-22-to-2026-06-28.html","rangeLabel":"2026-06-22 ~ 2026-06-28","startDate":"2026-06-22","endDate":"2026-06-28","total":233,"tracks":164,"artists":36,"albums":43,"peakDay":"Sat","headline":"Fiona Apple week, Tidal gravity.","summary":"이번 주 청취 기록은 233 scrobbles로 직전 주 대비 37% 감소했습니다. Fiona Apple이 전체 청취의 33%를 차지하며 강한 여성 싱어송라이터 중심의 음악 선호가 드러났고, piano와 alternative 태그도 크게 증가해 감성적이고 서정적인 음악에 집중한 모습입니다.","story":"6월 22일부터 28일까지의 청취는 평일과 주말이 거의 균등하게 분포했고, 특히 토요일인 27일에 88회의 청취가 몰렸습니다. 기록을 보면 Fiona Apple의 1996년 데뷔 앨범 'Tidal' 수록곡들이 다수 차지하며 감성적이고 강렬한 여성 보컬 중심 음악에 몰입한 한 주였습니다. 전주 대비 전체 청취량 감소와 함께 indie, alternative 장르에 여성 싱어송라이터와 피아노 요소가 두드러지는 점이 인상적입니다.","insights":[["Fiona Apple 집중청취","총 77회 듣기로 top artist 자리를 굳혔고, 'Tidal' 앨범 관련 곡들을 집중적으로 소비했습니다. 강렬한 보컬과 감성적인 가사, 피아노 주도의 음악이 이번 주 청취 분위기를 주도했습니다."],["감성 음악의 디테일 강화","female vocalists, singer-songwriter, piano 태그 점수가 전주보다 크게 증가하며 섬세하고 따뜻한 음악적 접근이 두드러졌습니다. 기존 인디 록과 아트팝 중심에서 좀 더 서정적이고 개인적 느낌이 강화된 양상입니다."],["청취량 감소의 이유","총 scrobbles가 139 감소하며 주 활동량도 줄었는데, 이는 라이프스타일 변화 혹은 집중 감상 앨범의 변동 가능성으로 분석됩니다. 그럼에도 불구하고 일정 기간 같은 앨범을 섬세하게 다시 들으며 음악 심도가 깊어진 상태입니다."]],"comparison":{"previousRange":"2026-06-15 ~ 2026-06-21","currentTotal":233,"previousTotal":372,"delta":-139,"percent":-37,"percentText":"-37%","currentTags":[{"name":"female vocalists","score":91},{"name":"alternative","score":89},{"name":"indie","score":89},{"name":"singer-songwriter","score":77},{"name":"piano","score":77},{"name":"indie rock","score":25}],"previousTags":[{"name":"indie","score":68},{"name":"art pop","score":50},{"name":"lo-fi","score":47},{"name":"indie rock","score":47},{"name":"noise pop","score":47},{"name":"furry","score":47}],"tagShift":[{"name":"female vocalists","delta":91,"score":91},{"name":"singer-songwriter","delta":77,"score":77},{"name":"piano","delta":77,"score":77},{"name":"alternative","delta":68,"score":89},{"name":"indie","delta":21,"score":89}],"summary":"직전 같은 기간보다 139 scrobbles 감소했습니다 (-37%). Tag 기준으로는 female vocalists, singer-songwriter, piano 쪽 비중이 상대적으로 커졌습니다."},"tagTimeline":[{"startDate":"2026-05-18","endDate":"2026-05-24","label":"May 18","scrobbles":2,"tags":[{"name":"punk rock","score":1},{"name":"rock","score":1},{"name":"punk","score":1},{"name":"pop punk","score":1},{"name":"alternative","score":1},{"name":"digital fusion","score":1},{"name":"electronic","score":1},{"name":"bitpop","score":1},{"name":"soundtrack","score":1},{"name":"chiptune","score":1}]},{"startDate":"2026-05-25","endDate":"2026-05-31","label":"May 25","scrobbles":171,"tags":[{"name":"electronic","score":44},{"name":"french","score":39},{"name":"electro","score":39},{"name":"dance","score":39},{"name":"electronica","score":39},{"name":"hip-hop","score":30},{"name":"rap","score":30},{"name":"underground hip-hop","score":30},{"name":"ofwgkta","score":26},{"name":"swag","score":26}]},{"startDate":"2026-06-01","endDate":"2026-06-07","label":"Jun 1","scrobbles":417,"tags":[{"name":"pop","score":128},{"name":"synthpop","score":107},{"name":"indie pop","score":107},{"name":"electronic","score":98},{"name":"electropop","score":80},{"name":"dream pop","score":80}]},{"startDate":"2026-06-08","endDate":"2026-06-14","label":"Jun 8","scrobbles":297,"tags":[{"name":"electronic","score":95},{"name":"indie","score":89},{"name":"indie pop","score":85},{"name":"idm","score":72},{"name":"indie rock","score":66},{"name":"alternative","score":66}]},{"startDate":"2026-06-15","endDate":"2026-06-21","label":"Jun 15","scrobbles":372,"tags":[{"name":"indie","score":68},{"name":"art pop","score":50},{"name":"lo-fi","score":47},{"name":"indie rock","score":47},{"name":"noise pop","score":47},{"name":"furry","score":47}]},{"startDate":"2026-06-22","endDate":"2026-06-28","label":"Jun 22","scrobbles":233,"tags":[{"name":"female vocalists","score":91},{"name":"alternative","score":89},{"name":"indie","score":89},{"name":"singer-songwriter","score":77},{"name":"piano","score":77},{"name":"indie rock","score":25}]}],"listeningProfile":{"ratio":{"current":{"tracks":164,"albums":43,"artists":36},"previous":{"tracks":196,"albums":61,"artists":54}},"fingerprint":{"current":{"consistency":64,"discovery":87,"variety":35,"concentration":57,"replay":30},"previous":{"consistency":67,"discovery":46,"variety":44,"concentration":44,"replay":47}}},"topTracks":[{"key":"Fiona Apple -- Sleep to Dream","count":8,"artist":"Fiona Apple","title":"Sleep to Dream","album":"Tidal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Fiona Apple -- Criminal","count":6,"artist":"Fiona Apple","title":"Criminal","album":"Tidal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Fiona Apple -- Never Is a Promise","count":6,"artist":"Fiona Apple","title":"Never Is a Promise","album":"Tidal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Fiona Apple -- Shadowboxer","count":6,"artist":"Fiona Apple","title":"Shadowboxer","album":"Tidal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Fiona Apple -- Slow Like Honey","count":6,"artist":"Fiona Apple","title":"Slow Like Honey","album":"Tidal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Fiona Apple -- Sullen Girl","count":6,"artist":"Fiona Apple","title":"Sullen Girl","album":"Tidal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Fiona Apple -- The First Taste","count":6,"artist":"Fiona Apple","title":"The First Taste","album":"Tidal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Fiona Apple -- Pale September","count":5,"artist":"Fiona Apple","title":"Pale September","album":"Tidal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Fiona Apple -- The Child Is Gone","count":5,"artist":"Fiona Apple","title":"The Child Is Gone","album":"Tidal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Fiona Apple -- Carrion","count":4,"artist":"Fiona Apple","title":"Carrion","album":"Tidal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Cocteau Twins -- Heaven or Las Vegas","count":3,"artist":"Cocteau Twins","title":"Heaven or Las Vegas","album":"Heaven or Las Vegas","image":"https://lastfm.freetls.fastly.net/i/u/300x300/350066babb80493fc9fa9b63dd40086d.png"},{"key":"Fiona Apple -- On the Bound","count":3,"artist":"Fiona Apple","title":"On the Bound","album":"When the Pawn...","image":"https://lastfm.freetls.fastly.net/i/u/300x300/524044b81c3453396b2a319c1b8f26ca.jpg"},{"key":"Jesus Molina -- Kadoshin","count":3,"artist":"Jesus Molina","title":"Kadoshin","album":"Selah","image":"https://lastfm.freetls.fastly.net/i/u/300x300/6b5646578fa479ed219218734a753a9a.jpg"},{"key":"Phoenix -- Love Like a Sunset, Pt. I","count":3,"artist":"Phoenix","title":"Love Like a Sunset, Pt. I","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Phoenix -- Love Like a Sunset, Pt. II","count":3,"artist":"Phoenix","title":"Love Like a Sunset, Pt. II","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Portishead -- Roads","count":3,"artist":"Portishead","title":"Roads","album":"Dummy","image":"https://lastfm.freetls.fastly.net/i/u/300x300/29f72d0333df4193981b5ff16dd37df6.png"},{"key":"Weyes Blood -- Andromeda","count":3,"artist":"Weyes Blood","title":"Andromeda","album":"Titanic Rising","image":"https://lastfm.freetls.fastly.net/i/u/300x300/463b22f2004e52c747f0ca1607860e5f.png"},{"key":"Weyes Blood -- Picture Me Better","count":3,"artist":"Weyes Blood","title":"Picture Me Better","album":"Titanic Rising","image":"https://lastfm.freetls.fastly.net/i/u/300x300/463b22f2004e52c747f0ca1607860e5f.png"},{"key":"Weyes Blood -- Wild Time","count":3,"artist":"Weyes Blood","title":"Wild Time","album":"Titanic Rising","image":"https://lastfm.freetls.fastly.net/i/u/300x300/463b22f2004e52c747f0ca1607860e5f.png"},{"key":"Fiona Apple -- I Want You to Love Me","count":2,"artist":"Fiona Apple","title":"I Want You to Love Me","album":"Fetch the Bolt Cutters","image":"https://lastfm.freetls.fastly.net/i/u/300x300/76ce066e3dd48b6aae77e27227088aa9.jpg"}],"topArtists":[{"key":"Fiona Apple","count":77,"artist":"Fiona Apple","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Magdalena Bay","count":17,"artist":"Magdalena Bay","image":"https://lastfm.freetls.fastly.net/i/u/300x300/0787b4f6e2086c763482254d375b17f0.png"},{"key":"Portishead","count":14,"artist":"Portishead","image":"https://lastfm.freetls.fastly.net/i/u/300x300/29f72d0333df4193981b5ff16dd37df6.png"},{"key":"Tame Impala","count":13,"artist":"Tame Impala","image":"https://lastfm.freetls.fastly.net/i/u/300x300/7c9c4d1009514b178c82f2201e3a1fce.jpg"},{"key":"Arctic Monkeys","count":12,"artist":"Arctic Monkeys","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f579e414e20f40969185e41182d72472.png"},{"key":"Denzel Curry","count":12,"artist":"Denzel Curry","image":"https://lastfm.freetls.fastly.net/i/u/300x300/45b2250447f604bcbf7d3417b7d387fb.gif"},{"key":"Justice","count":12,"artist":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Radiohead","count":10,"artist":"Radiohead","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9dbcd9399ac3e622b4f508323155b644.jpg"},{"key":"Weyes Blood","count":9,"artist":"Weyes Blood","image":"https://lastfm.freetls.fastly.net/i/u/300x300/463b22f2004e52c747f0ca1607860e5f.png"},{"key":"Phoenix","count":8,"artist":"Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Cocteau Twins","count":4,"artist":"Cocteau Twins","image":"https://lastfm.freetls.fastly.net/i/u/300x300/350066babb80493fc9fa9b63dd40086d.png"},{"key":"ryojinnjane","count":4,"artist":"ryojinnjane","image":"https://lastfm.freetls.fastly.net/i/u/300x300/18b69fff066697270a52dfe630e9b847.jpg"},{"key":"Tyler, The Creator","count":4,"artist":"Tyler, The Creator","image":"https://lastfm.freetls.fastly.net/i/u/300x300/71fb53fe351cd848a71213277306e1f6.jpg"},{"key":"진동욱","count":4,"artist":"진동욱","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Jesus Molina","count":3,"artist":"Jesus Molina","image":"https://lastfm.freetls.fastly.net/i/u/300x300/6b5646578fa479ed219218734a753a9a.jpg"},{"key":"Pink Floyd","count":3,"artist":"Pink Floyd","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4bdd038cacbec705e269edb0fd38419.png"},{"key":"The Strokes","count":3,"artist":"The Strokes","image":"https://lastfm.freetls.fastly.net/i/u/300x300/576554c542da76c08f0e80c129afcb0e.png"},{"key":"Arcade Fire","count":2,"artist":"Arcade Fire","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"Childish Gambino","count":2,"artist":"Childish Gambino","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4f6f6f537a28b6b15f793515b95452b.png"},{"key":"Daniel Caesar","count":2,"artist":"Daniel Caesar","image":"https://lastfm.freetls.fastly.net/i/u/300x300/75ba6ccebd480a63f8921931adfe842b.jpg"}],"topAlbums":[{"key":"Fiona Apple -- Tidal","count":58,"artist":"Fiona Apple","album":"Tidal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/4a869ea64cde724b56a326eeeb53a70c.png"},{"key":"Magdalena Bay -- Imaginal Disk","count":15,"artist":"Magdalena Bay","album":"Imaginal Disk","image":"https://lastfm.freetls.fastly.net/i/u/300x300/0787b4f6e2086c763482254d375b17f0.png"},{"key":"Portishead -- Dummy","count":14,"artist":"Portishead","album":"Dummy","image":"https://lastfm.freetls.fastly.net/i/u/300x300/29f72d0333df4193981b5ff16dd37df6.png"},{"key":"Tame Impala -- Lonerism","count":13,"artist":"Tame Impala","album":"Lonerism","image":"https://lastfm.freetls.fastly.net/i/u/300x300/7c9c4d1009514b178c82f2201e3a1fce.jpg"},{"key":"Arctic Monkeys -- AM","count":12,"artist":"Arctic Monkeys","album":"AM","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f579e414e20f40969185e41182d72472.png"},{"key":"Denzel Curry -- Melt My Eyez See Your Future","count":12,"artist":"Denzel Curry","album":"Melt My Eyez See Your Future","image":"https://lastfm.freetls.fastly.net/i/u/300x300/45b2250447f604bcbf7d3417b7d387fb.gif"},{"key":"Fiona Apple -- Extraordinary Machine","count":12,"artist":"Fiona Apple","album":"Extraordinary Machine","image":"https://lastfm.freetls.fastly.net/i/u/300x300/76b86a4474a2ffab1df8462d1c8aa3bb.png"},{"key":"Justice -- Justice","count":12,"artist":"Justice","album":"Justice","image":"https://lastfm.freetls.fastly.net/i/u/300x300/fcd9da1dd8caf8413c73077605478a57.jpg"},{"key":"Radiohead -- In Rainbows","count":10,"artist":"Radiohead","album":"In Rainbows","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9dbcd9399ac3e622b4f508323155b644.jpg"},{"key":"Weyes Blood -- Titanic Rising","count":9,"artist":"Weyes Blood","album":"Titanic Rising","image":"https://lastfm.freetls.fastly.net/i/u/300x300/463b22f2004e52c747f0ca1607860e5f.png"},{"key":"Phoenix -- Wolfgang Amadeus Phoenix","count":8,"artist":"Phoenix","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Cocteau Twins -- Heaven or Las Vegas","count":4,"artist":"Cocteau Twins","album":"Heaven or Las Vegas","image":"https://lastfm.freetls.fastly.net/i/u/300x300/350066babb80493fc9fa9b63dd40086d.png"},{"key":"Fiona Apple -- When the Pawn...","count":4,"artist":"Fiona Apple","album":"When the Pawn...","image":"https://lastfm.freetls.fastly.net/i/u/300x300/524044b81c3453396b2a319c1b8f26ca.jpg"},{"key":"Fiona Apple -- Fetch the Bolt Cutters","count":3,"artist":"Fiona Apple","album":"Fetch the Bolt Cutters","image":"https://lastfm.freetls.fastly.net/i/u/300x300/76ce066e3dd48b6aae77e27227088aa9.jpg"},{"key":"Jesus Molina -- Selah","count":3,"artist":"Jesus Molina","album":"Selah","image":"https://lastfm.freetls.fastly.net/i/u/300x300/6b5646578fa479ed219218734a753a9a.jpg"},{"key":"Pink Floyd -- The Dark Side of the Moon","count":3,"artist":"Pink Floyd","album":"The Dark Side of the Moon","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4bdd038cacbec705e269edb0fd38419.png"},{"key":"ryojinnjane -- hidden plant","count":3,"artist":"ryojinnjane","album":"hidden plant","image":"https://lastfm.freetls.fastly.net/i/u/300x300/44e2b1fab278e8f4f959502052748c03.jpg"},{"key":"The Strokes -- The New Abnormal","count":3,"artist":"The Strokes","album":"The New Abnormal","image":"https://lastfm.freetls.fastly.net/i/u/300x300/576554c542da76c08f0e80c129afcb0e.png"},{"key":"Arcade Fire -- Funeral","count":2,"artist":"Arcade Fire","album":"Funeral","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"Childish Gambino -- \"Awaken, My Love!\"","count":2,"artist":"Childish Gambino","album":"\"Awaken, My Love!\"","image":"https://lastfm.freetls.fastly.net/i/u/300x300/d4f6f6f537a28b6b15f793515b95452b.png"}],"days":[{"label":"Mon, 06/22","short":"Mon","count":11,"order":"2026-06-22"},{"label":"Tue, 06/23","short":"Tue","count":35,"order":"2026-06-23"},{"label":"Wed, 06/24","short":"Wed","count":47,"order":"2026-06-24"},{"label":"Thu, 06/25","short":"Thu","count":17,"order":"2026-06-25"},{"label":"Fri, 06/26","short":"Fri","count":2,"order":"2026-06-26"},{"label":"Sat, 06/27","short":"Sat","count":88,"order":"2026-06-27"},{"label":"Sun, 06/28","short":"Sun","count":33,"order":"2026-06-28"}],"hours":[24,30,25,25,5,0,0,0,0,0,2,2,10,16,14,3,6,18,10,1,3,7,19,13],"periodFocus":{"title":"Weekly Rhythm","cards":[{"label":"Weekday / Weekend","value":"112 / 121","note":"평일과 주말 청취량의 무게 차이입니다."},{"label":"Late-night","value":"109","note":"00:00-04:59 KST scrobbles입니다."},{"label":"Most active day","value":"Sat, 06/27","note":"이번 주 청취가 가장 몰린 날입니다."}]},"deepDive":{"title":"Weekly Snapshot","sections":[]},"recommendation":{"title":"Extraordinary Machine - Fiona Apple","about":"Fiona Apple의 2005년 앨범으로, 섬세한 피아노 연주와 강렬한 보컬, 다채로운 리듬이 돋보이는 작품입니다.","why":"이번 주 'Tidal' 중심의 청취를 확장하고 싶다면, 같은 아티스트의 이 앨범을 추천합니다. 같은 singer-songwriter이지만 조금 더 실험적이고 다양한 음악적 텍스처를 선사해 기존 감성에 새로운 활력을 불어넣을 수 있기 때문입니다."},"ai":{"enabled":true,"source":"openai","status":"AI API success","model":"gpt-4.1-mini","error":""}};window.REPORT_REGISTRY=[{"period":"monthly","start":"2026-05-01","end":"2026-05-31","label":"2026-05","file":"lastfm-monthly-2026-05.html"},{"period":"weekly","start":"2026-06-01","end":"2026-06-07","label":"2026-06-01 ~ 2026-06-07","file":"lastfm-weekly-2026-06-01-to-2026-06-07.html"},{"period":"weekly","start":"2026-06-08","end":"2026-06-14","label":"2026-06-08 ~ 2026-06-14","file":"lastfm-weekly-2026-06-08-to-2026-06-14.html"},{"period":"weekly","start":"2026-06-15","end":"2026-06-21","label":"2026-06-15 ~ 2026-06-21","file":"lastfm-weekly-2026-06-15-to-2026-06-21.html"},{"period":"weekly","start":"2026-06-22","end":"2026-06-28","label":"2026-06-22 ~ 2026-06-28","file":"lastfm-weekly-2026-06-22-to-2026-06-28.html"}];
+const state = {
+  report: window.REPORT_DATA,
+  registry: window.REPORT_REGISTRY || [],
+  period: window.REPORT_DATA.kind
+};
+
+const expandedCharts = { track: false, artist: false, album: false };
+const fallbackImage = "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><rect width="300" height="300" fill="#d8cab9"/><circle cx="150" cy="150" r="92" fill="#201b18"/><circle cx="150" cy="150" r="20" fill="#d51007"/></svg>');
+const fingerprintInfo = {
+  consistency: "Listening volume is spread evenly across the period.",
+  discovery: "Share of tracks played only once.",
+  variety: "Artist breadth relative to unique tracks.",
+  concentration: "Share captured by the top five artists.",
+  replay: "Share of scrobbles beyond the first play of each track."
+};
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => [...document.querySelectorAll(selector)];
+const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+const img = (src) => src || fallbackImage;
+
+function profileAttrs({ chart, key, title, value, note }) {
+  return `data-profile-item data-profile-chart="${esc(chart)}" data-profile-key="${esc(key)}" data-profile-title="${esc(title)}" data-profile-value="${esc(value)}" data-profile-note="${esc(note)}" tabindex="0" role="button"`;
+}
+
+function currentFilename() {
+  return decodeURIComponent(location.pathname.split(/[\\/]/).pop() || "");
+}
+
+async function refreshRegistry() {
+  try {
+    const res = await fetch("./report-registry.json", { cache: "no-store" });
+    if (!res.ok) return;
+    const registry = await res.json();
+    if (Array.isArray(registry) && registry.length) {
+      state.registry = registry;
+      renderReportControls();
+    }
+  } catch {
+    // Standalone local HTML can still use its embedded registry.
+  }
+}
+
+function reportsFor(period) {
+  return state.registry.filter((report) => report.period === period).sort((a, b) => a.start.localeCompare(b.start));
+}
+
+function currentRegistryEntry() {
+  const file = currentFilename();
+  return state.registry.find((report) => report.file === file)
+    || state.registry.find((report) => report.period === state.report.kind && report.start === state.report.startDate);
+}
+
+function selectedReport() {
+  const picker = $("#reportPicker");
+  if (!picker || !picker.value) return null;
+  return state.registry.find((report) => report.file === picker.value) || null;
+}
+
+function renderReportControls() {
+  const entry = currentRegistryEntry();
+  const activePeriod = state.period || state.report.kind;
+  $$(".pill[data-period]").forEach((button) => {
+    const count = reportsFor(button.dataset.period).length;
+    button.disabled = count === 0;
+    button.classList.toggle("active", button.dataset.period === activePeriod);
+    button.title = count ? `${count} saved report${count > 1 ? "s" : ""}` : "저장된 리포트가 없습니다.";
+  });
+
+  const picker = $("#reportPicker");
+  const previousValue = picker.value;
+  const options = reportsFor(activePeriod);
+  picker.innerHTML = options.map((report) => `<option value="${esc(report.file)}">${esc(report.label)}</option>`).join("");
+  const selected = options.find((report) => report.file === previousValue)
+    || options.find((report) => entry && report.file === entry.file)
+    || options.at(-1);
+  if (selected) picker.value = selected.file;
+  picker.disabled = options.length === 0;
+
+  const index = options.findIndex((report) => report.file === picker.value);
+  $("#prevPeriod").disabled = index <= 0;
+  $("#nextPeriod").disabled = index < 0 || index >= options.length - 1;
+  $("#openLocal").disabled = !selected;
+}
+
+function render() {
+  const r = state.report;
+  state.period = r.kind;
+  $("#rangeText").textContent = `${r.user} · ${r.rangeLabel} · KST`;
+  $("#headline").textContent = r.headline;
+  $("#summaryText").textContent = r.summary;
+  $("#storyText").textContent = r.story;
+  $("#recommendationTitle").textContent = r.recommendation.title;
+  $("#recommendationAbout").textContent = r.recommendation.about;
+  $("#recommendationWhy").textContent = r.recommendation.why;
+  $("#mScrobbles").textContent = r.total.toLocaleString();
+  $("#mTracks").textContent = r.tracks.toLocaleString();
+  $("#mArtists").textContent = r.artists.toLocaleString();
+  $("#mPeak").textContent = r.peakDay;
+  $("#hero").style.setProperty("--hero-art", `url("${img(r.topAlbums[0]?.image)}")`);
+  renderReportControls();
+  renderCovers();
+  renderInsights();
+  renderComparison();
+  renderPeriodFocus();
+  renderDeepDive();
+  renderListeningProfile();
+  renderCharts();
+  renderDays();
+  renderHours();
+  renderAlbumFocus();
+  renderAiStatus();
+}
+
+function payload(item, type) {
+  return esc(JSON.stringify({ type, ...item }));
+}
+
+function renderCovers() {
+  $("#coverGrid").innerHTML = state.report.topAlbums.slice(0, 6).map((album) => `<button class="cover-tile" type="button" data-detail='${payload(album, "album")}'><img src="${img(album.image)}" alt="${esc(album.album)} album cover" loading="lazy"><span>${esc(album.album)}</span></button>`).join("");
+}
+
+function renderInsights() {
+  $("#insights").innerHTML = state.report.insights.map(([title, body]) => `<article class="insight-card"><b>${esc(title)}</b><p>${esc(body)}</p></article>`).join("");
+}
+
+function renderComparison() {
+  const c = state.report.comparison;
+  const max = Math.max(c.currentTotal, c.previousTotal, 1);
+  $("#comparisonRange").textContent = c.previousRange ? `vs ${c.previousRange}` : "";
+  $("#comparisonSummary").textContent = c.summary;
+  $("#comparisonGrid").innerHTML = `<article class="compare-card"><strong>${c.delta >= 0 ? "+" : ""}${c.delta.toLocaleString()}</strong><span>Scrobble delta</span></article><article class="compare-card"><strong>${c.percentText}</strong><span>Volume change</span></article><article class="compare-card"><strong>${c.previousTotal.toLocaleString()}</strong><span>Previous scrobbles</span></article><div class="compare-bars"><div class="compare-bar-row"><span>Current</span><div class="compare-track"><i style="width:${Math.round(c.currentTotal / max * 100)}%"></i></div><b>${c.currentTotal.toLocaleString()}</b></div><div class="compare-bar-row previous"><span>Previous</span><div class="compare-track"><i style="width:${Math.round(c.previousTotal / max * 100)}%"></i></div><b>${c.previousTotal.toLocaleString()}</b></div></div><div class="tag-list">${(c.tagShift || []).map((tag) => `<span class="tag">${esc(tag.name)} ${tag.delta >= 0 ? "+" : ""}${tag.delta}</span>`).join("")}</div>`;
+}
+
+function renderPeriodFocus() {
+  const focus = state.report.periodFocus || { title: "Period Focus", cards: [] };
+  $("#periodFocusTitle").textContent = focus.title;
+  $("#periodFocus").innerHTML = (focus.cards || []).map((card) => `<article class="insight-card"><b>${esc(card.label)} · ${esc(card.value)}</b><p>${esc(card.note)}</p></article>`).join("");
+}
+
+function renderDeepDive() {
+  const dive = state.report.deepDive || { title: "", sections: [] };
+  const panel = $("#deepDivePanel");
+  if (!dive.sections || dive.sections.length === 0) {
+    panel.hidden = true;
+    return;
+  }
+  panel.hidden = false;
+  $("#deepDiveTitle").textContent = dive.title || "Deep Dive";
+  $("#deepDive").innerHTML = dive.sections.map((section) => `
+    <article class="deep-section">
+      <div class="deep-section-head">
+        <h4>${esc(section.title)}</h4>
+        <p>${esc(section.note || "")}</p>
+      </div>
+      <div class="deep-items">
+        ${(section.items || []).map((item) => `
+          <div class="deep-item">
+            <span>${esc(item.label)}</span>
+            <strong>${esc(item.value)}</strong>
+            <p>${esc(item.note || "")}</p>
+          </div>
+        `).join("")}
+      </div>
+    </article>
+  `).join("");
+}
+
+function renderCharts() {
+  $("#tracks").innerHTML = list(state.report.topTracks, "track");
+  $("#artists").innerHTML = list(state.report.topArtists, "artist");
+  $("#albums").innerHTML = list(state.report.topAlbums, "album");
+}
+
+function list(rows, type) {
+  const visible = expandedCharts[type] ? rows : rows.slice(0, 5);
+  const more = rows.length > 5 ? `<button class="more-btn" type="button" data-more="${type}">${expandedCharts[type] ? "Show less" : `More ${rows.length - 5}`}</button>` : "";
+  return `<ol class="rank-list">${visible.map((item, index) => {
+    const title = type === "artist" ? item.artist : type === "album" ? item.album : item.title;
+    const sub = type === "artist" ? "Artist" : item.artist + (item.album && type === "track" ? ` · ${item.album}` : "");
+    return `<li><button class="rank-item" type="button" data-detail='${payload(item, type)}'><img class="thumb" src="${img(item.image)}" alt="" loading="lazy"><span class="rank-title"><strong>${index + 1}. ${esc(title)}</strong><span>${esc(sub)}</span></span><span class="count">${item.count}</span></button></li>`;
+  }).join("")}</ol>${more}`;
+}
+
+function renderDays() {
+  const max = Math.max(...state.report.days.map((day) => day.count), 1);
+  $("#dayGrid").innerHTML = state.report.days.map((day) => `<article class="day-card"><span>${esc(day.label)}</span><strong>${day.count}</strong><div class="bar"><div class="fill" style="width:${Math.round(day.count / max * 100)}%"></div></div></article>`).join("");
+}
+
+function renderHours() {
+  const max = Math.max(...state.report.hours, 1);
+  $("#hourHeat").innerHTML = state.report.hours.map((count, hour) => `<div class="hour-wrap"><div class="hour" data-label="${String(hour).padStart(2, "0")}:00 · ${count}" style="height:${Math.max(4, Math.round(count / max * 100))}%"></div><span>${hour % 3 === 0 ? String(hour).padStart(2, "0") : ""}</span></div>`).join("");
+}
+
+function renderAlbumFocus() {
+  $("#albumFocus").innerHTML = state.report.topAlbums.slice(0, 6).map((album) => `<button class="mini" type="button" data-detail='${payload(album, "album")}'><img src="${img(album.image)}" alt="" loading="lazy"><span><strong>${esc(album.album)}</strong><span>${esc(album.artist)} · ${album.count} scrobbles</span></span></button>`).join("");
+}
+
+function renderAiStatus() {
+  const ai = state.report.ai || {};
+  const ok = Boolean(ai.enabled);
+  $("#aiStatus").innerHTML = `
+    <div class="status-badge ${ok ? "ok" : "fallback"}">${ok ? "AI API Success" : "Fallback Used"}</div>
+    <dl class="status-list">
+      <div><dt>Source</dt><dd>${esc(ai.source || (ok ? "openai" : "fallback"))}</dd></div>
+      <div><dt>Model</dt><dd>${esc(ai.model || "-")}</dd></div>
+      <div><dt>Status</dt><dd>${esc(ai.status || (ok ? "AI API success" : "Fallback summary"))}</dd></div>
+      ${ok ? "" : `<div><dt>Reason</dt><dd>${esc(ai.error || "AI copy was not generated.")}</dd></div>`}
+    </dl>
+  `;
+}
+
+function openDetail(item) {
+  const title = item.type === "artist" ? item.artist : item.type === "album" ? item.album : item.title;
+  const meta = item.type === "artist" ? `${item.count} scrobbles` : `${item.artist} · ${item.count} scrobbles`;
+  $("#detailImage").src = img(item.image);
+  $("#detailImage").alt = title;
+  $("#detailTitle").textContent = title;
+  $("#detailMeta").textContent = meta;
+  $("#detailBody").textContent = item.album && item.type !== "album" ? `Album: ${item.album}` : "";
+  $("#detailBody").style.display = $("#detailBody").textContent ? "block" : "none";
+  $("#detail").classList.add("open");
+}
+
+function openLocalEntry(entry) {
+  if (!entry) {
+    toast("선택 가능한 리포트가 없습니다.");
+    return;
+  }
+  if (currentFilename() === entry.file) {
+    toast("현재 열려 있는 리포트입니다.");
+    return;
+  }
+  location.href = entry.file;
+}
+
+function shift(delta) {
+  const options = reportsFor(state.period);
+  const current = selectedReport();
+  const index = options.findIndex((report) => current && report.file === current.file);
+  const target = options[index + delta];
+  if (target) openLocalEntry(target);
+}
+
+function renderListeningProfile() {
+  renderMusicRatio();
+  renderFingerprint();
+  renderTagMovement();
+  renderListeningClock();
+}
+
+function renderMusicRatio() {
+  const profile = state.report.listeningProfile?.ratio || {};
+  const current = profile.current || { tracks: state.report.tracks, albums: state.report.albums || state.report.topAlbums.length, artists: state.report.artists };
+  const previous = profile.previous || { tracks: 0, albums: 0, artists: 0 };
+  const rows = [
+    { key: "tracks", label: "Tracks", color: "#2f80ed", radius: 76 },
+    { key: "albums", label: "Albums", color: "#12a594", radius: 56 },
+    { key: "artists", label: "Artists", color: "#d51007", radius: 36 }
+  ];
+  const rings = rows.map((row) => {
+    const value = Number(current[row.key] || 0);
+    const before = Number(previous[row.key] || 0);
+    const delta = value - before;
+    const ceiling = Math.max(value, before, 1);
+    const circumference = 2 * Math.PI * row.radius;
+    const dash = circumference * value / ceiling;
+    const markerAngle = before / ceiling * 359 - 90;
+    const marker = polarPoint(100, 100, row.radius, markerAngle);
+    const note = before ? `Previous ${before.toLocaleString()} · ${delta >= 0 ? "+" : ""}${delta.toLocaleString()} change` : "Previous-period data is unavailable.";
+    return `<g class="ratio-ring" ${profileAttrs({ chart: "ratio", key: row.key, title: row.label, value: value.toLocaleString(), note })}><circle class="ratio-track" cx="100" cy="100" r="${row.radius}"></circle><circle class="ratio-progress" cx="100" cy="100" r="${row.radius}" stroke="${row.color}" stroke-dasharray="${dash.toFixed(2)} ${circumference.toFixed(2)}"></circle>${before ? `<circle class="ratio-marker" cx="${marker.x}" cy="${marker.y}" r="3.5"></circle>` : ""}</g>`;
+  }).join("");
+  const detail = rows.map((row) => {
+    const value = Number(current[row.key] || 0);
+    const before = Number(previous[row.key] || 0);
+    const delta = value - before;
+    const note = before ? `Previous ${before.toLocaleString()} · ${delta >= 0 ? "+" : ""}${delta.toLocaleString()} change` : "Previous-period data is unavailable.";
+    return `<button class="ratio-row" type="button" ${profileAttrs({ chart: "ratio", key: row.key, title: row.label, value: value.toLocaleString(), note })}><i style="background:${row.color}"></i><span>${row.label}</span><strong>${value.toLocaleString()}</strong><small>${before ? `${delta >= 0 ? "+" : ""}${delta.toLocaleString()} vs previous` : "No previous data"}</small></button>`;
+  }).join("");
+  $("#musicRatio").innerHTML = `<div class="ratio-layout"><svg class="ratio-svg" viewBox="0 0 200 200" role="img" aria-label="Track, album, and artist breadth compared with the previous period">${rings}<circle cx="100" cy="100" r="19" fill="#211c18"></circle><text x="100" y="96" text-anchor="middle" class="ratio-center-label">SCROBBLES</text><text x="100" y="112" text-anchor="middle" class="ratio-center-value">${state.report.total}</text></svg><div class="ratio-detail">${detail}</div></div><div class="profile-detail" id="ratioDetail"></div>`;
+  setInitialProfileDetail("ratio", "tracks");
+}
+
+function renderFingerprint() {
+  const fingerprint = state.report.listeningProfile?.fingerprint || {};
+  const current = fingerprint.current || { consistency: 0, discovery: 0, variety: 0, concentration: 0, replay: 0 };
+  const previous = fingerprint.previous || { consistency: 0, discovery: 0, variety: 0, concentration: 0, replay: 0 };
+  const axes = [
+    ["Consistency", "consistency"],
+    ["Discovery", "discovery"],
+    ["Variety", "variety"],
+    ["Concentration", "concentration"],
+    ["Replay", "replay"]
+  ];
+  const center = 140;
+  const radius = 86;
+  const axisPoints = axes.map((_, index) => polarPoint(center, center, radius, index * 72 - 90));
+  const grid = [0.33, 0.66, 1].map((scale) => `<polygon class="radar-grid" points="${axisPoints.map((point) => `${center + (point.x - center) * scale},${center + (point.y - center) * scale}`).join(" ")}"></polygon>`).join("");
+  const spokes = axisPoints.map((point) => `<line class="radar-spoke" x1="${center}" y1="${center}" x2="${point.x}" y2="${point.y}"></line>`).join("");
+  const labels = axes.map(([label], index) => {
+    const point = polarPoint(center, center, 116, index * 72 - 90);
+    return `<text class="radar-label" x="${point.x}" y="${point.y}" text-anchor="${point.x < center - 10 ? "end" : point.x > center + 10 ? "start" : "middle"}">${label}</text>`;
+  }).join("");
+  const previousPoints = radarMetricPoints(previous, axes, center, radius);
+  const currentPoints = radarMetricPoints(current, axes, center, radius);
+  const nodes = axes.map(([label, key], index) => {
+    const score = Number(current[key] || 0);
+    const before = Number(previous[key] || 0);
+    const point = polarPoint(center, center, radius * score / 100, index * 72 - 90);
+    return `<circle class="radar-node" cx="${point.x}" cy="${point.y}" r="5" ${profileAttrs({ chart: "fingerprint", key, title: label, value: `${score} / 100`, note: `Previous ${before} · ${fingerprintInfo[key]}` })}></circle>`;
+  }).join("");
+  $("#listeningFingerprint").innerHTML = `<div class="fingerprint-wrap"><svg class="fingerprint-svg" viewBox="0 0 280 280" role="img" aria-label="Listening behavior fingerprint compared with the previous period">${grid}${spokes}<polygon class="radar-previous" points="${previousPoints}"></polygon><polygon class="radar-current" points="${currentPoints}"></polygon>${nodes}${labels}</svg><div class="profile-legend"><span><i class="legend-current"></i>Current</span><span><i class="legend-previous"></i>Previous</span></div></div><div class="profile-detail" id="fingerprintDetail"></div>`;
+  setInitialProfileDetail("fingerprint", "consistency");
+}
+
+function renderTagMovement() {
+  const timeline = state.report.tagTimeline || [];
+  if (!timeline.some((snapshot) => snapshot.tags?.length)) {
+    $("#tagMovement").innerHTML = `<p class="profile-empty">Tag data is unavailable for this period.</p>`;
+    return;
+  }
+  $("#tagMovementRange").textContent = `${timeline[0].label} – ${timeline.at(-1).label}`;
+  const palette = ["#b77cff", "#4aa3f5", "#5ad0b7", "#24459b", "#8744d4", "#2f8d91", "#5d27b8", "#91d5ff"];
+  const totals = new Map();
+  timeline.forEach((snapshot) => snapshot.tags.forEach((tag) => totals.set(tag.name, (totals.get(tag.name) || 0) + tag.score)));
+  const currentNames = timeline.at(-1).tags.slice(0, 6).map((tag) => tag.name);
+  const historicalNames = [...totals.entries()].sort((a, b) => b[1] - a[1]).map(([name]) => name);
+  const names = [...new Set([...currentNames, ...historicalNames])].slice(0, 8);
+  const width = 800;
+  const height = 310;
+  const center = 142;
+  const maxHeight = 196;
+  const xFor = (index) => 54 + index * (692 / Math.max(timeline.length - 1, 1));
+  const scoreRows = timeline.map((snapshot) => {
+    const map = new Map(snapshot.tags.map((tag) => [tag.name, tag.score]));
+    return names.map((name) => map.get(name) || 0);
+  });
+  const maxTotal = Math.max(...scoreRows.map((scores) => scores.reduce((sum, score) => sum + score, 0)), 1);
+  const layers = names.map((name, nameIndex) => {
+    const top = [];
+    const bottom = [];
+    timeline.forEach((_, timeIndex) => {
+      const scores = scoreRows[timeIndex];
+      const total = scores.reduce((sum, score) => sum + score, 0);
+      const start = center - total / maxTotal * maxHeight / 2;
+      const before = scores.slice(0, nameIndex).reduce((sum, score) => sum + score, 0) / maxTotal * maxHeight;
+      const thickness = scores[nameIndex] / maxTotal * maxHeight;
+      top.push({ x: xFor(timeIndex), y: start + before });
+      bottom.push({ x: xFor(timeIndex), y: start + before + thickness });
+    });
+    return { name, color: palette[nameIndex % palette.length], top, bottom };
+  });
+  const bands = layers.map((layer) => {
+    const first = scoreRows[0][names.indexOf(layer.name)];
+    const latest = scoreRows.at(-1)[names.indexOf(layer.name)];
+    const values = scoreRows.map((scores) => scores[names.indexOf(layer.name)]);
+    const peak = Math.max(...values);
+    const peakIndex = values.indexOf(peak);
+    const note = `Peak ${peak} on ${timeline[peakIndex].label} · ${values.filter(Boolean).length}/${timeline.length} active weeks`;
+    const attrs = profileAttrs({ chart: "tags", key: layer.name, title: layer.name, value: `${latest} latest score`, note: `First ${first} · ${note}` });
+    return `<path class="tag-stream" d="${streamAreaPath(layer.top, layer.bottom)}" fill="${layer.color}" ${attrs}></path>`;
+  }).join("");
+  const points = layers.flatMap((layer, nameIndex) => timeline.map((snapshot, timeIndex) => {
+    const score = scoreRows[timeIndex][nameIndex];
+    if (!score) return "";
+    const y = (layer.top[timeIndex].y + layer.bottom[timeIndex].y) / 2;
+    const attrs = profileAttrs({ chart: "tags", key: layer.name, title: `${layer.name} · ${snapshot.label}`, value: `${score} tag score`, note: `${snapshot.scrobbles.toLocaleString()} scrobbles in this week` });
+    return `<circle class="stream-point" cx="${layer.top[timeIndex].x}" cy="${y}" r="8" fill="transparent" ${attrs}></circle>`;
+  })).join("");
+  const labels = layers.map((layer, nameIndex) => {
+    const values = scoreRows.map((scores) => scores[nameIndex]);
+    const latestThickness = layer.bottom.at(-1).y - layer.top.at(-1).y;
+    const labelIndex = latestThickness >= 13 ? timeline.length - 1 : values.indexOf(Math.max(...values));
+    const thickness = layer.bottom[labelIndex].y - layer.top[labelIndex].y;
+    if (thickness < 13) return "";
+    const x = layer.top[labelIndex].x + (labelIndex === timeline.length - 1 ? -8 : 0);
+    const y = (layer.top[labelIndex].y + layer.bottom[labelIndex].y) / 2 + 4;
+    const attrs = profileAttrs({ chart: "tags", key: layer.name, title: layer.name, value: `${values.at(-1)} latest score`, note: `Peak ${Math.max(...values)} across ${timeline.length} weeks` });
+    return `<text class="stream-label" x="${x}" y="${y}" text-anchor="${labelIndex === timeline.length - 1 ? "end" : "middle"}" ${attrs}>${esc(layer.name)}</text>`;
+  }).join("");
+  const ticks = timeline.map((snapshot, index) => `<text class="stream-tick" x="${xFor(index)}" y="292" text-anchor="middle">${esc(snapshot.label)}</text>`).join("");
+  $("#tagMovement").innerHTML = `<svg class="tag-flow-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="Top tag movement across ${timeline.length} weekly snapshots">${bands}${points}${labels}${ticks}</svg><div class="profile-detail profile-detail-dark" id="tagsDetail"></div>`;
+  const currentTop = timeline.at(-1).tags.find((tag) => names.includes(tag.name))?.name || names[0];
+  setInitialProfileDetail("tags", currentTop);
+}
+
+function streamAreaPath(top, bottom) {
+  const upper = top.map((point, index) => `${index ? "L" : "M"} ${point.x} ${point.y}`).join(" ");
+  const lower = [...bottom].reverse().map((point) => `L ${point.x} ${point.y}`).join(" ");
+  return `${upper} ${lower} Z`;
+}
+
+function renderListeningClock() {
+  const hours = state.report.hours || new Array(24).fill(0);
+  const max = Math.max(...hours, 1);
+  const busiest = hours.indexOf(max);
+  const segments = hours.map((count, hour) => {
+    const start = hour * 15 - 89.2;
+    const end = (hour + 1) * 15 - 90.8;
+    const valueRadius = 55 + count / max * 59;
+    const time = `${String(hour).padStart(2, "0")}:00`;
+    const attrs = profileAttrs({ chart: "clock", key: String(hour), title: time, value: `${count.toLocaleString()} scrobbles`, note: `${time}-${String(hour).padStart(2, "0")}:59 KST` });
+    return `<g class="clock-segment"><path class="clock-hit" d="${donutSectorPath(130, 130, 54, 116, start, end)}" fill="transparent" ${attrs}></path><path class="clock-base" d="${donutSectorPath(130, 130, 55, 114, start, end)}"></path>${count ? `<path class="clock-value-segment" d="${donutSectorPath(130, 130, 55, valueRadius, start, end)}"></path>` : ""}</g>`;
+  }).join("");
+  $("#listeningClock").innerHTML = `<div class="clock-layout"><svg class="clock-svg" viewBox="0 0 260 260" role="img" aria-label="Listening volume by hour in Korea Standard Time">${segments}<circle class="clock-core" cx="130" cy="130" r="53"></circle><text class="clock-axis" x="130" y="96" text-anchor="middle">00</text><text class="clock-axis" x="165" y="134" text-anchor="middle">06</text><text class="clock-axis" x="130" y="171" text-anchor="middle">12</text><text class="clock-axis" x="94" y="134" text-anchor="middle">18</text></svg><div><div class="clock-stats"><strong>${String(busiest).padStart(2, "0")}:00</strong><span>Busiest hour</span><strong>${max.toLocaleString()}</strong><span>Scrobbles in busiest hour</span><strong>${Math.round(timeBandTotal(hours, 21, 5) / Math.max(state.report.total, 1) * 100)}%</strong><span>Night share · 21:00-04:59</span></div><div class="profile-detail profile-detail-dark" id="clockDetail"></div></div></div>`;
+  setInitialProfileDetail("clock", String(busiest));
+}
+
+function donutSectorPath(cx, cy, innerRadius, outerRadius, startDegrees, endDegrees) {
+  const outerStart = polarPoint(cx, cy, outerRadius, startDegrees);
+  const outerEnd = polarPoint(cx, cy, outerRadius, endDegrees);
+  const innerEnd = polarPoint(cx, cy, innerRadius, endDegrees);
+  const innerStart = polarPoint(cx, cy, innerRadius, startDegrees);
+  const largeArc = Math.abs(endDegrees - startDegrees) > 180 ? 1 : 0;
+  return `M ${outerStart.x} ${outerStart.y} A ${outerRadius} ${outerRadius} 0 ${largeArc} 1 ${outerEnd.x} ${outerEnd.y} L ${innerEnd.x} ${innerEnd.y} A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${innerStart.x} ${innerStart.y} Z`;
+}
+
+function radarMetricPoints(metrics, axes, center, radius) {
+  return axes.map(([, key], index) => {
+    const score = Math.max(0, Math.min(100, Number(metrics[key] || 0)));
+    const point = polarPoint(center, center, radius * score / 100, index * 72 - 90);
+    return `${point.x},${point.y}`;
+  }).join(" ");
+}
+
+function polarPoint(cx, cy, radius, degrees) {
+  const radians = degrees * Math.PI / 180;
+  return { x: Number((cx + Math.cos(radians) * radius).toFixed(2)), y: Number((cy + Math.sin(radians) * radius).toFixed(2)) };
+}
+
+function timeBandTotal(hours, start, end) {
+  return hours.reduce((sum, count, hour) => {
+    const inBand = start < end ? hour >= start && hour < end : hour >= start || hour < end;
+    return sum + (inBand ? count : 0);
+  }, 0);
+}
+
+function setInitialProfileDetail(chart, key) {
+  const item = $$(`[data-profile-chart="${chart}"]`).find((candidate) => candidate.dataset.profileKey === key && candidate.tabIndex >= 0);
+  if (item) selectProfileItem(item, true);
+}
+
+function selectProfileItem(item, initial = false) {
+  const chart = item.dataset.profileChart;
+  const key = item.dataset.profileKey;
+  $$(`[data-profile-chart="${chart}"]`).forEach((candidate) => {
+    candidate.classList.toggle("is-selected", candidate.dataset.profileKey === key);
+    candidate.setAttribute("aria-pressed", candidate.dataset.profileKey === key ? "true" : "false");
+  });
+  const detail = $(`#${chart}Detail`);
+  if (detail) {
+    detail.innerHTML = `<span>${esc(item.dataset.profileTitle)}</span><strong>${esc(item.dataset.profileValue)}</strong><p>${esc(item.dataset.profileNote)}</p>`;
+  }
+  if (chart === "clock") updateClockCenter(item, initial ? "BUSIEST" : "SELECTED");
+}
+
+function setProfileHover(item, active) {
+  const chart = item.dataset.profileChart;
+  const key = item.dataset.profileKey;
+  $$(`[data-profile-chart="${chart}"]`).forEach((candidate) => {
+    candidate.classList.toggle("is-hovered", active && candidate.dataset.profileKey === key);
+    candidate.classList.toggle("is-dimmed", active && candidate.dataset.profileKey !== key);
+  });
+  if (chart === "clock") {
+    if (active) updateClockCenter(item, "HOUR");
+    else {
+      const selected = $$('[data-profile-chart="clock"].is-selected').find((candidate) => candidate.tabIndex >= 0);
+      if (selected) updateClockCenter(selected, "SELECTED");
+    }
+  }
+}
+
+function updateClockCenter(item, label) {
+  if (!item || !$("#clockCenterLabel")) return;
+  $("#clockCenterLabel").textContent = label;
+  $("#clockCenterValue").textContent = item.dataset.profileTitle;
+  $("#clockCenterSub").textContent = item.dataset.profileValue;
+}
+
+function showProfileTooltip(item, event) {
+  const tooltip = $("#profileTooltip");
+  tooltip.innerHTML = `<b>${esc(item.dataset.profileTitle)}</b><strong>${esc(item.dataset.profileValue)}</strong><span>${esc(item.dataset.profileNote)}</span>`;
+  tooltip.classList.add("show");
+  positionProfileTooltip(event);
+}
+
+function positionProfileTooltip(event) {
+  const tooltip = $("#profileTooltip");
+  const rect = tooltip.getBoundingClientRect();
+  const sourceRect = event.currentTarget?.getBoundingClientRect?.() || event.target?.getBoundingClientRect?.();
+  const x = Number.isFinite(event.clientX) && event.clientX ? event.clientX : sourceRect?.left + sourceRect?.width / 2 || 16;
+  const y = Number.isFinite(event.clientY) && event.clientY ? event.clientY : sourceRect?.top || 16;
+  tooltip.style.left = `${Math.max(8, Math.min(window.innerWidth - rect.width - 8, x + 14))}px`;
+  tooltip.style.top = `${Math.max(8, Math.min(window.innerHeight - rect.height - 8, y + 14))}px`;
+}
+
+function hideProfileTooltip() {
+  $("#profileTooltip").classList.remove("show");
+}
+
+function drawCanvas() {
+  const r = state.report;
+  const canvas = document.createElement("canvas");
+  canvas.width = 1200;
+  canvas.height = 1500;
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#100f0e";
+  ctx.fillRect(0, 0, 1200, 1500);
+  const g = ctx.createLinearGradient(0, 0, 1200, 1500);
+  g.addColorStop(0, "#d51007");
+  g.addColorStop(.55, "#171210");
+  g.addColorStop(1, "#0e7c7b");
+  ctx.globalAlpha = .72;
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, 1200, 1500);
+  ctx.globalAlpha = 1;
+  round(ctx, 82, 82, 1036, 1336, 28);
+  ctx.fillStyle = "#fbf7ef";
+  ctx.fill();
+  ctx.fillStyle = "#d51007";
+  round(ctx, 132, 132, 74, 74, 14);
+  ctx.fill();
+  ctx.fillStyle = "#fff";
+  ctx.font = "900 30px Segoe UI, Arial";
+  ctx.fillText("fm", 153, 180);
+  ctx.fillStyle = "#d51007";
+  ctx.font = "900 25px Segoe UI, Arial";
+  ctx.fillText("LAST.FM LISTENING REPORT", 132, 266);
+  ctx.fillStyle = "#1f1b18";
+  ctx.font = "900 58px Segoe UI, Arial";
+  wrap(ctx, r.headline, 132, 350, 920, 68);
+  ctx.fillStyle = "#756b60";
+  ctx.font = "26px Segoe UI, Arial";
+  wrap(ctx, `${r.user} · ${r.rangeLabel} · ${r.total.toLocaleString()} scrobbles`, 132, 505, 900, 36);
+  [["Scrobbles", r.total], ["Tracks", r.tracks], ["Artists", r.artists], ["Peak Day", r.peakDay]].forEach(([label, value], i) => {
+    const x = 132 + i * 238;
+    ctx.fillStyle = "#f2e9da";
+    round(ctx, x, 610, 210, 132, 16);
+    ctx.fill();
+    ctx.fillStyle = "#1f1b18";
+    ctx.font = "900 46px Segoe UI, Arial";
+    ctx.fillText(String(value), x + 24, 672);
+    ctx.fillStyle = "#756b60";
+    ctx.font = "22px Segoe UI, Arial";
+    ctx.fillText(label, x + 24, 713);
+  });
+  ctx.fillStyle = "#1f1b18";
+  ctx.font = "900 32px Segoe UI, Arial";
+  ctx.fillText("Top Tracks", 132, 830);
+  ctx.fillText("Top Albums", 650, 830);
+  drawRows(ctx, r.topTracks, 132, 870, "track");
+  drawRows(ctx, r.topAlbums, 650, 870, "album");
+  ctx.fillStyle = "#0e7c7b";
+  round(ctx, 132, 1278, 936, 88, 16);
+  ctx.fill();
+  ctx.fillStyle = "#fff";
+  ctx.font = "700 25px Segoe UI, Arial";
+  wrap(ctx, `Recommendation: ${r.recommendation.title}`, 164, 1328, 850, 32);
+  return canvas;
+}
+
+function drawRows(ctx, rows, x, y, type) {
+  rows.slice(0, 5).forEach((item, i) => {
+    const yy = y + i * 78;
+    ctx.fillStyle = "#fffaf1";
+    round(ctx, x, yy, 430, 58, 12);
+    ctx.fill();
+    ctx.fillStyle = "#d51007";
+    ctx.font = "900 22px Segoe UI, Arial";
+    ctx.fillText(String(i + 1), x + 18, yy + 37);
+    ctx.fillStyle = "#1f1b18";
+    ctx.font = "700 21px Segoe UI, Arial";
+    ctx.fillText(trunc(type === "album" ? item.album : item.title, 26), x + 58, yy + 30);
+    ctx.fillStyle = "#756b60";
+    ctx.font = "18px Segoe UI, Arial";
+    ctx.fillText(trunc(item.artist, 28), x + 58, yy + 51);
+    ctx.fillStyle = "#d51007";
+    ctx.font = "900 21px Segoe UI, Arial";
+    ctx.fillText(String(item.count), x + 380, yy + 35);
+  });
+}
+
+function round(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+function wrap(ctx, text, x, y, max, line) {
+  const words = String(text).split(" ");
+  let current = "";
+  for (const word of words) {
+    const test = current ? current + " " + word : word;
+    if (ctx.measureText(test).width > max && current) {
+      ctx.fillText(current, x, y);
+      y += line;
+      current = word;
+    } else {
+      current = test;
+    }
+  }
+  if (current) ctx.fillText(current, x, y);
+}
+
+function trunc(text, length) {
+  text = String(text || "");
+  return text.length > length ? text.slice(0, length - 1) + "…" : text;
+}
+
+function copyImage() {
+  drawCanvas().toBlob(async (blob) => {
+    try {
+      await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+      toast("리포트 이미지를 클립보드에 복사했습니다.");
+    } catch {
+      download(blob);
+      toast("클립보드 복사가 막혀 PNG로 다운로드했습니다.");
+    }
+  }, "image/png");
+}
+
+function downloadImage() {
+  drawCanvas().toBlob((blob) => {
+    download(blob);
+    toast("PNG를 다운로드했습니다.");
+  }, "image/png");
+}
+
+function download(blob) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `lastfm-${state.report.kind}-${state.report.startDate}.png`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function toast(msg) {
+  $("#toast").textContent = msg;
+  $("#toast").classList.add("show");
+  setTimeout(() => $("#toast").classList.remove("show"), 2400);
+}
+
+document.addEventListener("click", (event) => {
+  const more = event.target.closest("[data-more]");
+  if (more) {
+    expandedCharts[more.dataset.more] = !expandedCharts[more.dataset.more];
+    renderCharts();
+    return;
+  }
+  const detail = event.target.closest("[data-detail]");
+  if (detail) openDetail(JSON.parse(detail.dataset.detail));
+});
+
+$$(".tab").forEach((tab) => tab.addEventListener("click", () => {
+  $$(".tab").forEach((item) => item.classList.toggle("active", item === tab));
+  $$(".chart-section").forEach((section) => section.classList.toggle("active", section.id === tab.dataset.chart));
+}));
+
+$$(".pill[data-period]").forEach((button) => button.addEventListener("click", () => {
+  if (button.disabled) return;
+  state.period = button.dataset.period;
+  renderReportControls();
+}));
+
+$("#reportPicker").addEventListener("change", renderReportControls);
+$("#prevPeriod").addEventListener("click", () => shift(-1));
+$("#nextPeriod").addEventListener("click", () => shift(1));
+$("#openLocal").addEventListener("click", () => openLocalEntry(selectedReport()));
+$("#copyImage").addEventListener("click", copyImage);
+$("#downloadImage").addEventListener("click", downloadImage);
+$("#closeDetail").addEventListener("click", () => $("#detail").classList.remove("open"));
+$("#detail").addEventListener("click", (event) => {
+  if (event.target.id === "detail") $("#detail").classList.remove("open");
+});
+
+$("#profilePanel").addEventListener("pointerover", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (!item) return;
+  const previous = event.relatedTarget?.closest?.("[data-profile-item]");
+  if (previous?.dataset.profileChart === item.dataset.profileChart && previous?.dataset.profileKey === item.dataset.profileKey) return;
+  setProfileHover(item, true);
+  showProfileTooltip(item, event);
+});
+
+$("#profilePanel").addEventListener("pointermove", (event) => {
+  if (event.target.closest("[data-profile-item]")) positionProfileTooltip(event);
+});
+
+$("#profilePanel").addEventListener("pointerout", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (!item) return;
+  const next = event.relatedTarget?.closest?.("[data-profile-item]");
+  if (next?.dataset.profileChart === item.dataset.profileChart && next?.dataset.profileKey === item.dataset.profileKey) return;
+  setProfileHover(item, false);
+  hideProfileTooltip();
+});
+
+$("#profilePanel").addEventListener("click", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (item) selectProfileItem(item);
+});
+
+$("#profilePanel").addEventListener("keydown", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (!item || !["Enter", " "].includes(event.key)) return;
+  event.preventDefault();
+  selectProfileItem(item);
+});
+
+$("#profilePanel").addEventListener("focusin", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (!item) return;
+  setProfileHover(item, true);
+  showProfileTooltip(item, { target: item });
+});
+
+$("#profilePanel").addEventListener("focusout", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (!item) return;
+  setProfileHover(item, false);
+  hideProfileTooltip();
+});
+
+render();
+refreshRegistry();
+</script>
+</body>
+</html>
