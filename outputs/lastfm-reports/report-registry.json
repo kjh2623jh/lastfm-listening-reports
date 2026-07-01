@@ -14,6 +14,13 @@
     "file": "lastfm-weekly-2026-06-01-to-2026-06-07.html"
   },
   {
+    "period": "monthly",
+    "start": "2026-06-01",
+    "end": "2026-06-30",
+    "label": "2026-06",
+    "file": "lastfm-monthly-2026-06.html"
+  },
+  {
     "period": "weekly",
     "start": "2026-06-08",
     "end": "2026-06-14",
