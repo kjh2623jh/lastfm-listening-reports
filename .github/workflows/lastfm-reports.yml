@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       period:
-        description: Report period to generate
+        description: Report period to generate, or deploy existing reports
         required: true
         default: weekly
         type: choice
@@ -16,6 +16,7 @@ on:
           - monthly
           - yearly
           - all
+          - deploy
   schedule:
     - cron: "0 0 * * 1" # Monday 09:00 KST
     - cron: "0 0 1 * *" # 1st day of month 09:00 KST
@@ -121,17 +122,14 @@ jobs:
           git diff --cached --quiet || git commit -m "Add Last.fm yearly report"
           git push
 
-  deploy-pages:
-    name: Deploy GitHub Pages
+  build-pages:
+    name: Build GitHub Pages artifact
     if: always() && !cancelled()
     needs:
       - weekly
       - monthly
       - yearly
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - name: Pull generated reports
@@ -140,5 +138,15 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: outputs/lastfm-reports
+
+  deploy-pages:
+    name: Deploy GitHub Pages
+    needs:
+      - build-pages
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
