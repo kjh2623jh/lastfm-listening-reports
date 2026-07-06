@@ -245,6 +245,38 @@
           "score": 25
         }
       ]
+    },
+    {
+      "startDate": "2026-06-29",
+      "endDate": "2026-07-05",
+      "label": "Jun 29",
+      "scrobbles": 204,
+      "tags": [
+        {
+          "name": "indie",
+          "score": 71
+        },
+        {
+          "name": "alternative",
+          "score": 62
+        },
+        {
+          "name": "female vocalists",
+          "score": 53
+        },
+        {
+          "name": "singer-songwriter",
+          "score": 53
+        },
+        {
+          "name": "piano",
+          "score": 53
+        },
+        {
+          "name": "rock",
+          "score": 30
+        }
+      ]
     }
   ]
 }
