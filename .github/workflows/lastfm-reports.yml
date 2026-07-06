@@ -141,6 +141,7 @@ jobs:
 
   deploy-pages:
     name: Deploy GitHub Pages
+    if: always() && !cancelled() && needs.build-pages.result == 'success'
     needs:
       - build-pages
     runs-on: ubuntu-latest
