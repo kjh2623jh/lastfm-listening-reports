@@ -277,6 +277,38 @@
           "score": 30
         }
       ]
+    },
+    {
+      "startDate": "2026-07-06",
+      "endDate": "2026-07-12",
+      "label": "Jul 6",
+      "scrobbles": 78,
+      "tags": [
+        {
+          "name": "indie",
+          "score": 28
+        },
+        {
+          "name": "singer-songwriter",
+          "score": 18
+        },
+        {
+          "name": "alternative",
+          "score": 16
+        },
+        {
+          "name": "synthpop",
+          "score": 15
+        },
+        {
+          "name": "electropop",
+          "score": 15
+        },
+        {
+          "name": "dream pop",
+          "score": 15
+        }
+      ]
     }
   ]
 }
