@@ -309,6 +309,38 @@
           "score": 15
         }
       ]
+    },
+    {
+      "startDate": "2026-07-13",
+      "endDate": "2026-07-19",
+      "label": "Jul 13",
+      "scrobbles": 120,
+      "tags": [
+        {
+          "name": "indie pop",
+          "score": 45
+        },
+        {
+          "name": "synthpop",
+          "score": 35
+        },
+        {
+          "name": "electropop",
+          "score": 35
+        },
+        {
+          "name": "dream pop",
+          "score": 35
+        },
+        {
+          "name": "dance-pop",
+          "score": 35
+        },
+        {
+          "name": "hip-hop",
+          "score": 27
+        }
+      ]
     }
   ]
 }
