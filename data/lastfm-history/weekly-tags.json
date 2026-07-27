@@ -341,6 +341,38 @@
           "score": 27
         }
       ]
+    },
+    {
+      "startDate": "2026-07-20",
+      "endDate": "2026-07-26",
+      "label": "Jul 20",
+      "scrobbles": 356,
+      "tags": [
+        {
+          "name": "indie rock",
+          "score": 120
+        },
+        {
+          "name": "indie pop",
+          "score": 113
+        },
+        {
+          "name": "psychedelic rock",
+          "score": 88
+        },
+        {
+          "name": "psychedelic",
+          "score": 88
+        },
+        {
+          "name": "rock",
+          "score": 88
+        },
+        {
+          "name": "japan",
+          "score": 62
+        }
+      ]
     }
   ]
 }
