@@ -373,6 +373,38 @@
           "score": 62
         }
       ]
+    },
+    {
+      "startDate": "2026-07-27",
+      "endDate": "2026-08-02",
+      "label": "Jul 27",
+      "scrobbles": 127,
+      "tags": [
+        {
+          "name": "indie rock",
+          "score": 81
+        },
+        {
+          "name": "indie pop",
+          "score": 72
+        },
+        {
+          "name": "japan",
+          "score": 72
+        },
+        {
+          "name": "rock",
+          "score": 19
+        },
+        {
+          "name": "korean",
+          "score": 15
+        },
+        {
+          "name": "touhou",
+          "score": 10
+        }
+      ]
     }
   ]
 }
