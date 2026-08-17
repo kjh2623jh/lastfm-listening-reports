@@ -437,6 +437,38 @@
           "score": 26
         }
       ]
+    },
+    {
+      "startDate": "2026-08-10",
+      "endDate": "2026-08-16",
+      "label": "Aug 10",
+      "scrobbles": 186,
+      "tags": [
+        {
+          "name": "indie rock",
+          "score": 99
+        },
+        {
+          "name": "indie pop",
+          "score": 81
+        },
+        {
+          "name": "japan",
+          "score": 75
+        },
+        {
+          "name": "post-black metal",
+          "score": 38
+        },
+        {
+          "name": "screamo",
+          "score": 38
+        },
+        {
+          "name": "black metal",
+          "score": 38
+        }
+      ]
     }
   ]
 }
