@@ -469,6 +469,38 @@
           "score": 38
         }
       ]
+    },
+    {
+      "startDate": "2026-08-17",
+      "endDate": "2026-08-23",
+      "label": "Aug 17",
+      "scrobbles": 156,
+      "tags": [
+        {
+          "name": "indie rock",
+          "score": 93
+        },
+        {
+          "name": "noise rock",
+          "score": 81
+        },
+        {
+          "name": "shoegaze",
+          "score": 68
+        },
+        {
+          "name": "noise pop",
+          "score": 54
+        },
+        {
+          "name": "lo-fi",
+          "score": 54
+        },
+        {
+          "name": "pop",
+          "score": 31
+        }
+      ]
     }
   ]
 }
