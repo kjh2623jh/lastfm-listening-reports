@@ -533,6 +533,38 @@
           "score": 87
         }
       ]
+    },
+    {
+      "startDate": "2026-08-31",
+      "endDate": "2026-09-06",
+      "label": "Aug 31",
+      "scrobbles": 103,
+      "tags": [
+        {
+          "name": "indie rock",
+          "score": 41
+        },
+        {
+          "name": "indie pop",
+          "score": 41
+        },
+        {
+          "name": "alternative rock",
+          "score": 35
+        },
+        {
+          "name": "japan",
+          "score": 29
+        },
+        {
+          "name": "j-rock",
+          "score": 29
+        },
+        {
+          "name": "shoegaze",
+          "score": 20
+        }
+      ]
     }
   ]
 }
