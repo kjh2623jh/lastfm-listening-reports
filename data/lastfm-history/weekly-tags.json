@@ -597,6 +597,38 @@
           "score": 11
         }
       ]
+    },
+    {
+      "startDate": "2026-09-14",
+      "endDate": "2026-09-20",
+      "label": "Sep 14",
+      "scrobbles": 120,
+      "tags": [
+        {
+          "name": "indie rock",
+          "score": 80
+        },
+        {
+          "name": "indie pop",
+          "score": 55
+        },
+        {
+          "name": "korean",
+          "score": 26
+        },
+        {
+          "name": "indie",
+          "score": 26
+        },
+        {
+          "name": "k-rock",
+          "score": 26
+        },
+        {
+          "name": "alternative",
+          "score": 26
+        }
+      ]
     }
   ]
 }
