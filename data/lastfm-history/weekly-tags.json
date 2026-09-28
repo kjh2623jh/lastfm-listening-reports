@@ -629,6 +629,38 @@
           "score": 26
         }
       ]
+    },
+    {
+      "startDate": "2026-09-21",
+      "endDate": "2026-09-27",
+      "label": "Sep 21",
+      "scrobbles": 185,
+      "tags": [
+        {
+          "name": "indie pop",
+          "score": 128
+        },
+        {
+          "name": "indie rock",
+          "score": 101
+        },
+        {
+          "name": "japan",
+          "score": 63
+        },
+        {
+          "name": "alternative rock",
+          "score": 63
+        },
+        {
+          "name": "j-rock",
+          "score": 63
+        },
+        {
+          "name": "synthpop",
+          "score": 50
+        }
+      ]
     }
   ]
 }
