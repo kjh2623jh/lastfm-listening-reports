@@ -66,7 +66,7 @@ function normalizeInsights(value, fallback) {
   return rows.length >= 3 ? rows : fallback;
 }
 
-export async function generateAiCopy(payload, { apiKey, model, apiUrl }) {
+export async function generateAiCopy(payload, { apiKey, model, reasoningEffort = "low", apiUrl }) {
   if (!apiKey) return null;
   const compact = {
     period: payload.kind,
@@ -91,6 +91,7 @@ export async function generateAiCopy(payload, { apiKey, model, apiUrl }) {
     },
     body: JSON.stringify({
       model: model,
+      reasoning: { effort: reasoningEffort },
       input: [
         {
           role: "system",

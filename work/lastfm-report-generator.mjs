@@ -25,7 +25,8 @@ const startArg = process.argv[3];
 const lastfmApiKey = process.env.LASTFM_API_KEY || process.argv[4];
 const useOpenAiApi = process.env.GITHUB_ACTIONS === "true" || process.env.OPENAI_USE_API === "true";
 const openaiApiKey = useOpenAiApi ? process.env.OPENAI_API_KEY || "" : "";
-const openaiModel = process.env.OPENAI_MODEL || "gpt-4.1-mini";
+const openaiModel = process.env.OPENAI_MODEL || "gpt-6-luna";
+const openaiReasoningEffort = process.env.OPENAI_REASONING_EFFORT || "low";
 
 if (!["weekly", "monthly", "yearly"].includes(period)) {
   throw new Error("Usage: node work/lastfm-report-generator.mjs weekly|monthly|yearly [YYYY-MM-DD]");
@@ -227,7 +228,7 @@ async function buildReport(kind, range, tracks, previousRange, previousTracks) {
   const deepDive = buildDeepDive(kind, { days, hours, tracks, topTracks, topArtists, topAlbums, uniqueTracks, uniqueArtists, concentration, comparison });
   const fallback = fallbackCopy({ kind, topArtist, topAlbum, peak, total: tracks.length, uniqueTracks, uniqueArtists, concentration, comparison, topArtists, topAlbums });
   let aiError = null;
-  const aiCopy = await generateAiCopy({ kind, range, total: tracks.length, uniqueTracks, uniqueArtists, concentration, peak, topTracks, topArtists, topAlbums, comparison, periodFocus, deepDive }, { apiKey: openaiApiKey, model: openaiModel, apiUrl: OPENAI_API }).catch((error) => {
+  const aiCopy = await generateAiCopy({ kind, range, total: tracks.length, uniqueTracks, uniqueArtists, concentration, peak, topTracks, topArtists, topAlbums, comparison, periodFocus, deepDive }, { apiKey: openaiApiKey, model: openaiModel, reasoningEffort: openaiReasoningEffort, apiUrl: OPENAI_API }).catch((error) => {
     aiError = error;
     console.warn(`AI copy generation failed: ${error.message}`);
     return null;

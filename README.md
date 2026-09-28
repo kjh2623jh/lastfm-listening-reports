@@ -76,9 +76,12 @@ Fill in:
 ```text
 LASTFM_API_KEY=...
 OPENAI_API_KEY=...
-OPENAI_MODEL=gpt-4.1-mini
+OPENAI_MODEL=gpt-6-luna
+OPENAI_REASONING_EFFORT=low
 OPENAI_USE_API=false
 ```
+
+The default API model is `gpt-6-luna` with `low` reasoning effort. Set `OPENAI_REASONING_EFFORT=none` to disable reasoning.
 
 Then run:
 
