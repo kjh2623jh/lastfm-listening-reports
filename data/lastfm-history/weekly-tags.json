@@ -661,6 +661,38 @@
           "score": 50
         }
       ]
+    },
+    {
+      "startDate": "2026-09-28",
+      "endDate": "2026-10-04",
+      "label": "Sep 28",
+      "scrobbles": 57,
+      "tags": [
+        {
+          "name": "shoegaze",
+          "score": 39
+        },
+        {
+          "name": "indie rock",
+          "score": 27
+        },
+        {
+          "name": "emo",
+          "score": 26
+        },
+        {
+          "name": "korean",
+          "score": 26
+        },
+        {
+          "name": "south korea",
+          "score": 22
+        },
+        {
+          "name": "noise pop",
+          "score": 17
+        }
+      ]
     }
   ]
 }
