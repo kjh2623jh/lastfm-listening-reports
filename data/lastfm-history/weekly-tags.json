@@ -693,6 +693,38 @@
           "score": 17
         }
       ]
+    },
+    {
+      "startDate": "2026-10-05",
+      "endDate": "2026-10-11",
+      "label": "Oct 5",
+      "scrobbles": 175,
+      "tags": [
+        {
+          "name": "indie pop",
+          "score": 54
+        },
+        {
+          "name": "shoegaze",
+          "score": 51
+        },
+        {
+          "name": "noise pop",
+          "score": 40
+        },
+        {
+          "name": "indie rock",
+          "score": 40
+        },
+        {
+          "name": "lo-fi",
+          "score": 40
+        },
+        {
+          "name": "noise rock",
+          "score": 40
+        }
+      ]
     }
   ]
 }
