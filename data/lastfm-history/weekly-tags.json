@@ -725,6 +725,38 @@
           "score": 40
         }
       ]
+    },
+    {
+      "startDate": "2026-10-12",
+      "endDate": "2026-10-18",
+      "label": "Oct 12",
+      "scrobbles": 281,
+      "tags": [
+        {
+          "name": "indie rock",
+          "score": 166
+        },
+        {
+          "name": "shoegaze",
+          "score": 64
+        },
+        {
+          "name": "noise pop",
+          "score": 64
+        },
+        {
+          "name": "lo-fi",
+          "score": 64
+        },
+        {
+          "name": "noise rock",
+          "score": 64
+        },
+        {
+          "name": "korean",
+          "score": 62
+        }
+      ]
     }
   ]
 }
