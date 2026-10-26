@@ -757,6 +757,38 @@
           "score": 62
         }
       ]
+    },
+    {
+      "startDate": "2026-10-19",
+      "endDate": "2026-10-25",
+      "label": "Oct 19",
+      "scrobbles": 152,
+      "tags": [
+        {
+          "name": "korean",
+          "score": 38
+        },
+        {
+          "name": "indie rock",
+          "score": 33
+        },
+        {
+          "name": "indie",
+          "score": 29
+        },
+        {
+          "name": "k-rock",
+          "score": 29
+        },
+        {
+          "name": "rock",
+          "score": 29
+        },
+        {
+          "name": "folk",
+          "score": 13
+        }
+      ]
     }
   ]
 }
