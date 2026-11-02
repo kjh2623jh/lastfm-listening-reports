@@ -789,6 +789,38 @@
           "score": 13
         }
       ]
+    },
+    {
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-01",
+      "label": "Oct 26",
+      "scrobbles": 337,
+      "tags": [
+        {
+          "name": "indie rock",
+          "score": 110
+        },
+        {
+          "name": "indie pop",
+          "score": 73
+        },
+        {
+          "name": "indie",
+          "score": 60
+        },
+        {
+          "name": "japan",
+          "score": 46
+        },
+        {
+          "name": "alternative rock",
+          "score": 46
+        },
+        {
+          "name": "j-rock",
+          "score": 46
+        }
+      ]
     }
   ]
 }
