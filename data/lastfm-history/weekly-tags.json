@@ -821,6 +821,38 @@
           "score": 46
         }
       ]
+    },
+    {
+      "startDate": "2026-11-02",
+      "endDate": "2026-11-08",
+      "label": "Nov 2",
+      "scrobbles": 141,
+      "tags": [
+        {
+          "name": "indie rock",
+          "score": 45
+        },
+        {
+          "name": "indie pop",
+          "score": 37
+        },
+        {
+          "name": "indie",
+          "score": 37
+        },
+        {
+          "name": "lo-fi",
+          "score": 28
+        },
+        {
+          "name": "shoegaze",
+          "score": 23
+        },
+        {
+          "name": "dream pop",
+          "score": 15
+        }
+      ]
     }
   ]
 }
