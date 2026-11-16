@@ -853,6 +853,38 @@
           "score": 15
         }
       ]
+    },
+    {
+      "startDate": "2026-11-09",
+      "endDate": "2026-11-15",
+      "label": "Nov 9",
+      "scrobbles": 558,
+      "tags": [
+        {
+          "name": "indie pop",
+          "score": 71
+        },
+        {
+          "name": "indietronica",
+          "score": 47
+        },
+        {
+          "name": "bitpop",
+          "score": 47
+        },
+        {
+          "name": "bedroom pop",
+          "score": 47
+        },
+        {
+          "name": "glitch pop",
+          "score": 47
+        },
+        {
+          "name": "psychedelic rock",
+          "score": 40
+        }
+      ]
     }
   ]
 }
