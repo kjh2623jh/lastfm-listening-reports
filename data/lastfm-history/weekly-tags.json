@@ -885,6 +885,38 @@
           "score": 40
         }
       ]
+    },
+    {
+      "startDate": "2026-11-16",
+      "endDate": "2026-11-22",
+      "label": "Nov 16",
+      "scrobbles": 266,
+      "tags": [
+        {
+          "name": "electronic",
+          "score": 29
+        },
+        {
+          "name": "psychedelic",
+          "score": 26
+        },
+        {
+          "name": "ambient",
+          "score": 16
+        },
+        {
+          "name": "drone",
+          "score": 16
+        },
+        {
+          "name": "experimental",
+          "score": 16
+        },
+        {
+          "name": "hip-hop",
+          "score": 15
+        }
+      ]
     }
   ]
 }
