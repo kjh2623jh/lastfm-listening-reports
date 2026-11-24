@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Last.fm Weekly Report - 2026-09-28 ~ 2026-10-04</title>
+  <title>Last.fm 주간 리포트 - 2026-09-28 ~ 2026-10-04</title>
   <style>:root{--bg:#100f0e;--paper:#fbf7ef;--paper-2:#f2e9da;--ink:#1f1b18;--muted:#756b60;--line:rgba(31,27,24,.14);--red:#d51007;--gold:#d99a26;--teal:#0e7c7b;--blue:#2f5f98;--shadow:0 24px 70px rgba(0,0,0,.28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box}
 body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 10%,rgba(213,16,7,.36),transparent 28rem),radial-gradient(circle at 88% 4%,rgba(14,124,123,.34),transparent 26rem),linear-gradient(135deg,#15110f 0%,#201916 48%,#0e1818 100%);min-height:100vh}
@@ -487,20 +487,23 @@ a.snapshot:hover,button.snapshot:hover,.feature-cover button:hover{border-color:
 .pace-axis{display:flex;justify-content:space-between;color:var(--muted);font-size:.75rem;margin-top:5px}
 .pace-readout{margin:12px 0 0;font-size:.9rem;font-variant-numeric:tabular-nums}
 .tag-method{margin:0 0 12px;color:var(--muted);font-size:.8rem}
-.tag-trends{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.tag-trend{padding:9px 10px;background:var(--paper-2);border-radius:7px;min-width:0}
-.tag-label{display:flex;justify-content:space-between;gap:8px;align-items:baseline;margin-bottom:4px}
-.tag-label strong{overflow-wrap:anywhere}
-.tag-label span{white-space:nowrap;font-variant-numeric:tabular-nums}
-.tag-label small{color:var(--teal)}
-.tag-bars,.tag-ticks{display:grid;grid-template-columns:repeat(var(--tag-periods),minmax(0,1fr));gap:2px}
-.tag-bar{display:flex;align-items:end;justify-content:center;height:44px;border:0;border-bottom:1px solid var(--line-strong);padding:0 1px;background:transparent}
-.tag-bar i{display:block;width:min(100%,22px);height:var(--tag-height);min-height:2px;background:var(--teal);border-radius:2px 2px 0 0}
-.tag-bar:hover,.tag-bar.is-selected{background:var(--surface-raised)}
-.tag-gap i{height:0;min-height:0;border-top:1px dashed var(--muted);background:none}
-.tag-ticks{font-size:.63rem;color:var(--muted);text-align:center;padding-top:4px}
-.tag-ticks span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tags-card #tagsDetail{min-height:0;margin-bottom:0;padding:10px}
+.tags-card .tag-flow-svg{min-width:0;max-height:none;overflow:hidden;border-radius:8px;background:#0c0d16}
+.stream-date{pointer-events:none}
+.stream-date line{stroke:#ffffff26;stroke-dasharray:3 5}
+.stream-date .stream-tick{fill:#b9bac6;font-size:12px}
+.stream-date.stream-recent line{stroke:#ffffff72;stroke-dasharray:none}
+.stream-date.stream-recent .stream-tick{fill:#fff;font-weight:750}
+.stream-missing{fill:#9192a2;font-size:13px}
+.stream-band-name{fill:#fff;stroke:#10111b;stroke-width:2.5;paint-order:stroke;font-size:11px;font-weight:700;pointer-events:none}
+.tag-compare{margin-top:12px}
+.tag-compare-head,.tag-compare-row{display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(42px,15%));align-items:center;gap:8px;width:100%;padding:8px 6px;text-align:right;font-variant-numeric:tabular-nums}
+.tag-compare-head{color:var(--muted);font-size:.76rem}
+.tag-compare-row{background:transparent;border:0;border-top:1px solid var(--line);font-size:.85rem;color:var(--ink)}
+.tag-compare-row:hover,.tag-compare-row.is-hovered,.tag-compare-row.is-selected{background:var(--paper-2)}
+.tag-compare-head>:first-child,.tag-compare-row>:first-child{text-align:left;overflow-wrap:anywhere}
+.tag-compare-row i{display:inline-block;width:8px;height:8px;border-radius:3px;margin-right:6px}
+.tag-compare-row small{color:var(--muted);white-space:nowrap}
+.tag-gap-note{margin:9px 0 0}
 .report-footer .actions{margin:0}
 dialog.detail[open]{display:block;width:min(720px,calc(100% - 32px));max-height:90vh;padding:0;border:0;background:transparent}
 dialog.detail::backdrop{background:#000c}
@@ -524,9 +527,10 @@ dialog.detail .detail-card img{max-height:40vh;object-fit:contain}
   .report-nav-links{gap:2px}
   .report-nav-links a{font-size:.82rem;padding-inline:7px}
   .report-intro{grid-template-columns:minmax(0,1fr) minmax(70px,25%);gap:10px}
-  .snapshot-grid:has(>:nth-child(3)),.patterns-grid,.tag-trends{grid-template-columns:1fr}
+  .snapshot-grid:has(>:nth-child(3)),.patterns-grid{grid-template-columns:1fr}
   .snapshot{padding:11px}
-  .tag-ticks{font-size:.56rem}
+  .stream-date .stream-tick{font-size:17px}
+  .stream-band-name{display:none}
 }
 @media(max-width:360px){
   .snapshot-grid{grid-template-columns:1fr}
@@ -536,50 +540,50 @@ dialog.detail .detail-card img{max-height:40vh;object-fit:contain}
 <body>
   <main class="page">
     <section class="shell">
-      <nav class="report-nav" aria-label="Report navigation">
+      <nav class="report-nav" aria-label="리포트 탐색">
         <a class="report-brand" href="./index.html"><span class="mark">fm</span> Listening Report</a>
-        <div class="report-nav-links"><a id="previousReport" hidden>← Previous</a><a id="nextReport" hidden>Next →</a><a class="archive-link" href="./archive.html?period=weekly&year=2026&current=lastfm-weekly-2026-09-28-to-2026-10-04.html">All reports</a></div>
+        <div class="report-nav-links"><a id="previousReport" hidden>← 이전</a><a id="nextReport" hidden>다음 →</a><a class="archive-link" href="./archive.html?period=weekly&year=2026&current=lastfm-weekly-2026-09-28-to-2026-10-04.html">전체 리포트</a></div>
       </nav>
       <header class="report-intro" id="hero">
         <div>
-          <p class="report-kicker">Weekly · 2026-09-28 ~ 2026-10-04 · KST</p>
+          <p class="report-kicker">주간 · 2026-09-28 ~ 2026-10-04 · KST</p>
           <h1 id="headline"></h1>
           <p id="summaryText" class="intro-summary"></p>
-          <div class="intro-metric"><strong id="mScrobbles"></strong><span>Scrobbles <small id="mChange"></small></span></div>
+          <div class="intro-metric"><strong id="mScrobbles"></strong><span>재생 횟수 <small id="mChange"></small></span></div>
         </div>
         <div id="coverGrid" class="feature-cover"></div>
       </header>
       <section class="report-section" aria-labelledby="changesTitle">
-        <h2 id="changesTitle">What changed</h2>
+        <h2 id="changesTitle">달라진 점</h2>
         <div id="highlights" class="snapshot-grid"></div>
         <div id="comparisonGrid" class="period-comparison"></div>
       </section>
       <section class="report-section" aria-labelledby="chartsTitle">
-        <h2 id="chartsTitle">On rotation</h2>
-        <div class="tabs" aria-label="Rankings"><button class="tab active" data-chart="tracks" aria-pressed="true" type="button">Tracks</button><button class="tab" data-chart="artists" aria-pressed="false" type="button">Artists</button><button class="tab" data-chart="albums" aria-pressed="false" type="button">Albums</button></div>
+        <h2 id="chartsTitle">가장 많이 들은 음악</h2>
+        <div class="tabs" aria-label="재생 순위"><button class="tab active" data-chart="tracks" aria-pressed="true" type="button">곡</button><button class="tab" data-chart="artists" aria-pressed="false" type="button">아티스트</button><button class="tab" data-chart="albums" aria-pressed="false" type="button">앨범</button></div>
         <div class="chart-section active" id="tracks"></div><div class="chart-section" id="artists"></div><div class="chart-section" id="albums"></div>
-        <details class="report-disclosure recommendation"><summary>Recommendation <strong id="recommendationTitle"></strong></summary><p id="recommendationAbout"></p><p id="recommendationWhy"></p></details>
+        <details class="report-disclosure recommendation"><summary>추천 음악 <strong id="recommendationTitle"></strong></summary><p id="recommendationAbout"></p><p id="recommendationWhy"></p></details>
       </section>
       <section class="report-section" aria-labelledby="patternsTitle">
-        <h2 id="patternsTitle">Listening patterns</h2>
+        <h2 id="patternsTitle">청취 패턴</h2>
         <div id="profilePanel">
           <section class="report-card tags-card" aria-labelledby="tagsTitle"><div class="report-card-head"><h3 id="tagsTitle">Tag Movement</h3><span id="tagMovementRange"></span></div><div id="tagMovement"></div></section>
           <div class="patterns-grid">
-            <section class="report-card" aria-labelledby="breadthTitle"><h3 id="breadthTitle">Listening Breadth</h3><div id="musicRatio"></div></section>
-            <section class="report-card" aria-labelledby="paceTitle"><h3 id="paceTitle">Daily Pace <small>KST</small></h3><div id="dayGrid"></div></section>
+            <section class="report-card" aria-labelledby="breadthTitle"><h3 id="breadthTitle">청취 다양성</h3><div id="musicRatio"></div></section>
+            <section class="report-card" aria-labelledby="paceTitle"><h3 id="paceTitle">일별 재생 <small>KST</small></h3><div id="dayGrid"></div></section>
           </div>
-          <details class="report-disclosure"><summary>Time of Day &amp; Listening Fingerprint</summary><div class="patterns-grid"><section class="report-card"><h3>Listening Clock <small>KST</small></h3><div id="listeningClock"></div></section><section class="report-card"><h3>Listening Fingerprint</h3><div id="listeningFingerprint"></div></section></div></details>
+          <details class="report-disclosure"><summary>시간대와 청취 성향</summary><div class="patterns-grid"><section class="report-card"><h3>시간대별 재생 <small>KST</small></h3><div id="listeningClock"></div></section><section class="report-card"><h3>청취 성향</h3><div id="listeningFingerprint"></div></section></div></details>
         </div>
-        <details class="report-disclosure" id="deepDivePanel"><summary id="deepDiveTitle">Deep Dive</summary><div class="deep-dive" id="deepDive"></div></details>
-        <details class="report-disclosure"><summary>Report notes</summary><p id="summaryDetail"></p><p id="storyText"></p><div class="insight-grid" id="insights"></div><h3 id="periodFocusTitle"></h3><div class="insight-grid" id="periodFocus"></div></details>
+        <details class="report-disclosure" id="deepDivePanel"><summary id="deepDiveTitle">자세한 분석</summary><div class="deep-dive" id="deepDive"></div></details>
+        <details class="report-disclosure"><summary>리포트 노트</summary><p id="summaryDetail"></p><p id="storyText"></p><div class="insight-grid" id="insights"></div><h3 id="periodFocusTitle"></h3><div class="insight-grid" id="periodFocus"></div></details>
       </section>
       <footer class="report-footer">
-        <div class="actions"><button class="button primary" id="copyImage" type="button">Copy image</button><button class="button" id="downloadImage" type="button">Download PNG</button></div>
-        <details class="report-disclosure"><summary>AI Status</summary><div class="ai-status" id="aiStatus"></div></details>
+        <div class="actions"><button class="button primary" id="copyImage" type="button">이미지 복사</button><button class="button" id="downloadImage" type="button">PNG 다운로드</button></div>
+        <details class="report-disclosure"><summary>AI 생성 상태</summary><div class="ai-status" id="aiStatus"></div></details>
       </footer>
     </section>
   </main>
-  <dialog class="detail" id="detail" aria-labelledby="detailTitle"><div class="detail-card"><img id="detailImage" alt=""><div><h3 id="detailTitle"></h3><p id="detailMeta"></p><p id="detailBody"></p><button class="button primary" id="closeDetail" type="button" autofocus>Close</button></div></div></dialog>
+  <dialog class="detail" id="detail" aria-labelledby="detailTitle"><div class="detail-card"><img id="detailImage" alt=""><div><h3 id="detailTitle"></h3><p id="detailMeta"></p><p id="detailBody"></p><button class="button primary" id="closeDetail" type="button" autofocus>닫기</button></div></div></dialog>
   <div class="profile-tooltip" id="profileTooltip" role="tooltip"></div>
   <div class="toast" id="toast"></div>
   <script>window.REPORT_DATA={"kind":"weekly","user":"ueii","filename":"lastfm-weekly-2026-09-28-to-2026-10-04.html","rangeLabel":"2026-09-28 ~ 2026-10-04","startDate":"2026-09-28","endDate":"2026-10-04","total":92,"tracks":45,"artists":9,"albums":11,"peakDay":"Thu","headline":"feeble little horse week, bitknot gravity.","summary":"feeble little horse가 37 scrobbles로 중심을 잡았고, bitknot이 album focus를 만들었습니다. 전체 92 scrobbles 중 top artist 비중은 40%입니다.","story":"이번 주에는 92 scrobbles 안에서 45 tracks, 9 artists가 움직였습니다. Thu, 10/01에 listening pace가 가장 높았고, 전체적으로는 feeble little horse와 bitknot 쪽으로 집중된 흐름입니다.","insights":[["Main Character","feeble little horse가 리포트의 중심입니다. 37 scrobbles, 전체의 40%를 차지했습니다."],["Album Gravity","bitknot은 37 scrobbles로 이번 기간의 album 단위 집중을 만들었습니다."],["Listening Shape","92 scrobbles / 45 tracks. 넓게 탐색하기보다 좋아하는 축을 깊게 반복한 패턴입니다."],["Compared","직전 같은 기간보다 -93 scrobbles (-50%) 변했습니다."]],"comparison":{"previousRange":"2026-09-21 ~ 2026-09-27","currentTotal":92,"previousTotal":185,"previousAvailable":true,"delta":-93,"percent":-50,"percentText":"-50%","currentTags":[{"name":"shoegaze","score":72},{"name":"indie rock","score":51},{"name":"noise pop","score":50},{"name":"lo-fi","score":37},{"name":"slacker rock","score":37},{"name":"emo","score":35}],"previousTags":[{"name":"indie pop","score":128},{"name":"indie rock","score":101},{"name":"post-rock","score":76},{"name":"alternative rock","score":63},{"name":"j-rock","score":63},{"name":"synthpop","score":50}],"tagShift":[{"name":"shoegaze","delta":36,"score":72},{"name":"emo","delta":22,"score":35},{"name":"korean","delta":22,"score":35},{"name":"south korea","delta":22,"score":22},{"name":"noise pop","delta":14,"score":50}],"summary":"직전 같은 기간보다 93 scrobbles 감소했습니다 (-50%). Tag 기준으로는 shoegaze, emo, korean 쪽 비중이 상대적으로 커졌습니다."},"sustainedAlbum":null,"listeningProfile":{"ratio":{"current":{"tracks":45,"albums":11,"artists":9},"previous":{"tracks":72,"albums":12,"artists":11}},"fingerprint":{"current":{"consistency":52,"discovery":51,"variety":32,"concentration":93,"replay":51},"previous":{"consistency":55,"discovery":35,"variety":24,"concentration":89,"replay":61}}},"topTracks":[{"key":"feeble little horse -- Doorway","count":5,"artist":"feeble little horse","title":"Doorway","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"feeble little horse -- Poison","count":5,"artist":"feeble little horse","title":"Poison","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"Parannoul -- Remaining","count":4,"artist":"Parannoul","title":"Remaining","album":"Single Mind Worst Thought - EP","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/7f910b218c16428273bd7e2f72042233.jpg"},{"key":"Parannoul -- Sleepwalking Club","count":4,"artist":"Parannoul","title":"Sleepwalking Club","album":"Single Mind Worst Thought - EP","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/7f910b218c16428273bd7e2f72042233.jpg"},{"key":"Parannoul -- To Home","count":4,"artist":"Parannoul","title":"To Home","album":"Single Mind Worst Thought - EP","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/7f910b218c16428273bd7e2f72042233.jpg"},{"key":"파란노을 -- 아름다운 세상","count":3,"artist":"파란노을","title":"아름다운 세상","album":"To See the Next Part of the Dream","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/b7aa7e0b63273f9967fb1df5cd8163a7.jpg"},{"key":"파란노을 -- Remaining","count":3,"artist":"파란노을","title":"Remaining","album":"Single Mind Worst Thought","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/71bf1c6efb7387d85099ca8b74c07253.jpg"},{"key":"파란노을 -- Sleepwalking Club","count":3,"artist":"파란노을","title":"Sleepwalking Club","album":"Single Mind Worst Thought","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/71bf1c6efb7387d85099ca8b74c07253.jpg"},{"key":"파란노을 -- To Home","count":3,"artist":"파란노을","title":"To Home","album":"Single Mind Worst Thought","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/71bf1c6efb7387d85099ca8b74c07253.jpg"},{"key":"feeble little horse -- Cradle","count":3,"artist":"feeble little horse","title":"Cradle","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"feeble little horse -- Dior","count":3,"artist":"feeble little horse","title":"Dior","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"feeble little horse -- DMT","count":3,"artist":"feeble little horse","title":"DMT","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"feeble little horse -- Guts","count":3,"artist":"feeble little horse","title":"Guts","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"feeble little horse -- Paris","count":3,"artist":"feeble little horse","title":"Paris","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"feeble little horse -- Rewind","count":3,"artist":"feeble little horse","title":"Rewind","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"feeble little horse -- Shady","count":3,"artist":"feeble little horse","title":"Shady","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"feeble little horse -- Shopping","count":3,"artist":"feeble little horse","title":"Shopping","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"feeble little horse -- Upside Down","count":3,"artist":"feeble little horse","title":"Upside Down","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"underscores -- Hollywood Forever","count":2,"artist":"underscores","title":"Hollywood Forever","album":"U","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/82573426631c6de14959f4753eafe666.jpg"},{"key":"underscores -- Music","count":2,"artist":"underscores","title":"Music","album":"U","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/82573426631c6de14959f4753eafe666.jpg"}],"topArtists":[{"key":"feeble little horse","count":37,"artist":"feeble little horse","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"파란노을","count":22,"artist":"파란노을","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/b7aa7e0b63273f9967fb1df5cd8163a7.jpg"},{"key":"Parannoul","count":13,"artist":"Parannoul","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/7f910b218c16428273bd7e2f72042233.jpg"},{"key":"underscores","count":8,"artist":"underscores","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/82573426631c6de14959f4753eafe666.jpg"},{"key":"Trooper Salute","count":6,"artist":"Trooper Salute","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f41863c4c9146f2e2158cda8db761dbf.jpg"},{"key":"세르게이 보르트키에비치","count":2,"artist":"세르게이 보르트키에비치","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Jun Togawa","count":2,"artist":"Jun Togawa","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/0c1a2cae1363446e9a1b7f8cd495a4c1.jpg"},{"key":"John K","count":1,"artist":"John K","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/d8b40e6451329f64db72534fb30e1879.jpg"},{"key":"wacci","count":1,"artist":"wacci","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"}],"topAlbums":[{"key":"feeble little horse -- bitknot","count":37,"artist":"feeble little horse","album":"bitknot","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/44ebb7aeaafd5eb8d1491c1b38e33102.jpg"},{"key":"파란노을 -- To See the Next Part of the Dream","count":12,"artist":"파란노을","album":"To See the Next Part of the Dream","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/b7aa7e0b63273f9967fb1df5cd8163a7.jpg"},{"key":"Parannoul -- Single Mind Worst Thought - EP","count":12,"artist":"Parannoul","album":"Single Mind Worst Thought - EP","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/7f910b218c16428273bd7e2f72042233.jpg"},{"key":"파란노을 -- Single Mind Worst Thought","count":10,"artist":"파란노을","album":"Single Mind Worst Thought","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/71bf1c6efb7387d85099ca8b74c07253.jpg"},{"key":"underscores -- U","count":8,"artist":"underscores","album":"U","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/82573426631c6de14959f4753eafe666.jpg"},{"key":"Trooper Salute -- 友達がいました","count":6,"artist":"Trooper Salute","album":"友達がいました","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f41863c4c9146f2e2158cda8db761dbf.jpg"},{"key":"세르게이 보르트키에비치 -- Anna Shelest, 네메 야르비 & 에스토니아 국립교향악단","count":2,"artist":"세르게이 보르트키에비치","album":"Anna Shelest, 네메 야르비 & 에스토니아 국립교향악단","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"John K -- love + everything else","count":1,"artist":"John K","album":"love + everything else","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/d8b40e6451329f64db72534fb30e1879.jpg"},{"key":"Jun Togawa -- 好き好き大好き","count":1,"artist":"Jun Togawa","album":"好き好き大好き","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/825158319c3ddf12497d1861f0966cab.jpg"},{"key":"Jun Togawa -- Suki Suki Daisuki","count":1,"artist":"Jun Togawa","album":"Suki Suki Daisuki","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/0c1a2cae1363446e9a1b7f8cd495a4c1.jpg"},{"key":"Parannoul -- To See the Next Part of the Dream","count":1,"artist":"Parannoul","album":"To See the Next Part of the Dream","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/0ee08bda639c3df913e1a4a37508a841.png"},{"key":"wacci -- Betsuno Hitono Kanojoni Nattayo - Single","count":1,"artist":"wacci","album":"Betsuno Hitono Kanojoni Nattayo - Single","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"}],"days":[{"label":"Mon, 09/28","short":"Mon","count":34,"order":"2026-09-28"},{"label":"Tue, 09/29","short":"Tue","count":11,"order":"2026-09-29"},{"label":"Wed, 09/30","short":"Wed","count":3,"order":"2026-09-30"},{"label":"Thu, 10/01","short":"Thu","count":35,"order":"2026-10-01"},{"label":"Sat, 10/03","short":"Sat","count":9,"order":"2026-10-03"}],"hours":[0,0,15,3,0,0,0,2,2,3,0,21,10,17,0,0,4,8,6,0,1,0,0,0],"periodFocus":{"title":"Weekly Rhythm","cards":[{"label":"Weekday / Weekend","value":"92 / 0","note":"평일과 주말 청취량의 무게 차이입니다."},{"label":"Late-night","value":"18","note":"00:00-04:59 KST scrobbles입니다."},{"label":"Most active day","value":"Thu, 10/01","note":"이번 주 청취가 가장 몰린 날입니다."}]},"deepDive":{"title":"Weekly Snapshot","sections":[]},"recommendation":{"title":"feeble little horse - bitknot","about":"이번 기간의 중심 취향에서 크게 벗어나지 않는 안전한 확장선입니다.","why":"이미 반복해서 들은 축을 한 번 더 깊게 확인하는 방향의 추천입니다."},"ai":{"enabled":false,"source":"fallback","status":"AI API not configured","model":"fallback","error":"OPENAI_API_KEY is missing"},"tagTimeline":[{"startDate":"2026-08-24","endDate":"2026-08-30","scrobbles":314,"tags":[{"name":"indie rock","score":228},{"name":"shoegaze","score":175},{"name":"noise pop","score":175},{"name":"lo-fi","score":165},{"name":"slacker rock","score":165},{"name":"indie pop","score":87}],"label":"2026-08-24","shortLabel":"08/24"},{"startDate":"2026-08-31","endDate":"2026-09-06","scrobbles":103,"tags":[{"name":"indie rock","score":41},{"name":"indie pop","score":41},{"name":"alternative rock","score":35},{"name":"japan","score":29},{"name":"j-rock","score":29},{"name":"shoegaze","score":20}],"label":"2026-08-31","shortLabel":"08/31"},{"startDate":"2026-09-07","endDate":"2026-09-13","scrobbles":42,"tags":[{"name":"indie rock","score":28},{"name":"indie pop","score":17},{"name":"shoegaze","score":11},{"name":"noise pop","score":11},{"name":"lo-fi","score":11},{"name":"noise rock","score":11}],"label":"2026-09-07","shortLabel":"09/07"},{"startDate":"2026-09-14","endDate":"2026-09-20","scrobbles":120,"tags":[{"name":"indie rock","score":80},{"name":"indie pop","score":55},{"name":"korean","score":26},{"name":"indie","score":26},{"name":"k-rock","score":26},{"name":"alternative","score":26}],"label":"2026-09-14","shortLabel":"09/14"},{"startDate":"2026-09-21","endDate":"2026-09-27","scrobbles":185,"tags":[{"name":"indie pop","score":128},{"name":"indie rock","score":101},{"name":"post-rock","score":76},{"name":"alternative rock","score":63},{"name":"j-rock","score":63},{"name":"synthpop","score":50}],"label":"2026-09-21","shortLabel":"09/21"},{"startDate":"2026-09-28","endDate":"2026-10-04","scrobbles":92,"tags":[{"name":"shoegaze","score":72},{"name":"indie rock","score":51},{"name":"noise pop","score":50},{"name":"lo-fi","score":37},{"name":"slacker rock","score":37},{"name":"emo","score":35}],"label":"2026-09-28","shortLabel":"09/28"}]};window.REPORT_REGISTRY=[{"period":"monthly","start":"2026-05-01","end":"2026-05-31","label":"2026-05","file":"lastfm-monthly-2026-05.html"},{"period":"monthly","start":"2026-06-01","end":"2026-06-30","label":"2026-06","file":"lastfm-monthly-2026-06.html"},{"period":"weekly","start":"2026-06-01","end":"2026-06-07","label":"2026-06-01 ~ 2026-06-07","file":"lastfm-weekly-2026-06-01-to-2026-06-07.html"},{"period":"weekly","start":"2026-06-08","end":"2026-06-14","label":"2026-06-08 ~ 2026-06-14","file":"lastfm-weekly-2026-06-08-to-2026-06-14.html"},{"period":"weekly","start":"2026-06-15","end":"2026-06-21","label":"2026-06-15 ~ 2026-06-21","file":"lastfm-weekly-2026-06-15-to-2026-06-21.html"},{"period":"weekly","start":"2026-06-22","end":"2026-06-28","label":"2026-06-22 ~ 2026-06-28","file":"lastfm-weekly-2026-06-22-to-2026-06-28.html"},{"period":"weekly","start":"2026-06-29","end":"2026-07-05","label":"2026-06-29 ~ 2026-07-05","file":"lastfm-weekly-2026-06-29-to-2026-07-05.html"},{"period":"monthly","start":"2026-07-01","end":"2026-07-31","label":"2026-07","file":"lastfm-monthly-2026-07.html"},{"period":"weekly","start":"2026-07-06","end":"2026-07-12","label":"2026-07-06 ~ 2026-07-12","file":"lastfm-weekly-2026-07-06-to-2026-07-12.html"},{"period":"weekly","start":"2026-07-13","end":"2026-07-19","label":"2026-07-13 ~ 2026-07-19","file":"lastfm-weekly-2026-07-13-to-2026-07-19.html"},{"period":"weekly","start":"2026-07-20","end":"2026-07-26","label":"2026-07-20 ~ 2026-07-26","file":"lastfm-weekly-2026-07-20-to-2026-07-26.html"},{"period":"weekly","start":"2026-07-27","end":"2026-08-02","label":"2026-07-27 ~ 2026-08-02","file":"lastfm-weekly-2026-07-27-to-2026-08-02.html"},{"period":"monthly","start":"2026-08-01","end":"2026-08-31","label":"2026-08","file":"lastfm-monthly-2026-08.html"},{"period":"weekly","start":"2026-08-03","end":"2026-08-09","label":"2026-08-03 ~ 2026-08-09","file":"lastfm-weekly-2026-08-03-to-2026-08-09.html"},{"period":"weekly","start":"2026-08-10","end":"2026-08-16","label":"2026-08-10 ~ 2026-08-16","file":"lastfm-weekly-2026-08-10-to-2026-08-16.html"},{"period":"weekly","start":"2026-08-17","end":"2026-08-23","label":"2026-08-17 ~ 2026-08-23","file":"lastfm-weekly-2026-08-17-to-2026-08-23.html"},{"period":"weekly","start":"2026-08-24","end":"2026-08-30","label":"2026-08-24 ~ 2026-08-30","file":"lastfm-weekly-2026-08-24-to-2026-08-30.html"},{"period":"weekly","start":"2026-08-31","end":"2026-09-06","label":"2026-08-31 ~ 2026-09-06","file":"lastfm-weekly-2026-08-31-to-2026-09-06.html"},{"period":"monthly","start":"2026-09-01","end":"2026-09-30","label":"2026-09","file":"lastfm-monthly-2026-09.html"},{"period":"weekly","start":"2026-09-07","end":"2026-09-13","label":"2026-09-07 ~ 2026-09-13","file":"lastfm-weekly-2026-09-07-to-2026-09-13.html"},{"period":"weekly","start":"2026-09-14","end":"2026-09-20","label":"2026-09-14 ~ 2026-09-20","file":"lastfm-weekly-2026-09-14-to-2026-09-20.html"},{"period":"weekly","start":"2026-09-21","end":"2026-09-27","label":"2026-09-21 ~ 2026-09-27","file":"lastfm-weekly-2026-09-21-to-2026-09-27.html"},{"period":"weekly","start":"2026-09-28","end":"2026-10-04","label":"2026-09-28 ~ 2026-10-04","file":"lastfm-weekly-2026-09-28-to-2026-10-04.html"},{"period":"monthly","start":"2026-10-01","end":"2026-10-31","label":"2026-10","file":"lastfm-monthly-2026-10.html"},{"period":"weekly","start":"2026-10-05","end":"2026-10-11","label":"2026-10-05 ~ 2026-10-11","file":"lastfm-weekly-2026-10-05-to-2026-10-11.html"},{"period":"weekly","start":"2026-10-12","end":"2026-10-18","label":"2026-10-12 ~ 2026-10-18","file":"lastfm-weekly-2026-10-12-to-2026-10-18.html"},{"period":"weekly","start":"2026-10-19","end":"2026-10-25","label":"2026-10-19 ~ 2026-10-25","file":"lastfm-weekly-2026-10-19-to-2026-10-25.html"},{"period":"weekly","start":"2026-10-26","end":"2026-11-01","label":"2026-10-26 ~ 2026-11-01","file":"lastfm-weekly-2026-10-26-to-2026-11-01.html"},{"period":"weekly","start":"2026-11-02","end":"2026-11-08","label":"2026-11-02 ~ 2026-11-08","file":"lastfm-weekly-2026-11-02-to-2026-11-08.html"},{"period":"weekly","start":"2026-11-09","end":"2026-11-15","label":"2026-11-09 ~ 2026-11-15","file":"lastfm-weekly-2026-11-09-to-2026-11-15.html"},{"period":"weekly","start":"2026-11-16","end":"2026-11-22","label":"2026-11-16 ~ 2026-11-22","file":"lastfm-weekly-2026-11-16-to-2026-11-22.html"}];
@@ -591,11 +595,11 @@ const state = {
 const expandedCharts = { track: false, artist: false, album: false };
 const fallbackImage = "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><rect width="300" height="300" fill="#d8cab9"/><circle cx="150" cy="150" r="92" fill="#201b18"/><circle cx="150" cy="150" r="20" fill="#d51007"/></svg>');
 const fingerprintInfo = {
-  consistency: "Listening volume is spread evenly across the period.",
-  discovery: "Share of tracks played only once.",
-  variety: "Artist breadth relative to unique tracks.",
-  concentration: "Share captured by the top five artists.",
-  replay: "Share of scrobbles beyond the first play of each track."
+  consistency: "기간 내 재생이 고르게 분산된 정도예요.",
+  discovery: "한 번씩만 들은 곡의 비율이에요.",
+  variety: "곡 수 대비 얼마나 다양한 아티스트를 들었는지 보여줘요.",
+  concentration: "상위 아티스트 다섯 팀의 재생 비율이에요.",
+  replay: "각 곡의 첫 재생 이후 다시 들은 비율이에요."
 };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -644,7 +648,7 @@ function renderReportControls() {
     link.hidden = !target;
     if (target) {
       link.href = "./" + target.file;
-      link.setAttribute("aria-label", `${link.textContent.trim()} report, ${target.label}`);
+      link.setAttribute("aria-label", `${link.textContent.trim()} 리포트, ${target.label}`);
     }
   }
 }
@@ -653,11 +657,22 @@ function signed(value) {
   return (value > 0 ? "+" : "") + value.toLocaleString();
 }
 
+function periodComparisonLabels(kind) {
+  if (kind === "weekly") return { previous: "지난주", current: "이번 주" };
+  if (kind === "monthly") return { previous: "지난달", current: "이번 달" };
+  return { previous: "전년", current: "올해" };
+}
+
+function formatListeningDate(date, monthOnly) {
+  const [, month, day] = date.split("-");
+  return monthOnly ? `${Number(month)}월` : `${Number(month)}월 ${Number(day)}일`;
+}
+
 function render() {
   const r = state.report;
   const album = r.topAlbums[0];
   $("#headline").textContent = r.headline;
-  $("#summaryText").textContent = album ? `${album.artist} · ${album.album} · ${album.count.toLocaleString()} plays` : "No album listening data";
+  $("#summaryText").textContent = album ? `${album.artist} · ${album.album} · ${album.count.toLocaleString()}회` : "앨범 기록이 없어요.";
   $("#summaryDetail").textContent = r.summary;
   $("#storyText").textContent = r.story;
   $("#recommendationTitle").textContent = r.recommendation.title;
@@ -685,20 +700,20 @@ function renderHighlights() {
   const latest = r.tagTimeline?.at(-1)?.tags?.[0];
   const sustain = r.sustainedAlbum;
   const cards = [];
-  if (r.kind === "weekly" && track) cards.push(["Most played track", track.title, `${track.artist} · ${track.count.toLocaleString()} plays`, track, "track"]);
+  if (r.kind === "weekly" && track) cards.push(["가장 많이 들은 곡", track.title, `${track.artist} · ${track.count.toLocaleString()}회`, track, "track"]);
   if (r.kind !== "weekly" && sustain) {
-    const unit = r.kind === "yearly" ? "month" : "week";
-    cards.push(["Staying in rotation", sustain.album, `${sustain.artist} · played in ${sustain.activeBuckets} ${unit}${sustain.activeBuckets === 1 ? "" : "s"}`, sustain, "album"]);
+    const unit = r.kind === "yearly" ? "개월" : "주";
+    cards.push(["꾸준히 들은 앨범", sustain.album, `${sustain.artist} · ${sustain.activeBuckets}${unit}에 걸쳐 들었어요`, sustain, "album"]);
   }
-  if (r.kind !== "weekly" && !sustain && album) cards.push(["Most played album", album.album, `${album.artist} · ${album.count.toLocaleString()} plays`, album, "album"]);
-  if (r.kind === "monthly" && latest) cards.push(["Leading tag", latest.name, "See how it moved across six months", null, "tags"]);
-  if (peak) cards.push([r.kind === "yearly" ? "Busiest month" : "Busiest day", peak.label, `${peak.count.toLocaleString()} plays`]);
+  if (r.kind !== "weekly" && !sustain && album) cards.push(["가장 많이 들은 앨범", album.album, `${album.artist} · ${album.count.toLocaleString()}회`, album, "album"]);
+  if (r.kind === "monthly" && latest) cards.push(["이번 달 대표 태그", latest.name, "최근 6개월의 흐름 보기", null, "tags"]);
+  if (peak) cards.push([r.kind === "yearly" ? "가장 많이 들은 달" : "가장 많이 들은 날", formatListeningDate(peak.order, r.kind === "yearly"), `${peak.count.toLocaleString()}회`]);
   $("#highlights").innerHTML = cards.map(([label, value, note, item, type]) => {
     const content = `<span>${esc(label)}</span><strong>${esc(value)}</strong><small>${esc(note)}</small>`;
     if (item) return `<button class="snapshot" type="button" data-detail='${payload(item, type)}'>${content}</button>`;
     if (type === "tags") return `<a class="snapshot" href="#tagsTitle">${content}</a>`;
     return `<article class="snapshot">${content}</article>`;
-  }).join("") || '<p class="profile-empty">No listening activity in this period.</p>';
+  }).join("") || '<p class="profile-empty">이 기간에 재생 기록이 없어요.</p>';
 }
 
 function payload(item, type) {
@@ -711,7 +726,7 @@ function renderCovers() {
     $("#coverGrid").hidden = true;
     return;
   }
-  $("#coverGrid").innerHTML = `<button type="button" data-detail='${payload(album, "album")}'><img src="${esc(img(album.image))}" alt="${esc(album.album)} album cover"></button>`;
+  $("#coverGrid").innerHTML = `<button type="button" data-detail='${payload(album, "album")}'><img src="${esc(img(album.image))}" alt="${esc(album.album)} 앨범 커버"></button>`;
 }
 
 function renderInsights() {
@@ -721,10 +736,13 @@ function renderInsights() {
 function renderComparison() {
   const c = state.report.comparison;
   const available = c.previousAvailable ?? (c.previousTotal > 0);
+  const previous = periodComparisonLabels(state.report.kind).previous;
+  const change = c.delta === 0 ? `${previous}와 같아요`
+    : `${previous}보다 ${Math.abs(c.delta).toLocaleString()}회 ${c.delta > 0 ? "증가" : "감소"}`;
   $("#mChange").textContent = available
-    ? `${signed(c.delta)} vs previous${c.percent == null ? "" : ` (${c.percentText})`}`
-    : "Previous period unavailable";
-  $("#comparisonGrid").innerHTML = `<span>${esc(c.previousRange || "Previous period")}</span><strong>${available ? c.previousTotal.toLocaleString() + " plays" : "Data unavailable"}</strong>`;
+    ? `${change}${c.percent == null || c.delta === 0 ? "" : ` (${c.percentText})`}`
+    : "직전 기간의 기록이 없어요.";
+  $("#comparisonGrid").innerHTML = `<span>${esc(c.previousRange || "직전 기간")}</span><strong>${available ? c.previousTotal.toLocaleString() + "회" : "기록 없음"}</strong>`;
 }
 
 function renderPeriodFocus() {
@@ -768,12 +786,12 @@ function renderCharts() {
 }
 
 function list(rows, type) {
-  if (!rows.length) return '<p class="profile-empty">No listening activity in this ranking.</p>';
+  if (!rows.length) return '<p class="profile-empty">이 순위에 표시할 재생 기록이 없어요.</p>';
   const visible = expandedCharts[type] ? rows : rows.slice(0, 5);
-  const more = rows.length > 5 ? `<button class="more-btn" type="button" data-more="${type}">${expandedCharts[type] ? "Show less" : `More ${rows.length - 5}`}</button>` : "";
+  const more = rows.length > 5 ? `<button class="more-btn" type="button" data-more="${type}">${expandedCharts[type] ? "접기" : `${rows.length - 5}개 더 보기`}</button>` : "";
   return `<ol class="rank-list">${visible.map((item, index) => {
     const title = type === "artist" ? item.artist : type === "album" ? item.album : item.title;
-    const sub = type === "artist" ? "Artist" : item.artist + (item.album && type === "track" ? ` · ${item.album}` : "");
+    const sub = type === "artist" ? "아티스트" : item.artist + (item.album && type === "track" ? ` · ${item.album}` : "");
     return `<li><button class="rank-item" type="button" data-detail='${payload(item, type)}'><img class="thumb" src="${esc(img(item.image))}" alt="" loading="lazy"><span class="rank-title"><strong>${index + 1}. ${esc(title)}</strong><span>${esc(sub)}</span></span><span class="count">${item.count}</span></button></li>`;
   }).join("")}</ol>${more}`;
 }
@@ -784,45 +802,44 @@ function renderDays() {
   const start = new Date(report.startDate);
   const end = new Date(report.endDate);
   const counts = new Map(report.days.map((day) => [day.order, day.count]));
-  const format = new Intl.DateTimeFormat("en", {month: "short", ...(yearly ? {} : {day: "numeric"}), timeZone: "UTC"});
   const buckets = [];
   for (const date = new Date(start); date <= end;) {
     const key = date.toISOString().slice(0, yearly ? 7 : 10);
-    buckets.push({label: format.format(date), count: counts.get(key) || 0});
+    buckets.push({label: formatListeningDate(key, yearly), count: counts.get(key) || 0});
     if (yearly) date.setUTCMonth(date.getUTCMonth() + 1);
     else date.setUTCDate(date.getUTCDate() + 1);
   }
   const peak = buckets.reduce((best, bucket) => bucket.count > best.count ? bucket : best, buckets[0]);
   const max = Math.max(peak.count, 1);
   const bars = buckets.map((bucket) => {
-    const label = `${bucket.label} · ${bucket.count.toLocaleString()} plays`;
+    const label = `${bucket.label} · ${bucket.count.toLocaleString()}회`;
     return `<button type="button" class="pace-bar" aria-label="${esc(label)}" aria-pressed="${bucket === peak}" style="--pace-height:${bucket.count / max * 100}%"><i></i></button>`;
   }).join("");
-  $("#dayGrid").innerHTML = `<div class="pace-chart" style="--pace-slots:${buckets.length}">${bars}</div><div class="pace-axis"><span>${esc(buckets[0].label)}</span><span>${esc(buckets.at(-1).label)}</span></div><p class="pace-readout" id="paceReadout" aria-live="polite">${esc(peak.label)} · ${peak.count.toLocaleString()} plays</p>`;
+  $("#dayGrid").innerHTML = `<div class="pace-chart" style="--pace-slots:${buckets.length}">${bars}</div><div class="pace-axis"><span>${esc(buckets[0].label)}</span><span>${esc(buckets.at(-1).label)}</span></div><p class="pace-readout" id="paceReadout" aria-live="polite">${esc(peak.label)} · ${peak.count.toLocaleString()}회</p>`;
 }
 
 function renderAiStatus() {
   const ai = state.report.ai || {};
   const ok = Boolean(ai.enabled);
   $("#aiStatus").innerHTML = `
-    <div class="status-badge ${ok ? "ok" : "fallback"}">${ok ? "AI API Success" : "Fallback Used"}</div>
+    <div class="status-badge ${ok ? "ok" : "fallback"}">${ok ? "AI 작성" : "기본 요약 사용"}</div>
     <dl class="status-list">
-      <div><dt>Source</dt><dd>${esc(ai.source || (ok ? "openai" : "fallback"))}</dd></div>
-      <div><dt>Model</dt><dd>${esc(ai.model || "-")}</dd></div>
-      <div><dt>Status</dt><dd>${esc(ai.status || (ok ? "AI API success" : "Fallback summary"))}</dd></div>
-      ${ok ? "" : `<div><dt>Reason</dt><dd>${esc(ai.error || "AI copy was not generated.")}</dd></div>`}
+      <div><dt>작성 방식</dt><dd>${esc(ai.source || (ok ? "openai" : "fallback"))}</dd></div>
+      <div><dt>모델</dt><dd>${esc(ai.model || "-")}</dd></div>
+      <div><dt>상태</dt><dd>${esc(ai.status || (ok ? "AI API success" : "Fallback summary"))}</dd></div>
+      ${ok ? "" : `<div><dt>사유</dt><dd>${esc(ai.error || "AI 요약을 생성하지 못했어요.")}</dd></div>`}
     </dl>
   `;
 }
 
 function openDetail(item) {
   const title = item.type === "artist" ? item.artist : item.type === "album" ? item.album : item.title;
-  const meta = item.type === "artist" ? `${item.count} scrobbles` : `${item.artist} · ${item.count} scrobbles`;
+  const meta = item.type === "artist" ? `${item.count}회 재생` : `${item.artist} · ${item.count}회 재생`;
   $("#detailImage").src = img(item.image);
   $("#detailImage").alt = title;
   $("#detailTitle").textContent = title;
   $("#detailMeta").textContent = meta;
-  $("#detailBody").textContent = item.album && item.type !== "album" ? `Album: ${item.album}` : "";
+  $("#detailBody").textContent = item.album && item.type !== "album" ? `수록 앨범 · ${item.album}` : "";
   $("#detailBody").style.display = $("#detailBody").textContent ? "block" : "none";
   $("#detail").showModal();
 }
@@ -840,12 +857,12 @@ function renderMusicRatio() {
   const current = ratio?.current || report;
   const available = report.comparison.previousAvailable ?? (report.comparison.previousTotal > 0);
   const previous = available ? ratio?.previous : null;
-  const rows = [["tracks", "Tracks"], ["albums", "Albums"], ["artists", "Artists"]];
-  $("#musicRatio").innerHTML = `<table class="breadth-table"><thead><tr><th scope="col">Unique</th><th scope="col">Current</th><th scope="col">Previous</th><th scope="col">Change</th></tr></thead><tbody>${rows.map(([key, label]) => {
+  const rows = [["tracks", "곡"], ["albums", "앨범"], ["artists", "아티스트"]];
+  $("#musicRatio").innerHTML = `<table class="breadth-table"><thead><tr><th scope="col">고유 항목</th><th scope="col">현재</th><th scope="col">직전</th><th scope="col">증감</th></tr></thead><tbody>${rows.map(([key, label]) => {
     const value = current[key];
     const before = previous?.[key];
     return `<tr><th scope="row">${label}</th><td><strong>${value?.toLocaleString() ?? "—"}</strong></td><td>${before?.toLocaleString() ?? "—"}</td><td>${value == null || before == null ? "—" : signed(value - before)}</td></tr>`;
-  }).join("")}</tbody></table>${available && previous ? "" : '<p class="profile-empty">Previous counts are unavailable.</p>'}`;
+  }).join("")}</tbody></table>${available && previous ? "" : '<p class="profile-empty">직전 기간의 기록이 없어요.</p>'}`;
 }
 
 function renderFingerprint() {
@@ -853,11 +870,11 @@ function renderFingerprint() {
   const current = fingerprint.current || { consistency: 0, discovery: 0, variety: 0, concentration: 0, replay: 0 };
   const previous = fingerprint.previous || { consistency: 0, discovery: 0, variety: 0, concentration: 0, replay: 0 };
   const axes = [
-    ["Consistency", "consistency"],
-    ["Discovery", "discovery"],
-    ["Variety", "variety"],
-    ["Concentration", "concentration"],
-    ["Replay", "replay"]
+    ["꾸준함", "consistency"],
+    ["한 번 듣기", "discovery"],
+    ["다양성", "variety"],
+    ["집중도", "concentration"],
+    ["반복 재생", "replay"]
   ];
   const center = 140;
   const radius = 86;
@@ -875,49 +892,119 @@ function renderFingerprint() {
     const score = Number(current[key] || 0);
     const before = Number(previous[key] || 0);
     const point = polarPoint(center, center, radius * score / 100, index * 72 - 90);
-    return `<circle class="radar-node" cx="${point.x}" cy="${point.y}" r="5" ${profileAttrs({ chart: "fingerprint", key, title: label, value: `${score} / 100`, note: previousAvailable ? `Previous ${before} · ${fingerprintInfo[key]}` : fingerprintInfo[key] })}></circle>`;
+    return `<circle class="radar-node" cx="${point.x}" cy="${point.y}" r="5" ${profileAttrs({ chart: "fingerprint", key, title: label, value: `${score} / 100`, note: previousAvailable ? `직전 ${before} · ${fingerprintInfo[key]}` : fingerprintInfo[key] })}></circle>`;
   }).join("");
-  $("#listeningFingerprint").innerHTML = `<div class="fingerprint-wrap"><svg class="fingerprint-svg" viewBox="0 0 280 280" role="img" aria-label="Listening behavior fingerprint compared with the previous period">${grid}${spokes}${previousAvailable ? `<polygon class="radar-previous" points="${previousPoints}"></polygon>` : ""}<polygon class="radar-current" points="${currentPoints}"></polygon>${nodes}${labels}</svg><div class="profile-legend"><span><i class="legend-current"></i>Current</span>${previousAvailable ? '<span><i class="legend-previous"></i>Previous</span>' : ""}</div></div><div class="profile-detail" id="fingerprintDetail"></div>`;
+  $("#listeningFingerprint").innerHTML = `<div class="fingerprint-wrap"><svg class="fingerprint-svg" viewBox="0 0 280 280" role="img" aria-label="직전 기간과 비교한 청취 성향">${grid}${spokes}${previousAvailable ? `<polygon class="radar-previous" points="${previousPoints}"></polygon>` : ""}<polygon class="radar-current" points="${currentPoints}"></polygon>${nodes}${labels}</svg><div class="profile-legend"><span><i class="legend-current"></i>현재</span>${previousAvailable ? '<span><i class="legend-previous"></i>직전</span>' : ""}</div></div><div class="profile-detail" id="fingerprintDetail"></div>`;
   setInitialProfileDetail("fingerprint", "consistency");
 }
 
 function renderTagMovement() {
-  const timeline = state.report.tagTimeline || [];
-  const formatPercent = (value) => value == null ? "—" : `${value.toFixed(1)}%`;
+  const report = state.report;
+  const timeline = report.tagTimeline || [];
+  const monthOnly = report.kind !== "weekly";
+  const dateLabel = (slot) => formatListeningDate(slot.startDate, monthOnly);
+  const fullLabel = (slot) => `${slot.startDate.slice(0, 4)}년 ${dateLabel(slot)}`;
+  const percent = (value) => value == null ? "—" : `${value.toFixed(1)}%`;
   const scores = timeline.map((slot) => new Map(slot.scrobbles > 0
     ? (slot.tags || []).filter((tag) => tag.score > 0 && tag.score <= slot.scrobbles)
       .map((tag) => [tag.name, 100 * tag.score / slot.scrobbles])
     : []));
-  const peaks = new Map();
-  const coverage = new Map();
+  const weights = new Map();
   for (const row of scores) {
-    for (const [name, value] of row) {
-      peaks.set(name, Math.max(peaks.get(name) || 0, value));
-      coverage.set(name, (coverage.get(name) || 0) + 1);
-    }
+    for (const [name, value] of row) weights.set(name, (weights.get(name) || 0) + value);
   }
-  const latest = scores.at(-1);
-  const historical = [...coverage.keys()].sort((a, b) => coverage.get(b) - coverage.get(a) || peaks.get(b) - peaks.get(a) || a.localeCompare(b));
-  const names = [...new Set([...[...(latest?.keys() || [])].slice(0, 3), ...historical])].slice(0, 6);
-  $("#tagMovementRange").textContent = timeline.length ? `${timeline[0].label} – ${timeline.at(-1).label}` : "";
+  const current = scores.at(-1);
+  const previous = scores.at(-2);
+  const leaders = (row) => [...(row?.keys() || [])].slice(0, 3);
+  const historical = [...weights.keys()].sort((a, b) => weights.get(b) - weights.get(a) || a.localeCompare(b));
+  const names = [...new Set([...leaders(current), ...leaders(previous), ...historical])].slice(0, 8);
+  $("#tagMovementRange").textContent = timeline.length ? `${fullLabel(timeline[0])} – ${fullLabel(timeline.at(-1))}` : "";
   if (!names.length) {
-    $("#tagMovement").innerHTML = '<p class="profile-empty">Tag data is unavailable for this period.</p>';
+    $("#tagMovement").innerHTML = '<p class="profile-empty">이 기간에 표시할 태그 기록이 없어요.</p>';
     return;
   }
-  const scale = Math.max(10, Math.ceil(Math.max(...names.map((name) => peaks.get(name))) / 10) * 10);
-  const labels = timeline.map((slot) => `<span title="${esc(slot.label)}">${esc(slot.shortLabel || slot.label)}</span>`).join("");
-  $("#tagMovement").innerHTML = `<p class="tag-method">Weighted tag score per 100 plays · common scale 0–${scale}%</p><div class="tag-trends" style="--tag-periods:${timeline.length}">${names.map((name) => {
-    const value = latest.get(name);
-    const earlier = scores.at(-2)?.get(name);
-    const delta = value == null || earlier == null ? null : Math.round((value - earlier) * 10) / 10;
-    const bars = timeline.map((slot, index) => {
-      const score = scores[index].get(name);
-      const note = slot.scrobbles == null ? "Period data unavailable" : slot.scrobbles === 0 ? "No plays" : !slot.tags?.length ? "Tag data unavailable" : score == null ? "Outside the stored top tags" : `${slot.scrobbles.toLocaleString()} plays in this period`;
-      const attrs = profileAttrs({chart: "tags", key: `${name}-${index}`, title: `${name} · ${slot.label}`, value: formatPercent(score), note});
-      return `<button type="button" class="tag-bar ${score == null ? "tag-gap" : ""}" style="--tag-height:${(score || 0) / scale * 100}%" aria-label="${esc(`${name}, ${slot.label}, ${score == null ? note : formatPercent(score)}`)}" ${attrs}><i></i></button>`;
-    }).join("");
-    return `<article class="tag-trend"><div class="tag-label"><strong>${esc(name)}</strong><span>${formatPercent(value)}${delta == null ? "" : ` <small>${signed(delta)} pp</small>`}</span></div><div class="tag-bars">${bars}</div><div class="tag-ticks" aria-hidden="true">${labels}</div></article>`;
-  }).join("")}</div><div class="profile-detail profile-detail-dark" id="tagsDetail" aria-live="polite">Select a period for its tag score.</div>`;
+
+  const palette = ["#ae80ff", "#428bf5", "#3dcfba", "#e17cb8", "#6a65e1", "#328ca6", "#daa864", "#9ec6f8"];
+  const width = timeline.length > 6 ? 820 : 600;
+  const step = (width - 68) / Math.max(timeline.length - 1, 1);
+  const xAt = (index) => 34 + step * index;
+  const totals = scores.map((row) => names.reduce((total, name) => total + (row.get(name) || 0), 0));
+  const scale = 142 / Math.max(...totals, 1);
+  const edges = totals.map((total) => 86 - total * scale / 2);
+  const pair = report.kind === "yearly"
+    ? { previous: dateLabel(timeline.at(-2)), current: dateLabel(timeline.at(-1)) }
+    : periodComparisonLabels(report.kind);
+  const layers = names.map((name, index) => {
+    const points = scores.map((row, periodIndex) => {
+      const value = row.get(name);
+      if (value == null) return null;
+      const top = edges[periodIndex];
+      edges[periodIndex] += value * scale;
+      return { x: xAt(periodIndex), top, bottom: edges[periodIndex] };
+    });
+    const before = previous?.get(name);
+    const after = current.get(name);
+    const delta = before == null || after == null ? null : Math.round((after - before) * 10) / 10;
+    const value = `${percent(before)} → ${percent(after)}`;
+    const note = delta == null ? "두 기간에 모두 기록된 태그의 증감을 표시해요." : `${pair.previous}보다 ${signed(delta)}%p`;
+    const attrs = profileAttrs({ chart: "tags", key: name, title: name, value, note });
+    const label = esc(`${name}, ${pair.previous} ${percent(before)}, ${pair.current} ${percent(after)}`);
+    return { name, color: palette[index], points, attrs, label, before, after, delta };
+  });
+
+  const bands = layers.map(({ points, color, attrs, label }) =>
+    `<path class="tag-stream" fill="${color}" d="${streamBandPath(points, step)}" ${attrs} aria-label="${label}"></path>`).join("");
+  const labels = layers.map(({ name, points }) => {
+    const last = points.at(-1);
+    const thickness = (point) => point ? point.bottom - point.top : 0;
+    const spot = thickness(last) >= 18 ? last
+      : points.reduce((best, point) => thickness(point) > thickness(best) ? point : best, null);
+    if (!spot || thickness(spot) < 18) return "";
+    const end = spot.x >= width / 2;
+    return `<text class="stream-band-name" x="${spot.x + (end ? -8 : 8)}" y="${(spot.top + spot.bottom) / 2 + 4}" text-anchor="${end ? "end" : "start"}" aria-hidden="true">${esc(name)}</text>`;
+  }).join("");
+  const ticks = timeline.map((slot, index) => {
+    const emphasis = index >= timeline.length - 2;
+    const missing = scores[index].size === 0;
+    return `<g class="stream-date${emphasis ? " stream-recent" : ""}"><line x1="${xAt(index)}" x2="${xAt(index)}" y1="10" y2="162"></line><text class="stream-tick" x="${xAt(index)}" y="183" text-anchor="middle">${esc(dateLabel(slot))}</text>${missing ? `<text class="stream-missing" x="${xAt(index)}" y="86" text-anchor="middle">—</text>` : ""}</g>`;
+  }).join("");
+  const rows = layers.map(({ name, color, attrs, label, before, after, delta }) =>
+    `<button type="button" class="tag-compare-row" ${attrs} aria-label="${label}"><span><i style="background:${color}"></i>${esc(name)}</span><span>${percent(before)}</span><strong>${percent(after)}</strong><small>${delta == null ? "—" : `${signed(delta)}%p`}</small></button>`).join("");
+  $("#tagMovement").innerHTML = `<p class="tag-method">태그별 흐름 · 띠가 두꺼울수록 재생 100회당 태그 점수가 높아요.</p><svg class="tag-flow-svg" viewBox="0 0 ${width} 192" role="group" aria-label="기간별 태그 흐름">${bands}${ticks}${labels}</svg><div class="tag-compare"><div class="tag-compare-head"><span>태그</span><span>${pair.previous}</span><strong>${pair.current}</strong><span>증감</span></div>${rows}</div><p class="tag-method tag-gap-note">— 표시는 태그가 집계되지 않았거나 상위 태그에 들지 않은 경우예요.</p>`;
+}
+
+function streamBandPath(points, step) {
+  const paths = [];
+  let section = [];
+  for (let index = 0; index <= points.length; index += 1) {
+    const point = points[index];
+    if (point) {
+      if (!section.length && (index > 0 || !points[1])) section.push(streamTip(point, -step / (index === 0 ? 4 : 2)));
+      section.push(point);
+    } else if (section.length) {
+      if (index < points.length || !points[index - 2]) {
+        section.push(streamTip(section.at(-1), step / (index === points.length ? 4 : 2)));
+      }
+      const upper = section.map(({ x, top }) => ({ x, y: top }));
+      const lower = section.reverse().map(({ x, bottom }) => ({ x, y: bottom }));
+      paths.push(`M ${upper[0].x} ${upper[0].y}${streamCurve(upper)} L ${lower[0].x} ${lower[0].y}${streamCurve(lower)} Z`);
+      section = [];
+    }
+  }
+  return paths.join(" ");
+}
+
+function streamTip(point, offset) {
+  const middle = (point.top + point.bottom) / 2;
+  return { x: point.x + offset, top: middle, bottom: middle };
+}
+
+function streamCurve(points) {
+  return points.slice(1).map((point, index) => {
+    const previous = points[index];
+    const middle = (previous.x + point.x) / 2;
+    return ` C ${middle} ${previous.y} ${middle} ${point.y} ${point.x} ${point.y}`;
+  }).join("");
 }
 
 function renderListeningClock() {
@@ -929,10 +1016,10 @@ function renderListeningClock() {
     const end = (hour + 1) * 15 - 90.8;
     const valueRadius = 55 + count / max * 59;
     const time = `${String(hour).padStart(2, "0")}:00`;
-    const attrs = profileAttrs({ chart: "clock", key: String(hour), title: time, value: `${count.toLocaleString()} scrobbles`, note: `${time}-${String(hour).padStart(2, "0")}:59 KST` });
+    const attrs = profileAttrs({ chart: "clock", key: String(hour), title: time, value: `${count.toLocaleString()}회`, note: `${time}-${String(hour).padStart(2, "0")}:59 KST` });
     return `<g class="clock-segment"><path class="clock-hit" d="${donutSectorPath(130, 130, 54, 116, start, end)}" fill="transparent" ${attrs}></path><path class="clock-base" d="${donutSectorPath(130, 130, 55, 114, start, end)}"></path>${count ? `<path class="clock-value-segment" d="${donutSectorPath(130, 130, 55, valueRadius, start, end)}"></path>` : ""}</g>`;
   }).join("");
-  $("#listeningClock").innerHTML = `<div class="clock-layout"><svg class="clock-svg" viewBox="0 0 260 260" role="img" aria-label="Listening volume by hour in Korea Standard Time">${segments}<circle class="clock-core" cx="130" cy="130" r="53"></circle><text class="clock-axis" x="130" y="96" text-anchor="middle">00</text><text class="clock-axis" x="165" y="134" text-anchor="middle">06</text><text class="clock-axis" x="130" y="171" text-anchor="middle">12</text><text class="clock-axis" x="94" y="134" text-anchor="middle">18</text></svg><div><div class="clock-stats"><strong>${String(busiest).padStart(2, "0")}:00</strong><span>Busiest hour</span><strong>${max.toLocaleString()}</strong><span>Scrobbles in busiest hour</span><strong>${Math.round(timeBandTotal(hours, 21, 5) / Math.max(state.report.total, 1) * 100)}%</strong><span>Night share · 21:00-04:59</span></div><div class="profile-detail profile-detail-dark" id="clockDetail"></div></div></div>`;
+  $("#listeningClock").innerHTML = `<div class="clock-layout"><svg class="clock-svg" viewBox="0 0 260 260" role="img" aria-label="한국 시간 기준 시간대별 재생">${segments}<circle class="clock-core" cx="130" cy="130" r="53"></circle><text class="clock-axis" x="130" y="96" text-anchor="middle">00</text><text class="clock-axis" x="165" y="134" text-anchor="middle">06</text><text class="clock-axis" x="130" y="171" text-anchor="middle">12</text><text class="clock-axis" x="94" y="134" text-anchor="middle">18</text></svg><div><div class="clock-stats"><strong>${String(busiest).padStart(2, "0")}:00</strong><span>가장 많이 들은 시간</span><strong>${max.toLocaleString()}</strong><span>이 시간의 재생 횟수</span><strong>${Math.round(timeBandTotal(hours, 21, 5) / Math.max(state.report.total, 1) * 100)}%</strong><span>야간 재생 비율 · 21:00-04:59</span></div><div class="profile-detail profile-detail-dark" id="clockDetail"></div></div></div>`;
   setInitialProfileDetail("clock", String(busiest));
 }
 
@@ -981,7 +1068,7 @@ function selectProfileItem(item, initial = false) {
   if (detail) {
     detail.innerHTML = `<span>${esc(item.dataset.profileTitle)}</span><strong>${esc(item.dataset.profileValue)}</strong><p>${esc(item.dataset.profileNote)}</p>`;
   }
-  if (chart === "clock") updateClockCenter(item, initial ? "BUSIEST" : "SELECTED");
+  if (chart === "clock") updateClockCenter(item, initial ? "최다 재생" : "선택한 시간");
 }
 
 function setProfileHover(item, active) {
@@ -992,10 +1079,10 @@ function setProfileHover(item, active) {
     candidate.classList.toggle("is-dimmed", active && candidate.dataset.profileKey !== key);
   });
   if (chart === "clock") {
-    if (active) updateClockCenter(item, "HOUR");
+    if (active) updateClockCenter(item, "시간대");
     else {
       const selected = $$('[data-profile-chart="clock"].is-selected').find((candidate) => candidate.tabIndex >= 0);
-      if (selected) updateClockCenter(selected, "SELECTED");
+      if (selected) updateClockCenter(selected, "선택한 시간");
     }
   }
 }

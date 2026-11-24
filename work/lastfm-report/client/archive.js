@@ -6,7 +6,7 @@ const month = document.querySelector("#archiveMonth");
 const monthFilter = document.querySelector("#monthFilter");
 const results = document.querySelector("#archiveResults");
 const current = entries.find((entry) => entry.dataset.file === query.get("current"));
-const monthFormat = new Intl.DateTimeFormat("en", {month: "long", timeZone: "UTC"});
+const monthFormat = new Intl.DateTimeFormat("ko-KR", {month: "long", timeZone: "UTC"});
 let period = buttons.find((button) => button.dataset.period === query.get("period"))?.dataset.period || "weekly";
 
 if (current) current.firstElementChild.setAttribute("aria-current", "page");
@@ -19,9 +19,9 @@ function setOptions(select, options, selected) {
 function renderArchive(preferredYear, preferredMonth) {
   const reports = entries.filter((entry) => entry.dataset.period === period);
   const years = [...new Set(reports.flatMap(({dataset}) => [dataset.end.slice(0, 4), dataset.start.slice(0, 4)]))].sort().reverse();
-  setOptions(year, [["", "All years"], ...years.map((value) => [value, value])], preferredYear);
+  setOptions(year, [["", "전체 연도"], ...years.map((value) => [value, `${value}년`])], preferredYear);
   monthFilter.hidden = period === "yearly";
-  setOptions(month, [["", "All months"], ...Array.from({length: 12}, (_, index) => [
+  setOptions(month, [["", "전체 월"], ...Array.from({length: 12}, (_, index) => [
     String(index + 1).padStart(2, "0"), monthFormat.format(Date.UTC(2000, index, 1))
   ])], monthFilter.hidden ? "" : preferredMonth);
   buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.period === period)));
@@ -33,7 +33,7 @@ function renderArchive(preferredYear, preferredMonth) {
     entry.hidden = entry.dataset.period !== period || !matches;
     if (!entry.hidden) count += 1;
   }
-  results.textContent = count ? `${count} ${count === 1 ? "report" : "reports"}` : `No ${period} reports for this selection.`;
+  results.textContent = count ? `리포트 ${count}편` : "선택한 기간에 리포트가 없어요.";
 }
 
 function updateFilters(preferredYear, preferredMonth) {

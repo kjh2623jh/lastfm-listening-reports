@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>All Listening Reports</title><style>:root{--bg:#100f0e;--paper:#fbf7ef;--paper-2:#f2e9da;--ink:#1f1b18;--muted:#756b60;--line:rgba(31,27,24,.14);--red:#d51007;--gold:#d99a26;--teal:#0e7c7b;--blue:#2f5f98;--shadow:0 24px 70px rgba(0,0,0,.28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+<title>전체 청취 리포트</title><style>:root{--bg:#100f0e;--paper:#fbf7ef;--paper-2:#f2e9da;--ink:#1f1b18;--muted:#756b60;--line:rgba(31,27,24,.14);--red:#d51007;--gold:#d99a26;--teal:#0e7c7b;--blue:#2f5f98;--shadow:0 24px 70px rgba(0,0,0,.28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box}
 body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 10%,rgba(213,16,7,.36),transparent 28rem),radial-gradient(circle at 88% 4%,rgba(14,124,123,.34),transparent 26rem),linear-gradient(135deg,#15110f 0%,#201916 48%,#0e1818 100%);min-height:100vh}
 button,input{font:inherit}
@@ -324,20 +324,23 @@ a.snapshot:hover,button.snapshot:hover,.feature-cover button:hover{border-color:
 .pace-axis{display:flex;justify-content:space-between;color:var(--muted);font-size:.75rem;margin-top:5px}
 .pace-readout{margin:12px 0 0;font-size:.9rem;font-variant-numeric:tabular-nums}
 .tag-method{margin:0 0 12px;color:var(--muted);font-size:.8rem}
-.tag-trends{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.tag-trend{padding:9px 10px;background:var(--paper-2);border-radius:7px;min-width:0}
-.tag-label{display:flex;justify-content:space-between;gap:8px;align-items:baseline;margin-bottom:4px}
-.tag-label strong{overflow-wrap:anywhere}
-.tag-label span{white-space:nowrap;font-variant-numeric:tabular-nums}
-.tag-label small{color:var(--teal)}
-.tag-bars,.tag-ticks{display:grid;grid-template-columns:repeat(var(--tag-periods),minmax(0,1fr));gap:2px}
-.tag-bar{display:flex;align-items:end;justify-content:center;height:44px;border:0;border-bottom:1px solid var(--line-strong);padding:0 1px;background:transparent}
-.tag-bar i{display:block;width:min(100%,22px);height:var(--tag-height);min-height:2px;background:var(--teal);border-radius:2px 2px 0 0}
-.tag-bar:hover,.tag-bar.is-selected{background:var(--surface-raised)}
-.tag-gap i{height:0;min-height:0;border-top:1px dashed var(--muted);background:none}
-.tag-ticks{font-size:.63rem;color:var(--muted);text-align:center;padding-top:4px}
-.tag-ticks span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tags-card #tagsDetail{min-height:0;margin-bottom:0;padding:10px}
+.tags-card .tag-flow-svg{min-width:0;max-height:none;overflow:hidden;border-radius:8px;background:#0c0d16}
+.stream-date{pointer-events:none}
+.stream-date line{stroke:#ffffff26;stroke-dasharray:3 5}
+.stream-date .stream-tick{fill:#b9bac6;font-size:12px}
+.stream-date.stream-recent line{stroke:#ffffff72;stroke-dasharray:none}
+.stream-date.stream-recent .stream-tick{fill:#fff;font-weight:750}
+.stream-missing{fill:#9192a2;font-size:13px}
+.stream-band-name{fill:#fff;stroke:#10111b;stroke-width:2.5;paint-order:stroke;font-size:11px;font-weight:700;pointer-events:none}
+.tag-compare{margin-top:12px}
+.tag-compare-head,.tag-compare-row{display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(42px,15%));align-items:center;gap:8px;width:100%;padding:8px 6px;text-align:right;font-variant-numeric:tabular-nums}
+.tag-compare-head{color:var(--muted);font-size:.76rem}
+.tag-compare-row{background:transparent;border:0;border-top:1px solid var(--line);font-size:.85rem;color:var(--ink)}
+.tag-compare-row:hover,.tag-compare-row.is-hovered,.tag-compare-row.is-selected{background:var(--paper-2)}
+.tag-compare-head>:first-child,.tag-compare-row>:first-child{text-align:left;overflow-wrap:anywhere}
+.tag-compare-row i{display:inline-block;width:8px;height:8px;border-radius:3px;margin-right:6px}
+.tag-compare-row small{color:var(--muted);white-space:nowrap}
+.tag-gap-note{margin:9px 0 0}
 .report-footer .actions{margin:0}
 dialog.detail[open]{display:block;width:min(720px,calc(100% - 32px));max-height:90vh;padding:0;border:0;background:transparent}
 dialog.detail::backdrop{background:#000c}
@@ -361,20 +364,21 @@ dialog.detail .detail-card img{max-height:40vh;object-fit:contain}
   .report-nav-links{gap:2px}
   .report-nav-links a{font-size:.82rem;padding-inline:7px}
   .report-intro{grid-template-columns:minmax(0,1fr) minmax(70px,25%);gap:10px}
-  .snapshot-grid:has(>:nth-child(3)),.patterns-grid,.tag-trends{grid-template-columns:1fr}
+  .snapshot-grid:has(>:nth-child(3)),.patterns-grid{grid-template-columns:1fr}
   .snapshot{padding:11px}
-  .tag-ticks{font-size:.56rem}
+  .stream-date .stream-tick{font-size:17px}
+  .stream-band-name{display:none}
 }
 @media(max-width:360px){
   .snapshot-grid{grid-template-columns:1fr}
 }
 </style></head>
 <body><main class="archive-page">
-<nav class="report-nav" aria-label="Report navigation"><a class="report-brand" href="./index.html"><span class="mark">fm</span> Latest report</a></nav>
-<header class="archive-heading"><h1>All reports</h1></header>
+<nav class="report-nav" aria-label="리포트 탐색"><a class="report-brand" href="./index.html"><span class="mark">fm</span> 최신 리포트</a></nav>
+<header class="archive-heading"><h1>전체 리포트</h1></header>
 <div class="archive-tools">
-  <div class="archive-tabs" role="group" aria-label="Report type"><button type="button" data-period="weekly" aria-pressed="true">Weekly</button><button type="button" data-period="monthly" aria-pressed="false">Monthly</button><button type="button" data-period="yearly" aria-pressed="false">Yearly</button></div>
-  <div class="archive-filters"><label>Year <select id="archiveYear"></select></label><label id="monthFilter">Month <select id="archiveMonth"></select></label></div>
+  <div class="archive-tabs" role="group" aria-label="리포트 유형"><button type="button" data-period="weekly" aria-pressed="true">주간</button><button type="button" data-period="monthly" aria-pressed="false">월간</button><button type="button" data-period="yearly" aria-pressed="false">연간</button></div>
+  <div class="archive-filters"><label>연도 <select id="archiveYear"></select></label><label id="monthFilter">월 <select id="archiveMonth"></select></label></div>
 </div>
 <p id="archiveResults" role="status"></p><ul id="archiveList"><li data-period="weekly" data-start="2026-11-16" data-end="2026-11-22" data-file="lastfm-weekly-2026-11-16-to-2026-11-22.html"><a href="./lastfm-weekly-2026-11-16-to-2026-11-22.html"><strong>2026-11-16 – 2026-11-22</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-11-09" data-end="2026-11-15" data-file="lastfm-weekly-2026-11-09-to-2026-11-15.html"><a href="./lastfm-weekly-2026-11-09-to-2026-11-15.html"><strong>2026-11-09 – 2026-11-15</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-11-02" data-end="2026-11-08" data-file="lastfm-weekly-2026-11-02-to-2026-11-08.html"><a href="./lastfm-weekly-2026-11-02-to-2026-11-08.html"><strong>2026-11-02 – 2026-11-08</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-10-26" data-end="2026-11-01" data-file="lastfm-weekly-2026-10-26-to-2026-11-01.html"><a href="./lastfm-weekly-2026-10-26-to-2026-11-01.html"><strong>2026-10-26 – 2026-11-01</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-10-19" data-end="2026-10-25" data-file="lastfm-weekly-2026-10-19-to-2026-10-25.html"><a href="./lastfm-weekly-2026-10-19-to-2026-10-25.html"><strong>2026-10-19 – 2026-10-25</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-10-12" data-end="2026-10-18" data-file="lastfm-weekly-2026-10-12-to-2026-10-18.html"><a href="./lastfm-weekly-2026-10-12-to-2026-10-18.html"><strong>2026-10-12 – 2026-10-18</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-10-05" data-end="2026-10-11" data-file="lastfm-weekly-2026-10-05-to-2026-10-11.html"><a href="./lastfm-weekly-2026-10-05-to-2026-10-11.html"><strong>2026-10-05 – 2026-10-11</strong><span aria-hidden="true">↗</span></a></li><li data-period="monthly" data-start="2026-10-01" data-end="2026-10-31" data-file="lastfm-monthly-2026-10.html"><a href="./lastfm-monthly-2026-10.html"><strong>2026-10</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-09-28" data-end="2026-10-04" data-file="lastfm-weekly-2026-09-28-to-2026-10-04.html"><a href="./lastfm-weekly-2026-09-28-to-2026-10-04.html"><strong>2026-09-28 – 2026-10-04</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-09-21" data-end="2026-09-27" data-file="lastfm-weekly-2026-09-21-to-2026-09-27.html"><a href="./lastfm-weekly-2026-09-21-to-2026-09-27.html"><strong>2026-09-21 – 2026-09-27</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-09-14" data-end="2026-09-20" data-file="lastfm-weekly-2026-09-14-to-2026-09-20.html"><a href="./lastfm-weekly-2026-09-14-to-2026-09-20.html"><strong>2026-09-14 – 2026-09-20</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-09-07" data-end="2026-09-13" data-file="lastfm-weekly-2026-09-07-to-2026-09-13.html"><a href="./lastfm-weekly-2026-09-07-to-2026-09-13.html"><strong>2026-09-07 – 2026-09-13</strong><span aria-hidden="true">↗</span></a></li><li data-period="monthly" data-start="2026-09-01" data-end="2026-09-30" data-file="lastfm-monthly-2026-09.html"><a href="./lastfm-monthly-2026-09.html"><strong>2026-09</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-08-31" data-end="2026-09-06" data-file="lastfm-weekly-2026-08-31-to-2026-09-06.html"><a href="./lastfm-weekly-2026-08-31-to-2026-09-06.html"><strong>2026-08-31 – 2026-09-06</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-08-24" data-end="2026-08-30" data-file="lastfm-weekly-2026-08-24-to-2026-08-30.html"><a href="./lastfm-weekly-2026-08-24-to-2026-08-30.html"><strong>2026-08-24 – 2026-08-30</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-08-17" data-end="2026-08-23" data-file="lastfm-weekly-2026-08-17-to-2026-08-23.html"><a href="./lastfm-weekly-2026-08-17-to-2026-08-23.html"><strong>2026-08-17 – 2026-08-23</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-08-10" data-end="2026-08-16" data-file="lastfm-weekly-2026-08-10-to-2026-08-16.html"><a href="./lastfm-weekly-2026-08-10-to-2026-08-16.html"><strong>2026-08-10 – 2026-08-16</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-08-03" data-end="2026-08-09" data-file="lastfm-weekly-2026-08-03-to-2026-08-09.html"><a href="./lastfm-weekly-2026-08-03-to-2026-08-09.html"><strong>2026-08-03 – 2026-08-09</strong><span aria-hidden="true">↗</span></a></li><li data-period="monthly" data-start="2026-08-01" data-end="2026-08-31" data-file="lastfm-monthly-2026-08.html"><a href="./lastfm-monthly-2026-08.html"><strong>2026-08</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-07-27" data-end="2026-08-02" data-file="lastfm-weekly-2026-07-27-to-2026-08-02.html"><a href="./lastfm-weekly-2026-07-27-to-2026-08-02.html"><strong>2026-07-27 – 2026-08-02</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-07-20" data-end="2026-07-26" data-file="lastfm-weekly-2026-07-20-to-2026-07-26.html"><a href="./lastfm-weekly-2026-07-20-to-2026-07-26.html"><strong>2026-07-20 – 2026-07-26</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-07-13" data-end="2026-07-19" data-file="lastfm-weekly-2026-07-13-to-2026-07-19.html"><a href="./lastfm-weekly-2026-07-13-to-2026-07-19.html"><strong>2026-07-13 – 2026-07-19</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-07-06" data-end="2026-07-12" data-file="lastfm-weekly-2026-07-06-to-2026-07-12.html"><a href="./lastfm-weekly-2026-07-06-to-2026-07-12.html"><strong>2026-07-06 – 2026-07-12</strong><span aria-hidden="true">↗</span></a></li><li data-period="monthly" data-start="2026-07-01" data-end="2026-07-31" data-file="lastfm-monthly-2026-07.html"><a href="./lastfm-monthly-2026-07.html"><strong>2026-07</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-06-29" data-end="2026-07-05" data-file="lastfm-weekly-2026-06-29-to-2026-07-05.html"><a href="./lastfm-weekly-2026-06-29-to-2026-07-05.html"><strong>2026-06-29 – 2026-07-05</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-06-22" data-end="2026-06-28" data-file="lastfm-weekly-2026-06-22-to-2026-06-28.html"><a href="./lastfm-weekly-2026-06-22-to-2026-06-28.html"><strong>2026-06-22 – 2026-06-28</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-06-15" data-end="2026-06-21" data-file="lastfm-weekly-2026-06-15-to-2026-06-21.html"><a href="./lastfm-weekly-2026-06-15-to-2026-06-21.html"><strong>2026-06-15 – 2026-06-21</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-06-08" data-end="2026-06-14" data-file="lastfm-weekly-2026-06-08-to-2026-06-14.html"><a href="./lastfm-weekly-2026-06-08-to-2026-06-14.html"><strong>2026-06-08 – 2026-06-14</strong><span aria-hidden="true">↗</span></a></li><li data-period="weekly" data-start="2026-06-01" data-end="2026-06-07" data-file="lastfm-weekly-2026-06-01-to-2026-06-07.html"><a href="./lastfm-weekly-2026-06-01-to-2026-06-07.html"><strong>2026-06-01 – 2026-06-07</strong><span aria-hidden="true">↗</span></a></li><li data-period="monthly" data-start="2026-06-01" data-end="2026-06-30" data-file="lastfm-monthly-2026-06.html"><a href="./lastfm-monthly-2026-06.html"><strong>2026-06</strong><span aria-hidden="true">↗</span></a></li><li data-period="monthly" data-start="2026-05-01" data-end="2026-05-31" data-file="lastfm-monthly-2026-05.html"><a href="./lastfm-monthly-2026-05.html"><strong>2026-05</strong><span aria-hidden="true">↗</span></a></li></ul>
 </main><script>const query = new URLSearchParams(location.search);
@@ -385,7 +389,7 @@ const month = document.querySelector("#archiveMonth");
 const monthFilter = document.querySelector("#monthFilter");
 const results = document.querySelector("#archiveResults");
 const current = entries.find((entry) => entry.dataset.file === query.get("current"));
-const monthFormat = new Intl.DateTimeFormat("en", {month: "long", timeZone: "UTC"});
+const monthFormat = new Intl.DateTimeFormat("ko-KR", {month: "long", timeZone: "UTC"});
 let period = buttons.find((button) => button.dataset.period === query.get("period"))?.dataset.period || "weekly";
 
 if (current) current.firstElementChild.setAttribute("aria-current", "page");
@@ -398,9 +402,9 @@ function setOptions(select, options, selected) {
 function renderArchive(preferredYear, preferredMonth) {
   const reports = entries.filter((entry) => entry.dataset.period === period);
   const years = [...new Set(reports.flatMap(({dataset}) => [dataset.end.slice(0, 4), dataset.start.slice(0, 4)]))].sort().reverse();
-  setOptions(year, [["", "All years"], ...years.map((value) => [value, value])], preferredYear);
+  setOptions(year, [["", "전체 연도"], ...years.map((value) => [value, `${value}년`])], preferredYear);
   monthFilter.hidden = period === "yearly";
-  setOptions(month, [["", "All months"], ...Array.from({length: 12}, (_, index) => [
+  setOptions(month, [["", "전체 월"], ...Array.from({length: 12}, (_, index) => [
     String(index + 1).padStart(2, "0"), monthFormat.format(Date.UTC(2000, index, 1))
   ])], monthFilter.hidden ? "" : preferredMonth);
   buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.period === period)));
@@ -412,7 +416,7 @@ function renderArchive(preferredYear, preferredMonth) {
     entry.hidden = entry.dataset.period !== period || !matches;
     if (!entry.hidden) count += 1;
   }
-  results.textContent = count ? `${count} ${count === 1 ? "report" : "reports"}` : `No ${period} reports for this selection.`;
+  results.textContent = count ? `리포트 ${count}편` : "선택한 기간에 리포트가 없어요.";
 }
 
 function updateFilters(preferredYear, preferredMonth) {
