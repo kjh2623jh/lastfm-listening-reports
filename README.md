@@ -6,7 +6,7 @@ Reports are published with GitHub Pages:
 
 https://kjh2623jh.github.io/lastfm-listening-reports/
 
-The root page redirects to the latest weekly report. Older weekly, monthly, and yearly reports are kept as static HTML files under `outputs/lastfm-reports`.
+The root page redirects to the latest weekly report. All reports are available in the filterable `archive.html` page and keep their own static URLs under `outputs/lastfm-reports`.
 
 ## Source structure
 
@@ -26,7 +26,7 @@ The generator concatenates the client and style modules into each standalone rep
 - Falls back to deterministic report text if the AI call fails, so scheduled reports still build.
 - Stores generated report HTML and a `report-registry.json` index for local navigation between reports.
 - Caches fetched Last.fm data during GitHub Actions runs to reduce repeated API calls.
-- Persists weekly aggregate tag snapshots in `data/lastfm-history/weekly-tags.json` for the six-week Tag Movement streamgraph.
+- Compares weighted tag scores across six weeks, six months, or the months of the reporting year. Weekly snapshots are stored in `data/lastfm-history/weekly-tags.json`.
 
 ## GitHub Actions setup
 
@@ -92,5 +92,7 @@ node work/lastfm-report-generator.mjs yearly
 ```
 
 Each generated report shows an **AI Status** panel. If the OpenAI call succeeds, it shows `AI API Success`; otherwise it shows `Fallback Used` with the failure reason.
+
+Run `node work/lastfm-report-generator.mjs rebuild` to apply the current layout to saved reports using their embedded data. Add `--verify-history` to check recent and inconsistent weekly periods and monthly reports against Last.fm, and to fetch missing tag snapshots. Verification uses the Last.fm API and updates any revised aggregates and their dependent comparisons.
 
 Local generation skips the OpenAI API by default so Codex can write the report copy interactively without consuming API credit. GitHub Actions automatically enables the API through its `GITHUB_ACTIONS=true` environment. To test the API locally for one PowerShell session, run `$env:OPENAI_USE_API="true"` before the generator command.

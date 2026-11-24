@@ -1,6 +1,6 @@
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { renderHtml, renderIndexRedirect } from "./lastfm-report/generator/render.mjs";
+import { renderArchive, renderHtml, renderIndexRedirect } from "./lastfm-report/generator/render.mjs";
 import { fallbackCopy, generateAiCopy, mergeCopy } from "./lastfm-report/generator/copy.mjs";
 import { album, array, artist, buildDays, buildDeepDive, buildHours, buildListeningProfile, buildPeriodFocus, cover, group, headline } from "./lastfm-report/generator/analytics.mjs";
 import { fileURLToPath } from "node:url";
@@ -28,10 +28,10 @@ const openaiApiKey = useOpenAiApi ? process.env.OPENAI_API_KEY || "" : "";
 const openaiModel = process.env.OPENAI_MODEL || "gpt-6-luna";
 const openaiReasoningEffort = process.env.OPENAI_REASONING_EFFORT || "low";
 
-if (!["weekly", "monthly", "yearly"].includes(period)) {
-  throw new Error("Usage: node work/lastfm-report-generator.mjs weekly|monthly|yearly [YYYY-MM-DD]");
+if (!["weekly", "monthly", "yearly", "rebuild"].includes(period)) {
+  throw new Error("Usage: node work/lastfm-report-generator.mjs weekly|monthly|yearly [YYYY-MM-DD] | rebuild [--verify-history]");
 }
-if (!lastfmApiKey) {
+if (!lastfmApiKey && (period !== "rebuild" || startArg === "--verify-history")) {
   throw new Error("LASTFM_API_KEY is required.");
 }
 
@@ -39,27 +39,33 @@ await mkdir(OUT_DIR, { recursive: true });
 await mkdir(CACHE_DIR, { recursive: true });
 await mkdir(HISTORY_DIR, { recursive: true });
 
-const range = getRange(period, startArg);
-const previousRange = previousRangeFor(period, range);
-const tracks = await fetchRecentTracksCached(range);
-const previousTracks = await fetchRecentTracksCached(previousRange).catch(() => []);
-const report = await buildReport(period, range, tracks, previousRange, previousTracks);
-const registry = await buildRegistry(report);
-const html = await renderHtml(ROOT, report, registry);
-const outFile = path.join(OUT_DIR, report.filename);
-
-await writeFile(outFile, html, "utf8");
-await writeFile(path.join(OUT_DIR, "report-registry.json"), JSON.stringify(registry, null, 2), "utf8");
-await writeFile(path.join(OUT_DIR, "index.html"), renderIndexRedirect(registry, report), "utf8");
-
-console.log(JSON.stringify({
-  file: outFile,
-  index: path.join(OUT_DIR, "index.html"),
-  registry: path.join(OUT_DIR, "report-registry.json"),
-  scrobbles: report.total,
-  range: report.rangeLabel,
-  ai: report.ai
-}, null, 2));
+if (period === "rebuild") {
+  await rebuildArchive(startArg === "--verify-history");
+} else {
+  const range = getRange(period, startArg);
+  const previousRange = previousRangeFor(period, range);
+  const registry = await buildRegistry({ filename: filenameFor(period, range) });
+  const archived = await readArchivedReports(registry.filter((entry) => entry.file !== filenameFor(period, range)));
+  const previousReport = archived.find((saved) => saved.kind === period && saved.startDate === previousRange.startDate);
+  const tracks = await fetchRecentTracksCached(range);
+  const previousTracks = previousReport ? null : await fetchRecentTracksCached(previousRange).catch((error) => {
+    console.warn(`Previous period ${previousRange.label}: ${error.message}`);
+    return null;
+  });
+  const report = await buildReport(period, range, tracks, previousRange, previousTracks, { previousReport });
+  const periods = collectSnapshots([...archived, report]);
+  if (period === "weekly") {
+    const recent = await readWeeklyHistory();
+    for (const snapshot of recent.values()) {
+      if (!periods.weekly.has(snapshot.startDate)) periods.weekly.set(snapshot.startDate, snapshot);
+    }
+  }
+  report.tagTimeline = await buildTagTimeline(report, periods, { tracks, fetchMissing: true });
+  if (period === "weekly") await writeWeeklyHistory(periods.weekly);
+  await writeFile(path.join(OUT_DIR, report.filename), await renderHtml(ROOT, report, registry), "utf8");
+  await writeReportIndex(registry, report);
+  console.log(JSON.stringify({ file: report.filename, scrobbles: report.total, range: report.rangeLabel, ai: report.ai }, null, 2));
+}
 
 async function loadLocalEnv(root) {
   const values = {};
@@ -185,7 +191,7 @@ async function lastfm(method, params = {}) {
   const url = new URL(LASTFM_API);
   Object.entries({ method, user: USER, api_key: lastfmApiKey, format: "json", ...params })
     .forEach(([key, value]) => url.searchParams.set(key, String(value)));
-  const res = await fetch(url, { headers: { "User-Agent": "CodexLastfmReportGenerator/2.1" } });
+  const res = await fetch(url, { headers: { "User-Agent": "CodexLastfmReportGenerator/2.1" }, signal: AbortSignal.timeout(20000) });
   if (!res.ok) throw new Error(`Last.fm API HTTP ${res.status}`);
   const json = await res.json();
   if (json.error) throw new Error(`Last.fm API ${json.error}: ${json.message}`);
@@ -198,14 +204,18 @@ async function fetchRecentTracks(from, to) {
   let totalPages = 1;
   do {
     const data = await lastfm("user.getrecenttracks", { from, to, limit: 200, page, extended: 1 });
-    all.push(...array(data.recenttracks.track).filter((track) => track.date?.uts));
+    all.push(...array(data.recenttracks.track).filter((track) => {
+      const timestamp = Number(track.date?.uts);
+      return timestamp >= from && timestamp <= to;
+    }));
     totalPages = Number(data.recenttracks["@attr"]?.totalPages || 1);
     page += 1;
-  } while (page <= totalPages && page <= 80);
+  } while (page <= totalPages);
   return all;
 }
 
-async function buildReport(kind, range, tracks, previousRange, previousTracks) {
+async function buildReport(kind, range, tracks, previousRange, previousData, { skipAi = false, previousReport } = {}) {
+  const previousTracks = previousData || [];
   const topTracks = group(tracks, (t) => `${artist(t)} -- ${t.name}`, (t) => ({ artist: artist(t), title: t.name, album: album(t), image: cover(t) })).slice(0, 20);
   const topArtists = group(tracks, (t) => artist(t), (t) => ({ artist: artist(t), image: cover(t) })).slice(0, 20);
   const topAlbums = group(tracks, (t) => album(t) ? `${artist(t)} -- ${album(t)}` : "", (t) => ({ artist: artist(t), album: album(t), image: cover(t) })).slice(0, 20);
@@ -219,16 +229,17 @@ async function buildReport(kind, range, tracks, previousRange, previousTracks) {
   const topArtist = topArtists[0] || { artist: "Unknown", count: 0 };
   const topAlbum = topAlbums[0] || { album: "Unknown", artist: "Unknown", count: 0 };
   const concentration = tracks.length ? Math.round((topArtist.count / tracks.length) * 100) : 0;
-  const comparison = await buildComparison({ currentTracks: tracks, previousTracks, currentTopArtists: topArtists, previousTopArtists, previousRange });
-  const tagTimeline = kind === "weekly"
-    ? await buildWeeklyTagTimeline(range, tracks, comparison.currentTags)
-    : buildComparisonTagTimeline(previousRange, range, comparison);
+  const comparison = await buildComparison({ currentTracks: tracks, previousTracks, currentTopArtists: topArtists, previousTopArtists, previousRange, previousReport, previousAvailable: Boolean(previousReport) || previousData !== null });
   const listeningProfile = buildListeningProfile(kind, range, previousRange, tracks, previousTracks, topArtists, previousTopArtists);
+  if (previousReport) {
+    listeningProfile.ratio.previous = previousReport.listeningProfile?.ratio?.current || null;
+    listeningProfile.fingerprint.previous = previousReport.listeningProfile?.fingerprint?.current || null;
+  }
   const periodFocus = buildPeriodFocus(kind, { days, hours, tracks, topArtists, topAlbums, range });
   const deepDive = buildDeepDive(kind, { days, hours, tracks, topTracks, topArtists, topAlbums, uniqueTracks, uniqueArtists, concentration, comparison });
   const fallback = fallbackCopy({ kind, topArtist, topAlbum, peak, total: tracks.length, uniqueTracks, uniqueArtists, concentration, comparison, topArtists, topAlbums });
   let aiError = null;
-  const aiCopy = await generateAiCopy({ kind, range, total: tracks.length, uniqueTracks, uniqueArtists, concentration, peak, topTracks, topArtists, topAlbums, comparison, periodFocus, deepDive }, { apiKey: openaiApiKey, model: openaiModel, reasoningEffort: openaiReasoningEffort, apiUrl: OPENAI_API }).catch((error) => {
+  const aiCopy = skipAi ? null : await generateAiCopy({ kind, range, total: tracks.length, uniqueTracks, uniqueArtists, concentration, peak, topTracks, topArtists, topAlbums, comparison, periodFocus, deepDive }, { apiKey: openaiApiKey, model: openaiModel, reasoningEffort: openaiReasoningEffort, apiUrl: OPENAI_API }).catch((error) => {
     aiError = error;
     console.warn(`AI copy generation failed: ${error.message}`);
     return null;
@@ -252,7 +263,7 @@ async function buildReport(kind, range, tracks, previousRange, previousTracks) {
     story: copy.story,
     insights: copy.insights,
     comparison,
-    tagTimeline,
+    sustainedAlbum: findSustainedAlbum(kind, tracks),
     listeningProfile,
     topTracks,
     topArtists,
@@ -272,18 +283,19 @@ async function buildReport(kind, range, tracks, previousRange, previousTracks) {
   };
 }
 
-async function buildComparison({ currentTracks, previousTracks, currentTopArtists, previousTopArtists, previousRange }) {
+async function buildComparison({ currentTracks, previousTracks, currentTopArtists, previousTopArtists, previousRange, previousAvailable, previousReport }) {
   const currentTotal = currentTracks.length;
-  const previousTotal = previousTracks.length;
-  const delta = currentTotal - previousTotal;
+  const previousTotal = previousReport?.total ?? previousTracks.length;
+  const delta = previousAvailable ? currentTotal - previousTotal : null;
   const percent = previousTotal ? Math.round((delta / previousTotal) * 100) : null;
   const currentTags = await weightedTags(currentTopArtists.slice(0, 6));
-  const previousTags = await weightedTags(previousTopArtists.slice(0, 6));
+  const previousTags = previousReport?.comparison?.currentTags || await weightedTags(previousTopArtists.slice(0, 6));
   const tagShift = compareTags(currentTags, previousTags);
   return {
     previousRange: previousRange.label,
     currentTotal,
     previousTotal,
+    previousAvailable,
     delta,
     percent,
     percentText: percent === null ? "n/a" : `${percent >= 0 ? "+" : ""}${percent}%`,
@@ -294,72 +306,242 @@ async function buildComparison({ currentTracks, previousTracks, currentTopArtist
   };
 }
 
-async function buildWeeklyTagTimeline(currentRange, currentTracks, currentTags) {
+function snapshot(range, scrobbles, tags) {
+  return { startDate: range.startDate, endDate: range.endDate, scrobbles, tags: tags || [] };
+}
+
+function currentSnapshot(report) {
+  return snapshot(report, report.total, report.comparison.currentTags);
+}
+
+function previousSnapshot(report) {
+  const comparison = report.comparison;
+  if (!(comparison.previousAvailable ?? comparison.previousTotal > 0)) return null;
+  return snapshot(previousRangeFor(report.kind, report), comparison.previousTotal, comparison.previousTags);
+}
+
+function collectSnapshots(reports) {
+  const periods = { weekly: new Map(), monthly: new Map() };
+  for (const report of reports) {
+    const byDate = periods[report.kind];
+    if (byDate) byDate.set(report.startDate, currentSnapshot(report));
+  }
+  for (const report of reports) {
+    const byDate = periods[report.kind];
+    if (!byDate) continue;
+    const previous = previousSnapshot(report);
+    if (previous && !byDate.has(previous.startDate)) byDate.set(previous.startDate, previous);
+    for (const slot of report.tagTimeline || []) {
+      if (slot.scrobbles != null && !byDate.has(slot.startDate)) byDate.set(slot.startDate, slot);
+    }
+  }
+  return periods;
+}
+
+function timelineRanges(report) {
+  if (report.kind === "yearly") {
+    return Array.from({ length: 12 }, (_, index) =>
+      getRange("monthly", `${report.startDate.slice(0, 4)}-${pad(index + 1)}-01`));
+  }
+
+  const ranges = [getRange(report.kind, report.startDate)];
+  while (ranges.length < 6) ranges.unshift(previousRangeFor(report.kind, ranges[0]));
+  return ranges;
+}
+
+async function buildTagTimeline(report, periods, { tracks, fetchMissing = false } = {}) {
+  const annual = report.kind === "yearly";
+  const byDate = periods[report.kind === "weekly" ? "weekly" : "monthly"];
+  const previous = annual ? null : previousSnapshot(report);
+  const timeline = [];
+
+  for (const range of timelineRanges(report)) {
+    let data = previous?.startDate === range.startDate ? previous : byDate.get(range.startDate);
+    if (annual && tracks) {
+      data = await snapshotFromTracks(range, tracks.filter((track) => inRange(track, range)));
+    } else if (!data && fetchMissing) {
+      const historyTracks = await fetchRecentTracksCached(range).catch((error) => {
+        console.warn(`Tag history ${range.label}: ${error.message}`);
+        return null;
+      });
+      if (historyTracks) data = await snapshotFromTracks(range, historyTracks);
+    }
+    if (data && !byDate.has(data.startDate)) byDate.set(data.startDate, data);
+
+    const date = parseKst(range.startDate);
+    const weekly = report.kind === "weekly";
+    const shortLabel = weekly
+      ? `${range.startDate.slice(5, 7)}/${range.startDate.slice(8)}`
+      : new Intl.DateTimeFormat("en-US", { timeZone: TZ, month: "short" }).format(date);
+    const label = weekly ? range.startDate : `${shortLabel} ${range.startDate.slice(0, 4)}`;
+    timeline.push({ ...snapshot(range, null, []), ...data, label, shortLabel });
+  }
+  return timeline;
+}
+
+async function snapshotFromTracks(range, tracks) {
+  const artists = group(tracks, artist, (track) => ({ artist: artist(track) })).slice(0, 6);
+  return snapshot(range, tracks.length, (await weightedTags(artists)).slice(0, 6));
+}
+
+function inRange(track, range) {
+  const time = Number(track.date?.uts);
+  return time >= range.fromUnix && time <= range.toUnix;
+}
+
+function findSustainedAlbum(kind, tracks) {
+  if (kind === "weekly") return null;
+  const albums = new Map();
+  for (const track of tracks) {
+    const name = album(track);
+    if (!name) continue;
+    const key = `${artist(track)} -- ${name}`;
+    const item = albums.get(key) || { artist: artist(track), album: name, image: cover(track), count: 0, buckets: new Set() };
+    const date = fmtDate(new Date(Number(track.date.uts) * 1000));
+    item.buckets.add(kind === "yearly" ? date.slice(0, 7) : Math.ceil(Number(date.slice(-2)) / 7));
+    item.count += 1;
+    albums.set(key, item);
+  }
+  const best = [...albums.values()].sort((a, b) => b.buckets.size - a.buckets.size || b.count - a.count || a.album.localeCompare(b.album))[0];
+  if (!best) return null;
+  const { buckets, ...item } = best;
+  return { ...item, activeBuckets: buckets.size };
+}
+
+async function readWeeklyHistory() {
   const stored = await readFile(WEEKLY_TAG_HISTORY_FILE, "utf8").then(JSON.parse).catch(() => ({ weekly: [] }));
-  const snapshots = new Map(array(stored.weekly).map((snapshot) => [snapshot.startDate, snapshot]));
-  const timelineRanges = Array.from({ length: 6 }, (_, index) => weeklyRangeOffset(currentRange, index - 5));
+  return new Map(array(stored.weekly).map((slot) => [slot.startDate, slot]));
+}
 
-  for (const range of timelineRanges) {
-    const isCurrent = range.startDate === currentRange.startDate;
-    if (!isCurrent && snapshots.has(range.startDate)) continue;
-    const tracks = isCurrent ? currentTracks : await tracksForHistoryRange(range);
-    const topArtists = group(tracks, (track) => artist(track), (track) => ({ artist: artist(track), image: cover(track) })).slice(0, 12);
-    const tags = isCurrent
-      ? currentTags
-      : await weightedTags(topArtists.slice(0, 6));
-    snapshots.set(range.startDate, {
-      startDate: range.startDate,
-      endDate: range.endDate,
-      label: shortTimelineDate(range.startDate),
-      scrobbles: tracks.length,
-      tags: tags.slice(0, 10)
-    });
+async function writeWeeklyHistory(snapshots) {
+  const weekly = [...snapshots.values()].sort((a, b) => a.startDate.localeCompare(b.startDate)).slice(-104);
+  await writeFile(WEEKLY_TAG_HISTORY_FILE, JSON.stringify({ version: 1, weekly }, null, 2) + "\n", "utf8");
+}
+
+async function readArchivedReports(registry) {
+  return Promise.all(registry.map(async ({ file }) => {
+    const html = await readFile(path.join(OUT_DIR, file), "utf8");
+    const embedded = html.match(/window\.REPORT_DATA=([\s\S]+?);window\.REPORT_REGISTRY=/);
+    if (!embedded) throw new Error(`Could not read the stored report in ${file}`);
+    return JSON.parse(embedded[1]);
+  }));
+}
+
+async function writeReportIndex(registry, current) {
+  const archive = await renderArchive(ROOT, registry);
+  await Promise.all([
+    writeFile(path.join(OUT_DIR, "report-registry.json"), JSON.stringify(registry, null, 2), "utf8"),
+    writeFile(path.join(OUT_DIR, "index.html"), renderIndexRedirect(registry, current), "utf8"),
+    writeFile(path.join(OUT_DIR, "archive.html"), archive, "utf8")
+  ]);
+}
+
+async function verifyReportPeriods(reports, kind) {
+  const matching = reports.filter((report) => report.kind === kind);
+  const byDate = new Map(matching.map((report) => [report.startDate, report]));
+  const slots = kind === "weekly" ? await readWeeklyHistory() : new Map();
+  const suspect = new Set((kind === "weekly" ? matching.slice(-2) : matching).map((report) => report.startDate));
+  const dependents = new Map(matching.map((report) => [
+    previousRangeFor(kind, report).startDate, report
+  ]));
+  for (const report of matching) {
+    const previous = previousSnapshot(report);
+    const inTimeline = report.tagTimeline?.find((slot) => slot.startDate === previous?.startDate);
+    const otherTotals = [inTimeline?.scrobbles, slots.get(previous?.startDate)?.scrobbles, byDate.get(previous?.startDate)?.total];
+    if (previous && otherTotals.some((total) => total != null && total !== previous.scrobbles)) {
+      suspect.add(previous.startDate);
+      console.log(`Rechecking ${previous.startDate} (referenced by ${report.filename})`);
+    }
+    const own = report.tagTimeline?.find((slot) => slot.startDate === report.startDate);
+    if (own && own.scrobbles !== report.total) suspect.add(report.startDate);
   }
 
-  const weekly = [...snapshots.values()]
-    .sort((a, b) => a.startDate.localeCompare(b.startDate))
-    .slice(-104);
-  await writeFile(WEEKLY_TAG_HISTORY_FILE, JSON.stringify({ version: 1, weekly }, null, 2), "utf8");
-  const wanted = new Set(timelineRanges.map((range) => range.startDate));
-  return weekly.filter((snapshot) => wanted.has(snapshot.startDate));
-}
-
-function buildComparisonTagTimeline(previousRange, currentRange, comparison) {
-  return [
-    { startDate: previousRange.startDate, endDate: previousRange.endDate, label: shortTimelineDate(previousRange.startDate), scrobbles: comparison.previousTotal, tags: comparison.previousTags || [] },
-    { startDate: currentRange.startDate, endDate: currentRange.endDate, label: shortTimelineDate(currentRange.startDate), scrobbles: comparison.currentTotal, tags: comparison.currentTags || [] }
-  ];
-}
-
-function weeklyRangeOffset(range, offset) {
-  const start = parseKst(range.startDate);
-  start.setUTCDate(start.getUTCDate() + offset * 7);
-  return getRange("weekly", fmtDate(start));
-}
-
-async function tracksForHistoryRange(range) {
-  const exactName = `recenttracks-${range.startDate}-to-${range.endDate}.json`;
-  const exactPath = path.join(CACHE_DIR, exactName);
-  const exact = await readFile(exactPath, "utf8").then(JSON.parse).catch(() => null);
-  if (Array.isArray(exact)) return exact;
-
-  const year = range.startDate.slice(0, 4);
-  const annualPath = path.join(CACHE_DIR, `recenttracks-${year}-01-01-to-${year}-12-31.json`);
-  const annual = await readFile(annualPath, "utf8").then(JSON.parse).catch(() => null);
-  if (Array.isArray(annual) && annual.length) {
-    const tracks = annual.filter((track) => {
-      const uts = Number(track.date?.uts || 0);
-      return uts >= range.fromUnix && uts <= range.toUnix;
-    });
-    await writeFile(exactPath, JSON.stringify(tracks), "utf8");
-    return tracks;
+  const loadFresh = new Map();
+  async function verified(range) {
+    if (!loadFresh.has(range.startDate)) {
+      loadFresh.set(range.startDate, fetchRecentTracks(range.fromUnix, range.toUnix).catch((error) => {
+        console.warn(`Verification unavailable for ${range.label}: ${error.message}`);
+        return null;
+      }));
+    }
+    return loadFresh.get(range.startDate);
   }
 
-  return fetchRecentTracksCached(range);
+  const repaired = new Map();
+  const checks = new Map();
+  const affected = new Set();
+  function queue(startDate) {
+    if (byDate.has(startDate)) affected.add(byDate.get(startDate));
+    if (dependents.has(startDate)) affected.add(dependents.get(startDate));
+  }
+  for (const startDate of suspect) queue(startDate);
+
+  for (const report of affected) {
+    const range = getRange(kind, report.startDate);
+    const previousRange = previousRangeFor(kind, range);
+    const [tracks, before] = await Promise.all([verified(range), verified(previousRange)]);
+    if (!tracks || !before) {
+      checks.set(report.startDate, "Some source records could not be verified.");
+      continue;
+    }
+    const earlier = byDate.get(previousRange.startDate);
+    if (earlier && before.length !== earlier.total) queue(earlier.startDate);
+    if (tracks.length !== report.total) queue(report.startDate);
+    const updated = await buildReport(kind, range, tracks, previousRange, before, { skipAi: true });
+    if (updated.total === report.total && updated.comparison.previousTotal === report.comparison.previousTotal && updated.headline === report.headline) {
+      for (const key of ["summary", "story", "insights", "recommendation", "ai"]) updated[key] = report[key];
+    }
+    console.log(`${report.startDate}: ${report.total} → ${updated.total}; previous ${report.comparison.previousTotal} → ${updated.comparison.previousTotal}`);
+    repaired.set(report.startDate, updated);
+  }
+  return reports.map((report) => {
+    if (report.kind !== kind) return report;
+    const updated = repaired.get(report.startDate);
+    if (updated) return updated;
+    const note = checks.get(report.startDate);
+    return note ? { ...report, dataNote: note } : report;
+  });
 }
 
-function shortTimelineDate(date) {
-  return new Intl.DateTimeFormat("en-US", { timeZone: TZ, month: "short", day: "numeric" }).format(parseKst(date));
+async function rebuildArchive(verify) {
+  const registry = await buildRegistry();
+  let reports = await readArchivedReports(registry);
+  if (verify) {
+    reports = await verifyReportPeriods(reports, "weekly");
+    reports = await verifyReportPeriods(reports, "monthly");
+  }
+  const periods = collectSnapshots(reports);
+  const history = await readWeeklyHistory();
+  for (const slot of history.values()) {
+    if (!periods.weekly.has(slot.startDate)) periods.weekly.set(slot.startDate, slot);
+  }
+
+  for (const report of reports) {
+    // A published timeline may contain the only stored month for an annual report.
+    if (report.kind !== "yearly") continue;
+    for (const slot of report.tagTimeline || []) {
+      if (slot.startDate?.slice(8) === "01" && slot.scrobbles != null && !periods.monthly.has(slot.startDate) && slot.endDate === monthEndDate(slot.startDate.slice(0, 7))) {
+        periods.monthly.set(slot.startDate, slot);
+      }
+    }
+  }
+
+  for (const report of reports) {
+    let tracks;
+    if (verify && report.kind === "yearly") {
+      const range = getRange(report.kind, report.startDate);
+      tracks = await fetchRecentTracksCached(range).catch((error) => {
+        console.warn(`Listening history ${range.label}: ${error.message}`);
+        return null;
+      });
+      if (tracks?.length === report.total) report.sustainedAlbum = findSustainedAlbum(report.kind, tracks);
+    }
+    report.tagTimeline = await buildTagTimeline(report, periods, { tracks: tracks?.length === report.total ? tracks : undefined, fetchMissing: verify });
+    await writeFile(path.join(OUT_DIR, report.filename), await renderHtml(ROOT, report, registry), "utf8");
+  }
+  if (verify) await writeWeeklyHistory(periods.weekly);
+  await writeReportIndex(registry);
+  console.log(`Rebuilt ${reports.length} reports and their archive.`);
 }
 
 async function weightedTags(artists) {
@@ -369,9 +551,8 @@ async function weightedTags(artists) {
       const data = await lastfm("artist.getTopTags", { artist: item.artist });
       return array(data.toptags?.tag);
     }).catch(() => []);
-    for (const tag of tags.slice(0, 5)) {
-      const name = normalizeTag(tag.name);
-      if (!name) continue;
+    const names = new Set(tags.slice(0, 5).map((tag) => normalizeTag(tag.name)).filter(Boolean));
+    for (const name of names) {
       weights.set(name, (weights.get(name) || 0) + item.count);
     }
   }
@@ -412,10 +593,10 @@ function filenameFor(kind, range) {
   return `lastfm-annual-${range.startDate.slice(0, 4)}.html`;
 }
 
-async function buildRegistry(currentReport) {
+async function buildRegistry(currentReport = null) {
   const files = await readdir(OUT_DIR).catch(() => []);
   const reports = files.filter((file) => /^lastfm-(weekly|monthly|annual)-.*\.html$/.test(file)).map(parseReportFilename).filter(Boolean);
-  const current = parseReportFilename(currentReport.filename);
+  const current = currentReport ? parseReportFilename(currentReport.filename) : null;
   if (current && !reports.some((report) => report.file === current.file)) reports.push(current);
   return reports.sort((a, b) => a.start.localeCompare(b.start));
 }

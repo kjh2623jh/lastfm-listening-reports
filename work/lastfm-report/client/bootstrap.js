@@ -16,25 +16,25 @@ document.addEventListener("click", (event) => {
 });
 
 $$(".tab").forEach((tab) => tab.addEventListener("click", () => {
-  $$(".tab").forEach((item) => item.classList.toggle("active", item === tab));
+  $$(".tab").forEach((item) => {
+    item.classList.toggle("active", item === tab);
+    item.setAttribute("aria-pressed", String(item === tab));
+  });
   $$(".chart-section").forEach((section) => section.classList.toggle("active", section.id === tab.dataset.chart));
 }));
 
-$$(".pill[data-period]").forEach((button) => button.addEventListener("click", () => {
-  if (button.disabled) return;
-  state.period = button.dataset.period;
-  renderReportControls();
-}));
-
-$("#reportPicker").addEventListener("change", renderReportControls);
-$("#prevPeriod").addEventListener("click", () => shift(-1));
-$("#nextPeriod").addEventListener("click", () => shift(1));
-$("#openLocal").addEventListener("click", () => openLocalEntry(selectedReport()));
 $("#copyImage").addEventListener("click", copyImage);
 $("#downloadImage").addEventListener("click", downloadImage);
-$("#closeDetail").addEventListener("click", () => $("#detail").classList.remove("open"));
+$("#dayGrid").addEventListener("click", (event) => {
+  const button = event.target.closest(".pace-bar");
+  if (!button) return;
+  $("#dayGrid [aria-pressed=true]")?.setAttribute("aria-pressed", "false");
+  button.setAttribute("aria-pressed", "true");
+  $("#paceReadout").textContent = button.getAttribute("aria-label");
+});
+$("#closeDetail").addEventListener("click", () => $("#detail").close());
 $("#detail").addEventListener("click", (event) => {
-  if (event.target.id === "detail") $("#detail").classList.remove("open");
+  if (event.target.id === "detail") $("#detail").close();
 });
 
 $("#profilePanel").addEventListener("pointerover", (event) => {
@@ -66,7 +66,7 @@ $("#profilePanel").addEventListener("click", (event) => {
 
 $("#profilePanel").addEventListener("keydown", (event) => {
   const item = event.target.closest("[data-profile-item]");
-  if (!item || !["Enter", " "].includes(event.key)) return;
+  if (!item || item instanceof HTMLButtonElement || !["Enter", " "].includes(event.key)) return;
   event.preventDefault();
   selectProfileItem(item);
 });

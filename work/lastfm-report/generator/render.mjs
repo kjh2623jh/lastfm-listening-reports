@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-const STYLE_FILES = ["base.css", "comparison.css", "deep-dive.css", "status.css", "profile.css", "theme.css"];
+const STYLE_FILES = ["base.css", "comparison.css", "deep-dive.css", "status.css", "profile.css", "theme.css", "report.css"];
 const CLIENT_FILES = ["core.js", "profile-charts.js", "image-export.js", "bootstrap.js"];
 
 export async function renderHtml(root, report, registry) {
@@ -25,55 +25,51 @@ export async function renderHtml(root, report, registry) {
 <body>
   <main class="page">
     <section class="shell">
-      <header class="hero" id="hero">
+      <nav class="report-nav" aria-label="Report navigation">
+        <a class="report-brand" href="./index.html"><span class="mark">fm</span> Listening Report</a>
+        <div class="report-nav-links"><a id="previousReport" hidden>← Previous</a><a id="nextReport" hidden>Next →</a><a class="archive-link" href="./archive.html?period=${report.kind}&year=${report.startDate.slice(0, 4)}&current=${encodeURIComponent(report.filename)}">All reports</a></div>
+      </nav>
+      <header class="report-intro" id="hero">
         <div>
-          <div class="topline">
-            <div class="brand"><div class="mark">fm</div><div><h1>Listening Report</h1><p id="rangeText"></p></div></div>
-            <div class="report-controls">
-              <div class="control-group" aria-label="Report period">
-                <span class="control-label">Period</span>
-                <button class="pill" data-period="weekly" type="button">Weekly</button>
-                <button class="pill" data-period="monthly" type="button">Monthly</button>
-                <button class="pill" data-period="yearly" type="button">Yearly</button>
-              </div>
-              <div class="control-group report-picker-group" aria-label="Saved reports">
-                <span class="control-label">Report</span>
-                <button class="icon-btn" id="prevPeriod" type="button" title="Previous report">&lt;</button>
-                <select class="control report-select" id="reportPicker" aria-label="Saved report"></select>
-                <button class="icon-btn" id="nextPeriod" type="button" title="Next report">&gt;</button>
-              </div>
-              <div class="control-group" aria-label="Open report">
-                <span class="control-label">Open</span>
-                <button class="pill" id="openLocal" type="button">Open</button>
-              </div>
-            </div>
-          </div>
-          <div class="hero-copy"><p class="eyebrow">${cap(report.kind)} Report</p><h2 id="headline"></h2><p class="summary" id="summaryText"></p></div>
+          <p class="report-kicker">${cap(report.kind)} · ${escapeHtml(report.rangeLabel)} · KST</p>
+          <h1 id="headline"></h1>
+          <p id="summaryText" class="intro-summary"></p>
+          <div class="intro-metric"><strong id="mScrobbles"></strong><span>Scrobbles <small id="mChange"></small></span></div>
         </div>
-        <aside class="hero-side"><div class="cover-grid" id="coverGrid"></div></aside>
+        <div id="coverGrid" class="feature-cover"></div>
       </header>
-      <section class="metrics"><div class="metric"><strong id="mScrobbles"></strong><span>Scrobbles</span></div><div class="metric"><strong id="mTracks"></strong><span>Tracks</span></div><div class="metric"><strong id="mArtists"></strong><span>Artists</span></div><div class="metric"><strong id="mPeak"></strong><span>Peak Day</span></div></section>
-      <section class="body">
-        <div class="main">
-          <section class="panel"><div class="panel-head"><h3>Highlights</h3><span class="hint">${report.ai.enabled ? `AI generated with ${escapeHtml(report.ai.model)}` : "Fallback summary"}</span></div><div class="panel-body"><div class="insight-grid" id="insights"></div></div></section>
-          <section class="panel"><div class="panel-head"><h3>Comparison</h3><span class="hint" id="comparisonRange"></span></div><div class="panel-body"><p class="story" id="comparisonSummary"></p><div class="compare-grid" id="comparisonGrid"></div></div></section>
-          <section class="panel"><div class="panel-head"><h3 id="periodFocusTitle"></h3><span class="hint">Period-specific view</span></div><div class="panel-body"><div class="insight-grid" id="periodFocus"></div></div></section>
-          <section class="panel deep-dive-panel" id="deepDivePanel"><div class="panel-head"><h3 id="deepDiveTitle"></h3><span class="hint">Extended analysis</span></div><div class="panel-body"><div class="deep-dive" id="deepDive"></div></div></section>
-          <section class="panel profile-panel" id="profilePanel"><div class="panel-head"><h3>Listening Profile</h3><span class="hint">Current vs previous period</span></div><div class="panel-body profile-grid"><section class="profile-chart" aria-labelledby="ratioTitle"><div class="profile-chart-head"><h4 id="ratioTitle">Music Ratio</h4><span>Library breadth</span></div><div id="musicRatio"></div></section><section class="profile-chart" aria-labelledby="fingerprintTitle"><div class="profile-chart-head"><h4 id="fingerprintTitle">Listening Fingerprint</h4><span>Behavior scores</span></div><div id="listeningFingerprint"></div></section><section class="profile-chart profile-wide profile-dark" aria-labelledby="tagsTitle"><div class="profile-chart-head"><h4 id="tagsTitle">Tag Movement</h4><span id="tagMovementRange"></span></div><div id="tagMovement"></div></section><section class="profile-chart profile-wide profile-dark" aria-labelledby="clockTitle"><div class="profile-chart-head"><h4 id="clockTitle">Listening Clock</h4><span>KST · 24 hours</span></div><div id="listeningClock"></div></section></div></section>
-          <section class="panel"><div class="panel-head"><h3>Charts</h3><span class="hint">Click an item for details</span></div><div class="tabs"><button class="tab active" data-chart="tracks" type="button">Top Tracks</button><button class="tab" data-chart="artists" type="button">Artists</button><button class="tab" data-chart="albums" type="button">Albums</button></div><div class="panel-body"><div class="chart-section active" id="tracks"></div><div class="chart-section" id="artists"></div><div class="chart-section" id="albums"></div></div></section>
-          <section class="panel"><div class="panel-head"><h3>Daily Pace</h3><span class="hint">KST</span></div><div class="panel-body"><div class="day-grid" id="dayGrid"></div></div></section>
-          <section class="panel"><div class="panel-head"><h3>Time of Day</h3><span class="hint">Hourly scrobbles</span></div><div class="panel-body"><div class="heat" id="hourHeat"></div></div></section>
-        </div>
-        <aside class="side">
-          <section class="panel"><div class="panel-head"><h3>Report Note</h3></div><div class="panel-body"><p class="story" id="storyText"></p><div class="actions"><button class="button primary" id="copyImage" type="button">Copy image</button><button class="button" id="downloadImage" type="button">Download PNG</button></div></div></section>
-          <section class="panel"><div class="panel-head"><h3>Album Focus</h3></div><div class="panel-body"><div class="mini-list" id="albumFocus"></div></div></section>
-          <section class="panel"><div class="panel-head"><h3>Recommendation</h3></div><div class="panel-body"><p class="story"><strong id="recommendationTitle"></strong></p><p class="story" id="recommendationAbout"></p><p class="story" id="recommendationWhy"></p></div></section>
-          <section class="panel"><div class="panel-head"><h3>AI Status</h3><span class="hint">Copy source</span></div><div class="panel-body"><div class="ai-status" id="aiStatus"></div></div></section>
-        </aside>
+      <section class="report-section" aria-labelledby="changesTitle">
+        <h2 id="changesTitle">What changed</h2>${report.dataNote ? `
+        <p class="profile-empty">${escapeHtml(report.dataNote)}</p>` : ""}
+        <div id="highlights" class="snapshot-grid"></div>
+        <div id="comparisonGrid" class="period-comparison"></div>
       </section>
+      <section class="report-section" aria-labelledby="chartsTitle">
+        <h2 id="chartsTitle">On rotation</h2>
+        <div class="tabs" aria-label="Rankings"><button class="tab active" data-chart="tracks" aria-pressed="true" type="button">Tracks</button><button class="tab" data-chart="artists" aria-pressed="false" type="button">Artists</button><button class="tab" data-chart="albums" aria-pressed="false" type="button">Albums</button></div>
+        <div class="chart-section active" id="tracks"></div><div class="chart-section" id="artists"></div><div class="chart-section" id="albums"></div>
+        <details class="report-disclosure recommendation"><summary>Recommendation <strong id="recommendationTitle"></strong></summary><p id="recommendationAbout"></p><p id="recommendationWhy"></p></details>
+      </section>
+      <section class="report-section" aria-labelledby="patternsTitle">
+        <h2 id="patternsTitle">Listening patterns</h2>
+        <div id="profilePanel">
+          <section class="report-card tags-card" aria-labelledby="tagsTitle"><div class="report-card-head"><h3 id="tagsTitle">Tag Movement</h3><span id="tagMovementRange"></span></div><div id="tagMovement"></div></section>
+          <div class="patterns-grid">
+            <section class="report-card" aria-labelledby="breadthTitle"><h3 id="breadthTitle">Listening Breadth</h3><div id="musicRatio"></div></section>
+            <section class="report-card" aria-labelledby="paceTitle"><h3 id="paceTitle">${report.kind === "yearly" ? "Monthly Pace" : "Daily Pace"} <small>KST</small></h3><div id="dayGrid"></div></section>
+          </div>
+          <details class="report-disclosure"><summary>Time of Day &amp; Listening Fingerprint</summary><div class="patterns-grid"><section class="report-card"><h3>Listening Clock <small>KST</small></h3><div id="listeningClock"></div></section><section class="report-card"><h3>Listening Fingerprint</h3><div id="listeningFingerprint"></div></section></div></details>
+        </div>
+        <details class="report-disclosure" id="deepDivePanel"><summary id="deepDiveTitle">Deep Dive</summary><div class="deep-dive" id="deepDive"></div></details>
+        <details class="report-disclosure"><summary>Report notes</summary><p id="summaryDetail"></p><p id="storyText"></p><div class="insight-grid" id="insights"></div><h3 id="periodFocusTitle"></h3><div class="insight-grid" id="periodFocus"></div></details>
+      </section>
+      <footer class="report-footer">
+        <div class="actions"><button class="button primary" id="copyImage" type="button">Copy image</button><button class="button" id="downloadImage" type="button">Download PNG</button></div>
+        <details class="report-disclosure"><summary>AI Status</summary><div class="ai-status" id="aiStatus"></div></details>
+      </footer>
     </section>
   </main>
-  <div class="detail" id="detail"><div class="detail-card"><img id="detailImage" alt=""><div><h3 id="detailTitle"></h3><p id="detailMeta"></p><p id="detailBody"></p><button class="button primary" id="closeDetail" type="button">Close</button></div></div></div>
+  <dialog class="detail" id="detail" aria-labelledby="detailTitle"><div class="detail-card"><img id="detailImage" alt=""><div><h3 id="detailTitle"></h3><p id="detailMeta"></p><p id="detailBody"></p><button class="button primary" id="closeDetail" type="button" autofocus>Close</button></div></div></dialog>
   <div class="profile-tooltip" id="profileTooltip" role="tooltip"></div>
   <div class="toast" id="toast"></div>
   <script>window.REPORT_DATA=${data};window.REPORT_REGISTRY=${nav};
@@ -84,7 +80,7 @@ ${client}</script>
 
 export function renderIndexRedirect(registry, currentReport) {
   const latestWeekly = registry.filter((report) => report.period === "weekly").at(-1);
-  const target = latestWeekly?.file || currentReport.filename;
+  const target = latestWeekly?.file || currentReport?.filename || registry.at(-1)?.file || "archive.html";
   return `<!doctype html>
 <html lang="ko">
 <head>
@@ -99,6 +95,27 @@ export function renderIndexRedirect(registry, currentReport) {
   <p><a href="./${escapeHtml(target)}">Open latest weekly report</a></p>
 </body>
 </html>`;
+}
+
+export async function renderArchive(root, registry) {
+  const base = path.join(root, "work", "lastfm-report");
+  const styles = await Promise.all(["base.css", "theme.css", "report.css"].map((file) => readFile(path.join(base, "styles", file), "utf8")));
+  const client = await readFile(path.join(base, "client", "archive.js"), "utf8");
+  const entries = registry.slice().reverse().map(({period, start, end, file, label}) =>
+    `<li data-period="${escapeHtml(period)}" data-start="${escapeHtml(start)}" data-end="${escapeHtml(end)}" data-file="${escapeHtml(file)}"><a href="./${escapeHtml(file)}"><strong>${escapeHtml(label.replace(" ~ ", " – "))}</strong><span aria-hidden="true">↗</span></a></li>`).join("");
+  return `<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All Listening Reports</title><style>${styles.join("\n")}</style></head>
+<body><main class="archive-page">
+<nav class="report-nav" aria-label="Report navigation"><a class="report-brand" href="./index.html"><span class="mark">fm</span> Latest report</a></nav>
+<header class="archive-heading"><h1>All reports</h1></header>
+<div class="archive-tools">
+  <div class="archive-tabs" role="group" aria-label="Report type"><button type="button" data-period="weekly" aria-pressed="true">Weekly</button><button type="button" data-period="monthly" aria-pressed="false">Monthly</button><button type="button" data-period="yearly" aria-pressed="false">Yearly</button></div>
+  <div class="archive-filters"><label>Year <select id="archiveYear"></select></label><label id="monthFilter">Month <select id="archiveMonth"></select></label></div>
+</div>
+<p id="archiveResults" role="status"></p><ul id="archiveList">${entries}</ul>
+</main><script>${client}</script></body></html>`;
 }
 
 function cap(value) {

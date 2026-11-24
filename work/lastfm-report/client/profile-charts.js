@@ -6,35 +6,17 @@ function renderListeningProfile() {
 }
 
 function renderMusicRatio() {
-  const profile = state.report.listeningProfile?.ratio || {};
-  const current = profile.current || { tracks: state.report.tracks, albums: state.report.albums || state.report.topAlbums.length, artists: state.report.artists };
-  const previous = profile.previous || { tracks: 0, albums: 0, artists: 0 };
-  const rows = [
-    { key: "tracks", label: "Tracks", color: "#2f80ed", radius: 76 },
-    { key: "albums", label: "Albums", color: "#12a594", radius: 56 },
-    { key: "artists", label: "Artists", color: "#d51007", radius: 36 }
-  ];
-  const rings = rows.map((row) => {
-    const value = Number(current[row.key] || 0);
-    const before = Number(previous[row.key] || 0);
-    const delta = value - before;
-    const ceiling = Math.max(value, before, 1);
-    const circumference = 2 * Math.PI * row.radius;
-    const dash = circumference * value / ceiling;
-    const markerAngle = before / ceiling * 359 - 90;
-    const marker = polarPoint(100, 100, row.radius, markerAngle);
-    const note = before ? `Previous ${before.toLocaleString()} · ${delta >= 0 ? "+" : ""}${delta.toLocaleString()} change` : "Previous-period data is unavailable.";
-    return `<g class="ratio-ring" ${profileAttrs({ chart: "ratio", key: row.key, title: row.label, value: value.toLocaleString(), note })}><circle class="ratio-track" cx="100" cy="100" r="${row.radius}"></circle><circle class="ratio-progress" cx="100" cy="100" r="${row.radius}" stroke="${row.color}" stroke-dasharray="${dash.toFixed(2)} ${circumference.toFixed(2)}"></circle>${before ? `<circle class="ratio-marker" cx="${marker.x}" cy="${marker.y}" r="3.5"></circle>` : ""}</g>`;
-  }).join("");
-  const detail = rows.map((row) => {
-    const value = Number(current[row.key] || 0);
-    const before = Number(previous[row.key] || 0);
-    const delta = value - before;
-    const note = before ? `Previous ${before.toLocaleString()} · ${delta >= 0 ? "+" : ""}${delta.toLocaleString()} change` : "Previous-period data is unavailable.";
-    return `<button class="ratio-row" type="button" ${profileAttrs({ chart: "ratio", key: row.key, title: row.label, value: value.toLocaleString(), note })}><i style="background:${row.color}"></i><span>${row.label}</span><strong>${value.toLocaleString()}</strong><small>${before ? `${delta >= 0 ? "+" : ""}${delta.toLocaleString()} vs previous` : "No previous data"}</small></button>`;
-  }).join("");
-  $("#musicRatio").innerHTML = `<div class="ratio-layout"><svg class="ratio-svg" viewBox="0 0 200 200" role="img" aria-label="Track, album, and artist breadth compared with the previous period">${rings}<circle cx="100" cy="100" r="19" fill="#211c18"></circle><text x="100" y="96" text-anchor="middle" class="ratio-center-label">SCROBBLES</text><text x="100" y="112" text-anchor="middle" class="ratio-center-value">${state.report.total}</text></svg><div class="ratio-detail">${detail}</div></div><div class="profile-detail" id="ratioDetail"></div>`;
-  setInitialProfileDetail("ratio", "tracks");
+  const report = state.report;
+  const ratio = report.listeningProfile?.ratio;
+  const current = ratio?.current || report;
+  const available = report.comparison.previousAvailable ?? (report.comparison.previousTotal > 0);
+  const previous = available ? ratio?.previous : null;
+  const rows = [["tracks", "Tracks"], ["albums", "Albums"], ["artists", "Artists"]];
+  $("#musicRatio").innerHTML = `<table class="breadth-table"><thead><tr><th scope="col">Unique</th><th scope="col">Current</th><th scope="col">Previous</th><th scope="col">Change</th></tr></thead><tbody>${rows.map(([key, label]) => {
+    const value = current[key];
+    const before = previous?.[key];
+    return `<tr><th scope="row">${label}</th><td><strong>${value?.toLocaleString() ?? "—"}</strong></td><td>${before?.toLocaleString() ?? "—"}</td><td>${value == null || before == null ? "—" : signed(value - before)}</td></tr>`;
+  }).join("")}</tbody></table>${available && previous ? "" : '<p class="profile-empty">Previous counts are unavailable.</p>'}`;
 }
 
 function renderFingerprint() {
@@ -57,93 +39,56 @@ function renderFingerprint() {
     const point = polarPoint(center, center, 116, index * 72 - 90);
     return `<text class="radar-label" x="${point.x}" y="${point.y}" text-anchor="${point.x < center - 10 ? "end" : point.x > center + 10 ? "start" : "middle"}">${label}</text>`;
   }).join("");
-  const previousPoints = radarMetricPoints(previous, axes, center, radius);
+  const previousAvailable = Boolean(fingerprint.previous) && (state.report.comparison.previousAvailable ?? (state.report.comparison.previousTotal > 0));
+  const previousPoints = previousAvailable ? radarMetricPoints(previous, axes, center, radius) : "";
   const currentPoints = radarMetricPoints(current, axes, center, radius);
   const nodes = axes.map(([label, key], index) => {
     const score = Number(current[key] || 0);
     const before = Number(previous[key] || 0);
     const point = polarPoint(center, center, radius * score / 100, index * 72 - 90);
-    return `<circle class="radar-node" cx="${point.x}" cy="${point.y}" r="5" ${profileAttrs({ chart: "fingerprint", key, title: label, value: `${score} / 100`, note: `Previous ${before} · ${fingerprintInfo[key]}` })}></circle>`;
+    return `<circle class="radar-node" cx="${point.x}" cy="${point.y}" r="5" ${profileAttrs({ chart: "fingerprint", key, title: label, value: `${score} / 100`, note: previousAvailable ? `Previous ${before} · ${fingerprintInfo[key]}` : fingerprintInfo[key] })}></circle>`;
   }).join("");
-  $("#listeningFingerprint").innerHTML = `<div class="fingerprint-wrap"><svg class="fingerprint-svg" viewBox="0 0 280 280" role="img" aria-label="Listening behavior fingerprint compared with the previous period">${grid}${spokes}<polygon class="radar-previous" points="${previousPoints}"></polygon><polygon class="radar-current" points="${currentPoints}"></polygon>${nodes}${labels}</svg><div class="profile-legend"><span><i class="legend-current"></i>Current</span><span><i class="legend-previous"></i>Previous</span></div></div><div class="profile-detail" id="fingerprintDetail"></div>`;
+  $("#listeningFingerprint").innerHTML = `<div class="fingerprint-wrap"><svg class="fingerprint-svg" viewBox="0 0 280 280" role="img" aria-label="Listening behavior fingerprint compared with the previous period">${grid}${spokes}${previousAvailable ? `<polygon class="radar-previous" points="${previousPoints}"></polygon>` : ""}<polygon class="radar-current" points="${currentPoints}"></polygon>${nodes}${labels}</svg><div class="profile-legend"><span><i class="legend-current"></i>Current</span>${previousAvailable ? '<span><i class="legend-previous"></i>Previous</span>' : ""}</div></div><div class="profile-detail" id="fingerprintDetail"></div>`;
   setInitialProfileDetail("fingerprint", "consistency");
 }
 
 function renderTagMovement() {
   const timeline = state.report.tagTimeline || [];
-  if (!timeline.some((snapshot) => snapshot.tags?.length)) {
-    $("#tagMovement").innerHTML = `<p class="profile-empty">Tag data is unavailable for this period.</p>`;
+  const formatPercent = (value) => value == null ? "—" : `${value.toFixed(1)}%`;
+  const scores = timeline.map((slot) => new Map(slot.scrobbles > 0
+    ? (slot.tags || []).filter((tag) => tag.score > 0 && tag.score <= slot.scrobbles)
+      .map((tag) => [tag.name, 100 * tag.score / slot.scrobbles])
+    : []));
+  const peaks = new Map();
+  const coverage = new Map();
+  for (const row of scores) {
+    for (const [name, value] of row) {
+      peaks.set(name, Math.max(peaks.get(name) || 0, value));
+      coverage.set(name, (coverage.get(name) || 0) + 1);
+    }
+  }
+  const latest = scores.at(-1);
+  const historical = [...coverage.keys()].sort((a, b) => coverage.get(b) - coverage.get(a) || peaks.get(b) - peaks.get(a) || a.localeCompare(b));
+  const names = [...new Set([...[...(latest?.keys() || [])].slice(0, 3), ...historical])].slice(0, 6);
+  $("#tagMovementRange").textContent = timeline.length ? `${timeline[0].label} – ${timeline.at(-1).label}` : "";
+  if (!names.length) {
+    $("#tagMovement").innerHTML = '<p class="profile-empty">Tag data is unavailable for this period.</p>';
     return;
   }
-  $("#tagMovementRange").textContent = `${timeline[0].label} – ${timeline.at(-1).label}`;
-  const palette = ["#b77cff", "#4aa3f5", "#5ad0b7", "#24459b", "#8744d4", "#2f8d91", "#5d27b8", "#91d5ff"];
-  const totals = new Map();
-  timeline.forEach((snapshot) => snapshot.tags.forEach((tag) => totals.set(tag.name, (totals.get(tag.name) || 0) + tag.score)));
-  const currentNames = timeline.at(-1).tags.slice(0, 6).map((tag) => tag.name);
-  const historicalNames = [...totals.entries()].sort((a, b) => b[1] - a[1]).map(([name]) => name);
-  const names = [...new Set([...currentNames, ...historicalNames])].slice(0, 8);
-  const width = 800;
-  const height = 310;
-  const center = 142;
-  const maxHeight = 196;
-  const xFor = (index) => 54 + index * (692 / Math.max(timeline.length - 1, 1));
-  const scoreRows = timeline.map((snapshot) => {
-    const map = new Map(snapshot.tags.map((tag) => [tag.name, tag.score]));
-    return names.map((name) => map.get(name) || 0);
-  });
-  const maxTotal = Math.max(...scoreRows.map((scores) => scores.reduce((sum, score) => sum + score, 0)), 1);
-  const layers = names.map((name, nameIndex) => {
-    const top = [];
-    const bottom = [];
-    timeline.forEach((_, timeIndex) => {
-      const scores = scoreRows[timeIndex];
-      const total = scores.reduce((sum, score) => sum + score, 0);
-      const start = center - total / maxTotal * maxHeight / 2;
-      const before = scores.slice(0, nameIndex).reduce((sum, score) => sum + score, 0) / maxTotal * maxHeight;
-      const thickness = scores[nameIndex] / maxTotal * maxHeight;
-      top.push({ x: xFor(timeIndex), y: start + before });
-      bottom.push({ x: xFor(timeIndex), y: start + before + thickness });
-    });
-    return { name, color: palette[nameIndex % palette.length], top, bottom };
-  });
-  const bands = layers.map((layer) => {
-    const first = scoreRows[0][names.indexOf(layer.name)];
-    const latest = scoreRows.at(-1)[names.indexOf(layer.name)];
-    const values = scoreRows.map((scores) => scores[names.indexOf(layer.name)]);
-    const peak = Math.max(...values);
-    const peakIndex = values.indexOf(peak);
-    const note = `Peak ${peak} on ${timeline[peakIndex].label} · ${values.filter(Boolean).length}/${timeline.length} active weeks`;
-    const attrs = profileAttrs({ chart: "tags", key: layer.name, title: layer.name, value: `${latest} latest score`, note: `First ${first} · ${note}` });
-    return `<path class="tag-stream" d="${streamAreaPath(layer.top, layer.bottom)}" fill="${layer.color}" ${attrs}></path>`;
-  }).join("");
-  const points = layers.flatMap((layer, nameIndex) => timeline.map((snapshot, timeIndex) => {
-    const score = scoreRows[timeIndex][nameIndex];
-    if (!score) return "";
-    const y = (layer.top[timeIndex].y + layer.bottom[timeIndex].y) / 2;
-    const attrs = profileAttrs({ chart: "tags", key: layer.name, title: `${layer.name} · ${snapshot.label}`, value: `${score} tag score`, note: `${snapshot.scrobbles.toLocaleString()} scrobbles in this week` });
-    return `<circle class="stream-point" cx="${layer.top[timeIndex].x}" cy="${y}" r="8" fill="transparent" ${attrs}></circle>`;
-  })).join("");
-  const labels = layers.map((layer, nameIndex) => {
-    const values = scoreRows.map((scores) => scores[nameIndex]);
-    const latestThickness = layer.bottom.at(-1).y - layer.top.at(-1).y;
-    const labelIndex = latestThickness >= 13 ? timeline.length - 1 : values.indexOf(Math.max(...values));
-    const thickness = layer.bottom[labelIndex].y - layer.top[labelIndex].y;
-    if (thickness < 13) return "";
-    const x = layer.top[labelIndex].x + (labelIndex === timeline.length - 1 ? -8 : 0);
-    const y = (layer.top[labelIndex].y + layer.bottom[labelIndex].y) / 2 + 4;
-    const attrs = profileAttrs({ chart: "tags", key: layer.name, title: layer.name, value: `${values.at(-1)} latest score`, note: `Peak ${Math.max(...values)} across ${timeline.length} weeks` });
-    return `<text class="stream-label" x="${x}" y="${y}" text-anchor="${labelIndex === timeline.length - 1 ? "end" : "middle"}" ${attrs}>${esc(layer.name)}</text>`;
-  }).join("");
-  const ticks = timeline.map((snapshot, index) => `<text class="stream-tick" x="${xFor(index)}" y="292" text-anchor="middle">${esc(snapshot.label)}</text>`).join("");
-  $("#tagMovement").innerHTML = `<svg class="tag-flow-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="Top tag movement across ${timeline.length} weekly snapshots">${bands}${points}${labels}${ticks}</svg><div class="profile-detail profile-detail-dark" id="tagsDetail"></div>`;
-  const currentTop = timeline.at(-1).tags.find((tag) => names.includes(tag.name))?.name || names[0];
-  setInitialProfileDetail("tags", currentTop);
-}
-
-function streamAreaPath(top, bottom) {
-  const upper = top.map((point, index) => `${index ? "L" : "M"} ${point.x} ${point.y}`).join(" ");
-  const lower = [...bottom].reverse().map((point) => `L ${point.x} ${point.y}`).join(" ");
-  return `${upper} ${lower} Z`;
+  const scale = Math.max(10, Math.ceil(Math.max(...names.map((name) => peaks.get(name))) / 10) * 10);
+  const labels = timeline.map((slot) => `<span title="${esc(slot.label)}">${esc(slot.shortLabel || slot.label)}</span>`).join("");
+  $("#tagMovement").innerHTML = `<p class="tag-method">Weighted tag score per 100 plays · common scale 0–${scale}%</p><div class="tag-trends" style="--tag-periods:${timeline.length}">${names.map((name) => {
+    const value = latest.get(name);
+    const earlier = scores.at(-2)?.get(name);
+    const delta = value == null || earlier == null ? null : Math.round((value - earlier) * 10) / 10;
+    const bars = timeline.map((slot, index) => {
+      const score = scores[index].get(name);
+      const note = slot.scrobbles == null ? "Period data unavailable" : slot.scrobbles === 0 ? "No plays" : !slot.tags?.length ? "Tag data unavailable" : score == null ? "Outside the stored top tags" : `${slot.scrobbles.toLocaleString()} plays in this period`;
+      const attrs = profileAttrs({chart: "tags", key: `${name}-${index}`, title: `${name} · ${slot.label}`, value: formatPercent(score), note});
+      return `<button type="button" class="tag-bar ${score == null ? "tag-gap" : ""}" style="--tag-height:${(score || 0) / scale * 100}%" aria-label="${esc(`${name}, ${slot.label}, ${score == null ? note : formatPercent(score)}`)}" ${attrs}><i></i></button>`;
+    }).join("");
+    return `<article class="tag-trend"><div class="tag-label"><strong>${esc(name)}</strong><span>${formatPercent(value)}${delta == null ? "" : ` <small>${signed(delta)} pp</small>`}</span></div><div class="tag-bars">${bars}</div><div class="tag-ticks" aria-hidden="true">${labels}</div></article>`;
+  }).join("")}</div><div class="profile-detail profile-detail-dark" id="tagsDetail" aria-live="polite">Select a period for its tag score.</div>`;
 }
 
 function renderListeningClock() {

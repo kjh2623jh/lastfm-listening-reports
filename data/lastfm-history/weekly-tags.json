@@ -4,28 +4,30 @@
     {
       "startDate": "2026-04-27",
       "endDate": "2026-05-03",
-      "label": "Apr 27",
       "scrobbles": 0,
-      "tags": []
+      "tags": [],
+      "label": "2026-04-27",
+      "shortLabel": "04/27"
     },
     {
       "startDate": "2026-05-04",
       "endDate": "2026-05-10",
-      "label": "May 4",
       "scrobbles": 0,
-      "tags": []
+      "tags": [],
+      "label": "2026-05-04",
+      "shortLabel": "05/04"
     },
     {
       "startDate": "2026-05-11",
       "endDate": "2026-05-17",
-      "label": "May 11",
       "scrobbles": 0,
-      "tags": []
+      "tags": [],
+      "label": "2026-05-11",
+      "shortLabel": "05/11"
     },
     {
       "startDate": "2026-05-18",
       "endDate": "2026-05-24",
-      "label": "May 18",
       "scrobbles": 2,
       "tags": [
         {
@@ -68,12 +70,13 @@
           "name": "chiptune",
           "score": 1
         }
-      ]
+      ],
+      "label": "2026-05-18",
+      "shortLabel": "05/18"
     },
     {
       "startDate": "2026-05-25",
       "endDate": "2026-05-31",
-      "label": "May 25",
       "scrobbles": 171,
       "tags": [
         {
@@ -99,29 +102,12 @@
         {
           "name": "hip-hop",
           "score": 30
-        },
-        {
-          "name": "rap",
-          "score": 30
-        },
-        {
-          "name": "underground hip-hop",
-          "score": 30
-        },
-        {
-          "name": "ofwgkta",
-          "score": 26
-        },
-        {
-          "name": "swag",
-          "score": 26
         }
       ]
     },
     {
       "startDate": "2026-06-01",
       "endDate": "2026-06-07",
-      "label": "Jun 1",
       "scrobbles": 417,
       "tags": [
         {
@@ -153,24 +139,23 @@
     {
       "startDate": "2026-06-08",
       "endDate": "2026-06-14",
-      "label": "Jun 8",
-      "scrobbles": 297,
+      "scrobbles": 302,
       "tags": [
         {
           "name": "electronic",
-          "score": 95
+          "score": 100
+        },
+        {
+          "name": "indie pop",
+          "score": 90
         },
         {
           "name": "indie",
           "score": 89
         },
         {
-          "name": "indie pop",
-          "score": 85
-        },
-        {
           "name": "idm",
-          "score": 72
+          "score": 77
         },
         {
           "name": "indie rock",
@@ -185,72 +170,69 @@
     {
       "startDate": "2026-06-15",
       "endDate": "2026-06-21",
-      "label": "Jun 15",
-      "scrobbles": 372,
+      "scrobbles": 420,
       "tags": [
         {
           "name": "indie",
-          "score": 68
+          "score": 79
         },
         {
-          "name": "art pop",
-          "score": 50
+          "name": "electronic",
+          "score": 66
+        },
+        {
+          "name": "pop",
+          "score": 63
         },
         {
           "name": "lo-fi",
-          "score": 47
+          "score": 58
         },
         {
           "name": "indie rock",
-          "score": 47
+          "score": 58
         },
         {
           "name": "noise pop",
-          "score": 47
-        },
-        {
-          "name": "furry",
-          "score": 47
+          "score": 58
         }
       ]
     },
     {
       "startDate": "2026-06-22",
       "endDate": "2026-06-28",
-      "label": "Jun 22",
-      "scrobbles": 233,
+      "scrobbles": 277,
       "tags": [
         {
-          "name": "female vocalists",
-          "score": 91
-        },
-        {
           "name": "alternative",
-          "score": 89
+          "score": 100
         },
         {
           "name": "indie",
-          "score": 89
+          "score": 100
+        },
+        {
+          "name": "female vocalists",
+          "score": 95
         },
         {
           "name": "singer-songwriter",
-          "score": 77
+          "score": 81
         },
         {
           "name": "piano",
-          "score": 77
+          "score": 81
         },
         {
-          "name": "indie rock",
-          "score": 25
+          "name": "electronic",
+          "score": 56
         }
       ]
     },
     {
       "startDate": "2026-06-29",
       "endDate": "2026-07-05",
-      "label": "Jun 29",
-      "scrobbles": 204,
+      "scrobbles": 216,
       "tags": [
         {
           "name": "indie",
@@ -281,7 +263,6 @@
     {
       "startDate": "2026-07-06",
       "endDate": "2026-07-12",
-      "label": "Jul 6",
       "scrobbles": 78,
       "tags": [
         {
@@ -313,7 +294,6 @@
     {
       "startDate": "2026-07-13",
       "endDate": "2026-07-19",
-      "label": "Jul 13",
       "scrobbles": 120,
       "tags": [
         {
@@ -345,7 +325,6 @@
     {
       "startDate": "2026-07-20",
       "endDate": "2026-07-26",
-      "label": "Jul 20",
       "scrobbles": 356,
       "tags": [
         {
@@ -377,7 +356,6 @@
     {
       "startDate": "2026-07-27",
       "endDate": "2026-08-02",
-      "label": "Jul 27",
       "scrobbles": 127,
       "tags": [
         {
@@ -409,7 +387,6 @@
     {
       "startDate": "2026-08-03",
       "endDate": "2026-08-09",
-      "label": "Aug 3",
       "scrobbles": 150,
       "tags": [
         {
@@ -441,31 +418,30 @@
     {
       "startDate": "2026-08-10",
       "endDate": "2026-08-16",
-      "label": "Aug 10",
-      "scrobbles": 186,
+      "scrobbles": 190,
       "tags": [
         {
           "name": "indie rock",
-          "score": 99
+          "score": 97
         },
         {
           "name": "indie pop",
-          "score": 81
+          "score": 79
         },
         {
-          "name": "japan",
-          "score": 75
+          "name": "alternative rock",
+          "score": 79
+        },
+        {
+          "name": "post-rock",
+          "score": 79
+        },
+        {
+          "name": "j-rock",
+          "score": 79
         },
         {
           "name": "post-black metal",
-          "score": 38
-        },
-        {
-          "name": "screamo",
-          "score": 38
-        },
-        {
-          "name": "black metal",
           "score": 38
         }
       ]
@@ -473,16 +449,11 @@
     {
       "startDate": "2026-08-17",
       "endDate": "2026-08-23",
-      "label": "Aug 17",
-      "scrobbles": 156,
+      "scrobbles": 169,
       "tags": [
         {
           "name": "indie rock",
           "score": 93
-        },
-        {
-          "name": "noise rock",
-          "score": 81
         },
         {
           "name": "shoegaze",
@@ -497,15 +468,18 @@
           "score": 54
         },
         {
+          "name": "slacker rock",
+          "score": 54
+        },
+        {
           "name": "pop",
-          "score": 31
+          "score": 34
         }
       ]
     },
     {
       "startDate": "2026-08-24",
       "endDate": "2026-08-30",
-      "label": "Aug 24",
       "scrobbles": 314,
       "tags": [
         {
@@ -525,7 +499,7 @@
           "score": 165
         },
         {
-          "name": "noise rock",
+          "name": "slacker rock",
           "score": 165
         },
         {
@@ -537,7 +511,6 @@
     {
       "startDate": "2026-08-31",
       "endDate": "2026-09-06",
-      "label": "Aug 31",
       "scrobbles": 103,
       "tags": [
         {
@@ -569,7 +542,6 @@
     {
       "startDate": "2026-09-07",
       "endDate": "2026-09-13",
-      "label": "Sep 7",
       "scrobbles": 42,
       "tags": [
         {
@@ -601,7 +573,6 @@
     {
       "startDate": "2026-09-14",
       "endDate": "2026-09-20",
-      "label": "Sep 14",
       "scrobbles": 120,
       "tags": [
         {
@@ -633,7 +604,6 @@
     {
       "startDate": "2026-09-21",
       "endDate": "2026-09-27",
-      "label": "Sep 21",
       "scrobbles": 185,
       "tags": [
         {
@@ -665,43 +635,45 @@
     {
       "startDate": "2026-09-28",
       "endDate": "2026-10-04",
-      "label": "Sep 28",
-      "scrobbles": 57,
+      "scrobbles": 92,
       "tags": [
         {
           "name": "shoegaze",
-          "score": 39
+          "score": 72
         },
         {
           "name": "indie rock",
-          "score": 27
-        },
-        {
-          "name": "emo",
-          "score": 26
-        },
-        {
-          "name": "korean",
-          "score": 26
-        },
-        {
-          "name": "south korea",
-          "score": 22
+          "score": 51
         },
         {
           "name": "noise pop",
-          "score": 17
+          "score": 50
+        },
+        {
+          "name": "lo-fi",
+          "score": 37
+        },
+        {
+          "name": "slacker rock",
+          "score": 37
+        },
+        {
+          "name": "emo",
+          "score": 35
         }
       ]
     },
     {
       "startDate": "2026-10-05",
       "endDate": "2026-10-11",
-      "label": "Oct 5",
-      "scrobbles": 175,
+      "scrobbles": 176,
       "tags": [
         {
           "name": "indie pop",
+          "score": 54
+        },
+        {
+          "name": "pop",
           "score": 54
         },
         {
@@ -719,58 +691,52 @@
         {
           "name": "lo-fi",
           "score": 40
-        },
-        {
-          "name": "noise rock",
-          "score": 40
         }
       ]
     },
     {
       "startDate": "2026-10-12",
       "endDate": "2026-10-18",
-      "label": "Oct 12",
-      "scrobbles": 281,
+      "scrobbles": 297,
       "tags": [
         {
           "name": "indie rock",
-          "score": 166
+          "score": 169
+        },
+        {
+          "name": "korean",
+          "score": 65
+        },
+        {
+          "name": "indie",
+          "score": 65
+        },
+        {
+          "name": "k-rock",
+          "score": 65
+        },
+        {
+          "name": "alternative",
+          "score": 65
         },
         {
           "name": "shoegaze",
           "score": 64
-        },
-        {
-          "name": "noise pop",
-          "score": 64
-        },
-        {
-          "name": "lo-fi",
-          "score": 64
-        },
-        {
-          "name": "noise rock",
-          "score": 64
-        },
-        {
-          "name": "korean",
-          "score": 62
         }
       ]
     },
     {
       "startDate": "2026-10-19",
       "endDate": "2026-10-25",
-      "label": "Oct 19",
-      "scrobbles": 152,
+      "scrobbles": 158,
       "tags": [
+        {
+          "name": "indie rock",
+          "score": 42
+        },
         {
           "name": "korean",
           "score": 38
-        },
-        {
-          "name": "indie rock",
-          "score": 33
         },
         {
           "name": "indie",
@@ -781,7 +747,7 @@
           "score": 29
         },
         {
-          "name": "rock",
+          "name": "alternative",
           "score": 29
         },
         {
@@ -793,12 +759,11 @@
     {
       "startDate": "2026-10-26",
       "endDate": "2026-11-01",
-      "label": "Oct 26",
-      "scrobbles": 337,
+      "scrobbles": 350,
       "tags": [
         {
           "name": "indie rock",
-          "score": 110
+          "score": 126
         },
         {
           "name": "indie pop",
@@ -809,11 +774,11 @@
           "score": 60
         },
         {
-          "name": "japan",
+          "name": "alternative rock",
           "score": 46
         },
         {
-          "name": "alternative rock",
+          "name": "post-rock",
           "score": 46
         },
         {
@@ -825,55 +790,53 @@
     {
       "startDate": "2026-11-02",
       "endDate": "2026-11-08",
-      "label": "Nov 2",
-      "scrobbles": 141,
+      "scrobbles": 235,
       "tags": [
         {
           "name": "indie rock",
-          "score": 45
+          "score": 78
         },
         {
           "name": "indie pop",
-          "score": 37
-        },
-        {
-          "name": "indie",
-          "score": 37
+          "score": 73
         },
         {
           "name": "lo-fi",
-          "score": 28
+          "score": 51
+        },
+        {
+          "name": "pop",
+          "score": 39
+        },
+        {
+          "name": "indie",
+          "score": 38
         },
         {
           "name": "shoegaze",
-          "score": 23
-        },
-        {
-          "name": "dream pop",
-          "score": 15
+          "score": 36
         }
       ]
     },
     {
       "startDate": "2026-11-09",
       "endDate": "2026-11-15",
-      "label": "Nov 9",
       "scrobbles": 558,
       "tags": [
         {
-          "name": "indie pop",
+          "name": "electronic",
           "score": 71
+        },
+        {
+          "name": "ambient",
+          "score": 47
         },
         {
           "name": "indietronica",
           "score": 47
         },
         {
-          "name": "bitpop",
-          "score": 47
-        },
-        {
-          "name": "bedroom pop",
+          "name": "alternative",
           "score": 47
         },
         {
@@ -889,12 +852,11 @@
     {
       "startDate": "2026-11-16",
       "endDate": "2026-11-22",
-      "label": "Nov 16",
       "scrobbles": 266,
       "tags": [
         {
           "name": "electronic",
-          "score": 29
+          "score": 37
         },
         {
           "name": "psychedelic",
@@ -902,7 +864,7 @@
         },
         {
           "name": "ambient",
-          "score": 16
+          "score": 24
         },
         {
           "name": "drone",

@@ -4,78 +4,607 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Last.fm Weekly Report - 2026-06-08 ~ 2026-06-14</title>
-  <style>
-:root{--bg:#100f0e;--paper:#fbf7ef;--paper-2:#f2e9da;--ink:#1f1b18;--muted:#756b60;--line:rgba(31,27,24,.14);--red:#d51007;--gold:#d99a26;--teal:#0e7c7b;--blue:#2f5f98;--shadow:0 24px 70px rgba(0,0,0,.28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 10%,rgba(213,16,7,.36),transparent 28rem),radial-gradient(circle at 88% 4%,rgba(14,124,123,.34),transparent 26rem),linear-gradient(135deg,#15110f 0%,#201916 48%,#0e1818 100%);min-height:100vh}button,input{font:inherit}button{cursor:pointer}.page{width:min(1220px,calc(100vw - 28px));margin:0 auto;padding:28px 0 52px}.shell{background:rgba(251,247,239,.94);border:1px solid rgba(255,255,255,.28);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.hero{position:relative;min-height:520px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:26px;padding:30px;color:white;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.28)),var(--hero-art);background-size:cover;background-position:center;isolation:isolate}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(16,15,14,.42));z-index:-1}.topline{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:30px}.brand{display:flex;gap:12px;align-items:center;min-width:0}.mark{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;background:var(--red);color:white;font-weight:900;box-shadow:0 10px 22px rgba(213,16,7,.28)}.brand h1{margin:0;font-size:18px}.brand p{margin:3px 0 0;color:rgba(255,255,255,.72);font-size:13px}.report-controls{display:grid;gap:8px;justify-items:end}.control-group{display:flex;align-items:center;gap:6px;padding:5px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(0,0,0,.18);backdrop-filter:blur(10px)}.control-label{padding:0 7px;color:rgba(255,255,255,.62);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.control,.pill,.icon-btn{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);color:white;border-radius:999px;min-height:32px;padding:0 12px;backdrop-filter:blur(10px)}.pill.active{background:white;color:#241d19}.icon-btn{width:34px;padding:0;font-weight:900}.control{color-scheme:dark;width:146px}.hero-copy{align-self:end;max-width:660px}.eyebrow{margin:0 0 14px;color:#ffb1a9;font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.hero h2{margin:0;max-width:690px;font-size:clamp(42px,7vw,82px);line-height:.9}.summary{margin:20px 0 0;color:rgba(255,255,255,.82);line-height:1.7;font-size:16px}.hero-side{display:grid;align-content:end;gap:16px}.cover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.cover-tile{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);transform:translateY(8px);opacity:0;animation:tileIn .55s ease forwards}.cover-tile:nth-child(2){animation-delay:.06s}.cover-tile:nth-child(3){animation-delay:.12s}.cover-tile:nth-child(4){animation-delay:.18s}.cover-tile:nth-child(5){animation-delay:.24s}.cover-tile:nth-child(6){animation-delay:.30s}.cover-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease,filter .35s ease}.cover-tile:hover img{transform:scale(1.08);filter:saturate(1.12)}.cover-tile span{position:absolute;left:8px;right:8px;bottom:8px;color:white;font-size:11px;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.85);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@keyframes tileIn{to{transform:translateY(0);opacity:1}}.metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--paper);border-bottom:1px solid var(--line)}.metric{padding:22px 24px;border-right:1px solid var(--line)}.metric:last-child{border-right:0}.metric strong{display:block;font-size:clamp(34px,5vw,54px);line-height:.95}.metric span{display:block;margin-top:7px;color:var(--muted);font-size:13px;font-weight:700}.body{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:22px;padding:24px;background:linear-gradient(180deg,var(--paper) 0%,#f5efe5 100%)}.main,.side{display:grid;gap:18px;align-content:start}.panel{background:rgba(255,255,255,.68);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.7) inset}.panel-head{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:18px 18px 0}.panel h3{margin:0;font-size:21px}.hint{color:var(--muted);font-size:13px}.panel-body{padding:18px}.insight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.insight-card{padding:16px;border-radius:12px;background:var(--paper-2);min-height:132px}.insight-card b{display:block;margin-bottom:10px}.insight-card p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.compare-card{padding:14px;border-radius:12px;background:white;border:1px solid var(--line)}.compare-card strong{display:block;font-size:26px}.compare-card span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.tag-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.tag{border-radius:999px;background:#211c18;color:white;padding:5px 8px;font-size:12px}.tabs{display:flex;gap:8px;padding:0 18px 18px;overflow-x:auto}.tab{border:1px solid var(--line);background:white;color:var(--muted);height:36px;padding:0 13px;border-radius:999px;white-space:nowrap}.tab.active{background:#211c18;color:white;border-color:#211c18}.chart-section{display:none}.chart-section.active{display:block}.rank-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.rank-item{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.7);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;text-align:left}.rank-item:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(31,27,24,.10);border-color:rgba(213,16,7,.28)}.thumb{width:52px;height:52px;border-radius:9px;object-fit:cover;background:#ded2c2}.rank-title{min-width:0}.rank-title strong,.rank-title span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rank-title span{margin-top:3px;color:var(--muted);font-size:13px}.count{min-width:56px;text-align:right;color:var(--red);font-weight:900}.day-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px}.day-card{min-height:132px;border-radius:12px;padding:12px;background:linear-gradient(180deg,#fff,#f4ecdf);border:1px solid var(--line);display:grid;align-content:space-between}.day-card strong{font-size:26px}.day-card span{color:var(--muted);font-size:12px}.bar{height:8px;border-radius:999px;background:#dfd4c5;overflow:hidden;margin-top:10px}.fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--red),var(--gold))}.heat{display:grid;grid-template-columns:repeat(24,minmax(6px,1fr));gap:4px;align-items:end;height:170px}.hour{border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,var(--teal),var(--blue));min-height:4px;position:relative}.hour:hover:after{content:attr(data-label);position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);white-space:nowrap;background:#211c18;color:white;font-size:12px;padding:5px 7px;border-radius:6px;z-index:5}.story{margin:0;color:var(--muted);line-height:1.7}.story+ .story{margin-top:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.button{min-height:40px;border:1px solid var(--line);border-radius:10px;padding:0 14px;background:white;color:var(--ink)}.button.primary{background:var(--red);border-color:var(--red);color:white}.mini-list{display:grid;gap:10px}.mini{display:grid;grid-template-columns:46px minmax(0,1fr);gap:10px;align-items:center;text-align:left;border:0;background:transparent;padding:0}.mini img{width:46px;height:46px;object-fit:cover;border-radius:8px;background:#ded2c2}.mini strong,.mini span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mini span{color:var(--muted);font-size:12px}.detail{position:fixed;inset:0;display:none;place-items:center;padding:20px;background:rgba(0,0,0,.58);z-index:20}.detail.open{display:grid}.detail-card{width:min(720px,100%);display:grid;grid-template-columns:210px minmax(0,1fr);gap:20px;background:var(--paper);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.detail-card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;background:#ded2c2}.detail-card h3{margin:0 0 8px;font-size:30px;line-height:1.05}.detail-card p{margin:0 0 10px;color:var(--muted);line-height:1.6}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(16px);opacity:0;pointer-events:none;background:#211c18;color:white;padding:10px 14px;border-radius:10px;z-index:30;transition:opacity .18s ease,transform .18s ease}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}@media(max-width:980px){.hero,.body{grid-template-columns:1fr}.hero{min-height:auto}.topline{display:grid}.report-controls{justify-items:start}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.insight-grid,.compare-grid{grid-template-columns:1fr}}@media(max-width:620px){.page{width:calc(100vw - 16px);padding-top:8px}.hero,.body{padding:16px}.control-group{width:100%;border-radius:14px;flex-wrap:wrap}.cover-grid{grid-template-columns:repeat(2,1fr)}.metrics{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)}.metric:last-child{border-bottom:0}.detail-card{grid-template-columns:1fr}.hero h2{font-size:42px}}
-.compare-bars{grid-column:1/-1;display:grid;gap:10px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#fff,#f3eadb);border:1px solid var(--line)}.compare-bar-row{display:grid;grid-template-columns:74px minmax(0,1fr) 58px;gap:10px;align-items:center;font-size:13px}.compare-bar-row span{color:var(--muted);font-weight:800}.compare-bar-row b{text-align:right}.compare-track{height:14px;border-radius:999px;background:#dfd4c5;overflow:hidden}.compare-track i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--red),var(--gold));box-shadow:0 0 18px rgba(213,16,7,.26)}.compare-bar-row.previous .compare-track i{background:linear-gradient(90deg,#7c756b,#b8ad9b);box-shadow:none}.more-btn{width:100%;margin-top:12px;min-height:42px;border:1px solid var(--line);border-radius:12px;background:#211c18;color:white;font-weight:800}.more-btn:hover{background:#3a302a}.heat{height:190px;align-items:stretch}.hour-wrap{display:grid;grid-template-rows:1fr 18px;align-items:end;gap:6px;min-width:0}.hour-wrap span{color:var(--muted);font-size:10px;text-align:center}.hour{width:100%;align-self:end}.tag-list{grid-column:1/-1}.comparison-lift{animation:tileIn .35s ease both}select{font:inherit}.report-select{width:210px;max-width:42vw}.pill:disabled,.icon-btn:disabled,.control:disabled{opacity:.42;cursor:not-allowed;filter:saturate(.55)}.pill:disabled:hover,.icon-btn:disabled:hover{transform:none}@media(max-width:620px){.report-select{width:100%;max-width:none}}
-.deep-dive-panel[hidden]{display:none}.deep-dive{display:grid;gap:16px}.deep-section{border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#fffdf8,#f0e5d4);overflow:hidden}.deep-section-head{display:grid;gap:6px;padding:18px 18px 0}.deep-section-head h4{margin:0;font-size:18px}.deep-section-head p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}.deep-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:18px}.deep-item{min-height:126px;display:grid;align-content:start;gap:7px;padding:14px;border-radius:12px;background:rgba(255,255,255,.72);border:1px solid rgba(31,27,24,.10)}.deep-item span{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}.deep-item strong{font-size:24px;line-height:1.05;word-break:keep-all}.deep-item p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}@media(max-width:980px){.deep-items{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.deep-items{grid-template-columns:1fr}.deep-item{min-height:auto}}
-.ai-status{display:grid;gap:12px}.status-badge{display:inline-flex;width:max-content;align-items:center;min-height:30px;border-radius:999px;padding:0 11px;font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}.status-badge.ok{background:#dff5eb;color:#0f6041}.status-badge.fallback{background:#fff1d6;color:#8a4d00}.status-list{display:grid;gap:9px;margin:0}.status-list div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px solid var(--line)}.status-list dt{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}.status-list dd{margin:0;color:var(--ink);font-size:13px;line-height:1.45;word-break:break-word}
+  <style>:root{--bg:#100f0e;--paper:#fbf7ef;--paper-2:#f2e9da;--ink:#1f1b18;--muted:#756b60;--line:rgba(31,27,24,.14);--red:#d51007;--gold:#d99a26;--teal:#0e7c7b;--blue:#2f5f98;--shadow:0 24px 70px rgba(0,0,0,.28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 10%,rgba(213,16,7,.36),transparent 28rem),radial-gradient(circle at 88% 4%,rgba(14,124,123,.34),transparent 26rem),linear-gradient(135deg,#15110f 0%,#201916 48%,#0e1818 100%);min-height:100vh}
+button,input{font:inherit}
+button{cursor:pointer}
+.page{width:min(1220px,calc(100vw - 28px));margin:0 auto;padding:28px 0 52px}
+.shell{background:rgba(251,247,239,.94);border:1px solid rgba(255,255,255,.28);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.hero{position:relative;min-height:520px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:26px;padding:30px;color:white;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.28)),var(--hero-art);background-size:cover;background-position:center;isolation:isolate}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(16,15,14,.42));z-index:-1}
+.topline{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:30px}
+.brand{display:flex;gap:12px;align-items:center;min-width:0}
+.mark{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;background:var(--red);color:white;font-weight:900;box-shadow:0 10px 22px rgba(213,16,7,.28)}
+.brand h1{margin:0;font-size:18px}
+.brand p{margin:3px 0 0;color:rgba(255,255,255,.72);font-size:13px}
+.report-controls{display:grid;gap:8px;justify-items:end}
+.control-group{display:flex;align-items:center;gap:6px;padding:5px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(0,0,0,.18);backdrop-filter:blur(10px)}
+.control-label{padding:0 7px;color:rgba(255,255,255,.62);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.control,.pill,.icon-btn{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);color:white;border-radius:999px;min-height:32px;padding:0 12px;backdrop-filter:blur(10px)}
+.pill.active{background:white;color:#241d19}
+.icon-btn{width:34px;padding:0;font-weight:900}
+.control{color-scheme:dark;width:146px}
+.hero-copy{align-self:end;max-width:660px}
+.eyebrow{margin:0 0 14px;color:#ffb1a9;font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.hero h2{margin:0;max-width:690px;font-size:clamp(42px,7vw,82px);line-height:.9}
+.summary{margin:20px 0 0;color:rgba(255,255,255,.82);line-height:1.7;font-size:16px}
+.hero-side{display:grid;align-content:end;gap:16px}
+.cover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.cover-tile{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);transform:translateY(8px);opacity:0;animation:tileIn .55s ease forwards}
+.cover-tile:nth-child(2){animation-delay:.06s}
+.cover-tile:nth-child(3){animation-delay:.12s}
+.cover-tile:nth-child(4){animation-delay:.18s}
+.cover-tile:nth-child(5){animation-delay:.24s}
+.cover-tile:nth-child(6){animation-delay:.30s}
+.cover-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease,filter .35s ease}
+.cover-tile:hover img{transform:scale(1.08);filter:saturate(1.12)}
+.cover-tile span{position:absolute;left:8px;right:8px;bottom:8px;color:white;font-size:11px;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.85);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@keyframes tileIn{to{transform:translateY(0);opacity:1}}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--paper);border-bottom:1px solid var(--line)}
+.metric{padding:22px 24px;border-right:1px solid var(--line)}
+.metric:last-child{border-right:0}
+.metric strong{display:block;font-size:clamp(34px,5vw,54px);line-height:.95}
+.metric span{display:block;margin-top:7px;color:var(--muted);font-size:13px;font-weight:700}
+.body{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:22px;padding:24px;background:linear-gradient(180deg,var(--paper) 0%,#f5efe5 100%)}
+.main,.side{display:grid;gap:18px;align-content:start}
+.panel{background:rgba(255,255,255,.68);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.7) inset}
+.panel-head{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:18px 18px 0}
+.panel h3{margin:0;font-size:21px}
+.hint{color:var(--muted);font-size:13px}
+.panel-body{padding:18px}
+.insight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.insight-card{padding:16px;border-radius:12px;background:var(--paper-2);min-height:132px}
+.insight-card b{display:block;margin-bottom:10px}
+.insight-card p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}
+.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.compare-card{padding:14px;border-radius:12px;background:white;border:1px solid var(--line)}
+.compare-card strong{display:block;font-size:26px}
+.compare-card span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.tag-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tag{border-radius:999px;background:#211c18;color:white;padding:5px 8px;font-size:12px}
+.tabs{display:flex;gap:8px;padding:0 18px 18px;overflow-x:auto}
+.tab{border:1px solid var(--line);background:white;color:var(--muted);height:36px;padding:0 13px;border-radius:999px;white-space:nowrap}
+.tab.active{background:#211c18;color:white;border-color:#211c18}
+.chart-section{display:none}
+.chart-section.active{display:block}
+.rank-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.rank-item{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.7);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;text-align:left}
+.rank-item:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(31,27,24,.10);border-color:rgba(213,16,7,.28)}
+.thumb{width:52px;height:52px;border-radius:9px;object-fit:cover;background:#ded2c2}
+.rank-title{min-width:0}
+.rank-title strong,.rank-title span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rank-title span{margin-top:3px;color:var(--muted);font-size:13px}
+.count{min-width:56px;text-align:right;color:var(--red);font-weight:900}
+.day-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px}
+.day-card{min-height:132px;border-radius:12px;padding:12px;background:linear-gradient(180deg,#fff,#f4ecdf);border:1px solid var(--line);display:grid;align-content:space-between}
+.day-card strong{font-size:26px}
+.day-card span{color:var(--muted);font-size:12px}
+.bar{height:8px;border-radius:999px;background:#dfd4c5;overflow:hidden;margin-top:10px}
+.fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--red),var(--gold))}
+.heat{display:grid;grid-template-columns:repeat(24,minmax(6px,1fr));gap:4px;align-items:end;height:170px}
+.hour{border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,var(--teal),var(--blue));min-height:4px;position:relative}
+.hour:hover:after{content:attr(data-label);position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);white-space:nowrap;background:#211c18;color:white;font-size:12px;padding:5px 7px;border-radius:6px;z-index:5}
+.story{margin:0;color:var(--muted);line-height:1.7}
+.story+ .story{margin-top:10px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.button{min-height:40px;border:1px solid var(--line);border-radius:10px;padding:0 14px;background:white;color:var(--ink)}
+.button.primary{background:var(--red);border-color:var(--red);color:white}
+.mini-list{display:grid;gap:10px}
+.mini{display:grid;grid-template-columns:46px minmax(0,1fr);gap:10px;align-items:center;text-align:left;border:0;background:transparent;padding:0}
+.mini img{width:46px;height:46px;object-fit:cover;border-radius:8px;background:#ded2c2}
+.mini strong,.mini span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini span{color:var(--muted);font-size:12px}
+.detail{position:fixed;inset:0;display:none;place-items:center;padding:20px;background:rgba(0,0,0,.58);z-index:20}
+.detail.open{display:grid}
+.detail-card{width:min(720px,100%);display:grid;grid-template-columns:210px minmax(0,1fr);gap:20px;background:var(--paper);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.detail-card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;background:#ded2c2}
+.detail-card h3{margin:0 0 8px;font-size:30px;line-height:1.05}
+.detail-card p{margin:0 0 10px;color:var(--muted);line-height:1.6}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(16px);opacity:0;pointer-events:none;background:#211c18;color:white;padding:10px 14px;border-radius:10px;z-index:30;transition:opacity .18s ease,transform .18s ease}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:980px){.hero,.body{grid-template-columns:1fr}.hero{min-height:auto}.topline{display:grid}.report-controls{justify-items:start}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.insight-grid,.compare-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.page{width:calc(100vw - 16px);padding-top:8px}.hero,.body{padding:16px}.control-group{width:100%;border-radius:14px;flex-wrap:wrap}.cover-grid{grid-template-columns:repeat(2,1fr)}.metrics{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)}.metric:last-child{border-bottom:0}.detail-card{grid-template-columns:1fr}.hero h2{font-size:42px}}
+
+.compare-bars{grid-column:1/-1;display:grid;gap:10px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#fff,#f3eadb);border:1px solid var(--line)}
+.compare-bar-row{display:grid;grid-template-columns:74px minmax(0,1fr) 58px;gap:10px;align-items:center;font-size:13px}
+.compare-bar-row span{color:var(--muted);font-weight:800}
+.compare-bar-row b{text-align:right}
+.compare-track{height:14px;border-radius:999px;background:#dfd4c5;overflow:hidden}
+.compare-track i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--red),var(--gold));box-shadow:0 0 18px rgba(213,16,7,.26)}
+.compare-bar-row.previous .compare-track i{background:linear-gradient(90deg,#7c756b,#b8ad9b);box-shadow:none}
+.more-btn{width:100%;margin-top:12px;min-height:42px;border:1px solid var(--line);border-radius:12px;background:#211c18;color:white;font-weight:800}
+.more-btn:hover{background:#3a302a}
+.heat{height:190px;align-items:stretch}
+.hour-wrap{display:grid;grid-template-rows:1fr 18px;align-items:end;gap:6px;min-width:0}
+.hour-wrap span{color:var(--muted);font-size:10px;text-align:center}
+.hour{width:100%;align-self:end}
+.tag-list{grid-column:1/-1}
+.comparison-lift{animation:tileIn .35s ease both}
+select{font:inherit}
+.report-select{width:210px;max-width:42vw}
+.pill:disabled,.icon-btn:disabled,.control:disabled{opacity:.42;cursor:not-allowed;filter:saturate(.55)}
+.pill:disabled:hover,.icon-btn:disabled:hover{transform:none}
+@media(max-width:620px){.report-select{width:100%;max-width:none}}
+
+.deep-dive-panel[hidden]{display:none}
+.deep-dive{display:grid;gap:16px}
+.deep-section{border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#fffdf8,#f0e5d4);overflow:hidden}
+.deep-section-head{display:grid;gap:6px;padding:18px 18px 0}
+.deep-section-head h4{margin:0;font-size:18px}
+.deep-section-head p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}
+.deep-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:18px}
+.deep-item{min-height:126px;display:grid;align-content:start;gap:7px;padding:14px;border-radius:12px;background:rgba(255,255,255,.72);border:1px solid rgba(31,27,24,.10)}
+.deep-item span{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+.deep-item strong{font-size:24px;line-height:1.05;word-break:keep-all}
+.deep-item p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+@media(max-width:980px){.deep-items{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.deep-items{grid-template-columns:1fr}.deep-item{min-height:auto}}
+
+.ai-status{display:grid;gap:12px}
+.status-badge{display:inline-flex;width:max-content;align-items:center;min-height:30px;border-radius:999px;padding:0 11px;font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.status-badge.ok{background:#dff5eb;color:#0f6041}
+.status-badge.fallback{background:#fff1d6;color:#8a4d00}
+.status-list{display:grid;gap:9px;margin:0}
+.status-list div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.status-list dt{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+.status-list dd{margin:0;color:var(--ink);font-size:13px;line-height:1.45;word-break:break-word}
+
+.profile-dark .clock-base,.profile-dark .clock-value-segment{pointer-events:none}
+.tag-flow-line{pointer-events:stroke}
+.flow-label{cursor:pointer;outline:none;transition:opacity .18s ease,fill .18s ease}
+.flow-label.is-hovered,.flow-label.is-selected{fill:#211c18;font-weight:900}
+.flow-label.is-dimmed{opacity:.22}
+.flow-label:focus-visible{text-decoration:underline}
+.profile-dark{background:#08090b;color:#fff}
+.profile-dark .profile-chart-head span{color:#878b94}
+.profile-dark+.profile-dark{border-top-color:#25272c}
+.tag-stream{cursor:pointer;outline:none;stroke:#08090b;stroke-width:1;transition:opacity .18s ease,filter .18s ease}
+.tag-stream.is-hovered,.tag-stream.is-selected{opacity:1;filter:brightness(1.14) drop-shadow(0 3px 5px rgba(0,0,0,.5))}
+.tag-stream.is-dimmed{opacity:.12}
+.tag-stream:focus-visible{stroke:#fff;stroke-width:2}
+.stream-point{cursor:pointer;outline:none;stroke:transparent;stroke-width:2}
+.stream-point.is-hovered{fill:#fff;stroke:#08090b}
+.profile-dark .stream-point.is-selected{fill:transparent;stroke:transparent}
+.stream-point.is-dimmed{opacity:.08}
+.stream-point:focus-visible{fill:#fff;stroke:#fff}
+.stream-label{fill:#fff;font-size:10px;font-weight:900;cursor:pointer;outline:none;pointer-events:auto}
+.stream-label.is-dimmed{opacity:.15}
+.stream-label:focus-visible{text-decoration:underline}
+.stream-tick{fill:#8d919b;font-size:10px}
+.clock-base{fill:#202226;stroke:#08090b;stroke-width:1}
+.clock-value-segment{fill:#2580ff;stroke:#08090b;stroke-width:1;transition:opacity .18s ease,filter .18s ease,fill .18s ease}
+.clock-hit{cursor:pointer;outline:none;pointer-events:all}
+.clock-hit.is-hovered~.clock-value-segment,.clock-hit.is-selected~.clock-value-segment{fill:#55a8ff;filter:drop-shadow(0 0 5px rgba(37,128,255,.55))}
+.clock-hit.is-dimmed~.clock-value-segment{opacity:.24}
+.clock-hit:focus-visible~.clock-base{stroke:#fff;stroke-width:2}
+.profile-dark .clock-core{fill:#08090b;stroke:#08090b;stroke-width:1}
+.clock-axis{fill:#a6aab2;font-size:9px}
+.profile-dark .clock-stats strong{color:#fff}
+.profile-dark .clock-stats span{color:#b4b7be}
+.profile-dark .profile-detail{background:#15171b;border-left-color:#2580ff}
+.profile-dark .profile-detail span,.profile-dark .profile-detail p{color:#aeb2ba}
+.profile-dark .profile-detail strong{color:#fff}
+.profile-panel .panel-body{padding:0}
+.profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:18px;border-top:1px solid var(--line)}
+.profile-chart{min-width:0;padding:20px}
+.profile-chart:nth-child(odd){border-right:1px solid var(--line)}
+.profile-wide{grid-column:1/-1;border-top:1px solid var(--line);border-right:0!important}
+.profile-chart-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+.profile-chart-head h4{margin:0;font-size:16px}
+.profile-chart-head span{color:var(--muted);font-size:11px;font-weight:800;text-align:right}
+.ratio-layout{display:grid;grid-template-columns:minmax(180px,220px) minmax(0,1fr);gap:20px;align-items:center}
+.ratio-svg{width:100%;aspect-ratio:1;overflow:visible}
+.ratio-ring{cursor:pointer;outline:none;transition:opacity .18s ease}
+.ratio-track,.ratio-progress{fill:none;stroke-width:12}
+.ratio-track{stroke:#ded5c8;transition:stroke .18s ease}
+.ratio-progress{stroke-linecap:round;transform:rotate(-90deg);transform-origin:100px 100px;animation:profileDraw .8s ease;transition:filter .18s ease,stroke-width .18s ease}
+.ratio-marker{fill:#211c18;stroke:#fff;stroke-width:1.5}
+.ratio-ring.is-hovered .ratio-progress,.ratio-ring.is-selected .ratio-progress{stroke-width:15;filter:drop-shadow(0 3px 4px rgba(31,27,24,.22))}
+.ratio-ring:focus-visible .ratio-track{stroke:#8b5cf6}
+.ratio-center-label{fill:#bcb2a4;font-size:6px;font-weight:900}
+.ratio-center-value{fill:#fff;font-size:12px;font-weight:900}
+.ratio-detail{display:grid;gap:5px}
+.ratio-row{width:100%;display:grid;grid-template-columns:8px minmax(0,1fr) auto;gap:7px 9px;align-items:center;padding:10px 8px;border:1px solid transparent;border-bottom-color:var(--line);border-radius:8px;background:transparent;color:var(--ink);text-align:left;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.ratio-row:hover,.ratio-row.is-selected{background:#fff;border-color:var(--line);transform:translateX(2px)}
+.ratio-row:focus-visible{outline:2px solid #8b5cf6;outline-offset:2px}
+.ratio-row i{width:8px;height:8px;border-radius:50%}
+.ratio-row span{font-size:12px;font-weight:800}
+.ratio-row strong{font-size:22px;line-height:1}
+.ratio-row small{grid-column:2/-1;color:var(--muted);font-size:10px}
+.fingerprint-wrap{display:grid;justify-items:center}
+.fingerprint-svg{width:min(100%,310px);aspect-ratio:1;overflow:visible}
+.radar-grid,.radar-spoke{fill:none;stroke:#cfc5b7;stroke-width:1}
+.radar-grid{stroke-dasharray:3 4}
+.radar-previous{fill:rgba(117,107,96,.10);stroke:#756b60;stroke-width:1.5;stroke-dasharray:5 4}
+.radar-current{fill:rgba(139,92,246,.22);stroke:#8b5cf6;stroke-width:2;transform-origin:140px 140px;animation:radarIn .55s ease;transition:opacity .18s ease}
+.radar-label{fill:#62584f;font-size:10px;font-weight:800}
+.radar-node{fill:#8b5cf6;stroke:#fff;stroke-width:2;cursor:pointer;outline:none;transition:r .18s ease,filter .18s ease}
+.radar-node.is-hovered,.radar-node.is-selected{r:8;filter:drop-shadow(0 2px 4px rgba(31,27,24,.3))}
+.radar-node:focus-visible{stroke:#211c18;stroke-width:3}
+.profile-legend{display:flex;gap:16px;justify-content:center;color:var(--muted);font-size:11px}
+.profile-legend span{display:flex;align-items:center;gap:6px}
+.profile-legend i{width:9px;height:9px;border-radius:50%}
+.legend-current{background:#8b5cf6}
+.legend-previous{background:#756b60}
+.tag-flow-svg{display:block;width:100%;max-height:300px;overflow:visible}
+.tag-flow-line{cursor:pointer;outline:none;transition:opacity .18s ease,filter .18s ease,stroke-width .18s ease}
+.tag-flow-hit{cursor:pointer}
+.tag-flow-line.is-hovered,.tag-flow-line.is-selected{opacity:1!important;filter:drop-shadow(0 3px 3px rgba(31,27,24,.24))}
+.tag-flow-line.is-dimmed{opacity:.12!important}
+.tag-flow-line:focus-visible{filter:drop-shadow(0 0 3px #211c18)}
+.flow-label{fill:#756b60;font-size:11px;font-weight:700}
+.flow-current-label{fill:#211c18;font-weight:900}
+.flow-heading{fill:#9b9083;font-size:9px;font-weight:900;letter-spacing:.08em}
+.clock-layout{display:grid;grid-template-columns:minmax(220px,320px) minmax(0,1fr);gap:28px;align-items:center;max-width:720px;margin:0 auto}
+.clock-svg{width:100%;aspect-ratio:1;overflow:visible}
+.clock-guide{fill:none;stroke:#d8cec0;stroke-width:1;stroke-dasharray:3 5}
+.clock-core{fill:#211c18;stroke:#fff;stroke-width:3}
+.clock-bar{cursor:pointer;outline:none;transform-box:fill-box;transform-origin:center bottom;animation:clockRise .55s ease;transition:opacity .18s ease,filter .18s ease,stroke-width .18s ease}
+.clock-bar.is-hovered,.clock-bar.is-selected{opacity:1!important;filter:drop-shadow(0 2px 4px rgba(31,27,24,.28));stroke:#fff;stroke-width:2}
+.clock-bar.is-dimmed{opacity:.16!important}
+.clock-bar:focus-visible{stroke:#211c18;stroke-width:3}
+.clock-label{fill:#aaa095;font-size:8px;font-weight:900}
+.clock-value{fill:#fff;font-size:20px;font-weight:900}
+.clock-sub{fill:#cfc5b7;font-size:9px}
+.clock-hour{fill:#8d8277;font-size:9px;font-weight:900}
+.clock-stats{display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 12px;align-items:baseline}
+.clock-stats strong{font-size:30px;line-height:1;color:var(--blue)}
+.clock-stats span{color:var(--muted);font-size:12px;line-height:1.4}
+.profile-detail{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;margin-top:16px;padding:12px 14px;border-left:3px solid #8b5cf6;background:#f3eee6;border-radius:0 8px 8px 0;min-height:70px}
+.profile-detail span{color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase}
+.profile-detail strong{font-size:20px}
+.profile-detail p{grid-column:1/-1;margin:0;color:var(--muted);font-size:12px;line-height:1.45}
+.profile-tooltip{position:fixed;z-index:60;display:grid;gap:3px;width:max-content;max-width:min(260px,calc(100vw - 16px));padding:10px 12px;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:#211c18;color:#fff;box-shadow:0 12px 36px rgba(0,0,0,.28);opacity:0;pointer-events:none;transform:translateY(5px);transition:opacity .12s ease,transform .12s ease}
+.profile-tooltip.show{opacity:1;transform:translateY(0)}
+.profile-tooltip b{font-size:11px;color:#cfc5b7;text-transform:uppercase}
+.profile-tooltip strong{font-size:16px}
+.profile-tooltip span{font-size:11px;color:#ddd2c5;line-height:1.4}
+.profile-empty{margin:0;color:var(--muted);font-size:13px}
+@keyframes profileDraw{from{stroke-dasharray:0 999}}
+@keyframes radarIn{from{transform:scale(.35);opacity:0}}
+@keyframes clockRise{from{opacity:0;transform:scaleY(.2)}}
+@media(max-width:760px){.profile-grid{grid-template-columns:1fr}.profile-chart,.profile-chart:nth-child(odd){border-right:0}.profile-chart+.profile-chart{border-top:1px solid var(--line)}.profile-wide{grid-column:auto}.ratio-layout,.clock-layout{grid-template-columns:1fr}.ratio-svg,.clock-svg{width:min(100%,280px);margin:0 auto}.clock-stats{max-width:340px;margin:0 auto}.tag-flow-svg{min-width:560px}.profile-wide:has(.tag-flow-svg){overflow-x:auto}.profile-detail{position:sticky;left:0}}
+
+:root{
+  --bg:#050506;
+  --paper:#0c0c0f;
+  --paper-2:#131318;
+  --ink:#f5f5f6;
+  --muted:#9b9ba5;
+  --line:rgba(255,255,255,.11);
+  --line-strong:rgba(255,255,255,.2);
+  --red:#d9231b;
+  --gold:#f4b942;
+  --teal:#49d3bd;
+  --blue:#3f91ff;
+  --violet:#a970ff;
+  --surface:rgba(17,17,21,.82);
+  --surface-raised:rgba(27,27,33,.88);
+  --shadow:0 24px 80px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+
+html{background:var(--bg);scroll-behavior:smooth}
+body{color:var(--ink);background:radial-gradient(circle at 8% 18%,rgba(213,16,7,.14),transparent 30rem),radial-gradient(circle at 90% 36%,rgba(63,145,255,.08),transparent 32rem),var(--bg);overflow-x:hidden}
+button,select{color:inherit}
+button:focus-visible,select:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+.page{width:100%;margin:0;padding:0}
+.shell{width:100%;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
+.hero{min-height:min(820px,92vh);grid-template-columns:minmax(0,1.15fr) minmax(340px,.85fr);align-items:stretch;gap:clamp(28px,5vw,80px);padding:clamp(24px,4vw,64px) max(24px,calc((100vw - 1500px)/2));background:linear-gradient(90deg,rgba(5,5,6,.96) 0%,rgba(5,5,6,.72) 48%,rgba(5,5,6,.32) 100%),linear-gradient(180deg,rgba(5,5,6,.18),rgba(5,5,6,.12) 65%,#050506 100%),var(--hero-art) center/cover no-repeat;isolation:isolate;overflow:hidden}
+.hero:before{content:none}
+.hero:after{content:none}
+.hero>div{display:flex;min-width:0;flex-direction:column}
+.topline{margin-bottom:clamp(44px,8vh,110px)}
+.brand{gap:13px}
+.mark{width:42px;height:42px;border-radius:6px;background:var(--red);box-shadow:0 10px 30px rgba(213,16,7,.3)}
+.brand h1{font-size:17px;letter-spacing:0}
+.brand p{color:rgba(255,255,255,.62)}
+.report-controls{display:flex;align-items:flex-start;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.control-group{min-height:42px;gap:4px;padding:4px;border-color:rgba(255,255,255,.16);border-radius:7px;background:rgba(8,8,10,.58);box-shadow:0 8px 30px rgba(0,0,0,.16);backdrop-filter:blur(18px)}
+.control-label{padding:0 8px;color:#777780;font-size:10px;letter-spacing:.08em}
+.control,.pill,.icon-btn{min-height:32px;border-color:transparent;border-radius:5px;background:transparent;color:#c8c8ce;backdrop-filter:none;transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease}
+.control:hover,.pill:hover,.icon-btn:hover{background:rgba(255,255,255,.08);color:#fff}
+.pill.active{background:#f5f5f6;color:#09090b}
+.pill:disabled,.icon-btn:disabled,.control:disabled{opacity:.28}
+.control{width:154px;background:rgba(255,255,255,.05)}
+.report-select{width:210px}
+.hero-copy{margin-top:auto;max-width:820px;padding-bottom:clamp(24px,5vh,60px)}
+.eyebrow{margin-bottom:18px;color:#ff6861;font-size:12px;letter-spacing:.12em}
+.hero h2{max-width:820px;font-size:clamp(52px,7.2vw,108px);line-height:.9;letter-spacing:0;text-wrap:balance}
+.summary{max-width:720px;margin-top:24px;color:rgba(255,255,255,.72);font-size:16px;line-height:1.7}
+.hero-side{align-content:end;padding-bottom:clamp(24px,5vh,60px)}
+.cover-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cover-tile{border-color:rgba(255,255,255,.18);border-radius:4px;background:#111;box-shadow:0 18px 45px rgba(0,0,0,.28)}
+.cover-tile span{left:10px;right:10px;bottom:9px;font-size:10px}
+
+.metrics{position:relative;z-index:2;grid-template-columns:repeat(4,1fr);max-width:1500px;margin:-1px auto 0;background:#09090b;border:1px solid var(--line);border-width:1px 0}
+.metric{padding:28px clamp(22px,3vw,42px);border-color:var(--line)}
+.metric strong{color:#fff;font-size:clamp(38px,4vw,64px)}
+.metric span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+
+.body{width:min(1500px,100%);margin:0 auto;grid-template-columns:minmax(0,1fr) minmax(300px,360px);gap:0;padding:0;background:transparent}
+.main,.side{gap:0}
+.main{min-width:0;border-right:1px solid var(--line)}
+.panel{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;overflow:visible}
+.panel-head{padding:clamp(28px,4vw,52px) clamp(22px,4vw,56px) 0}
+.panel h3{font-size:clamp(22px,2.1vw,32px);letter-spacing:0}
+.hint{color:#74747d;font-size:12px}
+.panel-body{padding:24px clamp(22px,4vw,56px) clamp(34px,5vw,64px)}
+.side .panel-head{padding:34px 28px 0}
+.side .panel-body{padding:20px 28px 38px}
+.side{background:rgba(10,10,12,.5)}
+
+.insight-grid{gap:10px}
+.insight-card,.compare-card,.deep-item{background:var(--surface);border:1px solid var(--line);border-radius:6px;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.insight-card:hover,.compare-card:hover,.deep-item:hover{background:var(--surface-raised);border-color:var(--line-strong);transform:translateY(-2px)}
+.insight-card p,.story,.mini span,.rank-title span,.day-card span,.deep-item p{color:var(--muted)}
+.compare-bars{background:var(--surface);border-color:var(--line);border-radius:6px}
+.compare-track,.bar{background:#24242a}
+.compare-bar-row.previous .compare-track i{background:#64646d}
+.tag{border-radius:4px;background:#24242a;color:#d5d5da}
+.tabs{gap:6px;padding:18px clamp(22px,4vw,56px) 0}
+.tab{height:36px;border-color:var(--line);border-radius:5px;background:transparent;color:var(--muted)}
+.tab:hover{border-color:var(--line-strong);color:#fff}
+.tab.active{background:#f5f5f6;color:#09090b;border-color:#f5f5f6}
+.rank-list{gap:6px}
+.rank-item{padding:10px;border-color:transparent;border-bottom-color:var(--line);border-radius:0;background:transparent;color:var(--ink)}
+.rank-item:hover{border-color:var(--line);border-radius:6px;background:var(--surface-raised);box-shadow:none;transform:translateX(3px)}
+.thumb,.mini img{border-radius:4px;background:#1d1d22}
+.count{color:#ff5b54}
+.more-btn{border-color:var(--line);border-radius:5px;background:#1b1b20;color:#fff}
+.more-btn:hover{background:#292930}
+.day-card{border-color:var(--line);border-radius:6px;background:var(--surface)}
+.hour-wrap span{color:#777780}
+.hour{background:linear-gradient(180deg,var(--teal),var(--blue))}
+.button{min-height:40px;border-color:var(--line);border-radius:5px;background:#17171c;color:#eee;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.button:hover{background:#24242a;border-color:var(--line-strong);transform:translateY(-1px)}
+.button.primary{background:var(--red);border-color:var(--red);color:#fff}
+.mini{padding:6px;border-radius:5px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.mini:hover{background:rgba(255,255,255,.06);transform:translateX(3px)}
+.detail{background:rgba(0,0,0,.78);backdrop-filter:blur(12px)}
+.detail-card{background:#111116;border:1px solid var(--line);border-radius:8px}
+.detail-card img{border-radius:5px}
+.toast{border:1px solid var(--line);border-radius:5px;background:#1b1b20}
+
+.deep-section{border-color:var(--line);border-radius:6px;background:transparent}
+.deep-section-head p,.deep-item span{color:var(--muted)}
+.status-badge.ok{background:rgba(73,211,189,.14);color:#74e8d5}
+.status-badge.fallback{background:rgba(244,185,66,.14);color:#f4c96f}
+.status-list div{border-color:var(--line)}
+.status-list dt{color:#777780}
+.status-list dd{color:var(--ink)}
+
+.profile-panel .panel-body{padding:18px 0 0}
+.profile-grid{border-color:var(--line)}
+.profile-chart{padding:clamp(24px,3vw,42px);border-color:var(--line)!important;background:transparent;color:var(--ink)}
+.profile-chart-head span{color:#777780}
+.profile-dark{background:#08080a}
+.ratio-track{stroke:#25252b}
+.ratio-marker{fill:#f5f5f6;stroke:#09090b}
+.ratio-center-label{fill:#777780}
+.ratio-row{border-bottom-color:var(--line);color:var(--ink)}
+.ratio-row:hover,.ratio-row.is-selected{background:#1a1a1f;border-color:var(--line)}
+.ratio-row small,.profile-legend,.profile-detail span,.profile-detail p{color:var(--muted)}
+.radar-grid,.radar-spoke{stroke:#34343c}
+.radar-previous{fill:rgba(255,255,255,.04);stroke:#72727c}
+.radar-label{fill:#b4b4bc}
+.profile-detail{background:#15151a;border-left-color:var(--violet)}
+.profile-detail strong{color:#fff}
+.profile-tooltip{border-color:var(--line);border-radius:5px;background:#1b1b20}
+
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-side{padding-top:0}
+  .cover-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .body{grid-template-columns:1fr}
+  .main{border-right:0}
+  .side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+  .side .panel:nth-child(odd){border-right:1px solid var(--line)}
+}
+
+@media(max-width:760px){
+  .hero{padding:18px;gap:32px}
+  .topline{gap:24px;margin-bottom:52px}
+  .report-controls{justify-content:flex-start}
+  .control-group{width:auto;max-width:100%}
+  .report-picker-group{width:100%}
+  .report-select{width:auto;min-width:0;max-width:none;flex:1}
+  .hero h2{font-size:clamp(48px,15vw,72px)}
+  .cover-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric:nth-child(2){border-right:0}
+  .metric:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .side{grid-template-columns:1fr}
+  .side .panel:nth-child(odd){border-right:0}
+  .insight-grid,.compare-grid{grid-template-columns:1fr}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+
+@media(max-width:460px){
+  .control-group{border-radius:6px}
+  .hero-side{display:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+[hidden]{display:none!important}
+a{color:inherit}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--teal);outline-offset:4px}
+.report-nav,.report-intro,.report-section,.report-footer,.archive-page{width:min(1080px,calc(100% - 48px));margin-inline:auto}
+.report-nav{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;min-height:76px;border-bottom:1px solid var(--line)}
+.report-brand,.report-nav-links{display:flex;align-items:center;gap:12px}
+.report-brand,.report-nav-links a{text-decoration:none;font-weight:700}
+.report-brand .mark{width:34px;height:34px;font-size:14px}
+.report-nav-links a{padding:9px 10px;color:var(--muted);border-radius:6px}
+.report-nav-links a:hover{color:var(--ink);background:var(--paper-2)}
+.report-nav-links .archive-link{border:1px solid var(--line-strong);color:var(--ink)}
+.report-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,245px);align-items:center;gap:clamp(20px,6vw,84px);padding-block:clamp(36px,7vw,85px)}
+.report-kicker{margin:0 0 12px;color:#ff827a;font-size:.82rem;font-weight:700}
+.report-intro h1,.archive-heading h1{margin:0;font-size:clamp(32px,6vw,68px);line-height:1.05;letter-spacing:-.04em;overflow-wrap:anywhere}
+.intro-summary{color:var(--muted);line-height:1.5;margin:14px 0 24px}
+.intro-metric{display:flex;align-items:center;gap:14px}
+.intro-metric>strong{font-size:clamp(36px,6vw,58px);line-height:1;font-variant-numeric:tabular-nums}
+.intro-metric span,.intro-metric small{display:block}
+.intro-metric small{margin-top:4px;color:var(--teal)}
+.feature-cover button{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper)}
+.feature-cover img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.report-section,.report-footer{border-top:1px solid var(--line);padding-block:32px}
+.report-section h2{font-size:clamp(23px,3vw,32px);margin:0 0 16px}
+.snapshot-grid,.patterns-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.snapshot-grid:has(>:nth-child(3)){grid-template-columns:repeat(3,minmax(0,1fr))}
+.snapshot,.report-card,.report-disclosure{background:var(--paper);border:1px solid var(--line);border-radius:10px}
+.snapshot{display:grid;gap:6px;min-width:0;padding:16px;text-align:left;text-decoration:none;color:var(--ink)}
+a.snapshot:hover,button.snapshot:hover,.feature-cover button:hover{border-color:var(--teal)}
+.snapshot strong{font-size:1.2rem;overflow-wrap:anywhere}
+.snapshot span,.snapshot small,.report-card-head span,.report-card h3 small,.period-comparison{color:var(--muted)}
+.period-comparison{display:flex;flex-wrap:wrap;gap:8px;padding:12px 0 0;font-size:.85rem}
+.period-comparison strong{color:var(--ink)}
+.report-section .tabs{padding:0;margin-bottom:14px}
+.report-section .rank-item{min-width:0}
+.report-disclosure{margin-top:12px;padding:0 14px}
+.report-disclosure summary{cursor:pointer;padding:13px 0;font-weight:700}
+.report-disclosure summary strong{display:inline-block;margin-left:10px;color:var(--teal);font-weight:500}
+.report-disclosure>p{max-width:72ch;color:var(--muted);line-height:1.6}
+.report-disclosure[open]{padding-bottom:14px}
+.report-disclosure .insight-grid+.insight-grid{margin-top:10px}
+.report-card{min-width:0;padding:16px}
+.report-card h3{font-size:1.05rem;margin:0 0 10px}
+.report-card-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tags-card{margin-bottom:12px}
+.breadth-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.breadth-table td,.breadth-table th{padding:9px 4px;text-align:right;border-bottom:1px solid var(--line);font-size:.86rem}
+.breadth-table th:first-child{text-align:left}
+.breadth-table thead{color:var(--muted)}
+.pace-chart{display:grid;grid-template-columns:repeat(var(--pace-slots),minmax(0,1fr));gap:2px;margin-top:16px}
+.pace-bar{display:flex;justify-content:center;align-items:end;height:90px;padding:0;border:0;border-bottom:1px solid var(--line-strong);background:transparent}
+.pace-bar i{width:min(100%,24px);height:max(2px,var(--pace-height));background:var(--blue);border-radius:2px 2px 0 0}
+.pace-bar[aria-pressed=true] i,.pace-bar:hover i{background:var(--teal)}
+.pace-axis{display:flex;justify-content:space-between;color:var(--muted);font-size:.75rem;margin-top:5px}
+.pace-readout{margin:12px 0 0;font-size:.9rem;font-variant-numeric:tabular-nums}
+.tag-method{margin:0 0 12px;color:var(--muted);font-size:.8rem}
+.tag-trends{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tag-trend{padding:9px 10px;background:var(--paper-2);border-radius:7px;min-width:0}
+.tag-label{display:flex;justify-content:space-between;gap:8px;align-items:baseline;margin-bottom:4px}
+.tag-label strong{overflow-wrap:anywhere}
+.tag-label span{white-space:nowrap;font-variant-numeric:tabular-nums}
+.tag-label small{color:var(--teal)}
+.tag-bars,.tag-ticks{display:grid;grid-template-columns:repeat(var(--tag-periods),minmax(0,1fr));gap:2px}
+.tag-bar{display:flex;align-items:end;justify-content:center;height:44px;border:0;border-bottom:1px solid var(--line-strong);padding:0 1px;background:transparent}
+.tag-bar i{display:block;width:min(100%,22px);height:var(--tag-height);min-height:2px;background:var(--teal);border-radius:2px 2px 0 0}
+.tag-bar:hover,.tag-bar.is-selected{background:var(--surface-raised)}
+.tag-gap i{height:0;min-height:0;border-top:1px dashed var(--muted);background:none}
+.tag-ticks{font-size:.63rem;color:var(--muted);text-align:center;padding-top:4px}
+.tag-ticks span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tags-card #tagsDetail{min-height:0;margin-bottom:0;padding:10px}
+.report-footer .actions{margin:0}
+dialog.detail[open]{display:block;width:min(720px,calc(100% - 32px));max-height:90vh;padding:0;border:0;background:transparent}
+dialog.detail::backdrop{background:#000c}
+dialog.detail .detail-card{width:100%}
+dialog.detail .detail-card img{max-height:40vh;object-fit:contain}
+.archive-page .report-nav{width:100%}
+.archive-heading{margin:52px 0 24px}
+.archive-tools,.archive-tabs,.archive-filters{display:flex;gap:8px 12px;flex-wrap:wrap}
+.archive-tools{justify-content:space-between}
+.archive-tabs button,.archive-filters select{padding:8px 12px;min-height:38px;border:1px solid var(--line-strong);border-radius:6px;background:var(--paper-2)}
+.archive-tabs button[aria-pressed=true]{color:#111;background:var(--teal);border-color:var(--teal)}
+.archive-filters label{display:flex;align-items:center;gap:6px}
+#archiveResults{color:var(--muted);margin-top:20px}
+#archiveList{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(225px,100%),1fr));gap:10px;padding:0;list-style:none;margin:12px 0 40px}
+#archiveList a{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:64px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--paper);text-decoration:none}
+#archiveList a:hover,#archiveList a[aria-current=page]{border-color:var(--teal)}
+#archiveList a span{color:var(--teal)}
+@media(max-width:650px){
+  .report-nav,.report-intro,.report-section,.report-footer,.archive-page{width:calc(100% - 28px)}
+  .report-nav{flex-wrap:wrap;padding:12px 0}
+  .report-nav-links{gap:2px}
+  .report-nav-links a{font-size:.82rem;padding-inline:7px}
+  .report-intro{grid-template-columns:minmax(0,1fr) minmax(70px,25%);gap:10px}
+  .snapshot-grid:has(>:nth-child(3)),.patterns-grid,.tag-trends{grid-template-columns:1fr}
+  .snapshot{padding:11px}
+  .tag-ticks{font-size:.56rem}
+}
+@media(max-width:360px){
+  .snapshot-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
   <main class="page">
     <section class="shell">
-      <header class="hero" id="hero">
+      <nav class="report-nav" aria-label="Report navigation">
+        <a class="report-brand" href="./index.html"><span class="mark">fm</span> Listening Report</a>
+        <div class="report-nav-links"><a id="previousReport" hidden>← Previous</a><a id="nextReport" hidden>Next →</a><a class="archive-link" href="./archive.html?period=weekly&year=2026&current=lastfm-weekly-2026-06-08-to-2026-06-14.html">All reports</a></div>
+      </nav>
+      <header class="report-intro" id="hero">
         <div>
-          <div class="topline">
-            <div class="brand"><div class="mark">fm</div><div><h1>Listening Report</h1><p id="rangeText"></p></div></div>
-            <div class="report-controls">
-              <div class="control-group" aria-label="Report period">
-                <span class="control-label">Period</span>
-                <button class="pill" data-period="weekly" type="button">Weekly</button>
-                <button class="pill" data-period="monthly" type="button">Monthly</button>
-                <button class="pill" data-period="yearly" type="button">Yearly</button>
-              </div>
-              <div class="control-group report-picker-group" aria-label="Saved reports">
-                <span class="control-label">Report</span>
-                <button class="icon-btn" id="prevPeriod" type="button" title="Previous report">&lt;</button>
-                <select class="control report-select" id="reportPicker" aria-label="Saved report"></select>
-                <button class="icon-btn" id="nextPeriod" type="button" title="Next report">&gt;</button>
-              </div>
-              <div class="control-group" aria-label="Open report">
-                <span class="control-label">Open</span>
-                <button class="pill" id="openLocal" type="button">Open</button>
-              </div>
-            </div>
-          </div>
-          <div class="hero-copy"><p class="eyebrow">Weekly Report</p><h2 id="headline"></h2><p class="summary" id="summaryText"></p></div>
+          <p class="report-kicker">Weekly · 2026-06-08 ~ 2026-06-14 · KST</p>
+          <h1 id="headline"></h1>
+          <p id="summaryText" class="intro-summary"></p>
+          <div class="intro-metric"><strong id="mScrobbles"></strong><span>Scrobbles <small id="mChange"></small></span></div>
         </div>
-        <aside class="hero-side"><div class="cover-grid" id="coverGrid"></div></aside>
+        <div id="coverGrid" class="feature-cover"></div>
       </header>
-      <section class="metrics"><div class="metric"><strong id="mScrobbles"></strong><span>Scrobbles</span></div><div class="metric"><strong id="mTracks"></strong><span>Tracks</span></div><div class="metric"><strong id="mArtists"></strong><span>Artists</span></div><div class="metric"><strong id="mPeak"></strong><span>Peak Day</span></div></section>
-      <section class="body">
-        <div class="main">
-          <section class="panel"><div class="panel-head"><h3>Highlights</h3><span class="hint">Fallback summary</span></div><div class="panel-body"><div class="insight-grid" id="insights"></div></div></section>
-          <section class="panel"><div class="panel-head"><h3>Comparison</h3><span class="hint" id="comparisonRange"></span></div><div class="panel-body"><p class="story" id="comparisonSummary"></p><div class="compare-grid" id="comparisonGrid"></div></div></section>
-          <section class="panel"><div class="panel-head"><h3 id="periodFocusTitle"></h3><span class="hint">Period-specific view</span></div><div class="panel-body"><div class="insight-grid" id="periodFocus"></div></div></section>
-          <section class="panel deep-dive-panel" id="deepDivePanel"><div class="panel-head"><h3 id="deepDiveTitle"></h3><span class="hint">Extended analysis</span></div><div class="panel-body"><div class="deep-dive" id="deepDive"></div></div></section>
-          <section class="panel"><div class="panel-head"><h3>Charts</h3><span class="hint">Click an item for details</span></div><div class="tabs"><button class="tab active" data-chart="tracks" type="button">Top Tracks</button><button class="tab" data-chart="artists" type="button">Artists</button><button class="tab" data-chart="albums" type="button">Albums</button></div><div class="panel-body"><div class="chart-section active" id="tracks"></div><div class="chart-section" id="artists"></div><div class="chart-section" id="albums"></div></div></section>
-          <section class="panel"><div class="panel-head"><h3>Daily Pace</h3><span class="hint">KST</span></div><div class="panel-body"><div class="day-grid" id="dayGrid"></div></div></section>
-          <section class="panel"><div class="panel-head"><h3>Time of Day</h3><span class="hint">Hourly scrobbles</span></div><div class="panel-body"><div class="heat" id="hourHeat"></div></div></section>
-        </div>
-        <aside class="side">
-          <section class="panel"><div class="panel-head"><h3>Report Note</h3></div><div class="panel-body"><p class="story" id="storyText"></p><div class="actions"><button class="button primary" id="copyImage" type="button">Copy image</button><button class="button" id="downloadImage" type="button">Download PNG</button></div></div></section>
-          <section class="panel"><div class="panel-head"><h3>Album Focus</h3></div><div class="panel-body"><div class="mini-list" id="albumFocus"></div></div></section>
-          <section class="panel"><div class="panel-head"><h3>Recommendation</h3></div><div class="panel-body"><p class="story"><strong id="recommendationTitle"></strong></p><p class="story" id="recommendationAbout"></p><p class="story" id="recommendationWhy"></p></div></section>
-          <section class="panel"><div class="panel-head"><h3>AI Status</h3><span class="hint">Copy source</span></div><div class="panel-body"><div class="ai-status" id="aiStatus"></div></div></section>
-        </aside>
+      <section class="report-section" aria-labelledby="changesTitle">
+        <h2 id="changesTitle">What changed</h2>
+        <div id="highlights" class="snapshot-grid"></div>
+        <div id="comparisonGrid" class="period-comparison"></div>
       </section>
+      <section class="report-section" aria-labelledby="chartsTitle">
+        <h2 id="chartsTitle">On rotation</h2>
+        <div class="tabs" aria-label="Rankings"><button class="tab active" data-chart="tracks" aria-pressed="true" type="button">Tracks</button><button class="tab" data-chart="artists" aria-pressed="false" type="button">Artists</button><button class="tab" data-chart="albums" aria-pressed="false" type="button">Albums</button></div>
+        <div class="chart-section active" id="tracks"></div><div class="chart-section" id="artists"></div><div class="chart-section" id="albums"></div>
+        <details class="report-disclosure recommendation"><summary>Recommendation <strong id="recommendationTitle"></strong></summary><p id="recommendationAbout"></p><p id="recommendationWhy"></p></details>
+      </section>
+      <section class="report-section" aria-labelledby="patternsTitle">
+        <h2 id="patternsTitle">Listening patterns</h2>
+        <div id="profilePanel">
+          <section class="report-card tags-card" aria-labelledby="tagsTitle"><div class="report-card-head"><h3 id="tagsTitle">Tag Movement</h3><span id="tagMovementRange"></span></div><div id="tagMovement"></div></section>
+          <div class="patterns-grid">
+            <section class="report-card" aria-labelledby="breadthTitle"><h3 id="breadthTitle">Listening Breadth</h3><div id="musicRatio"></div></section>
+            <section class="report-card" aria-labelledby="paceTitle"><h3 id="paceTitle">Daily Pace <small>KST</small></h3><div id="dayGrid"></div></section>
+          </div>
+          <details class="report-disclosure"><summary>Time of Day &amp; Listening Fingerprint</summary><div class="patterns-grid"><section class="report-card"><h3>Listening Clock <small>KST</small></h3><div id="listeningClock"></div></section><section class="report-card"><h3>Listening Fingerprint</h3><div id="listeningFingerprint"></div></section></div></details>
+        </div>
+        <details class="report-disclosure" id="deepDivePanel"><summary id="deepDiveTitle">Deep Dive</summary><div class="deep-dive" id="deepDive"></div></details>
+        <details class="report-disclosure"><summary>Report notes</summary><p id="summaryDetail"></p><p id="storyText"></p><div class="insight-grid" id="insights"></div><h3 id="periodFocusTitle"></h3><div class="insight-grid" id="periodFocus"></div></details>
+      </section>
+      <footer class="report-footer">
+        <div class="actions"><button class="button primary" id="copyImage" type="button">Copy image</button><button class="button" id="downloadImage" type="button">Download PNG</button></div>
+        <details class="report-disclosure"><summary>AI Status</summary><div class="ai-status" id="aiStatus"></div></details>
+      </footer>
     </section>
   </main>
-  <div class="detail" id="detail"><div class="detail-card"><img id="detailImage" alt=""><div><h3 id="detailTitle"></h3><p id="detailMeta"></p><p id="detailBody"></p><button class="button primary" id="closeDetail" type="button">Close</button></div></div></div>
+  <dialog class="detail" id="detail" aria-labelledby="detailTitle"><div class="detail-card"><img id="detailImage" alt=""><div><h3 id="detailTitle"></h3><p id="detailMeta"></p><p id="detailBody"></p><button class="button primary" id="closeDetail" type="button" autofocus>Close</button></div></div></dialog>
+  <div class="profile-tooltip" id="profileTooltip" role="tooltip"></div>
   <div class="toast" id="toast"></div>
-  <script>window.REPORT_DATA={"kind":"weekly","user":"ueii","filename":"lastfm-weekly-2026-06-08-to-2026-06-14.html","rangeLabel":"2026-06-08 ~ 2026-06-14","startDate":"2026-06-08","endDate":"2026-06-14","total":297,"tracks":191,"artists":31,"peakDay":"Wed","headline":"Arcade Fire week, Inferno gravity.","summary":"Arcade Fire가 38 scrobbles로 중심을 잡았고, Inferno이 album focus를 만들었습니다. 전체 297 scrobbles 중 top artist 비중은 13%입니다.","story":"이번 주에는 297 scrobbles 안에서 191 tracks, 31 artists가 움직였습니다. Wed, 06/10에 listening pace가 가장 높았고, 전체적으로는 Arcade Fire와 Inferno 쪽으로 집중된 흐름입니다.","insights":[["Main Character","Arcade Fire가 리포트의 중심입니다. 38 scrobbles, 전체의 13%를 차지했습니다."],["Album Gravity","Inferno은 38 scrobbles로 이번 기간의 album 단위 집중을 만들었습니다."],["Listening Shape","297 scrobbles / 191 tracks. 넓게 탐색하기보다 좋아하는 축을 깊게 반복한 패턴입니다."],["Compared","직전 같은 기간보다 -120 scrobbles (-29%) 변했습니다."]],"comparison":{"previousRange":"2026-06-01 ~ 2026-06-07","currentTotal":297,"previousTotal":417,"delta":-120,"percent":-29,"percentText":"-29%","currentTags":[{"name":"electronic","score":95},{"name":"indie","score":89},{"name":"indie pop","score":85},{"name":"idm","score":72},{"name":"indie rock","score":66},{"name":"alternative","score":66}],"previousTags":[{"name":"pop","score":128},{"name":"synthpop","score":107},{"name":"indie pop","score":107},{"name":"electronic","score":98},{"name":"electropop","score":80},{"name":"dream pop","score":80}],"tagShift":[{"name":"indie","delta":89,"score":89},{"name":"rock","delta":61,"score":61},{"name":"indie rock","delta":38,"score":66},{"name":"canadian","delta":38,"score":38},{"name":"alternative","delta":35,"score":66}],"summary":"직전 같은 기간보다 120 scrobbles 감소했습니다 (-29%). Tag 기준으로는 indie, rock, indie rock 쪽 비중이 상대적으로 커졌습니다."},"topTracks":[{"key":"Arcade Fire -- Crown of Love","count":7,"artist":"Arcade Fire","title":"Crown of Love","album":"Funeral","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"Phoenix -- Love Like a Sunset, Pt. I","count":6,"artist":"Phoenix","title":"Love Like a Sunset, Pt. I","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Phoenix -- Love Like a Sunset, Pt. II","count":5,"artist":"Phoenix","title":"Love Like a Sunset, Pt. II","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Foster the People -- Call It What You Want","count":4,"artist":"Foster the People","title":"Call It What You Want","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Phoenix -- 1901","count":4,"artist":"Phoenix","title":"1901","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Boards of Canada -- Hydrogen Helium Lithium Leviathan","count":3,"artist":"Boards of Canada","title":"Hydrogen Helium Lithium Leviathan","album":"Inferno","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f1167dc784d712c89e9214adb5a635df.jpg"},{"key":"Foster the People -- Don't Stop (Color on the Walls)","count":3,"artist":"Foster the People","title":"Don't Stop (Color on the Walls)","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People -- Helena Beat","count":3,"artist":"Foster the People","title":"Helena Beat","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People -- I Would Do Anything for You","count":3,"artist":"Foster the People","title":"I Would Do Anything for You","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People -- Pumped Up Kicks","count":3,"artist":"Foster the People","title":"Pumped Up Kicks","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People -- Waste","count":3,"artist":"Foster the People","title":"Waste","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Sweet Trip -- Acting","count":3,"artist":"Sweet Trip","title":"Acting","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip -- Air Supply","count":3,"artist":"Sweet Trip","title":"Air Supply","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip -- Conservation of Two","count":3,"artist":"Sweet Trip","title":"Conservation of Two","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip -- Darkness","count":3,"artist":"Sweet Trip","title":"Darkness","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip -- Forever","count":3,"artist":"Sweet Trip","title":"Forever","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip -- Milk","count":3,"artist":"Sweet Trip","title":"Milk","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"보아 -- Woman","count":2,"artist":"보아","title":"Woman","album":"WOMAN - The 9th Album","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f22a5a9d044716ec38b163d2177b3239.jpg"},{"key":"Arcade Fire -- Neighborhood #1 (Tunnels)","count":2,"artist":"Arcade Fire","title":"Neighborhood #1 (Tunnels)","album":"Funeral","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"Arcade Fire -- Neighborhood #2 (Laika)","count":2,"artist":"Arcade Fire","title":"Neighborhood #2 (Laika)","album":"Funeral","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"}],"topArtists":[{"key":"Arcade Fire","count":38,"artist":"Arcade Fire","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"Boards of Canada","count":38,"artist":"Boards of Canada","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f1167dc784d712c89e9214adb5a635df.jpg"},{"key":"Sweet Trip","count":34,"artist":"Sweet Trip","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Foster the People","count":28,"artist":"Foster the People","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Denzel Curry","count":24,"artist":"Denzel Curry","image":"https://lastfm.freetls.fastly.net/i/u/300x300/45b2250447f604bcbf7d3417b7d387fb.gif"},{"key":"Phoenix","count":23,"artist":"Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"M83","count":22,"artist":"M83","image":"https://lastfm.freetls.fastly.net/i/u/300x300/16fdad2898a167de51428b9ccbd2317a.jpg"},{"key":"Death Cab for Cutie","count":18,"artist":"Death Cab for Cutie","image":"https://lastfm.freetls.fastly.net/i/u/300x300/1dbfd75d7b8941edbde5e1b58948f9c4.png"},{"key":"Daft Punk","count":14,"artist":"Daft Punk","image":"https://lastfm.freetls.fastly.net/i/u/300x300/1340e9e1082cf0dc748583b7eefce6d5.jpg"},{"key":"윙","count":12,"artist":"윙","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Radiohead","count":10,"artist":"Radiohead","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9dbcd9399ac3e622b4f508323155b644.jpg"},{"key":"Shin Ji Hoon","count":6,"artist":"Shin Ji Hoon","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9645da55593f9f58bf414c40057f981b.jpg"},{"key":"보아","count":4,"artist":"보아","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f22a5a9d044716ec38b163d2177b3239.jpg"},{"key":"sueter7","count":4,"artist":"sueter7","image":"https://lastfm.freetls.fastly.net/i/u/300x300/486a8d3ea6a9b270010d8b5a4c624fb7.jpg"},{"key":"석홍","count":2,"artist":"석홍","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Carpenters","count":2,"artist":"Carpenters","image":"https://lastfm.freetls.fastly.net/i/u/300x300/5680b109166c3e24f5b8fa45089e8ae2.jpg"},{"key":"Denzel Curry & 454","count":2,"artist":"Denzel Curry & 454","image":"https://lastfm.freetls.fastly.net/i/u/300x300/5cb68d8b3dce84fc120c0ca016b804b4.jpg"},{"key":"Denzel Curry & slowthai","count":2,"artist":"Denzel Curry & slowthai","image":"https://lastfm.freetls.fastly.net/i/u/300x300/0bcd0ace9c8983b0d6afa6a9917861ab.jpg"},{"key":"XXX","count":2,"artist":"XXX","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f2f6c104896ba1ce3ac9fc2393fcdbbd.jpg"},{"key":"윙 & 히스","count":1,"artist":"윙 & 히스","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"}],"topAlbums":[{"key":"Boards of Canada -- Inferno","count":38,"artist":"Boards of Canada","album":"Inferno","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f1167dc784d712c89e9214adb5a635df.jpg"},{"key":"Sweet Trip -- You Will Never Know Why","count":34,"artist":"Sweet Trip","album":"You Will Never Know Why","image":"https://lastfm.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Foster the People -- Torches","count":28,"artist":"Foster the People","album":"Torches","image":"https://lastfm.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Denzel Curry -- Melt My Eyez See Your Future","count":24,"artist":"Denzel Curry","album":"Melt My Eyez See Your Future","image":"https://lastfm.freetls.fastly.net/i/u/300x300/45b2250447f604bcbf7d3417b7d387fb.gif"},{"key":"Phoenix -- Wolfgang Amadeus Phoenix","count":23,"artist":"Phoenix","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Arcade Fire -- Funeral","count":22,"artist":"Arcade Fire","album":"Funeral","image":"https://lastfm.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"M83 -- Hurry Up, We're Dreaming","count":22,"artist":"M83","album":"Hurry Up, We're Dreaming","image":"https://lastfm.freetls.fastly.net/i/u/300x300/16fdad2898a167de51428b9ccbd2317a.jpg"},{"key":"Death Cab for Cutie -- Transatlanticism","count":18,"artist":"Death Cab for Cutie","album":"Transatlanticism","image":"https://lastfm.freetls.fastly.net/i/u/300x300/1dbfd75d7b8941edbde5e1b58948f9c4.png"},{"key":"Arcade Fire -- The Suburbs","count":16,"artist":"Arcade Fire","album":"The Suburbs","image":"https://lastfm.freetls.fastly.net/i/u/300x300/17afeed886cd4df7b0137ef51ced4679.png"},{"key":"Daft Punk -- Discovery","count":14,"artist":"Daft Punk","album":"Discovery","image":"https://lastfm.freetls.fastly.net/i/u/300x300/1340e9e1082cf0dc748583b7eefce6d5.jpg"},{"key":"윙 -- Dopamine","count":11,"artist":"윙","album":"Dopamine","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Radiohead -- In Rainbows","count":10,"artist":"Radiohead","album":"In Rainbows","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9dbcd9399ac3e622b4f508323155b644.jpg"},{"key":"Shin Ji Hoon -- Shin Ji Hoon 1st Album 'Stars and Memories and Poetry'","count":6,"artist":"Shin Ji Hoon","album":"Shin Ji Hoon 1st Album 'Stars and Memories and Poetry'","image":"https://lastfm.freetls.fastly.net/i/u/300x300/9645da55593f9f58bf414c40057f981b.jpg"},{"key":"보아 -- WOMAN - The 9th Album","count":4,"artist":"보아","album":"WOMAN - The 9th Album","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f22a5a9d044716ec38b163d2177b3239.jpg"},{"key":"sueter7 -- todo salió bien en la sencilla villa quién","count":4,"artist":"sueter7","album":"todo salió bien en la sencilla villa quién","image":"https://lastfm.freetls.fastly.net/i/u/300x300/486a8d3ea6a9b270010d8b5a4c624fb7.jpg"},{"key":"석홍 -- 사진사와 잠수부 0.6 (with 이선호)","count":2,"artist":"석홍","album":"사진사와 잠수부 0.6 (with 이선호)","image":"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Carpenters -- Gold: Greatest Hits","count":2,"artist":"Carpenters","album":"Gold: Greatest Hits","image":"https://lastfm.freetls.fastly.net/i/u/300x300/5680b109166c3e24f5b8fa45089e8ae2.jpg"},{"key":"Denzel Curry & 454 -- Melt My Eyez See Your Future","count":2,"artist":"Denzel Curry & 454","album":"Melt My Eyez See Your Future","image":"https://lastfm.freetls.fastly.net/i/u/300x300/5cb68d8b3dce84fc120c0ca016b804b4.jpg"},{"key":"Denzel Curry & slowthai -- Melt My Eyez See Your Future","count":2,"artist":"Denzel Curry & slowthai","album":"Melt My Eyez See Your Future","image":"https://lastfm.freetls.fastly.net/i/u/300x300/0bcd0ace9c8983b0d6afa6a9917861ab.jpg"},{"key":"XXX -- Kyomi","count":2,"artist":"XXX","album":"Kyomi","image":"https://lastfm.freetls.fastly.net/i/u/300x300/f2f6c104896ba1ce3ac9fc2393fcdbbd.jpg"}],"days":[{"label":"Mon, 06/08","short":"Mon","count":62,"order":"2026-06-08"},{"label":"Tue, 06/09","short":"Tue","count":13,"order":"2026-06-09"},{"label":"Wed, 06/10","short":"Wed","count":97,"order":"2026-06-10"},{"label":"Thu, 06/11","short":"Thu","count":27,"order":"2026-06-11"},{"label":"Fri, 06/12","short":"Fri","count":49,"order":"2026-06-12"},{"label":"Sat, 06/13","short":"Sat","count":33,"order":"2026-06-13"},{"label":"Sun, 06/14","short":"Sun","count":16,"order":"2026-06-14"}],"hours":[23,47,42,6,2,0,0,0,1,2,5,9,5,0,1,10,7,10,19,5,19,33,34,17],"periodFocus":{"title":"Weekly Rhythm","cards":[{"label":"Weekday / Weekend","value":"248 / 49","note":"평일과 주말 청취량의 무게 차이입니다."},{"label":"Late-night","value":"120","note":"00:00-04:59 KST scrobbles입니다."},{"label":"Most active day","value":"Wed, 06/10","note":"이번 주 청취가 가장 몰린 날입니다."}]},"deepDive":{"title":"Weekly Snapshot","sections":[]},"recommendation":{"title":"Broadcast - Tender Buttons","about":"Minimal synth-pop과 lo-fi electronic texture가 중심인 album입니다.","why":"Boards of Canada의 아날로그한 질감에서 노래 중심의 방향으로 확장하기 좋습니다."},"ai":{"enabled":false,"source":"fallback","status":"AI API failed","model":"fallback","error":"OpenAI API HTTP 429: {\n  \"error\": {\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\",\n    \"type\": \"insufficient_quota\",\n    \"param\": null,\n    \"code\": \"insufficient_quota\"\n  }\n}"}};window.REPORT_REGISTRY=[{"period":"monthly","start":"2026-05-01","end":"2026-05-31","label":"2026-05","file":"lastfm-monthly-2026-05.html"},{"period":"weekly","start":"2026-06-01","end":"2026-06-07","label":"2026-06-01 ~ 2026-06-07","file":"lastfm-weekly-2026-06-01-to-2026-06-07.html"},{"period":"weekly","start":"2026-06-08","end":"2026-06-14","label":"2026-06-08 ~ 2026-06-14","file":"lastfm-weekly-2026-06-08-to-2026-06-14.html"}];
+  <script>window.REPORT_DATA={"kind":"weekly","user":"ueii","filename":"lastfm-weekly-2026-06-08-to-2026-06-14.html","rangeLabel":"2026-06-08 ~ 2026-06-14","startDate":"2026-06-08","endDate":"2026-06-14","total":302,"tracks":191,"artists":31,"albums":33,"peakDay":"Wed","headline":"Sweet Trip week, You Will Never Know Why gravity.","summary":"Sweet Trip가 39 scrobbles로 중심을 잡았고, You Will Never Know Why이 album focus를 만들었습니다. 전체 302 scrobbles 중 top artist 비중은 13%입니다.","story":"이번 주에는 302 scrobbles 안에서 191 tracks, 31 artists가 움직였습니다. Wed, 06/10에 listening pace가 가장 높았고, 전체적으로는 Sweet Trip와 You Will Never Know Why 쪽으로 집중된 흐름입니다.","insights":[["Main Character","Sweet Trip가 리포트의 중심입니다. 39 scrobbles, 전체의 13%를 차지했습니다."],["Album Gravity","You Will Never Know Why은 39 scrobbles로 이번 기간의 album 단위 집중을 만들었습니다."],["Listening Shape","302 scrobbles / 191 tracks. 넓게 탐색하기보다 좋아하는 축을 깊게 반복한 패턴입니다."],["Compared","직전 같은 기간보다 -115 scrobbles (-28%) 변했습니다."]],"comparison":{"previousRange":"2026-06-01 ~ 2026-06-07","currentTotal":302,"previousTotal":417,"previousAvailable":true,"delta":-115,"percent":-28,"percentText":"-28%","currentTags":[{"name":"electronic","score":100},{"name":"indie pop","score":90},{"name":"indie","score":89},{"name":"idm","score":77},{"name":"indie rock","score":66},{"name":"alternative","score":66}],"previousTags":[{"name":"pop","score":128},{"name":"synthpop","score":107},{"name":"indie pop","score":107},{"name":"electronic","score":98},{"name":"electropop","score":80},{"name":"dream pop","score":80}],"tagShift":[{"name":"indie","delta":89,"score":89},{"name":"rock","delta":61,"score":61},{"name":"shoegaze","delta":39,"score":39},{"name":"indie rock","delta":38,"score":66},{"name":"canadian","delta":38,"score":38}],"summary":"직전 같은 기간보다 115 scrobbles 감소했습니다 (-28%). Tag 기준으로는 indie, rock, shoegaze 쪽 비중이 상대적으로 커졌습니다."},"sustainedAlbum":null,"listeningProfile":{"ratio":{"current":{"tracks":191,"albums":31,"artists":31},"previous":{"tracks":243,"albums":95,"artists":78}},"fingerprint":{"current":{"consistency":72,"discovery":59,"variety":26,"concentration":55,"replay":37},"previous":{"consistency":80,"discovery":63,"variety":51,"concentration":49,"replay":42}}},"topTracks":[{"key":"Arcade Fire -- Crown of Love","count":7,"artist":"Arcade Fire","title":"Crown of Love","album":"Funeral","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"Phoenix -- Love Like a Sunset, Pt. I","count":6,"artist":"Phoenix","title":"Love Like a Sunset, Pt. I","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Phoenix -- Love Like a Sunset, Pt. II","count":5,"artist":"Phoenix","title":"Love Like a Sunset, Pt. II","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Foster the People -- Call It What You Want","count":4,"artist":"Foster the People","title":"Call It What You Want","album":"Torches","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Phoenix -- 1901","count":4,"artist":"Phoenix","title":"1901","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Sweet Trip -- Acting","count":4,"artist":"Sweet Trip","title":"Acting","album":"You Will Never Know Why","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip -- Conservation of Two","count":4,"artist":"Sweet Trip","title":"Conservation of Two","album":"You Will Never Know Why","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip -- Darkness","count":4,"artist":"Sweet Trip","title":"Darkness","album":"You Will Never Know Why","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip -- Forever","count":4,"artist":"Sweet Trip","title":"Forever","album":"You Will Never Know Why","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Sweet Trip -- Milk","count":4,"artist":"Sweet Trip","title":"Milk","album":"You Will Never Know Why","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Boards of Canada -- Hydrogen Helium Lithium Leviathan","count":3,"artist":"Boards of Canada","title":"Hydrogen Helium Lithium Leviathan","album":"Inferno","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f1167dc784d712c89e9214adb5a635df.jpg"},{"key":"Foster the People -- Don't Stop (Color on the Walls)","count":3,"artist":"Foster the People","title":"Don't Stop (Color on the Walls)","album":"Torches","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People -- Helena Beat","count":3,"artist":"Foster the People","title":"Helena Beat","album":"Torches","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People -- I Would Do Anything for You","count":3,"artist":"Foster the People","title":"I Would Do Anything for You","album":"Torches","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People -- Pumped Up Kicks","count":3,"artist":"Foster the People","title":"Pumped Up Kicks","album":"Torches","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Foster the People -- Waste","count":3,"artist":"Foster the People","title":"Waste","album":"Torches","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Sweet Trip -- Air Supply","count":3,"artist":"Sweet Trip","title":"Air Supply","album":"You Will Never Know Why","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"보아 -- Woman","count":2,"artist":"보아","title":"Woman","album":"WOMAN - The 9th Album","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f22a5a9d044716ec38b163d2177b3239.jpg"},{"key":"Arcade Fire -- Neighborhood #1 (Tunnels)","count":2,"artist":"Arcade Fire","title":"Neighborhood #1 (Tunnels)","album":"Funeral","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"Arcade Fire -- Neighborhood #2 (Laika)","count":2,"artist":"Arcade Fire","title":"Neighborhood #2 (Laika)","album":"Funeral","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"}],"topArtists":[{"key":"Sweet Trip","count":39,"artist":"Sweet Trip","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Arcade Fire","count":38,"artist":"Arcade Fire","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"Boards of Canada","count":38,"artist":"Boards of Canada","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f1167dc784d712c89e9214adb5a635df.jpg"},{"key":"Foster the People","count":28,"artist":"Foster the People","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Denzel Curry","count":24,"artist":"Denzel Curry","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/45b2250447f604bcbf7d3417b7d387fb.gif"},{"key":"Phoenix","count":23,"artist":"Phoenix","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"M83","count":22,"artist":"M83","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/16fdad2898a167de51428b9ccbd2317a.jpg"},{"key":"Death Cab for Cutie","count":18,"artist":"Death Cab for Cutie","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/1dbfd75d7b8941edbde5e1b58948f9c4.png"},{"key":"Daft Punk","count":14,"artist":"Daft Punk","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/938222f5dd7c4af1818c353234bcd9a7.png"},{"key":"윙","count":12,"artist":"윙","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Radiohead","count":10,"artist":"Radiohead","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/9dbcd9399ac3e622b4f508323155b644.jpg"},{"key":"Shin Ji Hoon","count":6,"artist":"Shin Ji Hoon","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/9645da55593f9f58bf414c40057f981b.jpg"},{"key":"보아","count":4,"artist":"보아","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f22a5a9d044716ec38b163d2177b3239.jpg"},{"key":"sueter7","count":4,"artist":"sueter7","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/486a8d3ea6a9b270010d8b5a4c624fb7.jpg"},{"key":"석홍","count":2,"artist":"석홍","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Carpenters","count":2,"artist":"Carpenters","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f763d49db007c159f990f623f8dd1bc3.jpg"},{"key":"Denzel Curry & 454","count":2,"artist":"Denzel Curry & 454","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/5cb68d8b3dce84fc120c0ca016b804b4.jpg"},{"key":"Denzel Curry & slowthai","count":2,"artist":"Denzel Curry & slowthai","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/0bcd0ace9c8983b0d6afa6a9917861ab.jpg"},{"key":"XXX","count":2,"artist":"XXX","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f2f6c104896ba1ce3ac9fc2393fcdbbd.jpg"},{"key":"윙 & 히스","count":1,"artist":"윙 & 히스","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"}],"topAlbums":[{"key":"Sweet Trip -- You Will Never Know Why","count":39,"artist":"Sweet Trip","album":"You Will Never Know Why","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/8a57f395a7b21653e569012419d602d6.jpg"},{"key":"Boards of Canada -- Inferno","count":38,"artist":"Boards of Canada","album":"Inferno","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f1167dc784d712c89e9214adb5a635df.jpg"},{"key":"Foster the People -- Torches","count":28,"artist":"Foster the People","album":"Torches","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/af29e149b06245e19ecb31a1871cc4c8.png"},{"key":"Denzel Curry -- Melt My Eyez See Your Future","count":24,"artist":"Denzel Curry","album":"Melt My Eyez See Your Future","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/45b2250447f604bcbf7d3417b7d387fb.gif"},{"key":"Phoenix -- Wolfgang Amadeus Phoenix","count":23,"artist":"Phoenix","album":"Wolfgang Amadeus Phoenix","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/b06defa449863fea6a78434c268dff47.jpg"},{"key":"Arcade Fire -- Funeral","count":22,"artist":"Arcade Fire","album":"Funeral","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/3278464e10e38a8119da1d9455681654.jpg"},{"key":"M83 -- Hurry Up, We're Dreaming","count":22,"artist":"M83","album":"Hurry Up, We're Dreaming","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/16fdad2898a167de51428b9ccbd2317a.jpg"},{"key":"Death Cab for Cutie -- Transatlanticism","count":18,"artist":"Death Cab for Cutie","album":"Transatlanticism","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/1dbfd75d7b8941edbde5e1b58948f9c4.png"},{"key":"Arcade Fire -- The Suburbs","count":16,"artist":"Arcade Fire","album":"The Suburbs","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/17afeed886cd4df7b0137ef51ced4679.png"},{"key":"Daft Punk -- Discovery","count":14,"artist":"Daft Punk","album":"Discovery","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/938222f5dd7c4af1818c353234bcd9a7.png"},{"key":"윙 -- Dopamine","count":11,"artist":"윙","album":"Dopamine","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Radiohead -- In Rainbows","count":10,"artist":"Radiohead","album":"In Rainbows","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/9dbcd9399ac3e622b4f508323155b644.jpg"},{"key":"Shin Ji Hoon -- Shin Ji Hoon 1st Album 'Stars and Memories and Poetry'","count":6,"artist":"Shin Ji Hoon","album":"Shin Ji Hoon 1st Album 'Stars and Memories and Poetry'","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/9645da55593f9f58bf414c40057f981b.jpg"},{"key":"보아 -- WOMAN - The 9th Album","count":4,"artist":"보아","album":"WOMAN - The 9th Album","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f22a5a9d044716ec38b163d2177b3239.jpg"},{"key":"sueter7 -- todo salió bien en la sencilla villa quién","count":4,"artist":"sueter7","album":"todo salió bien en la sencilla villa quién","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/486a8d3ea6a9b270010d8b5a4c624fb7.jpg"},{"key":"석홍 -- 사진사와 잠수부 0.6 (with 이선호)","count":2,"artist":"석홍","album":"사진사와 잠수부 0.6 (with 이선호)","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"},{"key":"Carpenters -- Gold: Greatest Hits","count":2,"artist":"Carpenters","album":"Gold: Greatest Hits","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f763d49db007c159f990f623f8dd1bc3.jpg"},{"key":"Denzel Curry & 454 -- Melt My Eyez See Your Future","count":2,"artist":"Denzel Curry & 454","album":"Melt My Eyez See Your Future","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/5cb68d8b3dce84fc120c0ca016b804b4.jpg"},{"key":"Denzel Curry & slowthai -- Melt My Eyez See Your Future","count":2,"artist":"Denzel Curry & slowthai","album":"Melt My Eyez See Your Future","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/0bcd0ace9c8983b0d6afa6a9917861ab.jpg"},{"key":"XXX -- Kyomi","count":2,"artist":"XXX","album":"Kyomi","image":"https://lastfm-img.freetls.fastly.net/i/u/300x300/f2f6c104896ba1ce3ac9fc2393fcdbbd.jpg"}],"days":[{"label":"Mon, 06/08","short":"Mon","count":62,"order":"2026-06-08"},{"label":"Tue, 06/09","short":"Tue","count":13,"order":"2026-06-09"},{"label":"Wed, 06/10","short":"Wed","count":97,"order":"2026-06-10"},{"label":"Thu, 06/11","short":"Thu","count":27,"order":"2026-06-11"},{"label":"Fri, 06/12","short":"Fri","count":49,"order":"2026-06-12"},{"label":"Sat, 06/13","short":"Sat","count":38,"order":"2026-06-13"},{"label":"Sun, 06/14","short":"Sun","count":16,"order":"2026-06-14"}],"hours":[23,47,43,10,2,0,0,0,1,2,5,9,5,0,1,10,7,10,19,5,19,33,34,17],"periodFocus":{"title":"Weekly Rhythm","cards":[{"label":"Weekday / Weekend","value":"248 / 54","note":"평일과 주말 청취량의 무게 차이입니다."},{"label":"Late-night","value":"125","note":"00:00-04:59 KST scrobbles입니다."},{"label":"Most active day","value":"Wed, 06/10","note":"이번 주 청취가 가장 몰린 날입니다."}]},"deepDive":{"title":"Weekly Snapshot","sections":[]},"recommendation":{"title":"Broadcast - Tender Buttons","about":"Minimal synth-pop과 lo-fi electronic texture가 중심인 album입니다.","why":"Boards of Canada의 아날로그한 질감에서 노래 중심의 방향으로 확장하기 좋습니다."},"ai":{"enabled":false,"source":"fallback","status":"AI API not configured","model":"fallback","error":"OPENAI_API_KEY is missing"},"tagTimeline":[{"startDate":"2026-05-04","endDate":"2026-05-10","scrobbles":0,"tags":[],"label":"2026-05-04","shortLabel":"05/04"},{"startDate":"2026-05-11","endDate":"2026-05-17","scrobbles":0,"tags":[],"label":"2026-05-11","shortLabel":"05/11"},{"startDate":"2026-05-18","endDate":"2026-05-24","scrobbles":2,"tags":[{"name":"punk rock","score":1},{"name":"rock","score":1},{"name":"punk","score":1},{"name":"pop punk","score":1},{"name":"alternative","score":1},{"name":"digital fusion","score":1},{"name":"electronic","score":1},{"name":"bitpop","score":1},{"name":"soundtrack","score":1},{"name":"chiptune","score":1}],"label":"2026-05-18","shortLabel":"05/18"},{"startDate":"2026-05-25","endDate":"2026-05-31","scrobbles":171,"tags":[{"name":"electronic","score":44},{"name":"french","score":39},{"name":"electro","score":39},{"name":"dance","score":39},{"name":"electronica","score":39},{"name":"hip-hop","score":30}],"label":"2026-05-25","shortLabel":"05/25"},{"startDate":"2026-06-01","endDate":"2026-06-07","scrobbles":417,"tags":[{"name":"pop","score":128},{"name":"synthpop","score":107},{"name":"indie pop","score":107},{"name":"electronic","score":98},{"name":"electropop","score":80},{"name":"dream pop","score":80}],"label":"2026-06-01","shortLabel":"06/01"},{"startDate":"2026-06-08","endDate":"2026-06-14","scrobbles":302,"tags":[{"name":"electronic","score":100},{"name":"indie pop","score":90},{"name":"indie","score":89},{"name":"idm","score":77},{"name":"indie rock","score":66},{"name":"alternative","score":66}],"label":"2026-06-08","shortLabel":"06/08"}]};window.REPORT_REGISTRY=[{"period":"monthly","start":"2026-05-01","end":"2026-05-31","label":"2026-05","file":"lastfm-monthly-2026-05.html"},{"period":"monthly","start":"2026-06-01","end":"2026-06-30","label":"2026-06","file":"lastfm-monthly-2026-06.html"},{"period":"weekly","start":"2026-06-01","end":"2026-06-07","label":"2026-06-01 ~ 2026-06-07","file":"lastfm-weekly-2026-06-01-to-2026-06-07.html"},{"period":"weekly","start":"2026-06-08","end":"2026-06-14","label":"2026-06-08 ~ 2026-06-14","file":"lastfm-weekly-2026-06-08-to-2026-06-14.html"},{"period":"weekly","start":"2026-06-15","end":"2026-06-21","label":"2026-06-15 ~ 2026-06-21","file":"lastfm-weekly-2026-06-15-to-2026-06-21.html"},{"period":"weekly","start":"2026-06-22","end":"2026-06-28","label":"2026-06-22 ~ 2026-06-28","file":"lastfm-weekly-2026-06-22-to-2026-06-28.html"},{"period":"weekly","start":"2026-06-29","end":"2026-07-05","label":"2026-06-29 ~ 2026-07-05","file":"lastfm-weekly-2026-06-29-to-2026-07-05.html"},{"period":"monthly","start":"2026-07-01","end":"2026-07-31","label":"2026-07","file":"lastfm-monthly-2026-07.html"},{"period":"weekly","start":"2026-07-06","end":"2026-07-12","label":"2026-07-06 ~ 2026-07-12","file":"lastfm-weekly-2026-07-06-to-2026-07-12.html"},{"period":"weekly","start":"2026-07-13","end":"2026-07-19","label":"2026-07-13 ~ 2026-07-19","file":"lastfm-weekly-2026-07-13-to-2026-07-19.html"},{"period":"weekly","start":"2026-07-20","end":"2026-07-26","label":"2026-07-20 ~ 2026-07-26","file":"lastfm-weekly-2026-07-20-to-2026-07-26.html"},{"period":"weekly","start":"2026-07-27","end":"2026-08-02","label":"2026-07-27 ~ 2026-08-02","file":"lastfm-weekly-2026-07-27-to-2026-08-02.html"},{"period":"monthly","start":"2026-08-01","end":"2026-08-31","label":"2026-08","file":"lastfm-monthly-2026-08.html"},{"period":"weekly","start":"2026-08-03","end":"2026-08-09","label":"2026-08-03 ~ 2026-08-09","file":"lastfm-weekly-2026-08-03-to-2026-08-09.html"},{"period":"weekly","start":"2026-08-10","end":"2026-08-16","label":"2026-08-10 ~ 2026-08-16","file":"lastfm-weekly-2026-08-10-to-2026-08-16.html"},{"period":"weekly","start":"2026-08-17","end":"2026-08-23","label":"2026-08-17 ~ 2026-08-23","file":"lastfm-weekly-2026-08-17-to-2026-08-23.html"},{"period":"weekly","start":"2026-08-24","end":"2026-08-30","label":"2026-08-24 ~ 2026-08-30","file":"lastfm-weekly-2026-08-24-to-2026-08-30.html"},{"period":"weekly","start":"2026-08-31","end":"2026-09-06","label":"2026-08-31 ~ 2026-09-06","file":"lastfm-weekly-2026-08-31-to-2026-09-06.html"},{"period":"monthly","start":"2026-09-01","end":"2026-09-30","label":"2026-09","file":"lastfm-monthly-2026-09.html"},{"period":"weekly","start":"2026-09-07","end":"2026-09-13","label":"2026-09-07 ~ 2026-09-13","file":"lastfm-weekly-2026-09-07-to-2026-09-13.html"},{"period":"weekly","start":"2026-09-14","end":"2026-09-20","label":"2026-09-14 ~ 2026-09-20","file":"lastfm-weekly-2026-09-14-to-2026-09-20.html"},{"period":"weekly","start":"2026-09-21","end":"2026-09-27","label":"2026-09-21 ~ 2026-09-27","file":"lastfm-weekly-2026-09-21-to-2026-09-27.html"},{"period":"weekly","start":"2026-09-28","end":"2026-10-04","label":"2026-09-28 ~ 2026-10-04","file":"lastfm-weekly-2026-09-28-to-2026-10-04.html"},{"period":"monthly","start":"2026-10-01","end":"2026-10-31","label":"2026-10","file":"lastfm-monthly-2026-10.html"},{"period":"weekly","start":"2026-10-05","end":"2026-10-11","label":"2026-10-05 ~ 2026-10-11","file":"lastfm-weekly-2026-10-05-to-2026-10-11.html"},{"period":"weekly","start":"2026-10-12","end":"2026-10-18","label":"2026-10-12 ~ 2026-10-18","file":"lastfm-weekly-2026-10-12-to-2026-10-18.html"},{"period":"weekly","start":"2026-10-19","end":"2026-10-25","label":"2026-10-19 ~ 2026-10-25","file":"lastfm-weekly-2026-10-19-to-2026-10-25.html"},{"period":"weekly","start":"2026-10-26","end":"2026-11-01","label":"2026-10-26 ~ 2026-11-01","file":"lastfm-weekly-2026-10-26-to-2026-11-01.html"},{"period":"weekly","start":"2026-11-02","end":"2026-11-08","label":"2026-11-02 ~ 2026-11-08","file":"lastfm-weekly-2026-11-02-to-2026-11-08.html"},{"period":"weekly","start":"2026-11-09","end":"2026-11-15","label":"2026-11-09 ~ 2026-11-15","file":"lastfm-weekly-2026-11-09-to-2026-11-15.html"},{"period":"weekly","start":"2026-11-16","end":"2026-11-22","label":"2026-11-16 ~ 2026-11-22","file":"lastfm-weekly-2026-11-16-to-2026-11-22.html"}];
 const state = {
   report: window.REPORT_DATA,
-  registry: window.REPORT_REGISTRY || [],
-  period: window.REPORT_DATA.kind
+  registry: window.REPORT_REGISTRY || []
 };
 
 const expandedCharts = { track: false, artist: false, album: false };
 const fallbackImage = "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><rect width="300" height="300" fill="#d8cab9"/><circle cx="150" cy="150" r="92" fill="#201b18"/><circle cx="150" cy="150" r="20" fill="#d51007"/></svg>');
+const fingerprintInfo = {
+  consistency: "Listening volume is spread evenly across the period.",
+  discovery: "Share of tracks played only once.",
+  variety: "Artist breadth relative to unique tracks.",
+  concentration: "Share captured by the top five artists.",
+  replay: "Share of scrobbles beyond the first play of each track."
+};
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
 const img = (src) => src || fallbackImage;
+
+function profileAttrs({ chart, key, title, value, note }) {
+  return `data-profile-item data-profile-chart="${esc(chart)}" data-profile-key="${esc(key)}" data-profile-title="${esc(title)}" data-profile-value="${esc(value)}" data-profile-note="${esc(note)}" tabindex="0" role="button"`;
+}
 
 function currentFilename() {
   return decodeURIComponent(location.pathname.split(/[\\/]/).pop() || "");
@@ -105,64 +634,71 @@ function currentRegistryEntry() {
     || state.registry.find((report) => report.period === state.report.kind && report.start === state.report.startDate);
 }
 
-function selectedReport() {
-  const picker = $("#reportPicker");
-  if (!picker || !picker.value) return null;
-  return state.registry.find((report) => report.file === picker.value) || null;
-}
-
 function renderReportControls() {
   const entry = currentRegistryEntry();
-  const activePeriod = state.period || state.report.kind;
-  $$(".pill[data-period]").forEach((button) => {
-    const count = reportsFor(button.dataset.period).length;
-    button.disabled = count === 0;
-    button.classList.toggle("active", button.dataset.period === activePeriod);
-    button.title = count ? `${count} saved report${count > 1 ? "s" : ""}` : "저장된 리포트가 없습니다.";
-  });
+  const reports = reportsFor(state.report.kind);
+  const index = reports.findIndex((report) => report.file === entry?.file);
+  for (const [id, offset] of [["#previousReport", -1], ["#nextReport", 1]]) {
+    const link = $(id);
+    const target = index >= 0 ? reports[index + offset] : null;
+    link.hidden = !target;
+    if (target) {
+      link.href = "./" + target.file;
+      link.setAttribute("aria-label", `${link.textContent.trim()} report, ${target.label}`);
+    }
+  }
+}
 
-  const picker = $("#reportPicker");
-  const previousValue = picker.value;
-  const options = reportsFor(activePeriod);
-  picker.innerHTML = options.map((report) => `<option value="${esc(report.file)}">${esc(report.label)}</option>`).join("");
-  const selected = options.find((report) => report.file === previousValue)
-    || options.find((report) => entry && report.file === entry.file)
-    || options.at(-1);
-  if (selected) picker.value = selected.file;
-  picker.disabled = options.length === 0;
-
-  const index = options.findIndex((report) => report.file === picker.value);
-  $("#prevPeriod").disabled = index <= 0;
-  $("#nextPeriod").disabled = index < 0 || index >= options.length - 1;
-  $("#openLocal").disabled = !selected;
+function signed(value) {
+  return (value > 0 ? "+" : "") + value.toLocaleString();
 }
 
 function render() {
   const r = state.report;
-  state.period = r.kind;
-  $("#rangeText").textContent = `${r.user} · ${r.rangeLabel} · KST`;
+  const album = r.topAlbums[0];
   $("#headline").textContent = r.headline;
-  $("#summaryText").textContent = r.summary;
+  $("#summaryText").textContent = album ? `${album.artist} · ${album.album} · ${album.count.toLocaleString()} plays` : "No album listening data";
+  $("#summaryDetail").textContent = r.summary;
   $("#storyText").textContent = r.story;
   $("#recommendationTitle").textContent = r.recommendation.title;
   $("#recommendationAbout").textContent = r.recommendation.about;
   $("#recommendationWhy").textContent = r.recommendation.why;
   $("#mScrobbles").textContent = r.total.toLocaleString();
-  $("#mTracks").textContent = r.tracks.toLocaleString();
-  $("#mArtists").textContent = r.artists.toLocaleString();
-  $("#mPeak").textContent = r.peakDay;
-  $("#hero").style.setProperty("--hero-art", `url("${img(r.topAlbums[0]?.image)}")`);
   renderReportControls();
   renderCovers();
+  renderHighlights();
   renderInsights();
   renderComparison();
   renderPeriodFocus();
   renderDeepDive();
+  renderListeningProfile();
   renderCharts();
   renderDays();
-  renderHours();
-  renderAlbumFocus();
   renderAiStatus();
+}
+
+function renderHighlights() {
+  const r = state.report;
+  const track = r.topTracks[0];
+  const album = r.topAlbums[0];
+  const peak = r.days.reduce((best, day) => day.count > (best?.count || 0) ? day : best, null);
+  const latest = r.tagTimeline?.at(-1)?.tags?.[0];
+  const sustain = r.sustainedAlbum;
+  const cards = [];
+  if (r.kind === "weekly" && track) cards.push(["Most played track", track.title, `${track.artist} · ${track.count.toLocaleString()} plays`, track, "track"]);
+  if (r.kind !== "weekly" && sustain) {
+    const unit = r.kind === "yearly" ? "month" : "week";
+    cards.push(["Staying in rotation", sustain.album, `${sustain.artist} · played in ${sustain.activeBuckets} ${unit}${sustain.activeBuckets === 1 ? "" : "s"}`, sustain, "album"]);
+  }
+  if (r.kind !== "weekly" && !sustain && album) cards.push(["Most played album", album.album, `${album.artist} · ${album.count.toLocaleString()} plays`, album, "album"]);
+  if (r.kind === "monthly" && latest) cards.push(["Leading tag", latest.name, "See how it moved across six months", null, "tags"]);
+  if (peak) cards.push([r.kind === "yearly" ? "Busiest month" : "Busiest day", peak.label, `${peak.count.toLocaleString()} plays`]);
+  $("#highlights").innerHTML = cards.map(([label, value, note, item, type]) => {
+    const content = `<span>${esc(label)}</span><strong>${esc(value)}</strong><small>${esc(note)}</small>`;
+    if (item) return `<button class="snapshot" type="button" data-detail='${payload(item, type)}'>${content}</button>`;
+    if (type === "tags") return `<a class="snapshot" href="#tagsTitle">${content}</a>`;
+    return `<article class="snapshot">${content}</article>`;
+  }).join("") || '<p class="profile-empty">No listening activity in this period.</p>';
 }
 
 function payload(item, type) {
@@ -170,19 +706,25 @@ function payload(item, type) {
 }
 
 function renderCovers() {
-  $("#coverGrid").innerHTML = state.report.topAlbums.slice(0, 6).map((album) => `<button class="cover-tile" type="button" data-detail='${payload(album, "album")}'><img src="${img(album.image)}" alt="${esc(album.album)} album cover" loading="lazy"><span>${esc(album.album)}</span></button>`).join("");
+  const album = state.report.topAlbums[0];
+  if (!album) {
+    $("#coverGrid").hidden = true;
+    return;
+  }
+  $("#coverGrid").innerHTML = `<button type="button" data-detail='${payload(album, "album")}'><img src="${esc(img(album.image))}" alt="${esc(album.album)} album cover"></button>`;
 }
 
 function renderInsights() {
-  $("#insights").innerHTML = state.report.insights.map(([title, body]) => `<article class="insight-card"><b>${esc(title)}</b><p>${esc(body)}</p></article>`).join("");
+  $("#insights").innerHTML = (state.report.insights || []).map(([title, body]) => `<article class="insight-card"><b>${esc(title)}</b><p>${esc(body)}</p></article>`).join("");
 }
 
 function renderComparison() {
   const c = state.report.comparison;
-  const max = Math.max(c.currentTotal, c.previousTotal, 1);
-  $("#comparisonRange").textContent = c.previousRange ? `vs ${c.previousRange}` : "";
-  $("#comparisonSummary").textContent = c.summary;
-  $("#comparisonGrid").innerHTML = `<article class="compare-card"><strong>${c.delta >= 0 ? "+" : ""}${c.delta.toLocaleString()}</strong><span>Scrobble delta</span></article><article class="compare-card"><strong>${c.percentText}</strong><span>Volume change</span></article><article class="compare-card"><strong>${c.previousTotal.toLocaleString()}</strong><span>Previous scrobbles</span></article><div class="compare-bars"><div class="compare-bar-row"><span>Current</span><div class="compare-track"><i style="width:${Math.round(c.currentTotal / max * 100)}%"></i></div><b>${c.currentTotal.toLocaleString()}</b></div><div class="compare-bar-row previous"><span>Previous</span><div class="compare-track"><i style="width:${Math.round(c.previousTotal / max * 100)}%"></i></div><b>${c.previousTotal.toLocaleString()}</b></div></div><div class="tag-list">${(c.tagShift || []).map((tag) => `<span class="tag">${esc(tag.name)} ${tag.delta >= 0 ? "+" : ""}${tag.delta}</span>`).join("")}</div>`;
+  const available = c.previousAvailable ?? (c.previousTotal > 0);
+  $("#mChange").textContent = available
+    ? `${signed(c.delta)} vs previous${c.percent == null ? "" : ` (${c.percentText})`}`
+    : "Previous period unavailable";
+  $("#comparisonGrid").innerHTML = `<span>${esc(c.previousRange || "Previous period")}</span><strong>${available ? c.previousTotal.toLocaleString() + " plays" : "Data unavailable"}</strong>`;
 }
 
 function renderPeriodFocus() {
@@ -226,27 +768,37 @@ function renderCharts() {
 }
 
 function list(rows, type) {
+  if (!rows.length) return '<p class="profile-empty">No listening activity in this ranking.</p>';
   const visible = expandedCharts[type] ? rows : rows.slice(0, 5);
   const more = rows.length > 5 ? `<button class="more-btn" type="button" data-more="${type}">${expandedCharts[type] ? "Show less" : `More ${rows.length - 5}`}</button>` : "";
   return `<ol class="rank-list">${visible.map((item, index) => {
     const title = type === "artist" ? item.artist : type === "album" ? item.album : item.title;
     const sub = type === "artist" ? "Artist" : item.artist + (item.album && type === "track" ? ` · ${item.album}` : "");
-    return `<li><button class="rank-item" type="button" data-detail='${payload(item, type)}'><img class="thumb" src="${img(item.image)}" alt="" loading="lazy"><span class="rank-title"><strong>${index + 1}. ${esc(title)}</strong><span>${esc(sub)}</span></span><span class="count">${item.count}</span></button></li>`;
+    return `<li><button class="rank-item" type="button" data-detail='${payload(item, type)}'><img class="thumb" src="${esc(img(item.image))}" alt="" loading="lazy"><span class="rank-title"><strong>${index + 1}. ${esc(title)}</strong><span>${esc(sub)}</span></span><span class="count">${item.count}</span></button></li>`;
   }).join("")}</ol>${more}`;
 }
 
 function renderDays() {
-  const max = Math.max(...state.report.days.map((day) => day.count), 1);
-  $("#dayGrid").innerHTML = state.report.days.map((day) => `<article class="day-card"><span>${esc(day.label)}</span><strong>${day.count}</strong><div class="bar"><div class="fill" style="width:${Math.round(day.count / max * 100)}%"></div></div></article>`).join("");
-}
-
-function renderHours() {
-  const max = Math.max(...state.report.hours, 1);
-  $("#hourHeat").innerHTML = state.report.hours.map((count, hour) => `<div class="hour-wrap"><div class="hour" data-label="${String(hour).padStart(2, "0")}:00 · ${count}" style="height:${Math.max(4, Math.round(count / max * 100))}%"></div><span>${hour % 3 === 0 ? String(hour).padStart(2, "0") : ""}</span></div>`).join("");
-}
-
-function renderAlbumFocus() {
-  $("#albumFocus").innerHTML = state.report.topAlbums.slice(0, 6).map((album) => `<button class="mini" type="button" data-detail='${payload(album, "album")}'><img src="${img(album.image)}" alt="" loading="lazy"><span><strong>${esc(album.album)}</strong><span>${esc(album.artist)} · ${album.count} scrobbles</span></span></button>`).join("");
+  const report = state.report;
+  const yearly = report.kind === "yearly";
+  const start = new Date(report.startDate);
+  const end = new Date(report.endDate);
+  const counts = new Map(report.days.map((day) => [day.order, day.count]));
+  const format = new Intl.DateTimeFormat("en", {month: "short", ...(yearly ? {} : {day: "numeric"}), timeZone: "UTC"});
+  const buckets = [];
+  for (const date = new Date(start); date <= end;) {
+    const key = date.toISOString().slice(0, yearly ? 7 : 10);
+    buckets.push({label: format.format(date), count: counts.get(key) || 0});
+    if (yearly) date.setUTCMonth(date.getUTCMonth() + 1);
+    else date.setUTCDate(date.getUTCDate() + 1);
+  }
+  const peak = buckets.reduce((best, bucket) => bucket.count > best.count ? bucket : best, buckets[0]);
+  const max = Math.max(peak.count, 1);
+  const bars = buckets.map((bucket) => {
+    const label = `${bucket.label} · ${bucket.count.toLocaleString()} plays`;
+    return `<button type="button" class="pace-bar" aria-label="${esc(label)}" aria-pressed="${bucket === peak}" style="--pace-height:${bucket.count / max * 100}%"><i></i></button>`;
+  }).join("");
+  $("#dayGrid").innerHTML = `<div class="pace-chart" style="--pace-slots:${buckets.length}">${bars}</div><div class="pace-axis"><span>${esc(buckets[0].label)}</span><span>${esc(buckets.at(-1).label)}</span></div><p class="pace-readout" id="paceReadout" aria-live="polite">${esc(peak.label)} · ${peak.count.toLocaleString()} plays</p>`;
 }
 
 function renderAiStatus() {
@@ -272,27 +824,208 @@ function openDetail(item) {
   $("#detailMeta").textContent = meta;
   $("#detailBody").textContent = item.album && item.type !== "album" ? `Album: ${item.album}` : "";
   $("#detailBody").style.display = $("#detailBody").textContent ? "block" : "none";
-  $("#detail").classList.add("open");
+  $("#detail").showModal();
 }
 
-function openLocalEntry(entry) {
-  if (!entry) {
-    toast("선택 가능한 리포트가 없습니다.");
-    return;
-  }
-  if (currentFilename() === entry.file) {
-    toast("현재 열려 있는 리포트입니다.");
-    return;
-  }
-  location.href = entry.file;
+function renderListeningProfile() {
+  renderMusicRatio();
+  renderFingerprint();
+  renderTagMovement();
+  renderListeningClock();
 }
 
-function shift(delta) {
-  const options = reportsFor(state.period);
-  const current = selectedReport();
-  const index = options.findIndex((report) => current && report.file === current.file);
-  const target = options[index + delta];
-  if (target) openLocalEntry(target);
+function renderMusicRatio() {
+  const report = state.report;
+  const ratio = report.listeningProfile?.ratio;
+  const current = ratio?.current || report;
+  const available = report.comparison.previousAvailable ?? (report.comparison.previousTotal > 0);
+  const previous = available ? ratio?.previous : null;
+  const rows = [["tracks", "Tracks"], ["albums", "Albums"], ["artists", "Artists"]];
+  $("#musicRatio").innerHTML = `<table class="breadth-table"><thead><tr><th scope="col">Unique</th><th scope="col">Current</th><th scope="col">Previous</th><th scope="col">Change</th></tr></thead><tbody>${rows.map(([key, label]) => {
+    const value = current[key];
+    const before = previous?.[key];
+    return `<tr><th scope="row">${label}</th><td><strong>${value?.toLocaleString() ?? "—"}</strong></td><td>${before?.toLocaleString() ?? "—"}</td><td>${value == null || before == null ? "—" : signed(value - before)}</td></tr>`;
+  }).join("")}</tbody></table>${available && previous ? "" : '<p class="profile-empty">Previous counts are unavailable.</p>'}`;
+}
+
+function renderFingerprint() {
+  const fingerprint = state.report.listeningProfile?.fingerprint || {};
+  const current = fingerprint.current || { consistency: 0, discovery: 0, variety: 0, concentration: 0, replay: 0 };
+  const previous = fingerprint.previous || { consistency: 0, discovery: 0, variety: 0, concentration: 0, replay: 0 };
+  const axes = [
+    ["Consistency", "consistency"],
+    ["Discovery", "discovery"],
+    ["Variety", "variety"],
+    ["Concentration", "concentration"],
+    ["Replay", "replay"]
+  ];
+  const center = 140;
+  const radius = 86;
+  const axisPoints = axes.map((_, index) => polarPoint(center, center, radius, index * 72 - 90));
+  const grid = [0.33, 0.66, 1].map((scale) => `<polygon class="radar-grid" points="${axisPoints.map((point) => `${center + (point.x - center) * scale},${center + (point.y - center) * scale}`).join(" ")}"></polygon>`).join("");
+  const spokes = axisPoints.map((point) => `<line class="radar-spoke" x1="${center}" y1="${center}" x2="${point.x}" y2="${point.y}"></line>`).join("");
+  const labels = axes.map(([label], index) => {
+    const point = polarPoint(center, center, 116, index * 72 - 90);
+    return `<text class="radar-label" x="${point.x}" y="${point.y}" text-anchor="${point.x < center - 10 ? "end" : point.x > center + 10 ? "start" : "middle"}">${label}</text>`;
+  }).join("");
+  const previousAvailable = Boolean(fingerprint.previous) && (state.report.comparison.previousAvailable ?? (state.report.comparison.previousTotal > 0));
+  const previousPoints = previousAvailable ? radarMetricPoints(previous, axes, center, radius) : "";
+  const currentPoints = radarMetricPoints(current, axes, center, radius);
+  const nodes = axes.map(([label, key], index) => {
+    const score = Number(current[key] || 0);
+    const before = Number(previous[key] || 0);
+    const point = polarPoint(center, center, radius * score / 100, index * 72 - 90);
+    return `<circle class="radar-node" cx="${point.x}" cy="${point.y}" r="5" ${profileAttrs({ chart: "fingerprint", key, title: label, value: `${score} / 100`, note: previousAvailable ? `Previous ${before} · ${fingerprintInfo[key]}` : fingerprintInfo[key] })}></circle>`;
+  }).join("");
+  $("#listeningFingerprint").innerHTML = `<div class="fingerprint-wrap"><svg class="fingerprint-svg" viewBox="0 0 280 280" role="img" aria-label="Listening behavior fingerprint compared with the previous period">${grid}${spokes}${previousAvailable ? `<polygon class="radar-previous" points="${previousPoints}"></polygon>` : ""}<polygon class="radar-current" points="${currentPoints}"></polygon>${nodes}${labels}</svg><div class="profile-legend"><span><i class="legend-current"></i>Current</span>${previousAvailable ? '<span><i class="legend-previous"></i>Previous</span>' : ""}</div></div><div class="profile-detail" id="fingerprintDetail"></div>`;
+  setInitialProfileDetail("fingerprint", "consistency");
+}
+
+function renderTagMovement() {
+  const timeline = state.report.tagTimeline || [];
+  const formatPercent = (value) => value == null ? "—" : `${value.toFixed(1)}%`;
+  const scores = timeline.map((slot) => new Map(slot.scrobbles > 0
+    ? (slot.tags || []).filter((tag) => tag.score > 0 && tag.score <= slot.scrobbles)
+      .map((tag) => [tag.name, 100 * tag.score / slot.scrobbles])
+    : []));
+  const peaks = new Map();
+  const coverage = new Map();
+  for (const row of scores) {
+    for (const [name, value] of row) {
+      peaks.set(name, Math.max(peaks.get(name) || 0, value));
+      coverage.set(name, (coverage.get(name) || 0) + 1);
+    }
+  }
+  const latest = scores.at(-1);
+  const historical = [...coverage.keys()].sort((a, b) => coverage.get(b) - coverage.get(a) || peaks.get(b) - peaks.get(a) || a.localeCompare(b));
+  const names = [...new Set([...[...(latest?.keys() || [])].slice(0, 3), ...historical])].slice(0, 6);
+  $("#tagMovementRange").textContent = timeline.length ? `${timeline[0].label} – ${timeline.at(-1).label}` : "";
+  if (!names.length) {
+    $("#tagMovement").innerHTML = '<p class="profile-empty">Tag data is unavailable for this period.</p>';
+    return;
+  }
+  const scale = Math.max(10, Math.ceil(Math.max(...names.map((name) => peaks.get(name))) / 10) * 10);
+  const labels = timeline.map((slot) => `<span title="${esc(slot.label)}">${esc(slot.shortLabel || slot.label)}</span>`).join("");
+  $("#tagMovement").innerHTML = `<p class="tag-method">Weighted tag score per 100 plays · common scale 0–${scale}%</p><div class="tag-trends" style="--tag-periods:${timeline.length}">${names.map((name) => {
+    const value = latest.get(name);
+    const earlier = scores.at(-2)?.get(name);
+    const delta = value == null || earlier == null ? null : Math.round((value - earlier) * 10) / 10;
+    const bars = timeline.map((slot, index) => {
+      const score = scores[index].get(name);
+      const note = slot.scrobbles == null ? "Period data unavailable" : slot.scrobbles === 0 ? "No plays" : !slot.tags?.length ? "Tag data unavailable" : score == null ? "Outside the stored top tags" : `${slot.scrobbles.toLocaleString()} plays in this period`;
+      const attrs = profileAttrs({chart: "tags", key: `${name}-${index}`, title: `${name} · ${slot.label}`, value: formatPercent(score), note});
+      return `<button type="button" class="tag-bar ${score == null ? "tag-gap" : ""}" style="--tag-height:${(score || 0) / scale * 100}%" aria-label="${esc(`${name}, ${slot.label}, ${score == null ? note : formatPercent(score)}`)}" ${attrs}><i></i></button>`;
+    }).join("");
+    return `<article class="tag-trend"><div class="tag-label"><strong>${esc(name)}</strong><span>${formatPercent(value)}${delta == null ? "" : ` <small>${signed(delta)} pp</small>`}</span></div><div class="tag-bars">${bars}</div><div class="tag-ticks" aria-hidden="true">${labels}</div></article>`;
+  }).join("")}</div><div class="profile-detail profile-detail-dark" id="tagsDetail" aria-live="polite">Select a period for its tag score.</div>`;
+}
+
+function renderListeningClock() {
+  const hours = state.report.hours || new Array(24).fill(0);
+  const max = Math.max(...hours, 1);
+  const busiest = hours.indexOf(max);
+  const segments = hours.map((count, hour) => {
+    const start = hour * 15 - 89.2;
+    const end = (hour + 1) * 15 - 90.8;
+    const valueRadius = 55 + count / max * 59;
+    const time = `${String(hour).padStart(2, "0")}:00`;
+    const attrs = profileAttrs({ chart: "clock", key: String(hour), title: time, value: `${count.toLocaleString()} scrobbles`, note: `${time}-${String(hour).padStart(2, "0")}:59 KST` });
+    return `<g class="clock-segment"><path class="clock-hit" d="${donutSectorPath(130, 130, 54, 116, start, end)}" fill="transparent" ${attrs}></path><path class="clock-base" d="${donutSectorPath(130, 130, 55, 114, start, end)}"></path>${count ? `<path class="clock-value-segment" d="${donutSectorPath(130, 130, 55, valueRadius, start, end)}"></path>` : ""}</g>`;
+  }).join("");
+  $("#listeningClock").innerHTML = `<div class="clock-layout"><svg class="clock-svg" viewBox="0 0 260 260" role="img" aria-label="Listening volume by hour in Korea Standard Time">${segments}<circle class="clock-core" cx="130" cy="130" r="53"></circle><text class="clock-axis" x="130" y="96" text-anchor="middle">00</text><text class="clock-axis" x="165" y="134" text-anchor="middle">06</text><text class="clock-axis" x="130" y="171" text-anchor="middle">12</text><text class="clock-axis" x="94" y="134" text-anchor="middle">18</text></svg><div><div class="clock-stats"><strong>${String(busiest).padStart(2, "0")}:00</strong><span>Busiest hour</span><strong>${max.toLocaleString()}</strong><span>Scrobbles in busiest hour</span><strong>${Math.round(timeBandTotal(hours, 21, 5) / Math.max(state.report.total, 1) * 100)}%</strong><span>Night share · 21:00-04:59</span></div><div class="profile-detail profile-detail-dark" id="clockDetail"></div></div></div>`;
+  setInitialProfileDetail("clock", String(busiest));
+}
+
+function donutSectorPath(cx, cy, innerRadius, outerRadius, startDegrees, endDegrees) {
+  const outerStart = polarPoint(cx, cy, outerRadius, startDegrees);
+  const outerEnd = polarPoint(cx, cy, outerRadius, endDegrees);
+  const innerEnd = polarPoint(cx, cy, innerRadius, endDegrees);
+  const innerStart = polarPoint(cx, cy, innerRadius, startDegrees);
+  const largeArc = Math.abs(endDegrees - startDegrees) > 180 ? 1 : 0;
+  return `M ${outerStart.x} ${outerStart.y} A ${outerRadius} ${outerRadius} 0 ${largeArc} 1 ${outerEnd.x} ${outerEnd.y} L ${innerEnd.x} ${innerEnd.y} A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${innerStart.x} ${innerStart.y} Z`;
+}
+
+function radarMetricPoints(metrics, axes, center, radius) {
+  return axes.map(([, key], index) => {
+    const score = Math.max(0, Math.min(100, Number(metrics[key] || 0)));
+    const point = polarPoint(center, center, radius * score / 100, index * 72 - 90);
+    return `${point.x},${point.y}`;
+  }).join(" ");
+}
+
+function polarPoint(cx, cy, radius, degrees) {
+  const radians = degrees * Math.PI / 180;
+  return { x: Number((cx + Math.cos(radians) * radius).toFixed(2)), y: Number((cy + Math.sin(radians) * radius).toFixed(2)) };
+}
+
+function timeBandTotal(hours, start, end) {
+  return hours.reduce((sum, count, hour) => {
+    const inBand = start < end ? hour >= start && hour < end : hour >= start || hour < end;
+    return sum + (inBand ? count : 0);
+  }, 0);
+}
+
+function setInitialProfileDetail(chart, key) {
+  const item = $$(`[data-profile-chart="${chart}"]`).find((candidate) => candidate.dataset.profileKey === key && candidate.tabIndex >= 0);
+  if (item) selectProfileItem(item, true);
+}
+
+function selectProfileItem(item, initial = false) {
+  const chart = item.dataset.profileChart;
+  const key = item.dataset.profileKey;
+  $$(`[data-profile-chart="${chart}"]`).forEach((candidate) => {
+    candidate.classList.toggle("is-selected", candidate.dataset.profileKey === key);
+    candidate.setAttribute("aria-pressed", candidate.dataset.profileKey === key ? "true" : "false");
+  });
+  const detail = $(`#${chart}Detail`);
+  if (detail) {
+    detail.innerHTML = `<span>${esc(item.dataset.profileTitle)}</span><strong>${esc(item.dataset.profileValue)}</strong><p>${esc(item.dataset.profileNote)}</p>`;
+  }
+  if (chart === "clock") updateClockCenter(item, initial ? "BUSIEST" : "SELECTED");
+}
+
+function setProfileHover(item, active) {
+  const chart = item.dataset.profileChart;
+  const key = item.dataset.profileKey;
+  $$(`[data-profile-chart="${chart}"]`).forEach((candidate) => {
+    candidate.classList.toggle("is-hovered", active && candidate.dataset.profileKey === key);
+    candidate.classList.toggle("is-dimmed", active && candidate.dataset.profileKey !== key);
+  });
+  if (chart === "clock") {
+    if (active) updateClockCenter(item, "HOUR");
+    else {
+      const selected = $$('[data-profile-chart="clock"].is-selected').find((candidate) => candidate.tabIndex >= 0);
+      if (selected) updateClockCenter(selected, "SELECTED");
+    }
+  }
+}
+
+function updateClockCenter(item, label) {
+  if (!item || !$("#clockCenterLabel")) return;
+  $("#clockCenterLabel").textContent = label;
+  $("#clockCenterValue").textContent = item.dataset.profileTitle;
+  $("#clockCenterSub").textContent = item.dataset.profileValue;
+}
+
+function showProfileTooltip(item, event) {
+  const tooltip = $("#profileTooltip");
+  tooltip.innerHTML = `<b>${esc(item.dataset.profileTitle)}</b><strong>${esc(item.dataset.profileValue)}</strong><span>${esc(item.dataset.profileNote)}</span>`;
+  tooltip.classList.add("show");
+  positionProfileTooltip(event);
+}
+
+function positionProfileTooltip(event) {
+  const tooltip = $("#profileTooltip");
+  const rect = tooltip.getBoundingClientRect();
+  const sourceRect = event.currentTarget?.getBoundingClientRect?.() || event.target?.getBoundingClientRect?.();
+  const x = Number.isFinite(event.clientX) && event.clientX ? event.clientX : sourceRect?.left + sourceRect?.width / 2 || 16;
+  const y = Number.isFinite(event.clientY) && event.clientY ? event.clientY : sourceRect?.top || 16;
+  tooltip.style.left = `${Math.max(8, Math.min(window.innerWidth - rect.width - 8, x + 14))}px`;
+  tooltip.style.top = `${Math.max(8, Math.min(window.innerHeight - rect.height - 8, y + 14))}px`;
+}
+
+function hideProfileTooltip() {
+  $("#profileTooltip").classList.remove("show");
 }
 
 function drawCanvas() {
@@ -456,25 +1189,73 @@ document.addEventListener("click", (event) => {
 });
 
 $$(".tab").forEach((tab) => tab.addEventListener("click", () => {
-  $$(".tab").forEach((item) => item.classList.toggle("active", item === tab));
+  $$(".tab").forEach((item) => {
+    item.classList.toggle("active", item === tab);
+    item.setAttribute("aria-pressed", String(item === tab));
+  });
   $$(".chart-section").forEach((section) => section.classList.toggle("active", section.id === tab.dataset.chart));
 }));
 
-$$(".pill[data-period]").forEach((button) => button.addEventListener("click", () => {
-  if (button.disabled) return;
-  state.period = button.dataset.period;
-  renderReportControls();
-}));
-
-$("#reportPicker").addEventListener("change", renderReportControls);
-$("#prevPeriod").addEventListener("click", () => shift(-1));
-$("#nextPeriod").addEventListener("click", () => shift(1));
-$("#openLocal").addEventListener("click", () => openLocalEntry(selectedReport()));
 $("#copyImage").addEventListener("click", copyImage);
 $("#downloadImage").addEventListener("click", downloadImage);
-$("#closeDetail").addEventListener("click", () => $("#detail").classList.remove("open"));
+$("#dayGrid").addEventListener("click", (event) => {
+  const button = event.target.closest(".pace-bar");
+  if (!button) return;
+  $("#dayGrid [aria-pressed=true]")?.setAttribute("aria-pressed", "false");
+  button.setAttribute("aria-pressed", "true");
+  $("#paceReadout").textContent = button.getAttribute("aria-label");
+});
+$("#closeDetail").addEventListener("click", () => $("#detail").close());
 $("#detail").addEventListener("click", (event) => {
-  if (event.target.id === "detail") $("#detail").classList.remove("open");
+  if (event.target.id === "detail") $("#detail").close();
+});
+
+$("#profilePanel").addEventListener("pointerover", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (!item) return;
+  const previous = event.relatedTarget?.closest?.("[data-profile-item]");
+  if (previous?.dataset.profileChart === item.dataset.profileChart && previous?.dataset.profileKey === item.dataset.profileKey) return;
+  setProfileHover(item, true);
+  showProfileTooltip(item, event);
+});
+
+$("#profilePanel").addEventListener("pointermove", (event) => {
+  if (event.target.closest("[data-profile-item]")) positionProfileTooltip(event);
+});
+
+$("#profilePanel").addEventListener("pointerout", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (!item) return;
+  const next = event.relatedTarget?.closest?.("[data-profile-item]");
+  if (next?.dataset.profileChart === item.dataset.profileChart && next?.dataset.profileKey === item.dataset.profileKey) return;
+  setProfileHover(item, false);
+  hideProfileTooltip();
+});
+
+$("#profilePanel").addEventListener("click", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (item) selectProfileItem(item);
+});
+
+$("#profilePanel").addEventListener("keydown", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (!item || item instanceof HTMLButtonElement || !["Enter", " "].includes(event.key)) return;
+  event.preventDefault();
+  selectProfileItem(item);
+});
+
+$("#profilePanel").addEventListener("focusin", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (!item) return;
+  setProfileHover(item, true);
+  showProfileTooltip(item, { target: item });
+});
+
+$("#profilePanel").addEventListener("focusout", (event) => {
+  const item = event.target.closest("[data-profile-item]");
+  if (!item) return;
+  setProfileHover(item, false);
+  hideProfileTooltip();
 });
 
 render();
